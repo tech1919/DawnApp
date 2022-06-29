@@ -1,0 +1,125 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+
+<DemoProject>:
+    Screen:
+        name: 'sign'
+        MDBoxLayout:
+            adaptive_height: True
+            padding: 50
+            size_hint: 1 , 1
+            md_bg_color: get_color_from_hex("#012241")
+            pos_hint: {"center_x": .5 , "center_y": .5}
+            orientation: 'vertical'
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDLabel:
+                    text: "Sign Up"
+                    font_size: 30
+                    bold: True
+                    color: app.theme_cls.accent_light
+
+
+
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                spacing: -20
+                MDLabel:
+                    text: "Username"
+                    halign: "center"
+                    pos_hint: {"center_x": 0.1}
+                    font_size: 13
+                MDTextFieldRound:
+                    required: True
+                    foreground_color: 0,0,0,1
+                    font_size: 25
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                spacing: -20
+                MDLabel:
+                    text: "Email"
+                    halign: "center"
+                    pos_hint: {"center_x": 0.1}
+                    font_size: 13
+                MDTextFieldRound:
+                    required: True
+                    foreground_color: 0,0,0,1
+                    font_size: 25
+
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDLabel:
+                    text: "Password"
+                    halign: "center"
+                    pos_hint: {"center_x": 0.1}
+                    font_size: 13
+
+
+                MDTextFieldRound:
+                    required: True
+                    foreground_color: 0,0,0,1
+                    font_size: 25
+
+
+            MDBoxLayout:
+
+            MDFillRoundFlatButton:
+                text: "SIGN UP"
+                size_hint: None, None
+                width: dp(300) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
+                height: dp(200)
+                pos_hint: {"center_x": .5}
+                md_bg_color: get_color_from_hex("#012241")
+                on_release: app.go_to('profile')
+                Image:
+                    source: 'images/button_sign-up.png'
+
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                MDLabel:
+                    halign: "center"
+                    text: "or"
+                    font_size: 15
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.001}
+                MDBoxLayout:
+                    MDBoxLayout:
+                    MDBoxLayout:
+                        spacing: 10
+                        MDIconButton:
+                            halign: "center"
+                            icon: "images/facebook_logo.png"
+                            on_release: app.facebook_login()
+                            size: self.parent.size
+                            user_font_size: "5sp"
+                        MDIconButton:
+                            halign: "center"
+                            icon: "images/google_logo.png"
+                            on_release: app.google_login()
+                            size: self.parent.size
+                            user_font_size: "5sp"
+
+                    MDBoxLayout:
+
+
+
+
+
+            MDBoxLayout:
+                spacing: -50
+                MDLabel:
+                    font_size: 12
+                    halign: "center"
+                    text: "Already have an account?"
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.001}
+                MDLabel:
+                    halign: "center"
+                    font_size: 12
+                    text: "Login"
+                    bold: True
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.001}
+

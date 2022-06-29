@@ -1,0 +1,75 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+
+<DemoProject>:
+    Screen:
+        name:'daily'
+        MDFloatLayout:
+            md_bg_color: get_color_from_hex("#FDFAF7")
+            orientation: 'vertical'
+
+
+            MDFillRoundFlatButton:
+
+                size_hint: None, None
+                width: dp(70) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
+                height: dp(200)
+                md_bg_color: get_color_from_hex("#FDFAF7")
+                pos_hint: {"center_x": .87 , "center_y": 0.93}
+                size_hint_y: 0.03
+                Image:
+                    id: menu_btn
+                    source: 'images/menu.png'
+
+
+
+
+
+
+            MDCard:
+                orientation: "horizontal"
+                padding: 25
+                spacing: 40
+                halign: "center"
+                valign: "center"
+                md_bg_color: get_color_from_hex("#FFFFFF")
+                size_hint: 1.1 , 0.1
+                pos_hint: {"center_x": 0.5, "center_y": 0.05}
+                elevation: 3
+                radius: [10]
+                MDIconButton:
+                    id: home_button
+                    halign: "center"
+                    valign: "center"
+                    on_release: app.go_to('home')
+                    Image:
+                        id: home_img
+                        source: 'images/home.png'
+
+                MDIconButton:
+                    id: daily_button
+                    halign: "center"
+
+                    on_release: app.go_to('daily')
+                    Image:
+                        id: daily_img
+                        source: 'images/daily_p.png'
+
+                MDIconButton:
+                    id: diagnose_button
+                    halign: "center"
+
+                    on_release: app.go_to('diagnose')
+                    Image:
+                        id: diagnose_img
+                        source: 'images/diagnose.png'
+
+                MDIconButton:
+                    id: profile_button
+                    halign: "center"
+
+                    on_release: app.go_to('profile')
+                    Image:
+                        id: profile_img
+                        source: 'images/profile.png'
+

@@ -1,0 +1,150 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+
+<DemoProject>:
+    Screen:
+        name: 'question2'
+
+
+
+        MDBoxLayout:
+            orientation: 'vertical'
+
+            MDFloatLayout:
+                md_bg_color: get_color_from_hex("#FDFAF7")
+                orientation: 'vertical'
+
+                MDFillRoundFlatButton:
+
+                    size_hint: None, None
+                    width: dp(70) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
+                    height: dp(200)
+                    md_bg_color: get_color_from_hex("#FDFAF7")
+                    pos_hint: {"center_x": .13 , "center_y": 0.93}
+                    on_release: app.back()
+                    Image:
+                        id: back_btn
+                        source: 'images/back_btn.png'
+
+                Image:
+                    source: 'images\counts\count_2.png'
+                    pos_hint: {"center_x": .5 , "center_y": 0.9}
+
+                MDLabel:
+                    id: Q_number
+                    text: "QUESTION 2 OF 9"
+                    halign: "left"
+                    pos_hint: {"center_x": .6 , "center_y": 0.67}
+                    font_size: 13
+                    color: 0.498,0.56,0.611,1
+                    bold: True
+                MDBoxLayout:
+                    size_hint: 0.8 , 1
+                    halign: "left"
+                    pos_hint: {"center_x": .5 , "center_y": 0.73}
+
+                    MDLabel:
+                        id: question2
+                        text: 'question'
+                        halign: "left"
+                        pos_hint: {"center_x": .6 , "center_y": 0.41}
+                        color: 0,0.439,0.313,1
+                        bold: True
+
+                MDCard:
+                    orientation: "vertical"
+                    padding: 10
+                    md_bg_color: get_color_from_hex("#FFFFFF")
+                    size_hint: 0.8 , 0.13
+                    pos_hint: {"center_x": 0.5, "center_y": 0.53}
+                    elevation: 3
+                    radius: [10]
+
+                    MDLabel:
+                        text: "Date of Birth"
+                        color: 0,0,0,0.4
+                        bold: True
+                        font_size: 14
+
+                MDCard:
+                    orientation: "horizontal"
+                    padding: 10
+                    md_bg_color: get_color_from_hex("#FFFFFF")
+                    size_hint: 0.8 , 0.1
+                    pos_hint: {"center_x": 0.5, "center_y": 0.38}
+                    elevation: 3
+                    radius: [10]
+
+                    MDLabel:
+                        halign: "left"
+                        text: "Weight"
+                        color: 0,0,0,0.4
+                        bold: True
+                        font_size: 14
+                    MDCard:
+                        md_bg_color: get_color_from_hex("#F5F5F6")
+                        halign: "center"
+                        size_hint: .45 , .8
+                        radius: [10]
+                        elevation: 0
+                        MDLabel:
+                            halign: "center"
+                            text: "55.0 kg"
+                            color: 0,0,0,0.8
+                            bold: True
+                            font_size: 14
+
+                MDCard:
+                    orientation: "horizontal"
+                    padding: 10
+                    md_bg_color: get_color_from_hex("#FFFFFF")
+                    size_hint: 0.8 , 0.1
+                    pos_hint: {"center_x": 0.5, "center_y": 0.25}
+                    elevation: 3
+                    radius: [10]
+
+                    MDLabel:
+                        halign: "left"
+                        text: "Height"
+                        color: 0,0,0,0.4
+                        bold: True
+                        font_size: 14
+                    MDCard:
+                        md_bg_color: get_color_from_hex("#F5F5F6")
+                        halign: "center"
+                        size_hint: .45 , .8
+                        radius: [10]
+                        elevation: 0
+                        MDLabel:
+                            halign: "center"
+                            text: "170 cm"
+                            color: 0,0,0,0.8
+                            bold: True
+                            font_size: 14
+
+
+        MDBoxLayout:
+            orientation: 'vertical'
+
+            MDFloatLayout:
+
+                orientation: 'vertical'
+
+
+
+
+                MDFillRoundFlatButton:
+                    # text: "Next"
+                    size_hint: None, None
+                    width: dp(200) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
+                    height: dp(200)
+                    pos_hint: {"center_x": .5 , "center_y": 0.09}
+                    md_bg_color: get_color_from_hex("#FDFAF7")
+                    custom_color: 0, 1, 0, 1
+                    on_press: app.go_to('next_question')
+                    Image:
+                        source: 'images/button_next.png'
+
+
+
+

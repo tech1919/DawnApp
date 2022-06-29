@@ -1,0 +1,106 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+
+<DemoProject>:
+    Screen:
+        name: 'login'
+        MDBoxLayout:
+            adaptive_height: True
+            size_hint: 1 , 1
+            md_bg_color: get_color_from_hex("#012241")
+            pos_hint: {"center_x": .5 , "center_y": .5}
+            orientation: 'vertical'
+
+
+            MDFloatLayout:
+                orientation: 'vertical'
+                MDLabel:
+                    halign: "left"
+                    text: "Login"
+                    font_size: 30
+                    pos_hint: {"center_x": 0.6, "center_y": 0.8}
+                    bold: True
+                    color: app.theme_cls.accent_light
+                MDLabel:
+                    text: "Username"
+                    halign: "left"
+                    pos_hint: {"center_x": 0.6, "center_y": 0.7}
+                    font_size: 13
+                MDBoxLayout:
+                    padding: 50
+                    MDTextFieldRound:
+                        required: True
+                        halign: "center"
+                        foreground_color: 0,0,0,1
+                        pos_hint: {"center_x": 0.5, "center_y": 0.68}
+                        font_size: 25
+                MDLabel:
+                    text: "Password"
+                    halign: "left"
+                    pos_hint: {"center_x": 0.6, "center_y": 0.58}
+                    font_size: 13
+                MDBoxLayout:
+                    padding: 50
+                    MDTextFieldRound:
+                        required: True
+                        halign: "center"
+                        pos_hint: {"center_x": 0.55, "center_y": 0.53}
+                        foreground_color: 0,0,0,1
+                        font_size: 25
+
+                MDLabel:
+                    halign: "right"
+                    text: "Forgot Password?"
+                    pos_hint: {"center_x": 0.35, "center_y": 0.46}
+                    font_size: 13
+
+
+
+
+                MDFillRoundFlatButton:
+                    text: "LOGIN"
+                    size_hint: None, None
+                    on_press: app.go_to('question')
+                    halign: "center"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.36}
+                    width: dp(250) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
+                    height: dp(200)
+                    md_bg_color: get_color_from_hex("#012241")
+                    Image:
+                        source: 'images/button_login.png'
+
+
+                MDLabel:
+                    halign: "center"
+                    text: "or"
+                    font_size: 15
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.23}
+
+                MDIconButton:
+                    halign: "center"
+                    icon: "images/facebook_logo.png"
+                    on_release: app.facebook_login()
+                    size: self.parent.size
+                    user_font_size: "5sp"
+                    pos_hint: {"center_x": 0.44 , "center_y": 0.18}
+                MDIconButton:
+                    halign: "center"
+                    icon: "images/google_logo.png"
+                    on_release: app.google_login()
+                    size: self.parent.size
+                    user_font_size: "5sp"
+                    pos_hint: {"center_x": 0.55 , "center_y": 0.18}
+                MDLabel:
+                    font_size: 12
+                    halign: "center"
+                    text: "Don't have an account?"
+                    pos_hint: {"center_x": 0.4 , "center_y": 0.05}
+                MDLabel:
+                    halign: "center"
+                    font_size: 12
+                    text: "Sign Up"
+                    bold: True
+                    pos_hint: {"center_x": 0.67 , "center_y": 0.05}
+

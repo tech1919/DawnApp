@@ -1,0 +1,72 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+
+<DemoProject>:
+    Screen:
+        name:'diagnose'
+        MDFloatLayout:
+            md_bg_color: get_color_from_hex("#FDFAF7")
+            orientation: 'vertical'
+
+
+            MDToolbar:
+                id: upper_toolbar
+                pos_hint: {"center_x": 0.5 , "center_y": 0.95}
+                right_action_items: [["menu"]]
+                type: "bottom"
+
+
+            Image:
+                source: 'images/diagnostic_results.png'
+
+
+
+
+
+            MDCard:
+                orientation: "horizontal"
+                padding: 25
+                spacing: 40
+                halign: "center"
+                valign: "center"
+                md_bg_color: get_color_from_hex("#FFFFFF")
+                size_hint: 1.1 , 0.1
+                pos_hint: {"center_x": 0.5, "center_y": 0.05}
+                elevation: 3
+                radius: [10]
+                MDIconButton:
+                    id: home_button
+                    halign: "center"
+                    valign: "center"
+                    on_release: app.go_to('home')
+                    Image:
+                        id: home_img
+                        source: 'images/home.png'
+
+                MDIconButton:
+                    id: daily_button
+                    halign: "center"
+
+                    on_release: app.go_to('daily')
+                    Image:
+                        id: daily_img
+                        source: 'images/daily.png'
+
+                MDIconButton:
+                    id: diagnose_button
+                    halign: "center"
+
+                    on_release: app.go_to('diagnose')
+                    Image:
+                        id: diagnose_img
+                        source: 'images/diagnose_p.png'
+
+                MDIconButton:
+                    id: profile_button
+                    halign: "center"
+
+                    on_release: app.go_to('profile')
+                    Image:
+                        id: profile_img
+                        source: 'images/profile.png'
+

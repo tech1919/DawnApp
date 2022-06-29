@@ -1,0 +1,296 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+
+<DemoProject>:
+    Screen:
+        name:'home'
+        MDFloatLayout:
+            md_bg_color: get_color_from_hex("#FDFAF7")
+            orientation: 'vertical'
+
+            MDFillRoundFlatButton:
+
+                size_hint: None, None
+                width: dp(70) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
+                height: dp(200)
+                md_bg_color: get_color_from_hex("#FDFAF7")
+                pos_hint: {"center_x": .87 , "center_y": 0.93}
+                size_hint_y: 0.03
+                Image:
+                    id: menu_btn
+                    source: 'images/menu.png'
+
+            Image:
+                id: user_img
+                halign: "center"
+                source: 'images/user.png'
+                size_hint_y: 0.07
+                allow_stretch: True
+                pos_hint: {"center_x": 0.2 , "center_y": 0.9}
+
+
+            MDLabel:
+                id: user_name
+                text: "Hello Dana"
+                halign: "center"
+                color: 0,0.439,0.313,1
+                bold: True
+                pos_hint: {"center_x": 0.45 , "center_y": 0.91}
+                font_size: 20
+
+            MDLabel:
+                id: user_name
+                text: "Welcome Back!"
+                halign: "center"
+                color: 0,0.439,0.313,1
+                pos_hint: {"center_x": 0.445 , "center_y": 0.88}
+                font_size: 14
+
+
+
+
+
+
+
+
+
+
+            MDIconButton:
+                pos_hint: {"center_x": 0.3 , "center_y": 0.745}
+                on_press: app.hello('blood test')
+            Image:
+                source: 'images/blood_test_logo.png'
+                pos_hint: {"center_x": 0.3 , "center_y": 0.745}
+                size_hint: None , None
+                width: 160
+                height: 160
+                allow_stretch: True
+            MDBoxLayout:
+
+                size_hint: 0.33 , 0.08
+                pos_hint: {"center_x": 0.3 , "center_y": 0.7}
+                halign: "center"
+                MDLabel:
+                    halign: "center"
+                    text: 'Upload your blood test'
+                    color: 0,0.133,0.254,1
+                    bold: True
+                    font_size: 14
+
+
+
+            MDIconButton:
+                pos_hint: {"center_x": 0.75 , "center_y": 0.65}
+                on_press: app.hello('doctor')
+            Image:
+                source: 'images/doctor_logo.png'
+                pos_hint: {"center_x": 0.75 , "center_y": 0.65}
+                size_hint: None , None
+                width: 160
+                height: 160
+                allow_stretch: True
+            MDBoxLayout:
+
+                size_hint: 0.33 , 0.08
+                pos_hint: {"center_x": 0.75 , "center_y": 0.61}
+                halign: "center"
+                MDLabel:
+                    halign: "center"
+                    text: 'Ask the doctor'
+                    color: 1,1,1,1
+                    bold: True
+                    font_size: 14
+
+
+
+
+
+            MDIconButton:
+                pos_hint: {"center_x": 0.3 , "center_y": 0.55}
+                on_press: app.hello('symptoms')
+            Image:
+                source: 'images/symptoms_logo.png'
+                pos_hint: {"center_x": 0.3 , "center_y": 0.55}
+                size_hint: None , None
+                width: 160
+                height: 160
+                allow_stretch: True
+            MDBoxLayout:
+
+                size_hint: 0.33 , 0.08
+                pos_hint: {"center_x": 0.3 , "center_y": 0.51}
+                halign: "center"
+                MDLabel:
+                    halign: "center"
+                    text: 'What are your symptoms?'
+                    color: 1,1,1,1
+                    bold: True
+                    font_size: 14
+
+
+
+
+            MDIconButton:
+                pos_hint: {"center_x": 0.75 , "center_y": 0.455}
+                on_press: app.hello('diagnose')
+                on_release: app.go_to('diagnose')
+
+
+            FitImage:
+                source: 'images/diagnose_logo.png'
+                pos_hint: {"center_x": 0.75 , "center_y": 0.455}
+                size_hint: None , None
+                width: 160
+                height: 160
+                allow_stretch: True
+            MDBoxLayout:
+                spacing: -15
+                orientation: "vertical"
+                size_hint: 0.33 , 0.08
+                pos_hint: {"center_x": 0.75 , "center_y": 0.41}
+                halign: "center"
+                MDLabel:
+                    halign: "center"
+                    text: 'Your diagnose'
+                    color: 0,0.133,0.254,1
+                    bold: True
+                    font_size: 14
+
+                MDLabel:
+                    id: diagnose_date
+                    halign: "center"
+                    text: '12.02.22'
+                    color: 0,0.133,0.254,1
+                    font_size: 14
+
+
+
+
+
+
+
+
+
+            MDLabel:
+                text: "My Appointment"
+                halign: "center"
+                color: 0,0.439,0.313,1
+                bold: True
+                pos_hint: {"center_x": 0.35 , "center_y": 0.32}
+                font_size: 20
+
+            MDCard:
+                md_bg_color: get_color_from_hex("#FFFFFF")
+                size_hint: None , None
+                pos_hint: {"center_x": 0.5, "center_y": 0.22}
+                elevation: 3
+                radius: [10]
+                orientation: "vertical"
+                padding: 10
+                halign: "left"
+                size_hint: 0.75 , 0.15
+                MDLabel:
+                    text: "Dr. Natali Tompson"
+
+                    color: 0,0,0,1
+
+                    bold: True
+                    font_size: 13
+                MDLabel:
+
+                    text: "cardiolog"
+
+                    color: 0,0,0,1
+
+                    bold: False
+                    font_size: 11
+                MDLabel:
+
+                    text: "Bnei Barak, haroeh 21"
+
+                    color: 0,0,0,1
+
+                    bold: False
+                    font_size: 11
+                MDCard:
+                    md_bg_color: get_color_from_hex("#012241")
+                    orientation: "horizontal"
+                    radius: [5]
+                    spacing: 5
+                    padding: 5
+                    valign: "center"
+                    halign: "left"
+                    Image:
+                        size_hint: None , None
+                        width: 15
+                        height: 15
+                        source: 'images/clock_btn.png'
+                    MDLabel:
+
+                        text: "Friday, April 25, 8:00am-10:00pm"
+
+                        color: 1,1,1,1
+
+                        bold: False
+                        font_size: 11
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            MDCard:
+                orientation: "horizontal"
+                padding: 25
+                spacing: 40
+                halign: "center"
+                valign: "center"
+                md_bg_color: get_color_from_hex("#FFFFFF")
+                size_hint: 1.1 , 0.1
+                pos_hint: {"center_x": 0.5, "center_y": 0.05}
+                elevation: 3
+                radius: [10]
+                MDIconButton:
+                    id: home_button
+                    halign: "center"
+                    valign: "center"
+                    on_release: app.go_to('home')
+                    Image:
+                        id: home_img
+                        source: 'images/home_p.png'
+
+                MDIconButton:
+                    id: daily_button
+                    halign: "center"
+
+                    on_release: app.go_to('daily')
+                    Image:
+                        id: daily_img
+                        source: 'images/daily.png'
+
+                MDIconButton:
+                    id: diagnose_button
+                    halign: "center"
+
+                    on_release: app.go_to('diagnose')
+                    Image:
+                        id: diagnose_img
+                        source: 'images/diagnose.png'
+
+                MDIconButton:
+                    id: profile_button
+                    halign: "center"
+
+                    on_release: app.go_to('profile')
+                    Image:
+                        id: profile_img
+                        source: 'images/profile.png'
+

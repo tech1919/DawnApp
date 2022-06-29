@@ -1,0 +1,59 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+
+<DemoProject>:
+    Screen:
+        name:'home'
+        MDFloatLayout:
+            md_bg_color: get_color_from_hex("#FDFAF7")
+            orientation: 'vertical'
+
+
+            MDToolbar:
+                id: upper_toolbar
+                pos_hint: {"center_x": 0.5 , "center_y": 0.95}
+                right_action_items: [["menu"]]
+                type: "bottom"
+
+            Image:
+                id: user_img
+                halign: "center"
+                source: 'images/user.png'
+                size_hint_y: 0.07
+                allow_stretch: True
+                pos_hint: {"center_x": 0.2 , "center_y": 0.9}
+
+
+            MDLabel:
+                id: user_name
+                text: "Hello Dana"
+                halign: "center"
+                color: 0,0.439,0.313,1
+                bold: True
+                pos_hint: {"center_x": 0.45 , "center_y": 0.91}
+                font_size: 20
+
+            MDLabel:
+                id: user_name
+                text: "Welcome Back!"
+                halign: "center"
+                color: 0,0.439,0.313,1
+                pos_hint: {"center_x": 0.445 , "center_y": 0.88}
+                font_size: 14
+
+            MDBottomNavigation:
+                # color staff
+                panel_color: 1,1,1,1
+                MDBottomNavigationItem:
+                    text: 'home'
+                    icon: 'images/home_p.png'
+                MDBottomNavigationItem:
+                    text: 'daily'
+                    icon: 'calendar'
+                MDBottomNavigationItem:
+                    text: 'diagnose'
+                    icon: 'account-heart'
+                MDBottomNavigationItem:
+                    text: 'profile'
+                    icon: 'face-profile-woman'
+

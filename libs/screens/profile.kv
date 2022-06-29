@@ -1,0 +1,287 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+
+<DemoProject>:
+    Screen:
+        name:'profile'
+        MDFloatLayout:
+            md_bg_color: get_color_from_hex("#FDFAF7")
+            orientation: 'vertical'
+
+
+            MDFillRoundFlatButton:
+
+                size_hint: None, None
+                width: dp(70) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
+                height: dp(200)
+                md_bg_color: get_color_from_hex("#FDFAF7")
+                pos_hint: {"center_x": .87 , "center_y": 0.93}
+                size_hint_y: 0.03
+                Image:
+                    id: menu_btn
+                    source: 'images/menu.png'
+
+            MDFloatLayout:
+                MDFillRoundFlatButton:
+                    id: home_button
+
+                    size_hint: None, None
+                    width: dp(100) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
+                    height: dp(200)
+                    halign: "center"
+                    size_hint_y: 0.025
+                    md_bg_color: get_color_from_hex("#FDFAF7")
+                    pos_hint: {"center_x": .15 , "center_y": .95}
+                    on_release: app.go_to('login')
+                    Image:
+                        id: sign_out
+                        source: 'images/signout.png'
+
+
+            Image:
+                id: user_img
+                halign: "center"
+                source: 'images/user.png'
+                size_hint_y: 0.13
+                allow_stretch: True
+                pos_hint: {"center_x": 0.5 , "center_y": 0.85}
+
+            MDIconButton:
+                id: edit_btn
+                halign: "center"
+                pos_hint: {"center_x": 0.625 , "center_y": 0.85}
+                Image:
+                    source: 'images/edit.png'
+
+            MDLabel:
+                id: user_name
+                text: "Dana Cohen"
+                halign: "center"
+                color: 0,0.439,0.313,1
+                bold: True
+                pos_hint: {"center_x": 0.5 , "center_y": 0.75}
+                font_size: 20
+
+
+            MDCard:
+                orientation: "vertical"
+                padding: 10
+
+                md_bg_color: get_color_from_hex("#FFFFFF")
+                size_hint: 0.8 , 0.35
+                pos_hint: {"center_x": 0.5, "center_y": 0.53}
+                elevation: 3
+                radius: [10]
+                MDBoxLayout:
+                    spacing: 10
+                    orientation: "horizontal"
+                    Image:
+                        halign: "left"
+                        source: 'images/person_logo.png'
+                        size_hint: None , None
+                        width: 40
+                        pos_hint: {"center_x": 0.1 , "center_y": 0.5}
+                    MDLabel:
+                        text: "My Account"
+                        color: 0,0,0,1
+                        bold: True
+                    MDIconButton:
+                        Image:
+                            source: 'images/down_button.png'
+
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        MDLabel:
+                            text: "First Name"
+                            halign: "left"
+
+                            color: 0,0,0,1
+                    MDBoxLayout:
+                        MDLabel:
+                            halign: "right"
+
+                            text: "Dana"
+                            color: 0,0,0,0.4
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        MDLabel:
+                            text: "Last Name"
+                            halign: "left"
+                            color: 0,0,0,1
+                    MDBoxLayout:
+                        MDLabel:
+                            halign: "right"
+                            text: "Cohen"
+                            color: 0,0,0,0.4
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        MDLabel:
+                            text: "Date Birth"
+                            halign: "left"
+                            color: 0,0,0,1
+                    MDBoxLayout:
+                        MDLabel:
+                            halign: "right"
+                            text: "01/01/1990"
+                            color: 0,0,0,0.4
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        MDLabel:
+                            text: "Height"
+                            halign: "left"
+                            color: 0,0,0,1
+                    MDBoxLayout:
+                        MDLabel:
+                            halign: "right"
+                            text: "168 cm"
+                            color: 0,0,0,0.4
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        MDLabel:
+                            text: "Weight"
+                            halign: "left"
+                            color: 0,0,0,1
+                    MDBoxLayout:
+                        MDLabel:
+                            halign: "right"
+                            text: "64 kg"
+                            color: 0,0,0,0.4
+
+
+            MDCard:
+                orientation: "vertical"
+                padding: 10
+
+                md_bg_color: get_color_from_hex("#FFFFFF")
+                size_hint: 0.8 , 0.07
+                pos_hint: {"center_x": 0.5, "center_y": 0.29}
+                elevation: 3
+                radius: [10]
+                MDBoxLayout:
+                    spacing: 10
+                    orientation: "horizontal"
+                    Image:
+                        halign: "left"
+                        source: 'images/list_logo.png'
+                        size_hint: None , None
+                        width: 40
+                        pos_hint: {"center_x": 0.1 , "center_y": 0.5}
+                    MDLabel:
+                        text: "Diagnose Me"
+                        color: 0,0,0,1
+                        bold: True
+                    MDIconButton:
+                        Image:
+                            source: 'images/right_button.png'
+
+
+            MDCard:
+                orientation: "vertical"
+                padding: 10
+
+                md_bg_color: get_color_from_hex("#FFFFFF")
+                size_hint: 0.8 , 0.07
+                pos_hint: {"center_x": 0.5, "center_y": 0.185}
+                elevation: 3
+                radius: [10]
+                MDBoxLayout:
+                    spacing: 10
+                    orientation: "horizontal"
+                    Image:
+                        halign: "left"
+                        source: 'images/shield_logo.png'
+                        size_hint: None , None
+                        width: 40
+                        pos_hint: {"center_x": 0.1 , "center_y": 0.5}
+                    MDLabel:
+                        text: "Security"
+                        color: 0,0,0,1
+                        bold: True
+                    MDIconButton:
+                        Image:
+                            source: 'images/right_button.png'
+
+            MDCard:
+                orientation: "horizontal"
+                padding: 25
+                spacing: 40
+                halign: "center"
+                valign: "center"
+                md_bg_color: get_color_from_hex("#FFFFFF")
+                size_hint: 1.1 , 0.1
+                pos_hint: {"center_x": 0.5, "center_y": 0.05}
+                elevation: 3
+                radius: [10]
+                MDIconButton:
+                    id: home_button
+                    halign: "center"
+                    valign: "center"
+                    on_release: app.go_to('home')
+                    Image:
+                        id: home_img
+                        source: 'images/home.png'
+
+                MDIconButton:
+                    id: daily_button
+                    halign: "center"
+
+                    on_release: app.go_to('daily')
+                    Image:
+                        id: daily_img
+                        source: 'images/daily.png'
+
+                MDIconButton:
+                    id: diagnose_button
+                    halign: "center"
+
+                    on_release: app.go_to('diagnose')
+                    Image:
+                        id: diagnose_img
+                        source: 'images/diagnose.png'
+
+                MDIconButton:
+                    id: profile_button
+                    halign: "center"
+
+                    on_release: app.go_to('profile')
+                    Image:
+                        id: profile_img
+                        source: 'images/profile_p.png'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
