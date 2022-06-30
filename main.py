@@ -1,33 +1,11 @@
-from kivy.properties import NumericProperty
 from kivy.uix.screenmanager import ScreenManager, Screen ,WipeTransition, FadeTransition , NoTransition , SlideTransition , FallOutTransition , RiseInTransition
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivy.lang.builder import Builder
 from kivy.config import Config
-import json
-import time
 
-Config.set('kivy','window_icon','icon.ico')
+# Config.set('kivy','window_icon','icon.ico')
 
-
-class ProfileScreen(Screen):
-    pass
-
-
-class LoadingScreen(Screen):
-    pass
-
-
-class SignScreen(Screen):
-    pass
-
-
-class LoginScreen(Screen):
-    pass
-
-
-class Question(Screen):
-    pass
 
 class DemoProject(ScreenManager):
     pass
@@ -37,32 +15,62 @@ class DawnApp(MDApp):
 
     def go_to(self,screen_name):
         # saves the last screen before changing
-
         self.last_screen = self.root.current
         try:
             if self.last_screen == 'login':
                 self.root.transition = SlideTransition(direction='up')
-            elif screen_name == 'next_question':
-                self.next_question()
-                self.change_text(f'question{self.cur_question_idx + 1}', self.cur_question)
-                self.change_text(f'Q_number_{self.cur_question_idx + 1}', f'QUESTION {self.cur_question_idx + 1} OF {self.number_of_questions}')
-                # self.change_photo(f'img_Q{self.cur_question_idx + 1}',f'Q{self.cur_question_idx + 1}.png')
-                self.change_photo(f'count{self.cur_question_idx + 1}',f'count_{self.cur_question_idx + 1}.png')
 
+            if screen_name == 'question':
                 self.root.transition = SlideTransition(direction='left')
-                screen_name = f'question{self.cur_question_idx + 1}'
+                self.root.current = screen_name
+            elif screen_name == 'question_details':
+                self.root.transition = NoTransition()
+                self.root.current = screen_name
+
+
+            elif screen_name == 'next_question':
+                try:
+                    self.next_question()
+                except:
+                    screen_name = 'question_details'
+                    self.root.current = screen_name
+                    return
+
+                # change the text in the page
+                self.change_text(f'question_text', self.cur_question)
+                self.change_text(f'question_number', f'QUESTION {self.cur_question_idx + 1} OF {self.number_of_questions}')
+
+                try:
+                    self.change_photo(f'question_img',f'Q{self.cur_question_idx + 1}.png')
+                except:
+                    self.change_photo(f'question_img', f'Q1.png')
+                try:
+                    self.change_photo(f'count',f'count_{self.cur_question_idx + 1}.png')
+                except:
+                    self.change_photo(f'count', f'count_9.png')
+
+                self.root.ids[f'btn_yes'].source = 'button_yes.png'
+                self.root.ids[f'btn_no'].source = 'button_no.png'
+
+                # self.root.transition = SlideTransition(direction='left')
+
+
+
             elif screen_name == 'home':
                 self.sizes()
+                self.root.current = screen_name
             else:
                 self.root.transition = NoTransition()
+                self.root.current = screen_name
 
 
-            self.root.current = screen_name
+
         except:
             self.root.current = 'profile'
-    def load_app(self):
 
-        self.go_to('login')
+
+
+
     def hello(self,say_something):
         print(say_something)
     def google_login(self):
@@ -74,11 +82,11 @@ class DawnApp(MDApp):
     def on(self,check):
         try:
             if(check == 'yes'):
-                self.root.ids[f'btn_yes_{self.cur_question_idx + 1}'].source = 'button_yes_p.png'
-                self.root.ids[f'btn_no_{self.cur_question_idx + 1}'].source = 'button_no.png'
+                self.root.ids[f'btn_yes'].source = 'button_yes_p.png'
+                self.root.ids[f'btn_no'].source = 'button_no.png'
             if(check == 'no'):
-                self.root.ids[f'btn_yes_{self.cur_question_idx + 1}'].source = 'button_yes.png'
-                self.root.ids[f'btn_no_{self.cur_question_idx + 1}'].source = 'button_no_p.png'
+                self.root.ids[f'btn_yes'].source = 'button_yes.png'
+                self.root.ids[f'btn_no'].source = 'button_no_p.png'
         except:
             pass
 
@@ -95,12 +103,10 @@ class DawnApp(MDApp):
         for id in logos_ids:
             self.root.ids[id].width = big_logos
             self.root.ids[id].height = big_logos
-
     def back(self):
-        self.root.transition = SlideTransition(direction='right')
-        temp_last_screen = self.root.current
-        self.root.current = self.last_screen
-        self.last_screen = temp_last_screen
+        self.cur_question_idx -= 2
+        self.next_question()
+        self.go_to('next_question')
 
 
     def next_question(self,first=False):
@@ -110,7 +116,24 @@ class DawnApp(MDApp):
             'Can you now (or could you ever) bend your thumb to touch your forearm?',
             'As a child, did you amuse your friends by contorting your body into storage shapes or could you do the splits?',
             'As a child ot teenager, did your shoulder or kneecap dislocate on more than one occasion?',
-            'Do you consider yourself "double jointed"?'
+            'Do you consider yourself "double jointed"?',
+            'Unusually soft or velvety skin',
+            'Mild skin hyperextensibility',
+            'Unexplained striae distensae or rubae at the back, groins, thighs, breasts and/or abdomen in adolescents, men or pre-pubertal women without a history of significant gain or loss of body fat orweight',
+            'Bilateral piezogenic papules of the heel',
+            'Recurrent or multiple abdominal hernia(s)',
+            'Atrophic scarring involving at least nwo sites and without the formation of truly papyraceous and/or hemosideric scars as seen in classical EDS '
+            + 'Pelvic floor, rectal, and/or uterine prolapse in children, men or nulliparous women without a history of morbid obesity or other known '
+            + 'predisposing medical condition',
+            'Dental crowding and high or narrow palate',
+            'Arachnodactyly, as defined in one or more of the following:' +
+            '(1) positive wrist sign (Walker sign) on both sides, (2) positive thumb sign (Steinberg sign) on both sides',
+            'Arm span-to-height ratio =1.05',
+            'Mitral valve prolapse (MVP) mild or greater based on strict echocardiographic criteria',
+            'Aortic root dilatation with Z-score >+2',
+            'Musculoskeletal pain in two or more limbs, recurring daily for at least 3 months',
+            'Chronic, widespread pain for 3 months or more',
+            'Recurrent joint dislocations or frank joint instability, in the absence of trauma'
         ]
         self.number_of_questions = len(questions)
         if first:
@@ -122,26 +145,22 @@ class DawnApp(MDApp):
 
         self.cur_question = questions[self.cur_question_idx]
 
-
-
     def build(self):
 
-        self.theme_cls.theme_style = "Dark"
-        self.theme_cls.primary_palette = "Gray"
-        self.theme_cls.accent_palette = "DeepOrange"
-        self.last_screen = 'loading'
+        # set the first question in line
         self.next_question(first=True)
+        Builder.load_file('profile.kv')
         Builder.load_file('login.kv')
+
+
         Builder.load_file('home.kv')
         Builder.load_file('diagnose.kv')
-        Builder.load_file('profile.kv')
+
         Builder.load_file('loading.kv')
         Builder.load_file('question.kv')
         Builder.load_file('question_details.kv')
         Builder.load_file('question_details_datepick.kv')
-        Builder.load_file('question3.kv')
-        Builder.load_file('question4.kv')
-        Builder.load_file('question5.kv')
+
         Builder.load_file('signup.kv')
         Builder.load_file('daily.kv')
 

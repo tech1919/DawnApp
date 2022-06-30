@@ -29,7 +29,6 @@
 
 
 
-
             MDCard:
                 md_bg_color: get_color_from_hex("#FFFFFF")
                 size_hint: None , None
@@ -43,7 +42,8 @@
                 size_hint: 1 , 0.15
                 MDBoxLayout:
                     pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDIconButton:
+                    MDFillRoundFlatButton:
+                        md_bg_color: get_color_from_hex("#FFFFFF")
                         id: home_button
                         halign: "center"
                         valign: "center"
@@ -55,7 +55,8 @@
 
                 MDBoxLayout:
                     pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDIconButton:
+                    MDFillRoundFlatButton:
+                        md_bg_color: get_color_from_hex("#FFFFFF")
                         id: daily_button
                         halign: "center"
 
@@ -66,7 +67,8 @@
 
                 MDBoxLayout:
                     pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDIconButton:
+                    MDFillRoundFlatButton:
+                        md_bg_color: get_color_from_hex("#FFFFFF")
                         id: diagnose_button
                         halign: "center"
 
@@ -76,9 +78,11 @@
                             source: 'diagnose_p.png'
 
 
+
                 MDBoxLayout:
                     pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDIconButton:
+                    MDFillRoundFlatButton:
+                        md_bg_color: get_color_from_hex("#FFFFFF")
                         id: profile_button
                         halign: "center"
 
@@ -86,6 +90,11 @@
                         Image:
                             id: profile_img
                             source: 'profile.png'
+
+
+
+
+
 
 
 

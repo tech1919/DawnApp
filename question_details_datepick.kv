@@ -79,7 +79,7 @@
                             font_size:  12
                         MDIconButton:
                             pos_hint: {"center_x": 0.4 , "center_y": 0.5}
-                            on_press: app.go_to('question2')
+                            on_press: app.go_to('question_details')
                             Image:
                                 md_bg_color: get_color_from_hex("#F5F5F6")
                                 source: 'down_button.png'
@@ -121,7 +121,7 @@
                     pos_hint: {"center_x": .5 , "center_y": 0.09}
                     md_bg_color: get_color_from_hex("#FDFAF7")
                     custom_color: 0, 1, 0, 1
-                    on_press: app.go_to('next_question')
+                    on_press: app.go_to('question_details')
                     Image:
                         source: 'button_next.png'
 
