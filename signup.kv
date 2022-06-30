@@ -76,7 +76,7 @@
                 md_bg_color: get_color_from_hex("#012241")
                 on_release: app.go_to('profile')
                 Image:
-                    source: 'images/button_sign-up.png'
+                    source: 'button_sign-up.png'
 
 
             MDBoxLayout:
@@ -92,13 +92,13 @@
                         spacing: 10
                         MDIconButton:
                             halign: "center"
-                            icon: "images/facebook_logo.png"
+                            icon: "facebook_logo.png"
                             on_release: app.facebook_login()
                             size: self.parent.size
                             user_font_size: "5sp"
                         MDIconButton:
                             halign: "center"
-                            icon: "images/google_logo.png"
+                            icon: "google_logo.png"
                             on_release: app.google_login()
                             size: self.parent.size
                             user_font_size: "5sp"
