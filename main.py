@@ -64,11 +64,11 @@ class DawnApp(MDApp):
     def on(self,check):
         try:
             if(check == 'yes'):
-                self.root.ids[f'btn_yes_{self.cur_question_idx + 1}'].source = 'images/button_yes_p.png'
-                self.root.ids[f'btn_no_{self.cur_question_idx + 1}'].source = 'images/button_no.png'
+                self.root.ids[f'btn_yes_{self.cur_question_idx + 1}'].source = 'button_yes_p.png'
+                self.root.ids[f'btn_no_{self.cur_question_idx + 1}'].source = 'button_no.png'
             if(check == 'no'):
-                self.root.ids[f'btn_yes_{self.cur_question_idx + 1}'].source = 'images/button_yes.png'
-                self.root.ids[f'btn_no_{self.cur_question_idx + 1}'].source = 'images/button_no_p.png'
+                self.root.ids[f'btn_yes_{self.cur_question_idx + 1}'].source = 'button_yes.png'
+                self.root.ids[f'btn_no_{self.cur_question_idx + 1}'].source = 'button_no_p.png'
         except:
             pass
 
