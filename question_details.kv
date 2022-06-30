@@ -27,11 +27,12 @@
                         source: 'back_btn.png'
 
                 Image:
+                    id: count2
                     source: 'count_2.png'
                     pos_hint: {"center_x": .5 , "center_y": 0.9}
 
                 MDLabel:
-                    id: Q_number
+                    id: Q_number_2
                     text: "QUESTION 2 OF 9"
                     halign: "left"
                     pos_hint: {"center_x": .6 , "center_y": 0.67}
@@ -65,6 +66,23 @@
                         color: 0,0,0,0.4
                         bold: True
                         font_size: 14
+                    MDCard:
+                        radius: [10]
+                        elevation: 0
+                        md_bg_color: get_color_from_hex("#F5F5F6")
+                        padding: 5
+                        MDLabel:
+
+                            color: 0,0,0,0.4
+                            text: '01-Jan-1980'
+                            halign: "left"
+                            font_size:  12
+                        MDIconButton:
+                            pos_hint: {"center_x": 0.4 , "center_y": 0.5}
+                            Image:
+                                md_bg_color: get_color_from_hex("#F5F5F6")
+                                source: 'down_button.png'
+
 
                 MDCard:
                     orientation: "horizontal"

@@ -3,8 +3,12 @@ from kivy.uix.screenmanager import ScreenManager, Screen ,WipeTransition, FadeTr
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivy.lang.builder import Builder
+from kivy.config import Config
 import json
 import time
+
+Config.set('kivy','window_icon','icon.ico')
+
 
 class ProfileScreen(Screen):
     pass
@@ -41,15 +45,21 @@ class DawnApp(MDApp):
             elif screen_name == 'next_question':
                 self.next_question()
                 self.change_text(f'question{self.cur_question_idx + 1}', self.cur_question)
+                self.change_text(f'Q_number_{self.cur_question_idx + 1}', f'QUESTION {self.cur_question_idx + 1} OF {self.number_of_questions}')
+                # self.change_photo(f'img_Q{self.cur_question_idx + 1}',f'Q{self.cur_question_idx + 1}.png')
+                self.change_photo(f'count{self.cur_question_idx + 1}',f'count_{self.cur_question_idx + 1}.png')
+
                 self.root.transition = SlideTransition(direction='left')
                 screen_name = f'question{self.cur_question_idx + 1}'
+            elif screen_name == 'home':
+                self.sizes()
             else:
                 self.root.transition = NoTransition()
 
 
             self.root.current = screen_name
         except:
-            self.root.current = 'home'
+            self.root.current = 'profile'
     def load_app(self):
 
         self.go_to('login')
@@ -76,7 +86,15 @@ class DawnApp(MDApp):
 
     def change_text(self, id , text):
         self.root.ids[id].text = text
-
+    def change_photo(self, id , new_path):
+        self.root.ids[id].source = new_path
+    def sizes(self):
+        # Home Screen
+        big_logos = 140
+        logos_ids = ['blood_test_logo','diagnose_logo','symptoms_logo','doctor_logo']
+        for id in logos_ids:
+            self.root.ids[id].width = big_logos
+            self.root.ids[id].height = big_logos
 
     def back(self):
         self.root.transition = SlideTransition(direction='right')
@@ -94,6 +112,7 @@ class DawnApp(MDApp):
             'As a child ot teenager, did your shoulder or kneecap dislocate on more than one occasion?',
             'Do you consider yourself "double jointed"?'
         ]
+        self.number_of_questions = len(questions)
         if first:
             # first question
             self.cur_question_idx = 0
@@ -112,24 +131,24 @@ class DawnApp(MDApp):
         self.theme_cls.accent_palette = "DeepOrange"
         self.last_screen = 'loading'
         self.next_question(first=True)
+        Builder.load_file('home.kv')
         Builder.load_file('login.kv')
-        Builder.load_file('loading.kv')
 
+        Builder.load_file('diagnose.kv')
         Builder.load_file('profile.kv')
+        Builder.load_file('loading.kv')
         Builder.load_file('question.kv')
         Builder.load_file('question_details.kv')
         Builder.load_file('question3.kv')
         Builder.load_file('question4.kv')
         Builder.load_file('question5.kv')
-        Builder.load_file('home.kv')
-
         Builder.load_file('signup.kv')
-
-        Builder.load_file('diagnose.kv')
         Builder.load_file('daily.kv')
 
 
         return DemoProject()
+
+
 
 
 if __name__ == '__main__':

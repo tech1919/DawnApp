@@ -15,7 +15,7 @@
                 width: dp(70) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
                 height: dp(200)
                 md_bg_color: get_color_from_hex("#FDFAF7")
-                pos_hint: {"center_x": .87 , "center_y": 0.93}
+
                 size_hint_y: 0.03
                 Image:
                     id: menu_btn
@@ -186,6 +186,7 @@
                         color: 0,0,0,1
                         bold: True
                     MDIconButton:
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
                         Image:
                             source: 'right_button.png'
 
@@ -213,55 +214,81 @@
                         color: 0,0,0,1
                         bold: True
                     MDIconButton:
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
                         Image:
+
                             source: 'right_button.png'
 
+
+
+
+
+
+
+
             MDCard:
-                orientation: "horizontal"
-                padding: 25
-                spacing: 40
-                halign: "center"
-                valign: "center"
                 md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: 1.1 , 0.1
+                size_hint: None , None
                 pos_hint: {"center_x": 0.5, "center_y": 0.05}
                 elevation: 3
                 radius: [10]
-                MDIconButton:
-                    id: home_button
-                    halign: "center"
-                    valign: "center"
-                    on_release: app.go_to('home')
-                    Image:
-                        id: home_img
-                        source: 'home.png'
+                orientation: "horizontal"
+                padding: 10
+                halign: "center"
+                valign: "center"
+                size_hint: 1 , 0.15
+                MDBoxLayout:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
+                    MDIconButton:
+                        id: home_button
+                        halign: "center"
+                        valign: "center"
+                        on_release: app.go_to('home')
+                        Image:
+                            halign: "center"
+                            id: home_img
+                            source: 'home.png'
 
-                MDIconButton:
-                    id: daily_button
-                    halign: "center"
+                MDBoxLayout:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
+                    MDIconButton:
+                        id: daily_button
+                        halign: "center"
 
-                    on_release: app.go_to('daily')
-                    Image:
-                        id: daily_img
-                        source: 'daily.png'
+                        on_release: app.go_to('daily')
+                        Image:
+                            id: daily_img
+                            source: 'daily.png'
 
-                MDIconButton:
-                    id: diagnose_button
-                    halign: "center"
+                MDBoxLayout:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
+                    MDIconButton:
+                        id: diagnose_button
+                        halign: "center"
 
-                    on_release: app.go_to('diagnose')
-                    Image:
-                        id: diagnose_img
-                        source: 'diagnose.png'
+                        on_release: app.go_to('diagnose')
+                        Image:
+                            id: diagnose_img
+                            source: 'diagnose.png'
 
-                MDIconButton:
-                    id: profile_button
-                    halign: "center"
 
-                    on_release: app.go_to('profile')
-                    Image:
-                        id: profile_img
-                        source: 'profile_p.png'
+                MDBoxLayout:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
+                    MDIconButton:
+                        id: profile_button
+                        halign: "center"
+
+                        on_release: app.go_to('profile')
+                        Image:
+                            id: profile_img
+                            source: 'profile_p.png'
+
+
+
+
+
+
+
 
 
 
