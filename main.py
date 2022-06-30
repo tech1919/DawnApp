@@ -106,28 +106,27 @@ class DawnApp(MDApp):
 
 
     def build(self):
-        Window.size = [340, 700]
 
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Gray"
         self.theme_cls.accent_palette = "DeepOrange"
         self.last_screen = 'loading'
         self.next_question(first=True)
-        Builder.load_file('libs/screens/login.kv')
-        Builder.load_file('libs/screens/loading.kv')
+        Builder.load_file('login.kv')
+        Builder.load_file('loading.kv')
 
-        Builder.load_file('libs/screens/profile.kv')
-        Builder.load_file('libs/screens/question.kv')
-        Builder.load_file('libs/screens/question_details.kv')
-        Builder.load_file('libs/screens/question3.kv')
-        Builder.load_file('libs/screens/question4.kv')
-        Builder.load_file('libs/screens/question5.kv')
-        Builder.load_file('libs/screens/home.kv')
+        Builder.load_file('profile.kv')
+        Builder.load_file('question.kv')
+        Builder.load_file('question_details.kv')
+        Builder.load_file('question3.kv')
+        Builder.load_file('question4.kv')
+        Builder.load_file('question5.kv')
+        Builder.load_file('home.kv')
 
-        Builder.load_file('libs/screens/signup.kv')
+        Builder.load_file('signup.kv')
 
-        Builder.load_file('libs/screens/diagnose.kv')
-        Builder.load_file('libs/screens/daily.kv')
+        Builder.load_file('diagnose.kv')
+        Builder.load_file('daily.kv')
 
 
         return DemoProject()
