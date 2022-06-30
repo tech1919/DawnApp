@@ -138,6 +138,7 @@ class DawnApp(MDApp):
         Builder.load_file('loading.kv')
         Builder.load_file('question.kv')
         Builder.load_file('question_details.kv')
+        Builder.load_file('question_details_datepick.kv')
         Builder.load_file('question3.kv')
         Builder.load_file('question4.kv')
         Builder.load_file('question5.kv')
