@@ -131,9 +131,8 @@ class DawnApp(MDApp):
         self.theme_cls.accent_palette = "DeepOrange"
         self.last_screen = 'loading'
         self.next_question(first=True)
-        Builder.load_file('home.kv')
         Builder.load_file('login.kv')
-
+        Builder.load_file('home.kv')
         Builder.load_file('diagnose.kv')
         Builder.load_file('profile.kv')
         Builder.load_file('loading.kv')
