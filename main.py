@@ -112,7 +112,6 @@ class DawnApp(MDApp):
     def next_question(self,first=False):
         questions = [
             'Can you now (or could you ever) place your hand flat on the floor without bending your knees?',
-            'Write your details',
             'Can you now (or could you ever) bend your thumb to touch your forearm?',
             'As a child, did you amuse your friends by contorting your body into storage shapes or could you do the splits?',
             'As a child ot teenager, did your shoulder or kneecap dislocate on more than one occasion?',
