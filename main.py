@@ -149,18 +149,14 @@ class DawnApp(MDApp):
 
         # set the first question in line
         self.next_question(first=True)
-        Builder.load_file('profile.kv')
         Builder.load_file('login.kv')
-
-
+        Builder.load_file('profile.kv')
         Builder.load_file('home.kv')
         Builder.load_file('diagnose.kv')
-
         Builder.load_file('loading.kv')
         Builder.load_file('question.kv')
         Builder.load_file('question_details.kv')
         Builder.load_file('question_details_datepick.kv')
-
         Builder.load_file('signup.kv')
         Builder.load_file('daily.kv')
 
