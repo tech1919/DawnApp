@@ -1,9 +1,14 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Window kivy.core.window.Window
 
+
+
 <DemoProject>:
     Screen:
         name: 'question_details'
+
+
+
 
 
 
@@ -22,9 +27,7 @@
                     md_bg_color: get_color_from_hex("#FDFAF7")
                     pos_hint: {"center_x": .13 , "center_y": 0.93}
                     on_release: app.back()
-                    Image:
-                        id: back_btn
-                        source: 'back_btn.png'
+
 
                 Image:
                     id: count2
@@ -74,11 +77,9 @@
                             text: '01-Jan-1980'
                             halign: "left"
                             font_size:  12
-                        MDFillRoundFlatButton:
-                            pos_hint: {"center_x": 0.4 , "center_y": 0.5}
-                            size_hint: 0.4 , 0.8
-                            md_bg_color: get_color_from_hex("#F5F5F6")
-                            on_press: app.go_to('datepick')
+
+                        ArrowButton:
+                            on_press: app.go_to('question_details_datepick')
                             Image:
                                 source: 'right_button.png'
 
@@ -146,6 +147,12 @@
                             color: 0,0,0,0.8
                             bold: True
                             font_size: 14
+
+
+
+
+
+
 
 
         MDBoxLayout:

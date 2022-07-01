@@ -3,23 +3,29 @@
 
 <DemoProject>:
     Screen:
-        name:'profile'
+        name:'profile_diagnoseMe'
         MDFloatLayout:
             md_bg_color: get_color_from_hex("#FDFAF7")
             orientation: 'vertical'
 
 
+
             MDFillRoundFlatButton:
+
                 size_hint: None, None
                 width: dp(70) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
                 height: dp(200)
                 md_bg_color: get_color_from_hex("#FDFAF7")
+
                 size_hint_y: 0.03
                 Image:
                     id: menu_btn
                     source: 'menu.png'
+
             MDFloatLayout:
                 MDFillRoundFlatButton:
+                    id: home_button
+
                     size_hint: None, None
                     width: dp(100) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
                     height: dp(200)
@@ -40,13 +46,15 @@
                 size_hint_y: 0.13
                 allow_stretch: True
                 pos_hint: {"center_x": 0.5 , "center_y": 0.85}
+
             MDIconButton:
-                id: edit_btn
+                id: update_btn_security
                 halign: "center"
                 pos_hint: {"center_x": 0.625 , "center_y": 0.85}
-                on_press: app.go_to('profile_security')
+                on_press: app.changes('diagnose')
                 Image:
-                    source: 'edit.png'
+                    source: 'plus_btn.png'
+
             MDLabel:
                 id: user_name
                 text: "Dana Cohen"
@@ -61,14 +69,13 @@
 
 
 
-
             MDCard:
                 orientation: "vertical"
                 padding: 10
 
                 md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: 0.8 , 0.35
-                pos_hint: {"center_x": 0.5, "center_y": 0.53}
+                size_hint: 0.8 , 0.07
+                pos_hint: {"center_x": 0.5, "center_y": 0.66}
                 elevation: 3
                 radius: [10]
                 MDBoxLayout:
@@ -84,85 +91,12 @@
                         text: "My Account"
                         color: 0,0,0,1
                         bold: True
-                    MDIconButton:
+                    MDFillRoundFlatButton:
                         md_bg_color: get_color_from_hex("#FFFFFF")
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                        on_press: app.go_to('profile')
                         Image:
-                            source: 'down_button.png'
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    MDBoxLayout:
-                        orientation: "horizontal"
-                        MDLabel:
-                            text: "First Name"
-                            halign: "left"
-
-                            color: 0,0,0,1
-                    MDBoxLayout:
-                        MDLabel:
-                            halign: "right"
-
-                            text: "Dana"
-                            color: 0,0,0,0.4
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    MDBoxLayout:
-                        orientation: "horizontal"
-                        MDLabel:
-                            text: "Last Name"
-                            halign: "left"
-                            color: 0,0,0,1
-                    MDBoxLayout:
-                        MDLabel:
-                            halign: "right"
-                            text: "Cohen"
-                            color: 0,0,0,0.4
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    MDBoxLayout:
-                        orientation: "horizontal"
-                        MDLabel:
-                            text: "Date Birth"
-                            halign: "left"
-                            color: 0,0,0,1
-                    MDBoxLayout:
-                        MDLabel:
-                            halign: "right"
-                            text: "01/01/1990"
-                            color: 0,0,0,0.4
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    MDBoxLayout:
-                        orientation: "horizontal"
-                        MDLabel:
-                            text: "Height"
-                            halign: "left"
-                            color: 0,0,0,1
-                    MDBoxLayout:
-                        MDLabel:
-                            id: height_field
-                            halign: "right"
-                            text: "168 cm"
-                            color: 0,0,0,0.4
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    MDBoxLayout:
-                        orientation: "horizontal"
-                        MDLabel:
-                            text: "Weight"
-                            halign: "left"
-                            color: 0,0,0,1
-                    MDBoxLayout:
-                        MDLabel:
-                            id: weight_field
-                            halign: "right"
-                            text: "64 kg"
-                            color: 0,0,0,0.4
-
-
-
-
-
-
+                            source: 'right_button.png'
 
 
 
@@ -172,7 +106,7 @@
 
                 md_bg_color: get_color_from_hex("#FFFFFF")
                 size_hint: 0.8 , 0.07
-                pos_hint: {"center_x": 0.5, "center_y": 0.29}
+                pos_hint: {"center_x": 0.5, "center_y": 0.56}
                 elevation: 3
                 radius: [10]
                 MDBoxLayout:
@@ -191,9 +125,18 @@
                     MDFillRoundFlatButton:
                         md_bg_color: get_color_from_hex("#FFFFFF")
                         pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                        on_press: app.go_to('profile_diagnoseMe')
                         Image:
-                            source: 'right_button.png'
+                            source: 'down_button.png'
+
+
+
+
+
+
+
+
+
+
 
 
             MDCard:
@@ -202,7 +145,7 @@
 
                 md_bg_color: get_color_from_hex("#FFFFFF")
                 size_hint: 0.8 , 0.07
-                pos_hint: {"center_x": 0.5, "center_y": 0.185}
+                pos_hint: {"center_x": 0.5, "center_y": 0.56 - 0.22}
                 elevation: 3
                 radius: [10]
                 MDBoxLayout:
@@ -218,11 +161,7 @@
                         text: "Security"
                         color: 0,0,0,1
                         bold: True
-                    MDIconButton:
-                        id: security_button
-                        theme_text_color: "Custom"
-                        text_color: 0,0,0,0
-                        background_color: 0,0,0,0
+                    MDFillRoundFlatButton:
                         md_bg_color: get_color_from_hex("#FFFFFF")
                         pos_hint: {"center_x": 0.5 , "center_y": 0.5}
                         on_press: app.go_to('profile_security')
@@ -235,6 +174,9 @@
 
 
 
+
+
+            #*************** Bottom navbar **************
 
             MDCard:
                 md_bg_color: get_color_from_hex("#FFFFFF")
@@ -249,10 +191,8 @@
                 size_hint: 1 , 0.15
                 MDBoxLayout:
                     pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDIconButton:
-                        theme_text_color: "Custom"
-                        text_color: 0,0,0,0
-                        background_color: 0,0,0,0
+                    MDFillRoundFlatButton:
+                        md_bg_color: get_color_from_hex("#FFFFFF")
                         id: home_button
                         halign: "center"
                         valign: "center"
@@ -264,10 +204,8 @@
 
                 MDBoxLayout:
                     pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDIconButton:
-                        theme_text_color: "Custom"
-                        text_color: 0,0,0,0
-                        background_color: 0,0,0,0
+                    MDFillRoundFlatButton:
+                        md_bg_color: get_color_from_hex("#FFFFFF")
                         id: daily_button
                         halign: "center"
 
@@ -278,10 +216,8 @@
 
                 MDBoxLayout:
                     pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDIconButton:
-                        theme_text_color: "Custom"
-                        text_color: 0,0,0,0
-                        background_color: 0,0,0,0
+                    MDFillRoundFlatButton:
+                        md_bg_color: get_color_from_hex("#FFFFFF")
                         id: diagnose_button
                         halign: "center"
 
@@ -293,10 +229,8 @@
 
                 MDBoxLayout:
                     pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDIconButton:
-                        theme_text_color: "Custom"
-                        text_color: 0,0,0,0
-                        background_color: 0,0,0,0
+                    MDFillRoundFlatButton:
+                        md_bg_color: get_color_from_hex("#FFFFFF")
                         id: profile_button
                         halign: "center"
 

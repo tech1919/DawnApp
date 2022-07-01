@@ -1,0 +1,82 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+
+<ArrowButton@MDIconButton>
+    pos_hint: {"center_x": 0.4 , "center_y": 0.5}
+    theme_text_color: "Custom"
+    text_color: 0,0,0,0
+    background_color: 0,0,0,0
+
+
+#******************** LOGIN PAGE *******************
+
+<LoginLayout@MDFloatLayout>
+    md_bg_color: get_color_from_hex("#012241")
+    orientation: 'vertical'
+
+<LoginHeaderLabel@MDLabel>
+    halign: "left"
+    bold: True
+    font_size: 30
+    color: get_color_from_hex("#FFBA99")
+
+<LoginGeneralLabel@MDLabel>
+    halign: "left"
+    color: 1,1,1,1
+
+<LoginLabelCard@MDCard>
+    orientation: "vertical"
+    theme_text_color: "Custom"
+    md_bg_color: 0,0,0,0
+    size_hint: 0.9 , 0.08
+    elevation: 0
+
+<LoginInputCard@MDCard>
+    orientation: "vertical"
+    padding: 10
+    md_bg_color: get_color_from_hex("#FFFFFF")
+    size_hint: 0.9 , 0.08
+    elevation: 3
+    radius: [20]
+
+<LoginInputField@MDTextField>
+    required: True
+    halign: "center"
+    pos_hint: {"center_x": 0.55, "center_y": 0.53}
+    foreground_color: 0,0,0,1
+    font_size: 25
+
+<LoginButton@MDCard>
+    orientation: "vertical"
+    padding: 10
+    md_bg_color: get_color_from_hex("#FFBA99")
+    size_hint: 0.9 , 0.08
+    elevation: 3
+    radius: [20]
+<LoginButtonLabel@MDLabel>
+    halign: "center"
+    bold: True
+    pos_hint: {"center_x": 0.55, "center_y": 0.53}
+    color: 1,1,1,1
+
+<LoginSocialIcon@MDIconButton>
+    halign: "center"
+    size: self.parent.size
+    user_font_size: "5sp"
+    pos_hint: {"center_x": 0.57, "center_y": 0.5}
+
+<LoginFooter@LoginLabelCard>
+    pos_hint: {"center_x": 0.5, "center_y": 0.02}
+<LoginFooterLabel@MDLabel>
+    halign: "center"
+    font_size: 13
+    color: 1,1,1,1
+
+
+
+
+
+
+

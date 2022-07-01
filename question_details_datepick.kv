@@ -3,7 +3,7 @@
 
 <DemoProject>:
     Screen:
-        name: 'datepick'
+        name: 'question_details_datepick'
 
 
 
@@ -77,14 +77,11 @@
                             text: '01-Jan-1980'
                             halign: "left"
                             font_size:  12
-                        MDFillRoundFlatButton:
-                            pos_hint: {"center_x": 0.4 , "center_y": 0.5}
-                            size_hint: 0.4 , 0.8
+                        ArrowButton:
                             on_press: app.go_to('question_details')
-                            md_bg_color: get_color_from_hex("#F5F5F6")
                             Image:
-                                md_bg_color: get_color_from_hex("#F5F5F6")
                                 source: 'down_button.png'
+
                 MDCard:
                     orientation: "vertical"
 

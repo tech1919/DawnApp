@@ -6,9 +6,8 @@
 <DemoProject>:
     Screen:
         name: 'signup'
-        MDFloatLayout:
-            md_bg_color: get_color_from_hex("#012241")
-            orientation: 'vertical'
+        LoginLayout:
+
 
             MDIconButton:
                 id: signup_btn
@@ -17,149 +16,62 @@
                 pos_hint: {"center_x": 0.5, "center_y": 0.22}
                 on_press: app.go_to('question')
 
-            MDIconButton:
+            ArrowButton:
                 id: login_page
-                halign: "center"
-                md_bg_color: get_color_from_hex("#012241")
                 pos_hint: {"center_x": 0.56, "center_y": 0.02}
                 on_press: app.go_to('login')
 
-            MDCard:
-                orientation: "vertical"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.08
-                elevation: 0
+            LoginLabelCard:
                 pos_hint: {"center_x": 0.6, "center_y": 0.8}
-                MDLabel:
+                LoginHeaderLabel:
                     text: 'Sign Up'
-                    halign: "left"
-                    bold: True
-                    font_size: 30
-                    color: get_color_from_hex("#FFBA99")
 
 
-            MDCard:
-                orientation: "vertical"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.08
-                elevation: 0
+            LoginLabelCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.65}
-                MDLabel:
+                LoginGeneralLabel:
                     text: 'Username'
-                    halign: "left"
-                    color: 1,1,1,1
-
-            MDCard:
-                orientation: "vertical"
-                padding: 10
-
-                md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: 0.9 , 0.08
+            LoginInputCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.58}
-                elevation: 3
-                radius: [20]
                 MDBoxLayout:
                     orientation: "horizontal"
-                    MDTextField:
-                        required: True
-                        halign: "center"
-                        pos_hint: {"center_x": 0.55, "center_y": 0.53}
-                        foreground_color: 0,0,0,1
-                        font_size: 25
+                    LoginInputField:
+                        id: username_signup
 
 
-
-
-
-
-
-
-            MDCard:
-                orientation: "vertical"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.02
-                elevation: 0
+            LoginLabelCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.52}
-                MDLabel:
+                LoginGeneralLabel:
                     text: 'Email'
-                    halign: "left"
-                    color: 1,1,1,1
-            MDCard:
-                orientation: "vertical"
-                padding: 10
-                md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: 0.9 , 0.08
+            LoginInputCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.46}
-                elevation: 3
-                radius: [20]
                 MDBoxLayout:
                     orientation: "horizontal"
-                    MDTextField:
-                        required: True
-                        halign: "center"
-                        pos_hint: {"center_x": 0.55, "center_y": 0.53}
-                        foreground_color: 0,0,0,1
-                        font_size: 25
+                    LoginInputField:
+                        id: email_signup
 
 
 
-
-
-
-
-
-
-            MDCard:
-                orientation: "vertical"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.02
-                elevation: 0
+            LoginLabelCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.4}
-                MDLabel:
+                LoginGeneralLabel:
                     text: 'Password'
-
-                    halign: "left"
-                    color: 1,1,1,1
-            MDCard:
-                orientation: "vertical"
-                padding: 10
-                md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: 0.9 , 0.08
+            LoginInputCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.34}
-                elevation: 3
-                radius: [20]
                 MDBoxLayout:
                     orientation: "horizontal"
-                    MDTextField:
-                        required: True
+                    LoginInputField:
+                        id: password_signup
                         password: True
-                        halign: "center"
-
-                        foreground_color: 0,0,0,1
-                        pos_hint: {"center_x": 0.55, "center_y": 0.53}
-                        font_size: 25
 
 
 
 
-            MDCard:
-                orientation: "vertical"
-                padding: 10
-
-                md_bg_color: get_color_from_hex("#FFBA99")
-                size_hint: 0.9 , 0.08
+            LoginButton:
                 pos_hint: {"center_x": 0.5, "center_y": 0.22}
-                elevation: 3
-                radius: [20]
                 MDBoxLayout:
-                    MDLabel:
-                        halign: "center"
+                    LoginButtonLabel:
                         text: 'SIGN UP'
-                        bold: True
-                        pos_hint: {"center_x": 0.55, "center_y": 0.53}
-                        color: 1,1,1,1
-
-
 
 
             MDCard:
@@ -198,14 +110,7 @@
 
 
 
-            MDCard:
-                orientation: "horizontal"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.05
-                elevation: 0
-                pos_hint: {"center_x": 0.5, "center_y": 0.02}
-                MDLabel:
-                    halign: "center"
+            LoginFooter:
+                LoginFooterLabel:
                     text: "Already have an account? Login"
-                    font_size: 13
-                    color: 1,1,1,1
+

@@ -17,11 +17,15 @@ class DawnApp(MDApp):
         # saves the last screen before changing
         self.last_screen = self.root.current
         try:
-            if self.last_screen == 'login':
-                self.root.transition = SlideTransition(direction='up')
 
             if screen_name == 'question':
-                self.root.transition = SlideTransition(direction='left')
+                if self.last_screen == 'login':
+                    self.root.transition = SlideTransition(direction='up')
+                    self.username = self.root.ids.username_login.text
+                    self.password = self.root.ids.password_login.text
+                else:
+                    self.root.transition = SlideTransition(direction='left')
+
                 self.root.current = screen_name
             elif screen_name == 'question_details':
                 self.root.transition = NoTransition()
@@ -32,6 +36,8 @@ class DawnApp(MDApp):
                     self.height = self.root.ids.height_input.text
                     self.change_text('weight_field',f'{self.weight} kg')
                     self.change_text('height_field', f'{self.height} cm')
+                    self.root.current = screen_name
+                else:
                     self.root.current = screen_name
 
             elif screen_name == 'next_question':
@@ -113,7 +119,9 @@ class DawnApp(MDApp):
         self.cur_question_idx -= 2
         self.next_question()
         self.go_to('next_question')
-
+    def changes(self,type):
+        print(f'{type} Changes made')
+        self.go_to('profile')
 
     def next_question(self,first=False):
         questions = [
@@ -154,17 +162,35 @@ class DawnApp(MDApp):
 
         # set the first question in line
         self.next_question(first=True)
+
+
+        Builder.load_file('classes.kv')
         Builder.load_file('question_details.kv')
-        Builder.load_file('login.kv')
         Builder.load_file('profile.kv')
-        Builder.load_file('home.kv')
-        Builder.load_file('diagnose.kv')
+        
+        Builder.load_file('signup.kv')
+        Builder.load_file('login.kv')
+
+
+        Builder.load_file('signup.kv')
         Builder.load_file('loading.kv')
+
         Builder.load_file('question.kv')
 
         Builder.load_file('question_details_datepick.kv')
-        Builder.load_file('signup.kv')
+
+        Builder.load_file('profile.kv')
+        Builder.load_file('profile_security.kv')
+        Builder.load_file('profile_diagnoseMe.kv')
+
+
+        Builder.load_file('home.kv')
+        Builder.load_file('diagnose.kv')
         Builder.load_file('daily.kv')
+
+
+
+
 
 
         return DemoProject()

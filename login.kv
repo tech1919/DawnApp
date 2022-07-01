@@ -3,12 +3,12 @@
 #:import FadeTransition kivy.uix.screenmanager.FadeTransition
 
 
+
 <DemoProject>:
     Screen:
         name: 'login'
-        MDFloatLayout:
-            md_bg_color: get_color_from_hex("#012241")
-            orientation: 'vertical'
+        LoginLayout:
+
 
             MDFillRoundFlatButton:
                 id: login_btn
@@ -17,116 +17,56 @@
                 pos_hint: {"center_x": 0.5, "center_y": 0.25}
                 on_press: app.go_to('question')
 
-            MDFillRoundFlatButton:
+            ArrowButton:
                 id: sign_up_page
-                halign: "center"
-                md_bg_color: get_color_from_hex("#012241")
                 pos_hint: {"center_x": 0.56, "center_y": 0.02}
                 on_press: app.go_to('signup')
 
-            MDCard:
-                orientation: "vertical"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.08
-                elevation: 0
+            LoginLabelCard:
                 pos_hint: {"center_x": 0.6, "center_y": 0.8}
-                MDLabel:
+                LoginHeaderLabel:
                     text: 'Login'
-                    halign: "left"
-                    bold: True
-                    font_size: 30
-                    color: get_color_from_hex("#FFBA99")
 
 
-            MDCard:
-                orientation: "vertical"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.08
-                elevation: 0
+            LoginLabelCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.6}
-                MDLabel:
+                LoginGeneralLabel:
                     text: 'Username'
-                    halign: "left"
-                    color: 1,1,1,1
-
-            MDCard:
-                orientation: "vertical"
-                padding: 10
-
-                md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: 0.9 , 0.08
+            LoginInputCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.53}
-                elevation: 3
-                radius: [20]
                 MDBoxLayout:
                     orientation: "horizontal"
-                    MDTextField:
-                        required: True
-                        halign: "center"
-                        pos_hint: {"center_x": 0.55, "center_y": 0.53}
-                        foreground_color: 0,0,0,1
-                        font_size: 25
+                    LoginInputField:
+                        id: username_login
 
 
-
-            MDCard:
-                orientation: "vertical"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.02
-                elevation: 0
+            LoginLabelCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.47}
-                MDLabel:
+                LoginGeneralLabel:
                     text: 'Password'
-                    halign: "left"
-                    color: 1,1,1,1
-
-            MDCard:
-                orientation: "vertical"
-                padding: 10
-
-                md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: 0.9 , 0.08
+            LoginInputCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.4}
-                elevation: 3
-                radius: [20]
                 MDBoxLayout:
                     orientation: "horizontal"
-                    MDTextField:
-                        required: True
+                    LoginInputField:
+                        id: password_login
                         password: True
-                        halign: "center"
-                        foreground_color: 0,0,0,1
-                        pos_hint: {"center_x": 0.55, "center_y": 0.53}
-                        font_size: 25
 
-            MDCard:
-                orientation: "vertical"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.02
-                elevation: 0
+
+            LoginLabelCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.33}
-                MDLabel:
+                LoginGeneralLabel:
                     text: 'Forgot password?'
-                    halign: "right"
-                    color: 1,1,1,1
+                    halign: 'right'
 
 
-            MDCard:
-                orientation: "vertical"
-                padding: 10
 
-                md_bg_color: get_color_from_hex("#FFBA99")
-                size_hint: 0.9 , 0.08
+            LoginButton:
                 pos_hint: {"center_x": 0.5, "center_y": 0.25}
-                elevation: 3
-                radius: [20]
                 MDBoxLayout:
-                    MDLabel:
-                        halign: "center"
+                    LoginButtonLabel:
                         text: 'LOGIN'
-                        bold: True
-                        pos_hint: {"center_x": 0.55, "center_y": 0.53}
-                        color: 1,1,1,1
+
 
 
 
@@ -142,6 +82,7 @@
                     halign: "center"
                     font_size: 12
                     color: 1,1,1,1
+
 
             MDCard:
                 orientation: "horizontal"
@@ -167,14 +108,7 @@
 
 
 
-            MDCard:
-                orientation: "horizontal"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.05
-                elevation: 0
-                pos_hint: {"center_x": 0.5, "center_y": 0.02}
-                MDLabel:
-                    halign: "center"
+
+            LoginFooter:
+                LoginFooterLabel:
                     text: "Don't have an account? Sign Up"
-                    font_size: 13
-                    color: 1,1,1,1
