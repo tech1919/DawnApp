@@ -119,9 +119,8 @@ class DawnApp(MDApp):
         self.cur_question_idx -= 2
         self.next_question()
         self.go_to('next_question')
-    def changes(self,type):
+    def profile_changes(self,type):
         print(f'{type} Changes made')
-        self.go_to('profile')
 
     def next_question(self,first=False):
         questions = [
@@ -162,7 +161,7 @@ class DawnApp(MDApp):
 
         # set the first question in line
         self.next_question(first=True)
-
+        Builder.load_file('profile_diagnoseMe.kv')
         Builder.load_file('profile.kv')
 
 
@@ -182,7 +181,7 @@ class DawnApp(MDApp):
 
 
         Builder.load_file('profile_security.kv')
-        Builder.load_file('profile_diagnoseMe.kv')
+
 
 
         Builder.load_file('home.kv')

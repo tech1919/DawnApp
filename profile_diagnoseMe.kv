@@ -4,166 +4,65 @@
 <DemoProject>:
     Screen:
         name:'profile_diagnoseMe'
-        MDFloatLayout:
-            md_bg_color: get_color_from_hex("#FDFAF7")
-            orientation: 'vertical'
+        ProfilePageLayout:
 
-
-
-            MDFillRoundFlatButton:
-
-                size_hint: None, None
-                width: dp(70) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
-                height: dp(200)
-                md_bg_color: get_color_from_hex("#FDFAF7")
-
-                size_hint_y: 0.03
-                Image:
-                    id: menu_btn
-                    source: 'menu.png'
-
+            MenuButton:
+                MenuImage:
             MDFloatLayout:
-                MDFillRoundFlatButton:
-                    id: home_button
+                SignoutButton:
+                    SignoutImage:
 
-                    size_hint: None, None
-                    width: dp(100) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
-                    height: dp(200)
-                    halign: "center"
-                    size_hint_y: 0.025
-                    md_bg_color: get_color_from_hex("#FDFAF7")
-                    pos_hint: {"center_x": .15 , "center_y": .95}
-                    on_release: app.go_to('login')
-                    Image:
-                        id: sign_out
-                        source: 'signout.png'
+            UserImage:
 
-
-            Image:
-                id: user_img
-                halign: "center"
-                source: 'user.png'
-                size_hint_y: 0.13
-                allow_stretch: True
-                pos_hint: {"center_x": 0.5 , "center_y": 0.85}
-
-            MDIconButton:
-                id: update_btn_security
-                halign: "center"
-                pos_hint: {"center_x": 0.625 , "center_y": 0.85}
-                on_press: app.changes('diagnose')
+            EditIcon:
+                on_press: app.profile_changes('diagnose')
+                on_release: app.go_to('profile')
                 Image:
                     source: 'plus_btn.png'
 
-            MDLabel:
-                id: user_name
-                text: "Dana Cohen"
-                halign: "center"
-                color: 0,0.439,0.313,1
-                bold: True
-                pos_hint: {"center_x": 0.5 , "center_y": 0.75}
-                font_size: 20
+
+            UserNameLabel:
 
 
 
 
 
-
-            MDCard:
-                orientation: "vertical"
-                padding: 10
-
-                md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: 0.8 , 0.07
+            ClosedCard:
                 pos_hint: {"center_x": 0.5, "center_y": 0.66}
-                elevation: 3
-                radius: [10]
-                MDBoxLayout:
-                    spacing: 10
-                    orientation: "horizontal"
-                    Image:
-                        halign: "left"
+                CardContentBox:
+                    CardContentImage:
                         source: 'person_logo.png'
-                        size_hint: None , None
-                        width: 40
-                        pos_hint: {"center_x": 0.1 , "center_y": 0.5}
-                    MDLabel:
+                    CardContentLabel:
                         text: "My Account"
-                        color: 0,0,0,1
-                        bold: True
-                    MDFillRoundFlatButton:
-                        md_bg_color: get_color_from_hex("#FFFFFF")
-                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    ArrowButton:
                         on_press: app.go_to('profile')
                         Image:
                             source: 'right_button.png'
 
 
 
-            MDCard:
-                orientation: "vertical"
-                padding: 10
-
+            OpenCard:
                 md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: 0.8 , 0.07
-                pos_hint: {"center_x": 0.5, "center_y": 0.56}
-                elevation: 3
-                radius: [10]
-                MDBoxLayout:
-                    spacing: 10
-                    orientation: "horizontal"
-                    Image:
-                        halign: "left"
+                pos_hint: {"center_x": 0.5, "center_y": 0.42}
+                CardContentBox:
+                    CardContentImage:
                         source: 'list_logo.png'
-                        size_hint: None , None
-                        width: 40
-                        pos_hint: {"center_x": 0.1 , "center_y": 0.5}
-                    MDLabel:
+                    CardContentLabel:
                         text: "Diagnose Me"
-                        color: 0,0,0,1
-                        bold: True
-                    MDFillRoundFlatButton:
-                        md_bg_color: get_color_from_hex("#FFFFFF")
-                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    ArrowButton:
                         Image:
                             source: 'down_button.png'
 
 
 
-
-
-
-
-
-
-
-
-
-            MDCard:
-                orientation: "vertical"
-                padding: 10
-
-                md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: 0.8 , 0.07
-                pos_hint: {"center_x": 0.5, "center_y": 0.56 - 0.22}
-                elevation: 3
-                radius: [10]
-                MDBoxLayout:
-                    spacing: 10
-                    orientation: "horizontal"
-                    Image:
-                        halign: "left"
+            ClosedCard:
+                pos_hint: {"center_x": 0.5, "center_y": 0.56 - 0.38}
+                CardContentBox:
+                    CardContentImage:
                         source: 'shield_logo.png'
-                        size_hint: None , None
-                        width: 40
-                        pos_hint: {"center_x": 0.1 , "center_y": 0.5}
-                    MDLabel:
+                    CardContentLabel:
                         text: "Security"
-                        color: 0,0,0,1
-                        bold: True
-                    MDFillRoundFlatButton:
-                        md_bg_color: get_color_from_hex("#FFFFFF")
-                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    ArrowButton:
                         on_press: app.go_to('profile_security')
                         Image:
                             source: 'right_button.png'
@@ -174,70 +73,38 @@
 
 
 
-
-
             #*************** Bottom navbar **************
 
-            MDCard:
-                md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: None , None
-                pos_hint: {"center_x": 0.5, "center_y": 0.05}
-                elevation: 3
-                radius: [10]
-                orientation: "horizontal"
-                padding: 10
-                halign: "center"
-                valign: "center"
-                size_hint: 1 , 0.15
-                MDBoxLayout:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDFillRoundFlatButton:
-                        md_bg_color: get_color_from_hex("#FFFFFF")
-                        id: home_button
-                        halign: "center"
-                        valign: "center"
+            BottomNavbarCard:
+                BoxForButton:
+                    BottomNavbarButton:
                         on_release: app.go_to('home')
                         Image:
-                            halign: "center"
-                            id: home_img
                             source: 'home.png'
 
-                MDBoxLayout:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDFillRoundFlatButton:
-                        md_bg_color: get_color_from_hex("#FFFFFF")
-                        id: daily_button
-                        halign: "center"
-
+                BoxForButton:
+                    BottomNavbarButton:
                         on_release: app.go_to('daily')
                         Image:
-                            id: daily_img
                             source: 'daily.png'
 
-                MDBoxLayout:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDFillRoundFlatButton:
-                        md_bg_color: get_color_from_hex("#FFFFFF")
-                        id: diagnose_button
-                        halign: "center"
-
+                BoxForButton:
+                    BottomNavbarButton:
                         on_release: app.go_to('diagnose')
                         Image:
-                            id: diagnose_img
                             source: 'diagnose.png'
 
 
-                MDBoxLayout:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDFillRoundFlatButton:
-                        md_bg_color: get_color_from_hex("#FFFFFF")
-                        id: profile_button
-                        halign: "center"
-
+                BoxForButton:
+                    BottomNavbarButton:
                         on_release: app.go_to('profile')
                         Image:
-                            id: profile_img
                             source: 'profile_p.png'
+
+
+
+
+
 
 
 
