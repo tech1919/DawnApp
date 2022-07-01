@@ -29,72 +29,33 @@
 
 
 
-            MDCard:
-                md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: None , None
-                pos_hint: {"center_x": 0.5, "center_y": 0.05}
-                elevation: 3
-                radius: [10]
-                orientation: "horizontal"
-                padding: 10
-                halign: "center"
-                valign: "center"
-                size_hint: 1 , 0.15
-                MDBoxLayout:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDFillRoundFlatButton:
-                        md_bg_color: get_color_from_hex("#FFFFFF")
-                        id: home_button
-                        halign: "center"
-                        valign: "center"
+
+
+
+            BottomNavbarCard:
+                BoxForButton:
+                    BottomNavbarButton:
                         on_release: app.go_to('home')
                         Image:
-                            halign: "center"
-                            id: home_img
                             source: 'home.png'
 
-                MDBoxLayout:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDFillRoundFlatButton:
-                        md_bg_color: get_color_from_hex("#FFFFFF")
-                        id: daily_button
-                        halign: "center"
-
+                BoxForButton:
+                    BottomNavbarButton:
                         on_release: app.go_to('daily')
                         Image:
-                            id: daily_img
                             source: 'daily.png'
 
-                MDBoxLayout:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDFillRoundFlatButton:
-                        md_bg_color: get_color_from_hex("#FFFFFF")
-                        id: diagnose_button
-                        halign: "center"
-
+                BoxForButton:
+                    BottomNavbarButton:
                         on_release: app.go_to('diagnose')
                         Image:
-                            id: diagnose_img
                             source: 'diagnose_p.png'
 
 
-
-                MDBoxLayout:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
-                    MDFillRoundFlatButton:
-                        md_bg_color: get_color_from_hex("#FFFFFF")
-                        id: profile_button
-                        halign: "center"
-
+                BoxForButton:
+                    BottomNavbarButton:
                         on_release: app.go_to('profile')
                         Image:
-                            id: profile_img
                             source: 'profile.png'
-
-
-
-
-
-
 
 

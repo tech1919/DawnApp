@@ -9,6 +9,69 @@
     text_color: 0,0,0,0
     background_color: 0,0,0,0
 
+<MenuButton@ArrowButton>
+    pos_hint: {"center_x": 0.87 , "center_y": 0.95}
+<MenuImage@Image>
+    source: 'menu.png'
+<SignoutButton@MenuButton>
+    size_hint: None, None
+    halign: "center"
+    md_bg_color: get_color_from_hex("#FDFAF7")
+    pos_hint: {"center_x": .15 , "center_y": .95}
+    on_release: app.go_to('login')
+<SignoutImage@Image>
+    source: 'signout.png'
+    size_hint: None , None
+    width: 70
+    height: 70
+    allow_stretch: True
+
+<OpenCard@MDCard>
+    orientation: "vertical"
+    padding: 10
+    md_bg_color: get_color_from_hex("#FFFFFF")
+    size_hint: 0.8 , 0.35
+    elevation: 5
+    radius: [10]
+
+<ClosedCard@MDCard>
+    orientation: "vertical"
+    padding: 10
+    md_bg_color: get_color_from_hex("#FFFFFF")
+    size_hint: 0.8 , 0.07
+    elevation: 1
+    radius: [10]
+
+
+
+
+#******************** NAVBAR ***********************
+
+<BottomNavbarCard@MDCard>
+    md_bg_color: get_color_from_hex("#FFFFFF")
+    size_hint: None , None
+    pos_hint: {"center_x": 0.5, "center_y": 0.05}
+    elevation: 3
+    radius: [10]
+    orientation: "horizontal"
+    padding: 10
+    halign: "center"
+    valign: "center"
+    size_hint: 1 , 0.15
+<BoxForButton@MDBoxLayout>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.9}
+<BottomNavbarButton@MDIconButton>
+    theme_text_color: "Custom"
+    text_color: 0,0,0,0
+    background_color: 0,0,0,0
+    halign: "center"
+    valign: "center"
+
+
+
+
+
+
 
 #******************** LOGIN PAGE *******************
 
@@ -73,6 +136,63 @@
     halign: "center"
     font_size: 13
     color: 1,1,1,1
+
+
+
+#******************** PROFILE PAGE *******************
+
+
+<ProfilePageLayout@MDFloatLayout>
+    md_bg_color: get_color_from_hex("#FDFAF7")
+    orientation: 'vertical'
+
+<UserImage@Image>
+    halign: "center"
+    source: 'user.png'
+    size_hint_y: 0.13
+    allow_stretch: True
+    pos_hint: {"center_x": 0.5 , "center_y": 0.85}
+
+<UserNameLabel@MDLabel>
+    text: "Dana Cohen"
+    halign: "center"
+    color: 0,0.439,0.313,1
+    bold: True
+    pos_hint: {"center_x": 0.5 , "center_y": 0.75}
+    font_size: 20
+
+
+<EditIcon@MDIconButton>
+    halign: "center"
+    pos_hint: {"center_x": 0.625 , "center_y": 0.85}
+    on_press: app.go_to('profile_security')
+
+<CardContentBox@MDBoxLayout>
+    spacing: 10
+    orientation: "horizontal"
+<CardContentImage@Image>
+    halign: "left"
+    size_hint: None , None
+    width: 40
+    pos_hint: {"center_x": 0.1 , "center_y": 0.5}
+<CardContentLabel@MDLabel>
+    color: 0,0,0,1
+    bold: True
+
+# MY ACCOUNT
+<LeftLabel@MDLabel>
+    halign: "left"
+    color: 0,0,0,1
+<RightLabel@MDLabel>
+    halign: "right"
+    color: 0,0,0,0.4
+
+
+
+
+
+
+
 
 
 
