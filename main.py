@@ -26,7 +26,13 @@ class DawnApp(MDApp):
             elif screen_name == 'question_details':
                 self.root.transition = NoTransition()
                 self.root.current = screen_name
-
+            elif screen_name == 'profile':
+                if self.last_screen == 'question_details':
+                    self.weight = self.root.ids.weight_input.text
+                    self.height = self.root.ids.height_input.text
+                    self.change_text('weight_field',f'{self.weight} kg')
+                    self.change_text('height_field', f'{self.height} cm')
+                    self.root.current = screen_name
 
             elif screen_name == 'next_question':
                 try:
@@ -148,13 +154,14 @@ class DawnApp(MDApp):
 
         # set the first question in line
         self.next_question(first=True)
+        Builder.load_file('question_details.kv')
         Builder.load_file('login.kv')
         Builder.load_file('profile.kv')
         Builder.load_file('home.kv')
         Builder.load_file('diagnose.kv')
         Builder.load_file('loading.kv')
         Builder.load_file('question.kv')
-        Builder.load_file('question_details.kv')
+
         Builder.load_file('question_details_datepick.kv')
         Builder.load_file('signup.kv')
         Builder.load_file('daily.kv')
