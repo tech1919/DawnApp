@@ -69,7 +69,7 @@ class DawnApp(MDApp):
 
 
             elif screen_name == 'home':
-                self.sizes()
+                # self.sizes()
                 self.root.current = screen_name
             else:
                 self.root.transition = NoTransition()
@@ -108,13 +108,13 @@ class DawnApp(MDApp):
         self.root.ids[id].text = text
     def change_photo(self, id , new_path):
         self.root.ids[id].source = new_path
-    def sizes(self):
-        # Home Screen
-        big_logos = 140
-        logos_ids = ['blood_test_logo','diagnose_logo','symptoms_logo','doctor_logo']
-        for id in logos_ids:
-            self.root.ids[id].width = big_logos
-            self.root.ids[id].height = big_logos
+    # def sizes(self):
+    #     # Home Screen
+    #     big_logos = 140
+    #     logos_ids = ['blood_test_logo','diagnose_logo','symptoms_logo','doctor_logo']
+    #     for id in logos_ids:
+    #         self.root.ids[id].width = big_logos
+    #         self.root.ids[id].height = big_logos
     def back(self):
         self.cur_question_idx -= 2
         self.next_question()
@@ -161,6 +161,8 @@ class DawnApp(MDApp):
 
         # set the first question in line
         self.next_question(first=True)
+
+        Builder.load_file('home.kv')
         Builder.load_file('profile_diagnoseMe.kv')
         Builder.load_file('profile.kv')
 
@@ -184,7 +186,7 @@ class DawnApp(MDApp):
 
 
 
-        Builder.load_file('home.kv')
+
         Builder.load_file('diagnose.kv')
         Builder.load_file('daily.kv')
 

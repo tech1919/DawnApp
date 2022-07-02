@@ -4,166 +4,73 @@
 <DemoProject>:
     Screen:
         name:'home'
-        MDFloatLayout:
-            md_bg_color: get_color_from_hex("#FDFAF7")
-            orientation: 'vertical'
+        ProfilePageLayout:
 
-            MDFillRoundFlatButton:
+            MenuButton:
+                MenuImage:
+            MDFloatLayout:
+                SignoutButton:
+                    SignoutImage:
 
-                size_hint: None, None
-                width: dp(70) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
-                height: dp(200)
-                md_bg_color: get_color_from_hex("#FDFAF7")
-                pos_hint: {"center_x": .87 , "center_y": 0.93}
-                size_hint_y: 0.03
-                Image:
-                    id: menu_btn
-                    source: 'menu.png'
+            SmallUserImage:
 
-            Image:
-                id: user_img
-                halign: "center"
-                source: 'user.png'
-                size_hint_y: 0.07
-                allow_stretch: True
-                pos_hint: {"center_x": 0.2 , "center_y": 0.9}
+            HomeNameLabel:
 
-
-            MDLabel:
-                id: user_name
-                text: "Hello Dana"
-                halign: "center"
-                color: 0,0.439,0.313,1
-                bold: True
-                pos_hint: {"center_x": 0.45 , "center_y": 0.91}
-                font_size: 20
-
-            MDLabel:
-                id: user_name
-                text: "Welcome Back!"
-                halign: "center"
-                color: 0,0.439,0.313,1
-                pos_hint: {"center_x": 0.445 , "center_y": 0.88}
-                font_size: 14
+            HomeGreet:
 
 
 
 
 
-
-
-
-
-
-            MDIconButton:
-                pos_hint: {"center_x": 0.3 , "center_y": 0.745}
-                on_press: app.hello('blood test')
-            Image:
-                id: blood_test_logo
-                source: 'blood_test_logo.png'
-                pos_hint: {"center_x": 0.3 , "center_y": 0.745}
-                size_hint: None , None
-                width: 140
-                height: 140
-                allow_stretch: True
-            MDBoxLayout:
-
-                size_hint: 0.33 , 0.08
-                pos_hint: {"center_x": 0.3 , "center_y": 0.7}
-                halign: "center"
-                MDLabel:
+            TwoCardsLayout:
+                pos_hint: {"center_x":0.5 , "center_y": 0.68}
+                MDFloatLayout:
                     halign: "center"
-                    text: 'Upload your blood test'
-                    color: 0,0.133,0.254,1
-                    bold: True
-                    font_size: 14
+                    HomeLeftImage:
+                        id: blood_test_logo
+                        source: 'blood_test_logo.png'
+                    LabelLeftBoxLayout:
+                        HomeButtonLabelDark:
+                            text: 'Upload your blood test'
 
-
-
-            MDIconButton:
-                pos_hint: {"center_x": 0.75 , "center_y": 0.65}
-                on_press: app.hello('doctor')
-            Image:
-                id: doctor_logo
-                source: 'doctor_logo.png'
-                pos_hint: {"center_x": 0.75 , "center_y": 0.65}
-                size_hint: None , None
-                width: 160
-                height: 160
-                allow_stretch: True
-            MDBoxLayout:
-
-                size_hint: 0.33 , 0.08
-                pos_hint: {"center_x": 0.75 , "center_y": 0.61}
-                halign: "center"
-                MDLabel:
+                MDFloatLayout:
                     halign: "center"
-                    text: 'Ask the doctor'
-                    color: 1,1,1,1
-                    bold: True
-                    font_size: 14
+                    HomeRightImage:
+                        id: doctor_logo
+                        source: 'doctor_logo.png'
+                    LabelRightBoxLayout:
+                        HomeButtonLabelLight:
+                            text: 'Ask the doctor'
 
 
 
-
-
-            MDIconButton:
-                pos_hint: {"center_x": 0.3 , "center_y": 0.55}
-                on_press: app.hello('symptoms')
-            Image:
-                id: symptoms_logo
-                source: 'symptoms_logo.png'
-                pos_hint: {"center_x": 0.3 , "center_y": 0.55}
-                size_hint: None , None
-                width: 160
-                height: 160
-                allow_stretch: True
-            MDBoxLayout:
-
-                size_hint: 0.33 , 0.08
-                pos_hint: {"center_x": 0.3 , "center_y": 0.51}
-                halign: "center"
-                MDLabel:
+            TwoCardsLayout:
+                pos_hint: {"center_x":0.5 , "center_y": 0.48}
+                MDFloatLayout:
                     halign: "center"
-                    text: 'What are your symptoms?'
-                    color: 1,1,1,1
-                    bold: True
-                    font_size: 14
+                    HomeLeftImage:
+                        id: symptoms_logo
+                        source: 'symptoms_logo.png'
+                    LabelLeftBoxLayout:
+                        HomeButtonLabelLight:
+                            text: 'What are your symptoms?'
 
-
-
-
-            MDIconButton:
-                pos_hint: {"center_x": 0.75 , "center_y": 0.455}
-                on_press: app.hello('diagnose')
-                on_release: app.go_to('diagnose')
-            FitImage:
-                id: diagnose_logo
-                source: 'diagnose_logo.png'
-                pos_hint: {"center_x": 0.75 , "center_y": 0.455}
-                size_hint: None , None
-                width: 160
-                height: 160
-                allow_stretch: True
-            MDBoxLayout:
-                spacing: -15
-                orientation: "vertical"
-                size_hint: 0.33 , 0.08
-                pos_hint: {"center_x": 0.75 , "center_y": 0.41}
-                halign: "center"
-                MDLabel:
+                MDFloatLayout:
                     halign: "center"
-                    text: 'Your diagnose'
-                    color: 0,0.133,0.254,1
-                    bold: True
-                    font_size: 14
-                MDLabel:
-                    id: diagnose_date
-                    halign: "center"
-                    text: '12.02.22'
-                    color: 0,0.133,0.254,1
-                    font_size: 14
-
+                    HomeRightImage:
+                        id: diagnose_logo
+                        source: 'diagnose_logo.png'
+                    LabelRightBoxLayout:
+                        size_hint: 0.7 , 1
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.25}
+                        MDBoxLayout:
+                            orientation: "vertical"
+                            spacing: -100
+                            HomeButtonLabelDark:
+                                text: 'Your diagnose'
+                            HomeButtonLabelDark:
+                                text: '12.02.22'
+                                bold: False
 
 
 
