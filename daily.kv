@@ -8,31 +8,108 @@
             md_bg_color: get_color_from_hex("#FDFAF7")
             orientation: 'vertical'
 
+            MenuButton:
+                MenuImage:
 
+            CenterdCardForText:
+                MDLabel:
+                    halign: "left"
+                    color: 0,0.439,0.313,1
+                    text: 'Daily Indices'
+                    font_style: "H5"
+                    bold: True
 
+            DailyMainBody:
+                ProgressCard:
+                    CardContentBox:
+                        DailyPrecent:
+                            text: '70 %'
+                        ProgressBox:
+                            ProgressLabel:
+                                text: "Skin Moisturizing"
+                            MDProgressBar:
+                                value: 70
+                        ArrowButton:
+                            Image:
+                                source: 'right_button.png'
 
+                ProgressCard:
+                    CardContentBox:
+                        DailyPrecent:
+                            text: '21 %'
+                        ProgressBox:
+                            ProgressLabel:
+                                text: "Body Tempreture"
+                            MDProgressBar:
+                                value: 21
+                        ArrowButton:
+                            Image:
+                                source: 'right_button.png'
 
+                ProgressCard:
+                    CardContentBox:
+                        DailyPrecent:
+                            text: '38 %'
+                        ProgressBox:
+                            ProgressLabel:
+                                text: "Cardiovascular Efficiency"
+                            MDProgressBar:
+                                value: 38
+                        ArrowButton:
+                            Image:
+                                source: 'right_button.png'
 
-            Image:
-                source: 'indicates.png'
+                ProgressCard:
+                    CardContentBox:
+                        DailyPrecent:
+                            text: '95 %'
+                        ProgressBox:
+                            ProgressLabel:
+                                text: "Blood Pressure"
+                            MDProgressBar:
+                                value: 95
+                        ArrowButton:
+                            Image:
+                                source: 'right_button.png'
 
+                ProgressCard:
+                    CardContentBox:
+                        DailyPrecent:
+                            text: '82 %'
+                        ProgressBox:
+                            ProgressLabel:
+                                text: "Blood Glucose"
+                            MDProgressBar:
+                                value: 82
+                        ArrowButton:
+                            Image:
+                                source: 'right_button.png'
 
-            MDFillRoundFlatButton:
+                ProgressCard:
+                    CardContentBox:
+                        DailyPrecent:
+                            text: '34 %'
+                        ProgressBox:
+                            ProgressLabel:
+                                text: "Muscle Pressure"
+                            MDProgressBar:
+                                value: 34
+                        ArrowButton:
+                            Image:
+                                source: 'right_button.png'
 
-                size_hint: None, None
-                width: dp(70) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
-                height: dp(200)
-                md_bg_color: get_color_from_hex("#FDFAF7")
-                pos_hint: {"center_x": .87 , "center_y": 0.93}
-                size_hint_y: 0.03
-                Image:
-                    id: menu_btn
-                    source: 'menu.png'
-
-
-
-
-
+                ProgressCard:
+                    CardContentBox:
+                        DailyPrecent:
+                            text: ''
+                        ProgressBox:
+                            ProgressLabel:
+                                text: ''
+                            MDProgressBar:
+                                value:
+                        ArrowButton:
+                            Image:
+                                source: 'right_button.png'
 
 
 

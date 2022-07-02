@@ -183,7 +183,7 @@
 <CardContentImage@Image>
     halign: "left"
     size_hint: None , None
-    width: 40
+    width: 45
     pos_hint: {"center_x": 0.1 , "center_y": 0.5}
 <CardContentLabel@MDLabel>
     color: 0,0,0,1
@@ -213,14 +213,14 @@
     id: user_img
     halign: "center"
     source: 'user.png'
-    size_hint_y: 0.07
+    size_hint_y: 0.9
     allow_stretch: True
     pos_hint: {"center_x": 0.2 , "center_y": 0.9}
 
 <HomeNameLabel@MDLabel>
     id: user_name
     text: "Hello Dana"
-    halign: "center"
+    halign: "left"
     color: 0,0.439,0.313,1
     pos_hint: {"center_x": 0.5 , "center_y": 0.2}
     font_style: "Body1"
@@ -228,7 +228,7 @@
 <HomeGreet@MDLabel>
     text: "Welcome Back!"
     pos_hint: {"center_x": 0.5 , "center_y": 0.65}
-    halign: "center"
+    halign: "left"
     color: 0,0.439,0.313,1
 
     font_style: "Body1"
@@ -266,9 +266,16 @@
     bold: True
     font_size: 14
 
+<HomeCardForImage@MDCard>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.7}
+    halign: "center"
+    orientation: "horizontal"
+    size_hint_y: 0.11
+    elevation: 0
+    theme_text_color: "Custom"
+    md_bg_color: 0,0,0,1
 
-
-<HomeLeftImage@Image>
+<HomeLeftImage@FitImage>
     pos_hint: {"center_x": 0.5 , "center_y": 0.7}
     size_hint: None , None
     width: 140
@@ -310,9 +317,57 @@
     halign: "center"
     color: 0,0,0,1
     bold: True
-    font_size: 20
+    font_style: 'H5'
 
 
+
+#******************** HOME PAGE *******************
+
+<CenterdCardForText@OpenCard>
+    halign: "center"
+    orientation: "horizontal"
+    pos_hint: {"center_x": 0.5 , "center_y": 0.87}
+    size_hint_y: 0.11
+    elevation: 0
+    theme_text_color: "Custom"
+    md_bg_color: 0,0,0,0
+
+
+
+#******************** DIAGNOSE PAGE *******************
+
+
+#******************** DAILY PAGE *******************
+
+<ProgressCard@ClosedCard>
+    size_hint: 1 , 0.09
+    halign: "center"
+    pos_hint: {"center_x": 0.5}
+    padding: 15
+
+<DailyPrecent@MDLabel>
+    size_hint: 0.25 , 1
+    font_style: 'Body1'
+    color: 0,0,0,0.4
+<ProgressLabel@MDLabel>
+    halign: "left"
+    font_style: 'Body1'
+    color: 0,0,0,1
+    bold: True
+<ProgressBox@MDBoxLayout>
+    spacing: 20
+    orientation: "vertical"
+
+<DailyProgressBar@MDProgressBar>
+    value: 20
+    color: 0,0,0,1
+
+<DailyMainBody@MDBoxLayout>
+    spacing: 20
+    size_hint: 0.9 , 0.8
+    orientation: "vertical"
+    halign: "center"
+    pos_hint: {"center_x": 0.5 , "center_y": 0.43}
 
 
 

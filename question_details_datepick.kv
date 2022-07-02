@@ -5,9 +5,6 @@
 <DemoProject>:
     Screen:
         name: 'question_details_datepick'
-
-
-
         MDBoxLayout:
             orientation: 'vertical'
             MDFloatLayout:
@@ -16,25 +13,20 @@
 
 
 
-                MDLabel:
-
+                QuestionNumber:
                     text: "Pick a date"
-                    halign: "left"
                     pos_hint: {"center_x": .6 , "center_y": 0.67}
-                    font_size: 13
-                    color: 0.498,0.56,0.611,1
-                    bold: True
                 MDBoxLayout:
                     size_hint: 0.8 , 1
                     halign: "left"
                     pos_hint: {"center_x": .5 , "center_y": 0.73}
 
                     MDLabel:
-
                         text: 'Write your details'
                         halign: "left"
                         pos_hint: {"center_x": .6 , "center_y": 0.41}
                         color: 0,0.439,0.313,1
+                        font_style: "Body1"
                         bold: True
 
                 MDCard:
@@ -50,7 +42,7 @@
                         text: "Date of Birth"
                         color: 0,0,0,0.4
                         bold: True
-                        font_size: 14
+                        font_style: 'Body2'
                     MDCard:
                         radius: [10]
                         elevation: 0
@@ -61,7 +53,7 @@
                             color: 0,0,0,0.4
                             text: '01-Jan-1980'
                             halign: "left"
-                            font_size:  12
+                            font_style: 'Body2'
                         ArrowButton:
                             on_press: app.go_to('question_details')
                             Image:

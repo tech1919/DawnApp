@@ -12,71 +12,28 @@
                 SignoutButton:
                     SignoutImage:
 
-            SmallUserImage:
-
-            TwoCardsLayout:
-                pos_hint: {"center_x": 0.5 , "center_y": 0.91}
-                orientation: "vertical"
-                HomeNameLabel:
-                    bold: True
-
-                HomeGreet:
 
 
+            CenterdCardForText:
+                SmallUserImage:
+                MDBoxLayout
+                    orientation: "vertical"
 
+                    HomeNameLabel:
+                        bold: True
 
-
-            TwoCardsLayout:
-                pos_hint: {"center_x":0.5 , "center_y": 0.68}
-                MDFloatLayout:
-                    halign: "center"
-                    HomeLeftImage:
-                        id: blood_test_logo
-                        source: 'blood_test_logo.png'
-                    LabelLeftBoxLayout:
-                        HomeButtonLabelDark:
-                            text: 'Upload your blood test'
-
-                MDFloatLayout:
-                    halign: "center"
-                    HomeRightImage:
-                        id: doctor_logo
-                        source: 'doctor_logo.png'
-                    LabelRightBoxLayout:
-                        HomeButtonLabelLight:
-                            text: 'Ask the doctor'
+                    HomeGreet:
 
 
 
-            TwoCardsLayout:
-                pos_hint: {"center_x":0.5 , "center_y": 0.48}
-                MDFloatLayout:
-                    halign: "center"
-                    HomeLeftImage:
-                        id: symptoms_logo
-                        source: 'symptoms_logo.png'
-                    LabelLeftBoxLayout:
-                        HomeButtonLabelLight:
-                            text: 'What are your symptoms?'
-
-                MDFloatLayout:
-                    halign: "center"
-                    HomeRightImage:
-                        id: diagnose_logo
-                        source: 'diagnose_logo.png'
-                    LabelRightBoxLayout:
-                        size_hint: 0.7 , 1
-                        pos_hint: {"center_x": 0.5 , "center_y": 0.25}
-                        MDBoxLayout:
-                            orientation: "vertical"
-                            spacing: -100
-                            HomeButtonLabelDark:
-                                text: 'Your diagnose'
-                            HomeButtonLabelDark:
-                                text: '12.02.22'
-                                bold: False
 
 
+            CenterdCardForText:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                size_hint: 11 , 1
+                Image:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.6}
+                    source: "home_buttons.png"
 
 
 
