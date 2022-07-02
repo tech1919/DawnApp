@@ -3,6 +3,8 @@ from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivy.lang.builder import Builder
 from kivy.config import Config
+from kivy.utils import get_color_from_hex
+from kivy.clock import Clock
 
 # Config.set('kivy','window_icon','icon.ico')
 
@@ -12,6 +14,11 @@ class DemoProject(ScreenManager):
 
 
 class DawnApp(MDApp):
+    def on_enter(self, *args):
+        Clock.schedule_once(self.switch_to_home, 5)
+
+    def switch_to_home(self, dt):
+        self.manager.current = 'profile'
 
     def go_to(self,screen_name):
         # saves the last screen before changing
@@ -48,21 +55,21 @@ class DawnApp(MDApp):
                     self.root.current = screen_name
                     return
 
+
                 # change the text in the page
                 self.change_text(f'question_text', self.cur_question)
                 self.change_text(f'question_number', f'QUESTION {self.cur_question_idx + 1} OF {self.number_of_questions}')
-
-                try:
-                    self.change_photo(f'question_img',f'Q{self.cur_question_idx + 1}.png')
-                except:
-                    self.change_photo(f'question_img', f'Q1.png')
                 try:
                     self.change_photo(f'count',f'count_{self.cur_question_idx + 1}.png')
                 except:
                     self.change_photo(f'count', f'count_9.png')
 
-                self.root.ids[f'btn_yes'].source = 'button_yes.png'
-                self.root.ids[f'btn_no'].source = 'button_no.png'
+                try:
+                    self.change_photo(f'question_img',f'Q{self.cur_question_idx + 1}.png')
+                except:
+                    self.change_photo(f'question_img', f'Q1.png')
+
+                self.on('reset')
 
                 # self.root.transition = SlideTransition(direction='left')
 
@@ -93,12 +100,26 @@ class DawnApp(MDApp):
         print("forgot password")
     def on(self,check):
         try:
-            if(check == 'yes'):
-                self.root.ids[f'btn_yes'].source = 'button_yes_p.png'
-                self.root.ids[f'btn_no'].source = 'button_no.png'
-            if(check == 'no'):
-                self.root.ids[f'btn_yes'].source = 'button_yes.png'
-                self.root.ids[f'btn_no'].source = 'button_no_p.png'
+            if check == 'yes':
+                self.root.ids[f'no_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
+                self.root.ids[f'no_btn_label'].color = get_color_from_hex("#000000")
+            elif check == 'no':
+                self.root.ids[f'yes_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
+                self.root.ids[f'yes_btn_label'].color = get_color_from_hex("#000000")
+            elif check == 'reset':
+                self.root.ids[f'yes_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
+                self.root.ids[f'yes_btn_label'].color = get_color_from_hex("#000000")
+                self.root.ids[f'no_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
+                self.root.ids[f'no_btn_label'].color = get_color_from_hex("#000000")
+
+
+
+
+            self.root.ids[f'{check}_btn'].md_bg_color =  get_color_from_hex("#012241")
+            self.root.ids[f'{check}_btn_label'].color = get_color_from_hex("#FFFFFF")
+
+
+
         except:
             pass
 
@@ -108,17 +129,11 @@ class DawnApp(MDApp):
         self.root.ids[id].text = text
     def change_photo(self, id , new_path):
         self.root.ids[id].source = new_path
-    # def sizes(self):
-    #     # Home Screen
-    #     big_logos = 140
-    #     logos_ids = ['blood_test_logo','diagnose_logo','symptoms_logo','doctor_logo']
-    #     for id in logos_ids:
-    #         self.root.ids[id].width = big_logos
-    #         self.root.ids[id].height = big_logos
     def back(self):
-        self.cur_question_idx -= 2
-        self.next_question()
-        self.go_to('next_question')
+        pass
+        # self.cur_question_idx -= 2
+        # self.next_question()
+        # self.go_to('next_question')
     def profile_changes(self,type):
         print(f'{type} Changes made')
 
@@ -157,38 +172,26 @@ class DawnApp(MDApp):
 
         self.cur_question = questions[self.cur_question_idx]
 
+
     def build(self):
 
         # set the first question in line
         self.next_question(first=True)
 
 
-
-
-
         Builder.load_file('classes.kv')
-
-        Builder.load_file('login.kv')
-        Builder.load_file('signup.kv')
-
-
         Builder.load_file('loading.kv')
-
-        Builder.load_file('question.kv')
+        Builder.load_file('login.kv')
         Builder.load_file('question_details.kv')
-        Builder.load_file('question_details_datepick.kv')
-
+        Builder.load_file('question.kv')
+        Builder.load_file('home.kv')
         Builder.load_file('profile.kv')
+        Builder.load_file('signup.kv')
+        Builder.load_file('question_details_datepick.kv')
         Builder.load_file('profile_security.kv')
         Builder.load_file('profile_diagnoseMe.kv')
-
-        Builder.load_file('home.kv')
         Builder.load_file('diagnose.kv')
         Builder.load_file('daily.kv')
-
-
-
-
 
 
         return DemoProject()

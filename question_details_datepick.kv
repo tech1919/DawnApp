@@ -1,6 +1,7 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Window kivy.core.window.Window
 
+
 <DemoProject>:
     Screen:
         name: 'question_details_datepick'
@@ -9,27 +10,11 @@
 
         MDBoxLayout:
             orientation: 'vertical'
-
             MDFloatLayout:
                 md_bg_color: get_color_from_hex("#FDFAF7")
                 orientation: 'vertical'
 
-                MDFillRoundFlatButton:
 
-                    size_hint: None, None
-                    width: dp(70) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
-                    height: dp(200)
-                    md_bg_color: get_color_from_hex("#FDFAF7")
-                    pos_hint: {"center_x": .13 , "center_y": 0.93}
-                    on_release: app.back()
-                    Image:
-                        id: back_btn
-                        source: 'back_btn.png'
-
-                Image:
-                    id: count2
-                    source: 'count_2.png'
-                    pos_hint: {"center_x": .5 , "center_y": 0.9}
 
                 MDLabel:
 
@@ -102,28 +87,16 @@
 
 
 
-        MDBoxLayout:
-            orientation: 'vertical'
-
-            MDFloatLayout:
-
-                orientation: 'vertical'
-
-
-
-
-                MDFillRoundFlatButton:
-                    # text: "Next"
-                    size_hint: None, None
-                    width: dp(200) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
-                    height: dp(200)
+                ArrowButton:
                     pos_hint: {"center_x": .5 , "center_y": 0.09}
-                    md_bg_color: get_color_from_hex("#FDFAF7")
-                    custom_color: 0, 1, 0, 1
-                    on_press: app.go_to('question_details')
-                    Image:
-                        source: 'button_next.png'
-
+                    on_press: app.go_to('profile')
+                QuestionButton:
+                    id: next_btn
+                    pos_hint: {"center_x": .5 , "center_y": 0.09}
+                    md_bg_color: get_color_from_hex("#012241")
+                    QuestionButtonLabel:
+                        text: "Next"
+                        color: 1,1,1,1
 
 
 

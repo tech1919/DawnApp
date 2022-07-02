@@ -29,17 +29,7 @@
                     on_release: app.back()
 
 
-                Image:
-                    id: count2
-                    source: 'count_2.png'
-                    pos_hint: {"center_x": .5 , "center_y": 0.9}
 
-                MDLabel:
-                    halign: "left"
-                    pos_hint: {"center_x": .6 , "center_y": 0.67}
-                    font_size: 13
-                    color: 0.498,0.56,0.611,1
-                    bold: True
                 MDBoxLayout:
                     size_hint: 0.8 , 1
                     halign: "left"
@@ -50,6 +40,7 @@
                         halign: "left"
                         pos_hint: {"center_x": .6 , "center_y": 0.41}
                         color: 0,0.439,0.313,1
+                        font_style: "Body1"
                         bold: True
 
                 MDCard:
@@ -65,7 +56,7 @@
                         text: "Date of Birth"
                         color: 0,0,0,0.4
                         bold: True
-                        font_size: 14
+                        font_style: 'Body2'
                     MDCard:
                         radius: [10]
                         elevation: 0
@@ -76,7 +67,7 @@
                             color: 0,0,0,0.4
                             text: '01-Jan-1980'
                             halign: "left"
-                            font_size:  12
+                            font_style: 'Body2'
 
                         ArrowButton:
                             on_press: app.go_to('question_details_datepick')
@@ -98,7 +89,7 @@
                         text: "Weight"
                         color: 0,0,0,0.4
                         bold: True
-                        font_size: 14
+                        font_style: 'Body2'
                     MDCard:
                         md_bg_color: get_color_from_hex("#F5F5F6")
                         halign: "center"
@@ -114,7 +105,7 @@
                             text: " kg"
                             color: 0,0,0,0.8
                             bold: True
-                            font_size: 14
+                            font_style: 'Body2'
 
                 MDCard:
                     orientation: "horizontal"
@@ -130,7 +121,7 @@
                         text: "Height"
                         color: 0,0,0,0.4
                         bold: True
-                        font_size: 14
+                        font_style: 'Body2'
                     MDCard:
                         md_bg_color: get_color_from_hex("#F5F5F6")
                         halign: "center"
@@ -146,37 +137,22 @@
                             text: " cm"
                             color: 0,0,0,0.8
                             bold: True
-                            font_size: 14
+                            font_style: 'Body2'
 
 
 
 
 
 
-
-
-        MDBoxLayout:
-            orientation: 'vertical'
-
-            MDFloatLayout:
-
-                orientation: 'vertical'
-
-
-
-
-                MDFillRoundFlatButton:
-                    # text: "Next"
-                    size_hint: None, None
-                    width: dp(200) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
-                    height: dp(200)
+                ArrowButton:
                     pos_hint: {"center_x": .5 , "center_y": 0.09}
-                    md_bg_color: get_color_from_hex("#FDFAF7")
-                    custom_color: 0, 1, 0, 1
                     on_press: app.go_to('profile')
-                    Image:
-                        source: 'button_next.png'
-
-
+                QuestionButton:
+                    id: next_btn
+                    pos_hint: {"center_x": .5 , "center_y": 0.09}
+                    md_bg_color: get_color_from_hex("#012241")
+                    QuestionButtonLabel:
+                        text: "Next"
+                        color: 1,1,1,1
 
 

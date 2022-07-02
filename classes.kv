@@ -3,28 +3,34 @@
 #:import FadeTransition kivy.uix.screenmanager.FadeTransition
 
 
+
 <ArrowButton@MDIconButton>
     pos_hint: {"center_x": 0.4 , "center_y": 0.5}
     theme_text_color: "Custom"
     text_color: 0,0,0,0
     background_color: 0,0,0,0
 
+
 <MenuButton@ArrowButton>
     pos_hint: {"center_x": 0.87 , "center_y": 0.95}
 <MenuImage@Image>
     source: 'menu.png'
+    size_hint: 1 , 1
 <SignoutButton@MenuButton>
     size_hint: None, None
     halign: "center"
     md_bg_color: get_color_from_hex("#FDFAF7")
     pos_hint: {"center_x": .15 , "center_y": .95}
     on_release: app.go_to('login')
+    font_style: 'Button'
+<SignoutLabel@Label>
+    text: "sign out"
+    pos_hint: {"center_x": .15 , "center_y": .95}
+    color: 0,0,0,1
+    bold: True
+
 <SignoutImage@Image>
-    source: 'signout.png'
-    size_hint: None , None
-    width: 70
-    height: 70
-    allow_stretch: True
+
 
 <OpenCard@MDCard>
     orientation: "vertical"
@@ -66,6 +72,9 @@
     background_color: 0,0,0,0
     halign: "center"
     valign: "center"
+<NavBarImage@Image>
+    size_hint: 1 , 1
+
 
 
 
@@ -81,13 +90,15 @@
 
 <LoginHeaderLabel@MDLabel>
     halign: "left"
+    font_style: "H2"
     bold: True
-    font_size: 30
     color: get_color_from_hex("#FFBA99")
+
 
 <LoginGeneralLabel@MDLabel>
     halign: "left"
     color: 1,1,1,1
+    font_style: 'Body2'
 
 <LoginLabelCard@MDCard>
     orientation: "vertical"
@@ -109,7 +120,6 @@
     halign: "center"
     pos_hint: {"center_x": 0.55, "center_y": 0.53}
     foreground_color: 0,0,0,1
-    font_size: 25
 
 <LoginButton@MDCard>
     orientation: "vertical"
@@ -134,8 +144,8 @@
     pos_hint: {"center_x": 0.5, "center_y": 0.02}
 <LoginFooterLabel@MDLabel>
     halign: "center"
-    font_size: 13
     color: 1,1,1,1
+    font_style: 'Caption'
 
 
 
@@ -149,7 +159,7 @@
 <UserImage@Image>
     halign: "center"
     source: 'user.png'
-    size_hint_y: 0.13
+    size_hint_y: 0.14
     allow_stretch: True
     pos_hint: {"center_x": 0.5 , "center_y": 0.85}
 
@@ -159,10 +169,10 @@
     color: 0,0.439,0.313,1
     bold: True
     pos_hint: {"center_x": 0.5 , "center_y": 0.75}
-    font_size: 20
+    font_style: "H6"
 
 
-<EditIcon@MDIconButton>
+<EditIcon@ArrowButton>
     halign: "center"
     pos_hint: {"center_x": 0.625 , "center_y": 0.85}
     on_press: app.go_to('profile_security')
@@ -178,19 +188,22 @@
 <CardContentLabel@MDLabel>
     color: 0,0,0,1
     bold: True
+    font_style: "Body1"
 
 # Fields
 <LeftLabel@MDLabel>
     halign: "left"
     color: 0,0,0,1
+    font_style: "Body2"
 <RightLabel@MDLabel>
     halign: "right"
     color: 0,0,0,0.4
+    font_style: "Body2"
 <SecurityInputField@MDTextField>
     halign: "left"
     pos_hint: {"center_x": 0.55, "center_y": 0.53}
     foreground_color: 0,0,0,1
-    font_size: 15
+    font_style: "Body2"
 
 
 
@@ -209,16 +222,16 @@
     text: "Hello Dana"
     halign: "center"
     color: 0,0.439,0.313,1
-    bold: True
-    pos_hint: {"center_x": 0.45 , "center_y": 0.91}
-    font_size: 20
+    pos_hint: {"center_x": 0.5 , "center_y": 0.2}
+    font_style: "Body1"
 
 <HomeGreet@MDLabel>
     text: "Welcome Back!"
+    pos_hint: {"center_x": 0.5 , "center_y": 0.65}
     halign: "center"
     color: 0,0.439,0.313,1
-    pos_hint: {"center_x": 0.445 , "center_y": 0.88}
-    font_size: 14
+
+    font_style: "Body1"
 
 <TwoCardsLayout@OpenCard>
 
@@ -268,6 +281,37 @@
     width: 140
     height: 140
     allow_stretch: True
+
+
+
+#******************** QUESTION PAGE *******************
+
+<CountImage@Image>
+    source: 'count_1.png'
+    pos_hint: {"center_x": .5 , "center_y": 0.9}
+
+<QuestionImage@Image>
+    source: 'Q1.png'
+    pos_hint: {"center_x": .5 , "center_y": 0.65}
+
+<QuestionNumber@MDLabel>
+    text: "QUESTION 1 OF 9"
+    halign: "left"
+    pos_hint: {"center_x": .6 , "center_y": 0.47}
+    font_style: "Body2"
+    color: 0.498,0.56,0.611,1
+    bold: True
+
+<QuestionButton@LoginButton>
+    md_bg_color: get_color_from_hex("#FFFFFF")
+    size_hint: 0.6 , 0.07
+    padding: 10
+<QuestionButtonLabel@MDLabel>
+    halign: "center"
+    color: 0,0,0,1
+    bold: True
+    font_size: 20
+
 
 
 

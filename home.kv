@@ -14,9 +14,13 @@
 
             SmallUserImage:
 
-            HomeNameLabel:
+            TwoCardsLayout:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.91}
+                orientation: "vertical"
+                HomeNameLabel:
+                    bold: True
 
-            HomeGreet:
+                HomeGreet:
 
 
 
@@ -85,7 +89,7 @@
                 color: 0,0.439,0.313,1
                 bold: True
                 pos_hint: {"center_x": 0.35 , "center_y": 0.32}
-                font_size: 20
+                font_style: "H6"
 
             MDCard:
                 md_bg_color: get_color_from_hex("#FFFFFF")
@@ -99,11 +103,9 @@
                 size_hint: 0.75 , 0.15
                 MDLabel:
                     text: "Dr. Natali Tompson"
-
                     color: 0,0,0,1
-
                     bold: True
-                    font_size: 13
+                    font_style: "Caption"
                 MDLabel:
 
                     text: "cardiolog"
@@ -111,7 +113,7 @@
                     color: 0,0,0,1
 
                     bold: False
-                    font_size: 11
+                    font_style: "Caption"
                 MDLabel:
 
                     text: "Bnei Barak, haroeh 21"
@@ -119,7 +121,7 @@
                     color: 0,0,0,1
 
                     bold: False
-                    font_size: 11
+                    font_style: "Caption"
                 MDCard:
                     md_bg_color: get_color_from_hex("#012241")
                     orientation: "horizontal"
@@ -140,7 +142,7 @@
                         color: 1,1,1,1
 
                         bold: False
-                        font_size: 11
+                        font_style: "Caption"
 
 
 
