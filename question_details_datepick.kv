@@ -2,73 +2,73 @@
 #:import Window kivy.core.window.Window
 
 
-<DemoProject>:
-    Screen:
-        name: 'question_details_datepick'
-        MDBoxLayout:
+
+MDScreen:
+    name: 'question_details_datepick'
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDFloatLayout:
+            md_bg_color: get_color_from_hex("#FDFAF7")
             orientation: 'vertical'
-            MDFloatLayout:
-                md_bg_color: get_color_from_hex("#FDFAF7")
-                orientation: 'vertical'
 
 
 
-                QuestionNumber:
-                    text: "Pick a date"
-                    pos_hint: {"center_x": .6 , "center_y": 0.67}
-                MDBoxLayout:
-                    size_hint: 0.8 , 1
+            QuestionNumber:
+                text: "Pick a date"
+                pos_hint: {"center_x": .6 , "center_y": 0.67}
+            MDBoxLayout:
+                size_hint: 0.8 , 1
+                halign: "left"
+                pos_hint: {"center_x": .5 , "center_y": 0.73}
+
+                MDLabel:
+                    text: 'Write your details'
                     halign: "left"
-                    pos_hint: {"center_x": .5 , "center_y": 0.73}
+                    pos_hint: {"center_x": .6 , "center_y": 0.41}
+                    color: 0,0.439,0.313,1
+                    font_style: "Body1"
+                    bold: True
 
-                    MDLabel:
-                        text: 'Write your details'
-                        halign: "left"
-                        pos_hint: {"center_x": .6 , "center_y": 0.41}
-                        color: 0,0.439,0.313,1
-                        font_style: "Body1"
-                        bold: True
+            MDCard:
+                orientation: "vertical"
+                padding: 10
+                md_bg_color: get_color_from_hex("#FFFFFF")
+                size_hint: 0.8 , 0.13
+                pos_hint: {"center_x": 0.5, "center_y": 0.53}
+                elevation: 3
+                radius: [10]
 
+                MDLabel:
+                    text: "Date of Birth"
+                    color: 0,0,0,0.4
+                    bold: True
+                    font_style: 'Body2'
                 MDCard:
-                    orientation: "vertical"
-                    padding: 10
-                    md_bg_color: get_color_from_hex("#FFFFFF")
-                    size_hint: 0.8 , 0.13
-                    pos_hint: {"center_x": 0.5, "center_y": 0.53}
-                    elevation: 3
                     radius: [10]
-
-                    MDLabel:
-                        text: "Date of Birth"
-                        color: 0,0,0,0.4
-                        bold: True
-                        font_style: 'Body2'
-                    MDCard:
-                        radius: [10]
-                        elevation: 0
-                        md_bg_color: get_color_from_hex("#F5F5F6")
-                        padding: 5
-                        MDLabel:
-
-                            color: 0,0,0,0.4
-                            text: '01-Jan-1980'
-                            halign: "left"
-                            font_style: 'Body2'
-                        ArrowButton:
-                            on_press: app.go_to('question_details')
-                            Image:
-                                source: 'down_button.png'
-
-                MDCard:
-                    orientation: "vertical"
-
-                    md_bg_color: get_color_from_hex("#FDFAF7")
-                    size_hint: 0.7 , 0.3
-                    pos_hint: {"center_x": 0.5, "center_y": 0.3}
                     elevation: 0
-                    radius: [10]
-                    Image:
-                        source: 'date_picker.png'
+                    md_bg_color: get_color_from_hex("#F5F5F6")
+                    padding: 5
+                    MDLabel:
+
+                        color: 0,0,0,0.4
+                        text: '01-Jan-1980'
+                        halign: "left"
+                        font_style: 'Body2'
+                    ArrowButton:
+                        on_press: app.go_to('question_details')
+                        Image:
+                            source: 'down_button.png'
+
+            MDCard:
+                orientation: "vertical"
+
+                md_bg_color: get_color_from_hex("#FDFAF7")
+                size_hint: 0.7 , 0.3
+                pos_hint: {"center_x": 0.5, "center_y": 0.3}
+                elevation: 0
+                radius: [10]
+                Image:
+                    source: 'date_picker.png'
 
 
 
@@ -79,16 +79,16 @@
 
 
 
-                ArrowButton:
-                    pos_hint: {"center_x": .5 , "center_y": 0.09}
-                    on_press: app.go_to('profile')
-                QuestionButton:
-                    id: next_btn
-                    pos_hint: {"center_x": .5 , "center_y": 0.09}
-                    md_bg_color: get_color_from_hex("#012241")
-                    QuestionButtonLabel:
-                        text: "Next"
-                        color: 1,1,1,1
+            ArrowButton:
+                pos_hint: {"center_x": .5 , "center_y": 0.09}
+                on_press: app.go_to('profile')
+            QuestionButton:
+                id: next_btn
+                pos_hint: {"center_x": .5 , "center_y": 0.09}
+                md_bg_color: get_color_from_hex("#012241")
+                QuestionButtonLabel:
+                    text: "Next"
+                    color: 1,1,1,1
 
 
 

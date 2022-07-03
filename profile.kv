@@ -1,176 +1,176 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Window kivy.core.window.Window
 
-<DemoProject>:
-    Screen:
-        name:'profile'
-        ProfilePageLayout:
 
-            MenuButton:
-            MenuImage:
-            MDFloatLayout:
-                SignoutButton:
-            SignoutLabel:
+MDScreen:
+    name:'profile'
+    ProfilePageLayout:
 
-            UserImage:
+        MenuButton:
+        MenuImage:
+        MDFloatLayout:
+            SignoutButton:
+        SignoutLabel:
 
-            EditIcon:
-                id: edit_btn
+        UserImage:
+
+        EditIcon:
+            id: edit_btn
+            Image:
+                source: 'edit.png'
+
+
+        UserNameLabel:
+
+
+
+
+
+
+
+        OpenCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.53}
+            CardContentBox:
+                CardContentImage:
+                    source: 'person_logo.png'
+                CardContentLabel:
+                    text: "My Account"
+                ArrowButton:
+                    Image:
+                        source: 'down_button.png'
+
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                LeftLabel:
+                    text: "First Name"
+                RightLabel:
+                    text: "Dana"
+
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                LeftLabel:
+                    text: "Last Name"
+                RightLabel:
+                    text: "Cohen"
+
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                LeftLabel:
+                    text: "Date Birth"
+                RightLabel:
+                    text: "01/01/1990"
+
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                LeftLabel:
+                    text: "Height"
+                RightLabel:
+                    id: height_field
+                    text: "168 cm"
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                LeftLabel:
+                    text: "Weight"
+                RightLabel:
+                    id: weight_field
+                    text: "64 kg"
+
+
+
+
+
+
+
+
+
+        ClosedCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.29}
+            CardContentBox:
+                CardContentImage:
+                    source: 'list_logo.png'
+                CardContentLabel:
+                    text: "Diagnose Me"
+                ArrowButton:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    on_press: app.go_to('profile_diagnoseMe')
+                    Image:
+                        source: 'right_button.png'
+
+        ClosedCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.185}
+            CardContentBox:
+                CardContentImage:
+                    source: 'shield_logo.png'
+                CardContentLabel:
+                    text: "Security"
+                ArrowButton:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    on_press: app.go_to('profile_security')
+                    Image:
+                        source: 'right_button.png'
+
+
+
+        #*************** Bottom navbar **************
+
+
+        NavbarBox:
+
+            ButtonBox:
+                HomeButton:
+            ButtonBox:
+                DailyButton:
+            ButtonBox:
+                DiagnoseButton:
+            ButtonBox:
+                ProfileButton:
+        BottomNavbarCard:
+        NavbarBox:
+            MDBoxLayout:
+                orientation: "vertical"
+
                 Image:
-                    source: 'edit.png'
+                    source: 'home.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Home"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
+                Image:
+                    source: 'daily.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Daily"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-            UserNameLabel:
+                Image:
+                    source: 'diagnose.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Diagnose"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-
-
-
-
-
-
-            OpenCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.53}
-                CardContentBox:
-                    CardContentImage:
-                        source: 'person_logo.png'
-                    CardContentLabel:
-                        text: "My Account"
-                    ArrowButton:
-                        Image:
-                            source: 'down_button.png'
-
-
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    LeftLabel:
-                        text: "First Name"
-                    RightLabel:
-                        text: "Dana"
-
-
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    LeftLabel:
-                        text: "Last Name"
-                    RightLabel:
-                        text: "Cohen"
-
-
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    LeftLabel:
-                        text: "Date Birth"
-                    RightLabel:
-                        text: "01/01/1990"
-
-
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    LeftLabel:
-                        text: "Height"
-                    RightLabel:
-                        id: height_field
-                        text: "168 cm"
-
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    LeftLabel:
-                        text: "Weight"
-                    RightLabel:
-                        id: weight_field
-                        text: "64 kg"
-
-
-
-
-
-
-
-
-
-            ClosedCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.29}
-                CardContentBox:
-                    CardContentImage:
-                        source: 'list_logo.png'
-                    CardContentLabel:
-                        text: "Diagnose Me"
-                    ArrowButton:
-                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                        on_press: app.go_to('profile_diagnoseMe')
-                        Image:
-                            source: 'right_button.png'
-
-            ClosedCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.185}
-                CardContentBox:
-                    CardContentImage:
-                        source: 'shield_logo.png'
-                    CardContentLabel:
-                        text: "Security"
-                    ArrowButton:
-                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                        on_press: app.go_to('profile_security')
-                        Image:
-                            source: 'right_button.png'
-
-
-
-            #*************** Bottom navbar **************
-
-
-            NavbarBox:
-
-                ButtonBox:
-                    HomeButton:
-                ButtonBox:
-                    DailyButton:
-                ButtonBox:
-                    DiagnoseButton:
-                ButtonBox:
-                    ProfileButton:
-            BottomNavbarCard:
-            NavbarBox:
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'home.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Home"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'daily.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Daily"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'diagnose.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Diagnose"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'profile_p.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Profile"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
+                Image:
+                    source: 'profile_p.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Profile"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
 
 
 

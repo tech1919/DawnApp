@@ -1,164 +1,164 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Window kivy.core.window.Window
 
-<DemoProject>:
-    Screen:
-        name:'profile_diagnoseMe'
-        ProfilePageLayout:
 
-            MenuButton:
-            MenuImage:
-            MDFloatLayout:
-                SignoutButton:
-                    SignoutLabel:
+MDScreen:
+    name:'profile_diagnoseMe'
+    ProfilePageLayout:
 
-            UserImage:
+        MenuButton:
+        MenuImage:
+        MDFloatLayout:
+            SignoutButton:
+                SignoutLabel:
 
-            EditIcon:
-                on_press: app.profile_changes('diagnose')
-                on_release: app.go_to('profile')
+        UserImage:
+
+        EditIcon:
+            on_press: app.profile_changes('diagnose')
+            on_release: app.go_to('profile')
+            Image:
+                source: 'plus_btn.png'
+
+
+        UserNameLabel:
+
+
+
+
+
+        ClosedCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.66}
+            CardContentBox:
+                CardContentImage:
+                    source: 'person_logo.png'
+                CardContentLabel:
+                    text: "My Account"
+                ArrowButton:
+                    on_press: app.go_to('profile')
+                    Image:
+                        source: 'right_button.png'
+
+
+
+        OpenCard:
+            md_bg_color: get_color_from_hex("#FFFFFF")
+            pos_hint: {"center_x": 0.5, "center_y": 0.42}
+            CardContentBox:
+                CardContentImage:
+                    source: 'list_logo.png'
+                CardContentLabel:
+                    text: "Diagnose Me"
+                ArrowButton:
+                    Image:
+                        source: 'down_button.png'
+
+            ScrollView:
+                MDBoxLayout:
+                    orientation: "vertical"
+                    halign: "center"
+
+                    size_hint_y: None
+                    size_hint_x: 1
+                    cols: 1
+                    spacing: "20dp"
+                    padding: "20dp"
+
+                    MDCard:
+                        halign: "center"
+                        pos_hint: {"center_x": 0.5}
+                        md_bg_color: get_color_from_hex("#000000")
+                        size_hint: 0.1 , 0.1
+                        elevation: 1
+                        radius: [10]
+                    MDCard:
+                        halign: "center"
+                        pos_hint: {"center_x": 0.5}
+                        md_bg_color: get_color_from_hex("#000000")
+                        size_hint: 0.1 , 0.1
+                        elevation: 1
+                        radius: [10]
+                    MDCard:
+                        halign: "center"
+                        pos_hint: {"center_x": 0.5}
+                        md_bg_color: get_color_from_hex("#000000")
+                        size_hint: 0.1 , 0.1
+                        elevation: 1
+                        radius: [10]
+
+
+
+        ClosedCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.56 - 0.38}
+            CardContentBox:
+                CardContentImage:
+                    source: 'shield_logo.png'
+                CardContentLabel:
+                    text: "Security"
+                ArrowButton:
+                    on_press: app.go_to('profile_security')
+                    Image:
+                        source: 'right_button.png'
+
+
+
+
+
+        #*************** Bottom navbar **************
+
+
+        NavbarBox:
+
+            ButtonBox:
+                HomeButton:
+            ButtonBox:
+                DailyButton:
+            ButtonBox:
+                DiagnoseButton:
+            ButtonBox:
+                ProfileButton:
+        BottomNavbarCard:
+        NavbarBox:
+            MDBoxLayout:
+                orientation: "vertical"
+
                 Image:
-                    source: 'plus_btn.png'
+                    source: 'home.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Home"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
+                Image:
+                    source: 'daily.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Daily"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-            UserNameLabel:
+                Image:
+                    source: 'diagnose.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Diagnose"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-
-
-
-
-            ClosedCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.66}
-                CardContentBox:
-                    CardContentImage:
-                        source: 'person_logo.png'
-                    CardContentLabel:
-                        text: "My Account"
-                    ArrowButton:
-                        on_press: app.go_to('profile')
-                        Image:
-                            source: 'right_button.png'
-
-
-
-            OpenCard:
-                md_bg_color: get_color_from_hex("#FFFFFF")
-                pos_hint: {"center_x": 0.5, "center_y": 0.42}
-                CardContentBox:
-                    CardContentImage:
-                        source: 'list_logo.png'
-                    CardContentLabel:
-                        text: "Diagnose Me"
-                    ArrowButton:
-                        Image:
-                            source: 'down_button.png'
-
-                ScrollView:
-                    MDBoxLayout:
-                        orientation: "vertical"
-                        halign: "center"
-
-                        size_hint_y: None
-                        size_hint_x: 1
-                        cols: 1
-                        spacing: "20dp"
-                        padding: "20dp"
-
-                        MDCard:
-                            halign: "center"
-                            pos_hint: {"center_x": 0.5}
-                            md_bg_color: get_color_from_hex("#000000")
-                            size_hint: 0.1 , 0.1
-                            elevation: 1
-                            radius: [10]
-                        MDCard:
-                            halign: "center"
-                            pos_hint: {"center_x": 0.5}
-                            md_bg_color: get_color_from_hex("#000000")
-                            size_hint: 0.1 , 0.1
-                            elevation: 1
-                            radius: [10]
-                        MDCard:
-                            halign: "center"
-                            pos_hint: {"center_x": 0.5}
-                            md_bg_color: get_color_from_hex("#000000")
-                            size_hint: 0.1 , 0.1
-                            elevation: 1
-                            radius: [10]
-
-
-
-            ClosedCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.56 - 0.38}
-                CardContentBox:
-                    CardContentImage:
-                        source: 'shield_logo.png'
-                    CardContentLabel:
-                        text: "Security"
-                    ArrowButton:
-                        on_press: app.go_to('profile_security')
-                        Image:
-                            source: 'right_button.png'
-
-
-
-
-
-            #*************** Bottom navbar **************
-
-
-            NavbarBox:
-
-                ButtonBox:
-                    HomeButton:
-                ButtonBox:
-                    DailyButton:
-                ButtonBox:
-                    DiagnoseButton:
-                ButtonBox:
-                    ProfileButton:
-            BottomNavbarCard:
-            NavbarBox:
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'home.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Home"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'daily.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Daily"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'diagnose.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Diagnose"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'profile_p.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Profile"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
+                Image:
+                    source: 'profile_p.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Profile"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
 
 
 

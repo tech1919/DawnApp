@@ -1,158 +1,158 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Window kivy.core.window.Window
 
-<DemoProject>:
-    Screen:
-        name:'diagnose'
-        MDFloatLayout:
+
+MDScreen:
+    name:'diagnose'
+    MDFloatLayout:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#FDFAF7")
+
+        MenuButton:
+        MenuImage:
+        BackButton:
+        BackImage:
+
+        CenterdCardForText:
+            pos_hint: {"center_x": 0.5 , "center_y": 0.9}
             orientation: "vertical"
-            md_bg_color: get_color_from_hex("#FDFAF7")
 
-            MenuButton:
-            MenuImage:
-            BackButton:
-            BackImage:
+            MDLabel:
+                text: "Today"
+                font_style: "Caption"
+                color: 0,0,0,0.4
+            MDLabel:
+                text: "Thursday, 27 Jan, 2022"
+                font_style: "Caption"
+                color: 0,0,0,0.8
 
-            CenterdCardForText:
-                pos_hint: {"center_x": 0.5 , "center_y": 0.9}
+        CenterdCardForText:
+            pos_hint: {"center_x": 0.5 , "center_y": 0.8}
+            spacing: 13
+            orientation: "vertical"
+            MDLabel:
+                text: "My Diagnosis"
+                font_style: 'H4'
+                color: get_color_from_hex('#116950')
+            MDLabel:
+                text: "Adenomyosis"
+                font_style: 'H6'
+                color: get_color_from_hex('#116950')
+
+
+
+        CenterdCardForText:
+            pos_hint: {"center_x": 0.5 , "center_y": 0.72}
+            orientation: "vertical"
+            MDLabel:
+                text: "diagnosis details"
+                font_style: "Body2"
+                bold: True
+
+        CenterdCardForText
+            pos_hint: {"center_x": 0.5 , "center_y": 0.64}
+            orientation: "vertical"
+            MDLabel:
+                valign: "center"
+                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim massa, imperdiet ut metus sit amet."
+                font_style: "Body2"
+
+        CenterdCardForText
+            size_hint: 0.9 , 1
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            Image
+                pos_hint: {"center_x": 0.5 , "center_y": 0.47}
+                source: "diagnose_page.png"
+
+
+        CenterdCardForText:
+            pos_hint: {"center_x": 0.5 , "center_y": 0.33}
+            orientation: "vertical"
+            MDLabel:
+                text: "Recommended tests"
+                font_style: "Body2"
+                bold: True
+
+        ClosedCard:
+            md_bg_color: get_color_from_hex("#FFBA99")
+            pos_hint: {"center_x": 0.5 , "center_y": 0.27}
+            CardContentBox:
+                CardContentImage:
+                    source: 'schedual.png'
+                CardContentLabel:
+                ArrowButton:
+                    Image:
+                        source: 'right_button.png'
+
+        ClosedCard:
+            md_bg_color: get_color_from_hex("#007150")
+            pos_hint: {"center_x": 0.5 , "center_y": 0.16}
+            CardContentBox:
+                CardContentImage:
+                    source: 'diagnose2_selection.png'
+                CardContentLabel:
+                ArrowButton:
+                    Image:
+                        source: 'right_button.png'
+
+
+
+
+
+        #*************** Bottom navbar **************
+
+
+        NavbarBox:
+
+            ButtonBox:
+                HomeButton:
+            ButtonBox:
+                DailyButton:
+            ButtonBox:
+                DiagnoseButton:
+            ButtonBox:
+                ProfileButton:
+        BottomNavbarCard:
+        NavbarBox:
+            MDBoxLayout:
                 orientation: "vertical"
 
+                Image:
+                    source: 'home.png'
                 MDLabel:
-                    text: "Today"
+                    halign: "center"
+                    text: "Home"
                     font_style: "Caption"
-                    color: 0,0,0,0.4
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
+
+                Image:
+                    source: 'daily.png'
                 MDLabel:
-                    text: "Thursday, 27 Jan, 2022"
+                    halign: "center"
+                    text: "Daily"
                     font_style: "Caption"
-                    color: 0,0,0,0.8
-
-            CenterdCardForText:
-                pos_hint: {"center_x": 0.5 , "center_y": 0.8}
-                spacing: 13
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
                 orientation: "vertical"
+
+                Image:
+                    source: 'diagnose_p.png'
                 MDLabel:
-                    text: "My Diagnosis"
-                    font_style: 'H4'
-                    color: get_color_from_hex('#116950')
-                MDLabel:
-                    text: "Adenomyosis"
-                    font_style: 'H6'
-                    color: get_color_from_hex('#116950')
-
-
-
-            CenterdCardForText:
-                pos_hint: {"center_x": 0.5 , "center_y": 0.72}
+                    halign: "center"
+                    text: "Diagnose"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
                 orientation: "vertical"
+
+                Image:
+                    source: 'profile.png'
                 MDLabel:
-                    text: "diagnosis details"
-                    font_style: "Body2"
-                    bold: True
-
-            CenterdCardForText
-                pos_hint: {"center_x": 0.5 , "center_y": 0.64}
-                orientation: "vertical"
-                MDLabel:
-                    valign: "center"
-                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim massa, imperdiet ut metus sit amet."
-                    font_style: "Body2"
-
-            CenterdCardForText
-                size_hint: 0.9 , 1
-                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                Image
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.47}
-                    source: "diagnose_page.png"
-
-
-            CenterdCardForText:
-                pos_hint: {"center_x": 0.5 , "center_y": 0.33}
-                orientation: "vertical"
-                MDLabel:
-                    text: "Recommended tests"
-                    font_style: "Body2"
-                    bold: True
-
-            ClosedCard:
-                md_bg_color: get_color_from_hex("#FFBA99")
-                pos_hint: {"center_x": 0.5 , "center_y": 0.27}
-                CardContentBox:
-                    CardContentImage:
-                        source: 'schedual.png'
-                    CardContentLabel:
-                    ArrowButton:
-                        Image:
-                            source: 'right_button.png'
-
-            ClosedCard:
-                md_bg_color: get_color_from_hex("#007150")
-                pos_hint: {"center_x": 0.5 , "center_y": 0.16}
-                CardContentBox:
-                    CardContentImage:
-                        source: 'diagnose2_selection.png'
-                    CardContentLabel:
-                    ArrowButton:
-                        Image:
-                            source: 'right_button.png'
-
-
-
-
-
-            #*************** Bottom navbar **************
-
-
-            NavbarBox:
-
-                ButtonBox:
-                    HomeButton:
-                ButtonBox:
-                    DailyButton:
-                ButtonBox:
-                    DiagnoseButton:
-                ButtonBox:
-                    ProfileButton:
-            BottomNavbarCard:
-            NavbarBox:
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'home.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Home"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'daily.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Daily"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'diagnose_p.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Diagnose"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'profile.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Profile"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
+                    halign: "center"
+                    text: "Profile"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
 
 

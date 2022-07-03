@@ -1,258 +1,258 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Window kivy.core.window.Window
 
-<DemoProject>:
-    Screen:
-        name:'home'
-        ProfilePageLayout:
 
-            MenuButton:
-            MenuImage:
-            BackButton:
-            BackImage:
+MDScreen:
+    name:'home'
+    ProfilePageLayout:
 
-
-            CenterdCardForText:
-                MDBoxLayout:
-                    size_hint: 0.4 , 1
-                    SmallUserImage:
-                MDBoxLayout
-                    orientation: "vertical"
-                    HomeNameLabel:
-                        bold: True
-                    HomeGreet:
+        MenuButton:
+        MenuImage:
+        BackButton:
+        BackImage:
 
 
-
-
-
-
-
-
-
+        CenterdCardForText:
             MDBoxLayout:
-                orientation: "horizontal"
-                pos_hint: {"center_x": 0.5 , "center_y": 0.7}
-
-                size_hint: 0.9 , 0.2
-                Image:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                    source: 'blood_test_logo.png'
-                    size_hint: 1,1
-                Image:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.4}
-                    source: 'doctor_logo.png'
-                    size_hint: 1,1
-
-
-
-            MDBoxLayout:
-                orientation: "horizontal"
-                spacing: 10
-                pos_hint: {"center_x": 0.5 , "center_y": 0.7}
-
-                size_hint: 0.9 , 0.2
-
-                MDFloatLayout:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-
-                    MDBoxLayout:
-
-                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                        size_hint: 0.8 , 1
-
-                        HomeButtonLabelDark:
-                            pos_hint: {"center_x": 0.5 , "center_y": 0.3}
-                            text: "Upload your blood test"
-                MDFloatLayout:
-
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                    MDBoxLayout:
-
-                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                        size_hint: 0.8 , 1
-
-                        HomeButtonLabelLight:
-                            pos_hint: {"center_x": 0.5 , "center_y": 0.25}
-                            text: "Ask the doctor"
-
-
-
-
-            MDBoxLayout:
-                orientation: "horizontal"
-                pos_hint: {"center_x": 0.5 , "center_y": 0.51}
-
-                size_hint: 0.9 , 0.2
-                Image:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                    source: 'symptoms_logo.png'
-                    size_hint: 1,1
-                Image:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.4}
-                    source: 'diagnose_logo.png'
-                    size_hint: 1,1
-
-
-
-            MDBoxLayout:
-                orientation: "horizontal"
-                spacing: 10
-                pos_hint: {"center_x": 0.5 , "center_y": 0.51}
-
-                size_hint: 0.9 , 0.2
-
-                MDFloatLayout:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-
-                    MDBoxLayout:
-
-                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                        size_hint: 0.8 , 1
-
-                        HomeButtonLabelLight:
-                            pos_hint: {"center_x": 0.5 , "center_y": 0.3}
-                            text: "What are your symptoms?"
-                MDFloatLayout:
-
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                    MDBoxLayout:
-
-                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                        size_hint: 0.8 , 1
-
-                        HomeButtonLabelDark:
-                            pos_hint: {"center_x": 0.5 , "center_y": 0.25}
-                            text: "Your diagnose"
-
-
-
-
-
-
-
-
-
-
-            MDLabel:
-                text: "My Appointment"
-                halign: "center"
-                color: 0,0.439,0.313,1
-                bold: True
-                pos_hint: {"center_x": 0.35 , "center_y": 0.32}
-                font_style: "H6"
-
-            MDCard:
-                md_bg_color: get_color_from_hex("#FFFFFF")
-                size_hint: None , None
-                pos_hint: {"center_x": 0.5, "center_y": 0.22}
-                elevation: 3
-                radius: [10]
+                size_hint: 0.4 , 1
+                SmallUserImage:
+            MDBoxLayout
                 orientation: "vertical"
-                padding: 10
-                halign: "left"
-                size_hint: 0.75 , 0.15
-                MDLabel:
-                    text: "Dr. Natali Tompson"
-                    color: 0,0,0,1
+                HomeNameLabel:
                     bold: True
-                    font_style: "Caption"
+                HomeGreet:
+
+
+
+
+
+
+
+
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            pos_hint: {"center_x": 0.5 , "center_y": 0.7}
+
+            size_hint: 0.9 , 0.2
+            Image:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                source: 'blood_test_logo.png'
+                size_hint: 1,1
+            Image:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.4}
+                source: 'doctor_logo.png'
+                size_hint: 1,1
+
+
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: 10
+            pos_hint: {"center_x": 0.5 , "center_y": 0.7}
+
+            size_hint: 0.9 , 0.2
+
+            MDFloatLayout:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+
+                MDBoxLayout:
+
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    size_hint: 0.8 , 1
+
+                    HomeButtonLabelDark:
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+                        text: "Upload your blood test"
+            MDFloatLayout:
+
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                MDBoxLayout:
+
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    size_hint: 0.8 , 1
+
+                    HomeButtonLabelLight:
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.25}
+                        text: "Ask the doctor"
+
+
+
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            pos_hint: {"center_x": 0.5 , "center_y": 0.51}
+
+            size_hint: 0.9 , 0.2
+            Image:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                source: 'symptoms_logo.png'
+                size_hint: 1,1
+            Image:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.4}
+                source: 'diagnose_logo.png'
+                size_hint: 1,1
+
+
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: 10
+            pos_hint: {"center_x": 0.5 , "center_y": 0.51}
+
+            size_hint: 0.9 , 0.2
+
+            MDFloatLayout:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+
+                MDBoxLayout:
+
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    size_hint: 0.8 , 1
+
+                    HomeButtonLabelLight:
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+                        text: "What are your symptoms?"
+            MDFloatLayout:
+
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                MDBoxLayout:
+
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    size_hint: 0.8 , 1
+
+                    HomeButtonLabelDark:
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.25}
+                        text: "Your diagnose"
+
+
+
+
+
+
+
+
+
+
+        MDLabel:
+            text: "My Appointment"
+            halign: "center"
+            color: 0,0.439,0.313,1
+            bold: True
+            pos_hint: {"center_x": 0.35 , "center_y": 0.32}
+            font_style: "H6"
+
+        MDCard:
+            md_bg_color: get_color_from_hex("#FFFFFF")
+            size_hint: None , None
+            pos_hint: {"center_x": 0.5, "center_y": 0.22}
+            elevation: 3
+            radius: [10]
+            orientation: "vertical"
+            padding: 10
+            halign: "left"
+            size_hint: 0.75 , 0.15
+            MDLabel:
+                text: "Dr. Natali Tompson"
+                color: 0,0,0,1
+                bold: True
+                font_style: "Caption"
+            MDLabel:
+
+                text: "cardiolog"
+
+                color: 0,0,0,1
+
+                bold: False
+                font_style: "Caption"
+            MDLabel:
+
+                text: "Bnei Barak, haroeh 21"
+
+                color: 0,0,0,1
+
+                bold: False
+                font_style: "Caption"
+            MDCard:
+                md_bg_color: get_color_from_hex("#012241")
+                orientation: "horizontal"
+                radius: [5]
+                spacing: 5
+                padding: 5
+                valign: "center"
+                halign: "left"
+                Image:
+                    size_hint: None , None
+                    width: 15
+                    height: 15
+                    source: 'clock_btn.png'
                 MDLabel:
 
-                    text: "cardiolog"
+                    text: "Friday, April 25, 8:00am-10:00pm"
 
-                    color: 0,0,0,1
+                    color: 1,1,1,1
 
                     bold: False
                     font_style: "Caption"
+
+
+
+
+
+        #*************** Bottom navbar **************
+
+
+        NavbarBox:
+
+            ButtonBox:
+                HomeButton:
+            ButtonBox:
+                DailyButton:
+            ButtonBox:
+                DiagnoseButton:
+            ButtonBox:
+                ProfileButton:
+        BottomNavbarCard:
+        NavbarBox:
+            MDBoxLayout:
+                orientation: "vertical"
+
+                Image:
+                    source: 'home_p.png'
                 MDLabel:
-
-                    text: "Bnei Barak, haroeh 21"
-
-                    color: 0,0,0,1
-
-                    bold: False
+                    halign: "center"
+                    text: "Home"
                     font_style: "Caption"
-                MDCard:
-                    md_bg_color: get_color_from_hex("#012241")
-                    orientation: "horizontal"
-                    radius: [5]
-                    spacing: 5
-                    padding: 5
-                    valign: "center"
-                    halign: "left"
-                    Image:
-                        size_hint: None , None
-                        width: 15
-                        height: 15
-                        source: 'clock_btn.png'
-                    MDLabel:
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-                        text: "Friday, April 25, 8:00am-10:00pm"
+                Image:
+                    source: 'daily.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Daily"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-                        color: 1,1,1,1
+                Image:
+                    source: 'diagnose.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Diagnose"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-                        bold: False
-                        font_style: "Caption"
-
-
-
-
-
-            #*************** Bottom navbar **************
-
-
-            NavbarBox:
-
-                ButtonBox:
-                    HomeButton:
-                ButtonBox:
-                    DailyButton:
-                ButtonBox:
-                    DiagnoseButton:
-                ButtonBox:
-                    ProfileButton:
-            BottomNavbarCard:
-            NavbarBox:
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'home_p.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Home"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'daily.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Daily"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'diagnose.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Diagnose"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'profile.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Profile"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
+                Image:
+                    source: 'profile.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Profile"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
 
 

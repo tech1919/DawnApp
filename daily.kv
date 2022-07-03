@@ -1,174 +1,174 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Window kivy.core.window.Window
 
-<DemoProject>:
-    Screen:
-        name:'daily'
-        MDFloatLayout:
-            md_bg_color: get_color_from_hex("#FDFAF7")
-            orientation: 'vertical'
 
-            MenuButton:
-            MenuImage:
-            BackButton:
-            BackImage:
+MDScreen:
+    name:'daily'
+    MDFloatLayout:
+        md_bg_color: get_color_from_hex("#FDFAF7")
+        orientation: 'vertical'
 
-            CenterdCardForText:
-                MDLabel:
-                    halign: "left"
-                    color: 0,0.439,0.313,1
-                    text: 'Daily Indices'
-                    font_style: "H5"
-                    bold: True
+        MenuButton:
+        MenuImage:
+        BackButton:
+        BackImage:
 
-            DailyMainBody:
-                ProgressCard:
-                    CardContentBox:
-                        DailyPrecent:
-                            text: '70 %'
-                        ProgressBox:
-                            ProgressLabel:
-                                text: "Skin Moisturizing"
-                            MDProgressBar:
-                                value: 70
-                        ArrowButton:
-                            Image:
-                                source: 'right_button.png'
+        CenterdCardForText:
+            MDLabel:
+                halign: "left"
+                color: 0,0.439,0.313,1
+                text: 'Daily Indices'
+                font_style: "H5"
+                bold: True
 
-                ProgressCard:
-                    CardContentBox:
-                        DailyPrecent:
-                            text: '21 %'
-                        ProgressBox:
-                            ProgressLabel:
-                                text: "Body Tempreture"
-                            MDProgressBar:
-                                value: 21
-                        ArrowButton:
-                            Image:
-                                source: 'right_button.png'
+        DailyMainBody:
+            ProgressCard:
+                CardContentBox:
+                    DailyPrecent:
+                        text: '70 %'
+                    ProgressBox:
+                        ProgressLabel:
+                            text: "Skin Moisturizing"
+                        MDProgressBar:
+                            value: 70
+                    ArrowButton:
+                        Image:
+                            source: 'right_button.png'
 
-                ProgressCard:
-                    CardContentBox:
-                        DailyPrecent:
-                            text: '38 %'
-                        ProgressBox:
-                            ProgressLabel:
-                                text: "Cardiovascular Efficiency"
-                            MDProgressBar:
-                                value: 38
-                        ArrowButton:
-                            Image:
-                                source: 'right_button.png'
+            ProgressCard:
+                CardContentBox:
+                    DailyPrecent:
+                        text: '21 %'
+                    ProgressBox:
+                        ProgressLabel:
+                            text: "Body Tempreture"
+                        MDProgressBar:
+                            value: 21
+                    ArrowButton:
+                        Image:
+                            source: 'right_button.png'
 
-                ProgressCard:
-                    CardContentBox:
-                        DailyPrecent:
-                            text: '95 %'
-                        ProgressBox:
-                            ProgressLabel:
-                                text: "Blood Pressure"
-                            MDProgressBar:
-                                value: 95
-                        ArrowButton:
-                            Image:
-                                source: 'right_button.png'
+            ProgressCard:
+                CardContentBox:
+                    DailyPrecent:
+                        text: '38 %'
+                    ProgressBox:
+                        ProgressLabel:
+                            text: "Cardiovascular Efficiency"
+                        MDProgressBar:
+                            value: 38
+                    ArrowButton:
+                        Image:
+                            source: 'right_button.png'
 
-                ProgressCard:
-                    CardContentBox:
-                        DailyPrecent:
-                            text: '82 %'
-                        ProgressBox:
-                            ProgressLabel:
-                                text: "Blood Glucose"
-                            MDProgressBar:
-                                value: 82
-                        ArrowButton:
-                            Image:
-                                source: 'right_button.png'
+            ProgressCard:
+                CardContentBox:
+                    DailyPrecent:
+                        text: '95 %'
+                    ProgressBox:
+                        ProgressLabel:
+                            text: "Blood Pressure"
+                        MDProgressBar:
+                            value: 95
+                    ArrowButton:
+                        Image:
+                            source: 'right_button.png'
 
-                ProgressCard:
-                    CardContentBox:
-                        DailyPrecent:
-                            text: '34 %'
-                        ProgressBox:
-                            ProgressLabel:
-                                text: "Muscle Pressure"
-                            MDProgressBar:
-                                value: 34
-                        ArrowButton:
-                            Image:
-                                source: 'right_button.png'
+            ProgressCard:
+                CardContentBox:
+                    DailyPrecent:
+                        text: '82 %'
+                    ProgressBox:
+                        ProgressLabel:
+                            text: "Blood Glucose"
+                        MDProgressBar:
+                            value: 82
+                    ArrowButton:
+                        Image:
+                            source: 'right_button.png'
 
-                ProgressCard:
-                    CardContentBox:
-                        DailyPrecent:
+            ProgressCard:
+                CardContentBox:
+                    DailyPrecent:
+                        text: '34 %'
+                    ProgressBox:
+                        ProgressLabel:
+                            text: "Muscle Pressure"
+                        MDProgressBar:
+                            value: 34
+                    ArrowButton:
+                        Image:
+                            source: 'right_button.png'
+
+            ProgressCard:
+                CardContentBox:
+                    DailyPrecent:
+                        text: ''
+                    ProgressBox:
+                        ProgressLabel:
                             text: ''
-                        ProgressBox:
-                            ProgressLabel:
-                                text: ''
-                            MDProgressBar:
-                                value:
-                        ArrowButton:
-                            Image:
-                                source: 'right_button.png'
+                        MDProgressBar:
+                            value:
+                    ArrowButton:
+                        Image:
+                            source: 'right_button.png'
 
 
 
 
-            #*************** Bottom navbar **************
+        #*************** Bottom navbar **************
 
 
-            NavbarBox:
+        NavbarBox:
 
-                ButtonBox:
-                    HomeButton:
-                ButtonBox:
-                    DailyButton:
-                ButtonBox:
-                    DiagnoseButton:
-                ButtonBox:
-                    ProfileButton:
-            BottomNavbarCard:
-            NavbarBox:
-                MDBoxLayout:
-                    orientation: "vertical"
+            ButtonBox:
+                HomeButton:
+            ButtonBox:
+                DailyButton:
+            ButtonBox:
+                DiagnoseButton:
+            ButtonBox:
+                ProfileButton:
+        BottomNavbarCard:
+        NavbarBox:
+            MDBoxLayout:
+                orientation: "vertical"
 
-                    Image:
-                        source: 'home.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Home"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
+                Image:
+                    source: 'home.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Home"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-                    Image:
-                        source: 'daily_p.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Daily"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
+                Image:
+                    source: 'daily_p.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Daily"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-                    Image:
-                        source: 'diagnose.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Diagnose"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
+                Image:
+                    source: 'diagnose.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Diagnose"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-                    Image:
-                        source: 'profile.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Profile"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
+                Image:
+                    source: 'profile.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Profile"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
 

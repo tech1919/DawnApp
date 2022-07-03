@@ -1,155 +1,155 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Window kivy.core.window.Window
 
-<DemoProject>:
-    Screen:
-        name:'profile_security'
-        ProfilePageLayout:
 
-            MenuButton:
-            MenuImage:
-            BackButton:
-            BackImage:
+MDScreen:
+    name:'profile_security'
+    ProfilePageLayout:
+
+        MenuButton:
+        MenuImage:
+        BackButton:
+        BackImage:
 
 
-            UserImage:
+        UserImage:
 
-            EditIcon:
-                on_press: app.profile_changes('security')
-                on_release: app.go_to('profile')
+        EditIcon:
+            on_press: app.profile_changes('security')
+            on_release: app.go_to('profile')
+            Image:
+                source: 'plus_btn.png'
+
+        UserNameLabel:
+
+
+
+
+
+
+
+        ClosedCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.66}
+            CardContentBox:
+                CardContentImage:
+                    source: 'person_logo.png'
+                CardContentLabel:
+                    text: "My Account"
+                ArrowButton:
+                    on_press: app.go_to('profile')
+                    Image:
+                        source: 'right_button.png'
+
+
+
+        ClosedCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.56}
+            CardContentBox:
+                CardContentImage:
+                    source: 'list_logo.png'
+                CardContentLabel:
+                    text: "Diagnose Me"
+                ArrowButton:
+                    on_press: app.go_to('profile_diagnoseMe')
+                    Image:
+                        source: 'right_button.png'
+
+
+        OpenCard:
+            size_hint: 0.8 , 0.3
+            pos_hint: {"center_x": 0.5, "center_y": 0.56 - 0.22}
+            CardContentBox:
+                CardContentImage:
+                    source: 'shield_logo.png'
+                CardContentLabel:
+                    text: "Security"
+                ArrowButton:
+                    Image:
+                        source: 'down_button.png'
+            MDBoxLayout:
+                orientation: "horizontal"
+                MDLabel:
+                    text: "Password"
+                    halign: "left"
+                    font_style: "Body2"
+                    color: 0,0,0,1
+
+
+            MDBoxLayout:
+                SecurityInputField:
+                    id: current_password_check
+                    hint_text: 'Current password'
+
+            MDBoxLayout:
+                SecurityInputField:
+                    id: new_password
+                    hint_text: 'New password'
+
+            MDBoxLayout:
+                SecurityInputField:
+                    id: new_password_check
+                    hint_text: 'New password, again'
+
+
+
+
+
+
+        #*************** Bottom navbar **************
+
+
+        NavbarBox:
+
+            ButtonBox:
+                HomeButton:
+            ButtonBox:
+                DailyButton:
+            ButtonBox:
+                DiagnoseButton:
+            ButtonBox:
+                ProfileButton:
+        BottomNavbarCard:
+        NavbarBox:
+            MDBoxLayout:
+                orientation: "vertical"
+
                 Image:
-                    source: 'plus_btn.png'
+                    source: 'home.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Home"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-            UserNameLabel:
+                Image:
+                    source: 'daily.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Daily"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
+                Image:
+                    source: 'diagnose.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Diagnose"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
 
-
-
-
-
-
-            ClosedCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.66}
-                CardContentBox:
-                    CardContentImage:
-                        source: 'person_logo.png'
-                    CardContentLabel:
-                        text: "My Account"
-                    ArrowButton:
-                        on_press: app.go_to('profile')
-                        Image:
-                            source: 'right_button.png'
-
-
-
-            ClosedCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.56}
-                CardContentBox:
-                    CardContentImage:
-                        source: 'list_logo.png'
-                    CardContentLabel:
-                        text: "Diagnose Me"
-                    ArrowButton:
-                        on_press: app.go_to('profile_diagnoseMe')
-                        Image:
-                            source: 'right_button.png'
-
-
-            OpenCard:
-                size_hint: 0.8 , 0.3
-                pos_hint: {"center_x": 0.5, "center_y": 0.56 - 0.22}
-                CardContentBox:
-                    CardContentImage:
-                        source: 'shield_logo.png'
-                    CardContentLabel:
-                        text: "Security"
-                    ArrowButton:
-                        Image:
-                            source: 'down_button.png'
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    MDLabel:
-                        text: "Password"
-                        halign: "left"
-                        font_style: "Body2"
-                        color: 0,0,0,1
-
-
-                MDBoxLayout:
-                    SecurityInputField:
-                        id: current_password_check
-                        hint_text: 'Current password'
-
-                MDBoxLayout:
-                    SecurityInputField:
-                        id: new_password
-                        hint_text: 'New password'
-
-                MDBoxLayout:
-                    SecurityInputField:
-                        id: new_password_check
-                        hint_text: 'New password, again'
-
-
-
-
-
-
-            #*************** Bottom navbar **************
-
-
-            NavbarBox:
-
-                ButtonBox:
-                    HomeButton:
-                ButtonBox:
-                    DailyButton:
-                ButtonBox:
-                    DiagnoseButton:
-                ButtonBox:
-                    ProfileButton:
-            BottomNavbarCard:
-            NavbarBox:
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'home.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Home"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'daily.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Daily"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'diagnose.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Diagnose"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
-                MDBoxLayout:
-                    orientation: "vertical"
-
-                    Image:
-                        source: 'profile_p.png'
-                    MDLabel:
-                        halign: "center"
-                        text: "Profile"
-                        font_style: "Caption"
-                        color: get_color_from_hex("##012241")
+                Image:
+                    source: 'profile_p.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Profile"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
 
 
 

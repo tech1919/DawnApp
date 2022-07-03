@@ -19,80 +19,81 @@ class DawnApp(MDApp):
     def on_enter(self, *args):
         Clock.schedule_once(self.switch_to_home, 5)
 
-    def switch_to_home(self, dt):
-        self.manager.current = 'profile'
-
     def go_to(self,screen_name):
         # saves the last screen before changing
+
+
         try:
             if screen_name == 'back':
                 screen_name = self.last_screen
-            self.last_screen = self.root.current
         except:
             pass
+        finally:
+            self.last_screen = screen_manager.current
 
+
+        # screen = screen_manager.get_screen(screen_name)
 
         try:
 
             if screen_name == 'question':
                 if self.last_screen == 'login':
+
                     self.root.transition = SlideTransition(direction='up')
-                    self.username = self.root.ids.username_login.text
-                    self.password = self.root.ids.password_login.text
+                    self.username = screen_manager.get_screen('login').ids.username_login.text
+                    self.password = screen_manager.get_screen('login').ids.password_login.text
+
                 else:
                     self.root.transition = SlideTransition(direction='left')
 
-                self.root.current = screen_name
-            elif screen_name == 'question_details':
+                screen_manager.current = screen_name
+            elif screen_name == 'question_details' or screen_name == 'question_details_datepick':
                 self.root.transition = NoTransition()
-                self.root.current = screen_name
+                screen_manager.current = screen_name
             elif screen_name == 'profile':
-                if self.last_screen == 'question_details':
-                    self.weight = self.root.ids.weight_input.text
-                    self.height = self.root.ids.height_input.text
-                    self.change_text('weight_field',f'{self.weight} kg')
-                    self.change_text('height_field', f'{self.height} cm')
-                    self.root.current = screen_name
-                else:
-                    self.root.current = screen_name
 
+                if self.last_screen == 'question_details':
+                    screen = screen_manager.get_screen('question_details')
+                    self.weight = screen.ids.weight_input.text
+                    self.height = screen.ids.height_input.text
+                    self.change_text('weight_field',f'{self.weight} kg',screen_name)
+                    self.change_text('height_field', f'{self.height} cm',screen_name)
+                    screen_manager.current = screen_name
+                else:
+                    screen_manager.current = screen_name
             elif screen_name == 'next_question':
+                screen_name = 'question'
                 try:
                     self.next_question()
                 except:
                     screen_name = 'question_details'
-                    self.root.current = screen_name
+                    screen_manager.current = screen_name
                     return
 
 
                 # change the text in the page
-                self.change_text(f'question_text', self.cur_question)
-                self.change_text(f'question_number', f'QUESTION {self.cur_question_idx + 1} OF {self.number_of_questions}')
+                self.change_text(f'question_text', self.cur_question,screen_name)
+                self.change_text(f'question_number', f'QUESTION {self.cur_question_idx + 1} OF {self.number_of_questions}',screen_name)
                 try:
-                    self.change_photo(f'count',f'count_{self.cur_question_idx + 1}.png')
+                    self.change_photo(f'count',f'count_{self.cur_question_idx + 1}.png',screen_name)
                 except:
-                    self.change_photo(f'count', f'count_9.png')
+                    self.change_photo(f'count', f'count_9.png',screen_name)
 
                 try:
-                    self.change_photo(f'question_img',f'Q{self.cur_question_idx + 1}.png')
+                    self.change_photo(f'question_img',f'Q{self.cur_question_idx + 1}.png',screen_name)
                 except:
-                    self.change_photo(f'question_img', f'Q1.png')
+                    self.change_photo(f'question_img', f'Q1.png',screen_name)
 
                 self.on('reset')
-
                 # self.root.transition = SlideTransition(direction='left')
-
             elif screen_name == 'home':
                 # self.sizes()
-                self.root.current = screen_name
+                screen_manager.current = screen_name
             else:
                 self.root.transition = NoTransition()
-                self.root.current = screen_name
-
-
-
+                screen_manager.current = screen_name
         except:
-            self.root.current = 'profile'
+            screen_manager.current = 'profile'
 
 
 
@@ -106,24 +107,29 @@ class DawnApp(MDApp):
     def forgot_password(self):
         print("forgot password")
     def on(self,check):
+        screen_name = 'question'
+        screen = screen_manager.get_screen(screen_name)
+
         try:
             if check == 'yes':
-                self.root.ids[f'no_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
-                self.root.ids[f'no_btn_label'].color = get_color_from_hex("#000000")
+
+                screen.ids[f'no_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
+                screen.ids[f'no_btn_label'].color = get_color_from_hex("#000000")
             elif check == 'no':
-                self.root.ids[f'yes_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
-                self.root.ids[f'yes_btn_label'].color = get_color_from_hex("#000000")
+                screen.ids[f'yes_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
+                screen.ids[f'yes_btn_label'].color = get_color_from_hex("#000000")
             elif check == 'reset':
-                self.root.ids[f'yes_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
-                self.root.ids[f'yes_btn_label'].color = get_color_from_hex("#000000")
-                self.root.ids[f'no_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
-                self.root.ids[f'no_btn_label'].color = get_color_from_hex("#000000")
+                screen.ids[f'yes_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
+                screen.ids[f'yes_btn_label'].color = get_color_from_hex("#000000")
+                screen.ids[f'no_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
+                screen.ids[f'no_btn_label'].color = get_color_from_hex("#000000")
 
 
 
 
-            self.root.ids[f'{check}_btn'].md_bg_color =  get_color_from_hex("#012241")
-            self.root.ids[f'{check}_btn_label'].color = get_color_from_hex("#FFFFFF")
+
+            screen.ids[f'{check}_btn'].md_bg_color =  get_color_from_hex("#012241")
+            screen.ids[f'{check}_btn_label'].color = get_color_from_hex("#FFFFFF")
 
 
 
@@ -132,18 +138,14 @@ class DawnApp(MDApp):
 
 
 
-    def change_text(self, id , text):
-        self.root.ids[id].text = text
-    def change_photo(self, id , new_path):
-        self.root.ids[id].source = new_path
-    def back(self):
-        pass
-        # self.cur_question_idx -= 2
-        # self.next_question()
-        # self.go_to('next_question')
+    def change_text(self, id , text , screen_name):
+        screen = screen_manager.get_screen(screen_name)
+        screen.ids[id].text = text
+    def change_photo(self, id , new_path , screen_name):
+        screen = screen_manager.get_screen(screen_name)
+        screen.ids[id].source = new_path
     def profile_changes(self,type):
         print(f'{type} Changes made')
-
     def next_question(self,first=False):
         questions = [
             'Can you now (or could you ever) place your hand flat on the floor without bending your knees?',
@@ -183,37 +185,45 @@ class DawnApp(MDApp):
     def build(self):
 
         # set the first question in line
-
+        global screen_manager
         self.next_question(first=True)
-        Builder.load_file('daily.kv')
-        Builder.load_file('home.kv')
+        screen_manager = ScreenManager()
+        screen_manager.add_widget(Builder.load_file('loading.kv'))
+        screen_manager.add_widget(Builder.load_file('login.kv'))
+        screen_manager.add_widget(Builder.load_file('daily.kv'))
+        screen_manager.add_widget(Builder.load_file('home.kv'))
+        screen_manager.add_widget(Builder.load_file('profile.kv'))
+        screen_manager.add_widget(Builder.load_file('profile_diagnoseMe.kv'))
+        screen_manager.add_widget(Builder.load_file('profile_security.kv'))
+        screen_manager.add_widget(Builder.load_file('diagnose.kv'))
+        screen_manager.add_widget(Builder.load_file('question.kv'))
+        screen_manager.add_widget(Builder.load_file('question_details.kv'))
+        screen_manager.add_widget(Builder.load_file('question_details_datepick.kv'))
 
-        Builder.load_file('profile.kv')
-
-        Builder.load_file('profile_diagnoseMe.kv')
-
-
-
-        Builder.load_file('login.kv')
-        Builder.load_file('diagnose.kv')
-
-        Builder.load_file('classes.kv')
-        Builder.load_file('loading.kv')
-
-        Builder.load_file('question_details.kv')
-        Builder.load_file('question.kv')
-
-
-        Builder.load_file('signup.kv')
-        Builder.load_file('question_details_datepick.kv')
-        Builder.load_file('profile_security.kv')
+        # Builder.load_file('classes.kv')
+        # Builder.load_file('loading.kv')
+        # Builder.load_file('login.kv')
+        # Builder.load_file('daily.kv')
+        # Builder.load_file('home.kv')
+        # Builder.load_file('profile.kv')
+        # Builder.load_file('profile_diagnoseMe.kv')
+        # Builder.load_file('diagnose.kv')
+        # Builder.load_file('question_details.kv')
+        # Builder.load_file('question.kv')
+        # Builder.load_file('signup.kv')
+        # Builder.load_file('question_details_datepick.kv')
+        # Builder.load_file('profile_security.kv')
 
 
 
+        return screen_manager
+        # return DemoProject()
 
-        return DemoProject()
+    def on_start(self):
+        Clock.schedule_once(self.login , 5)
 
-
+    def login(self,*args):
+        screen_manager.current = "login"
 
 
 if __name__ == '__main__':
