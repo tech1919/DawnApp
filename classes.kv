@@ -16,6 +16,12 @@
 <MenuImage@Image>
     pos_hint: {"center_x": 0.87 , "center_y": 0.95}
     source: 'menu.png'
+<BackButton@ArrowButton>
+    pos_hint: {"center_x": 0.15 , "center_y": 0.95}
+    on_press: app.go_to("back")
+<BackImage@Image>
+    pos_hint: {"center_x": 0.15 , "center_y": 0.95}
+    source: 'back_btn.png'
 <SignoutButton@MenuButton>
     size_hint: None, None
     halign: "center"
@@ -57,7 +63,7 @@
     md_bg_color: get_color_from_hex("#FFFFFF")
     size_hint: None , None
     pos_hint: {"center_x": 0.5, "center_y": 0.05}
-    elevation: 3
+    elevation: 6
     radius: [10]
     orientation: "horizontal"
     padding: 10
@@ -76,10 +82,10 @@
     size_hint: 1 , 1
 
 <NavbarBox@MDBoxLayout>
+    md_bg_color: 0,0,0,0
     orientation: "horizontal"
     size_hint: 1 , 0.1
     pos_hint: {"center_x": 0.5, "center_y": 0.05}
-    md_bg_color: 1,1,1,1
 <ButtonBox@MDFloatLayout>
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
 
@@ -235,9 +241,9 @@
     id: user_img
     halign: "center"
     source: 'user.png'
-    size_hint_y: 0.9
+    size_hint_y: 1
     allow_stretch: True
-    pos_hint: {"center_x": 0.2 , "center_y": 0.9}
+    pos_hint: {"center_x": 0.2 , "center_y": 0.5}
 
 <HomeNameLabel@MDLabel>
     id: user_name
@@ -279,14 +285,14 @@
     halign: "center"
     color: 1,1,1,1
     bold: True
-    font_size: 14
+    font_style: 'Body2'
 
 
 <HomeButtonLabelDark@MDLabel>
     halign: "center"
-    color: 0,0.133,0.254,1
+    color: 0,0,0,1
     bold: True
-    font_size: 14
+    font_style: 'Body2'
 
 <HomeCardForImage@MDCard>
     pos_hint: {"center_x": 0.5 , "center_y": 0.7}

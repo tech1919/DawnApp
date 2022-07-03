@@ -24,7 +24,14 @@ class DawnApp(MDApp):
 
     def go_to(self,screen_name):
         # saves the last screen before changing
-        self.last_screen = self.root.current
+        try:
+            if screen_name == 'back':
+                screen_name = self.last_screen
+            self.last_screen = self.root.current
+        except:
+            pass
+
+
         try:
 
             if screen_name == 'question':
@@ -74,8 +81,6 @@ class DawnApp(MDApp):
                 self.on('reset')
 
                 # self.root.transition = SlideTransition(direction='left')
-
-
 
             elif screen_name == 'home':
                 # self.sizes()
@@ -180,14 +185,16 @@ class DawnApp(MDApp):
         # set the first question in line
 
         self.next_question(first=True)
-
-        Builder.load_file('profile.kv')
-        Builder.load_file('login.kv')
-        Builder.load_file('profile_diagnoseMe.kv')
-
         Builder.load_file('daily.kv')
         Builder.load_file('home.kv')
 
+        Builder.load_file('profile.kv')
+
+        Builder.load_file('profile_diagnoseMe.kv')
+
+
+
+        Builder.load_file('login.kv')
         Builder.load_file('diagnose.kv')
 
         Builder.load_file('classes.kv')

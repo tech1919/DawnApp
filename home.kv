@@ -8,32 +8,126 @@
 
             MenuButton:
             MenuImage:
-            MDFloatLayout:
-                SignoutButton:
-                    SignoutImage:
-
+            BackButton:
+            BackImage:
 
 
             CenterdCardForText:
-                SmallUserImage:
+                MDBoxLayout:
+                    size_hint: 0.4 , 1
+                    SmallUserImage:
                 MDBoxLayout
                     orientation: "vertical"
-
                     HomeNameLabel:
                         bold: True
-
                     HomeGreet:
 
 
 
 
 
-            CenterdCardForText:
-                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                size_hint: 11 , 1
+
+
+
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                pos_hint: {"center_x": 0.5 , "center_y": 0.7}
+
+                size_hint: 0.9 , 0.2
                 Image:
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.6}
-                    source: "home_buttons.png"
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    source: 'blood_test_logo.png'
+                    size_hint: 1,1
+                Image:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.4}
+                    source: 'doctor_logo.png'
+                    size_hint: 1,1
+
+
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                spacing: 10
+                pos_hint: {"center_x": 0.5 , "center_y": 0.7}
+
+                size_hint: 0.9 , 0.2
+
+                MDFloatLayout:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+
+                    MDBoxLayout:
+
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                        size_hint: 0.8 , 1
+
+                        HomeButtonLabelDark:
+                            pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+                            text: "Upload your blood test"
+                MDFloatLayout:
+
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    MDBoxLayout:
+
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                        size_hint: 0.8 , 1
+
+                        HomeButtonLabelLight:
+                            pos_hint: {"center_x": 0.5 , "center_y": 0.25}
+                            text: "Ask the doctor"
+
+
+
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                pos_hint: {"center_x": 0.5 , "center_y": 0.51}
+
+                size_hint: 0.9 , 0.2
+                Image:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    source: 'symptoms_logo.png'
+                    size_hint: 1,1
+                Image:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.4}
+                    source: 'diagnose_logo.png'
+                    size_hint: 1,1
+
+
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                spacing: 10
+                pos_hint: {"center_x": 0.5 , "center_y": 0.51}
+
+                size_hint: 0.9 , 0.2
+
+                MDFloatLayout:
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+
+                    MDBoxLayout:
+
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                        size_hint: 0.8 , 1
+
+                        HomeButtonLabelLight:
+                            pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+                            text: "What are your symptoms?"
+                MDFloatLayout:
+
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    MDBoxLayout:
+
+                        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                        size_hint: 0.8 , 1
+
+                        HomeButtonLabelDark:
+                            pos_hint: {"center_x": 0.5 , "center_y": 0.25}
+                            text: "Your diagnose"
+
+
+
+
 
 
 
@@ -105,10 +199,11 @@
 
 
 
-
+            #*************** Bottom navbar **************
 
 
             NavbarBox:
+
                 ButtonBox:
                     HomeButton:
                 ButtonBox:
@@ -117,16 +212,47 @@
                     DiagnoseButton:
                 ButtonBox:
                     ProfileButton:
+            BottomNavbarCard:
             NavbarBox:
-                Image:
-                    source: 'home_p.png'
-                Image:
-                    source: 'daily.png'
-                Image:
-                    source: 'diagnose.png'
-                Image:
-                    source: 'profile.png'
+                MDBoxLayout:
+                    orientation: "vertical"
 
+                    Image:
+                        source: 'home_p.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Home"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
+                MDBoxLayout:
+                    orientation: "vertical"
 
+                    Image:
+                        source: 'daily.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Daily"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    Image:
+                        source: 'diagnose.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Diagnose"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    Image:
+                        source: 'profile.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Profile"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
 
 

@@ -104,12 +104,11 @@
 
 
 
-
-
             #*************** Bottom navbar **************
 
 
             NavbarBox:
+
                 ButtonBox:
                     HomeButton:
                 ButtonBox:
@@ -118,17 +117,48 @@
                     DiagnoseButton:
                 ButtonBox:
                     ProfileButton:
+            BottomNavbarCard:
             NavbarBox:
-                Image:
-                    source: 'home.png'
-                Image:
-                    source: 'daily.png'
-                Image:
-                    source: 'diagnose.png'
-                Image:
-                    source: 'profile_p.png'
+                MDBoxLayout:
+                    orientation: "vertical"
 
+                    Image:
+                        source: 'home.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Home"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
+                MDBoxLayout:
+                    orientation: "vertical"
 
+                    Image:
+                        source: 'daily.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Daily"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    Image:
+                        source: 'diagnose.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Diagnose"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    Image:
+                        source: 'profile_p.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Profile"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
 
 
 
