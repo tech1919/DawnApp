@@ -8,8 +8,8 @@ MDScreen:
 
         MenuButton:
         MenuImage:
-        BackButton:
-        BackImage:
+        ArrowButtonLeft:
+            on_press: app.go_to("back")
 
 
         UserImage:
@@ -35,10 +35,8 @@ MDScreen:
                     source: 'person_logo.png'
                 CardContentLabel:
                     text: "My Account"
-                ArrowButton:
+                ArrowButtonRight:
                     on_press: app.go_to('profile')
-                    Image:
-                        source: 'right_button.png'
 
 
 
@@ -49,10 +47,8 @@ MDScreen:
                     source: 'list_logo.png'
                 CardContentLabel:
                     text: "Diagnose Me"
-                ArrowButton:
+                ArrowButtonRight:
                     on_press: app.go_to('profile_diagnoseMe')
-                    Image:
-                        source: 'right_button.png'
 
 
         OpenCard:
@@ -63,9 +59,8 @@ MDScreen:
                     source: 'shield_logo.png'
                 CardContentLabel:
                     text: "Security"
-                ArrowButton:
-                    Image:
-                        source: 'down_button.png'
+                ArrowButtonDown:
+
             MDBoxLayout:
                 orientation: "horizontal"
                 MDLabel:
@@ -94,7 +89,6 @@ MDScreen:
 
 
 
-
         #*************** Bottom navbar **************
 
 
@@ -112,8 +106,8 @@ MDScreen:
         NavbarBox:
             MDBoxLayout:
                 orientation: "vertical"
-
                 Image:
+                    id: home_btn
                     source: 'home.png'
                 MDLabel:
                     halign: "center"
@@ -124,6 +118,7 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
+                    id: daily_btn
                     source: 'daily.png'
                 MDLabel:
                     halign: "center"
@@ -134,6 +129,7 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
+                    id: diagnose_btn
                     source: 'diagnose.png'
                 MDLabel:
                     halign: "center"
@@ -144,25 +140,13 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
-                    source: 'profile_p.png'
+                    id: profile_btn
+                    source: 'profile.png'
                 MDLabel:
                     halign: "center"
                     text: "Profile"
                     font_style: "Caption"
                     color: get_color_from_hex("##012241")
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

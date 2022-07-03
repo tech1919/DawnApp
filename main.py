@@ -6,10 +6,7 @@ from kivy.config import Config
 from kivy.utils import get_color_from_hex
 from kivy.clock import Clock
 
-
-
 # Config.set('kivy','window_icon','icon.ico')
-
 
 class DemoProject(ScreenManager):
     pass
@@ -29,7 +26,8 @@ class DawnApp(MDApp):
         except:
             pass
         finally:
-            self.last_screen = screen_manager.current
+            if not self.last_screen == screen_name:
+                self.last_screen = screen_manager.current
 
 
         # screen = screen_manager.get_screen(screen_name)
@@ -61,6 +59,10 @@ class DawnApp(MDApp):
                     screen_manager.current = screen_name
                 else:
                     screen_manager.current = screen_name
+            elif screen_name == 'profile_diagnoseMe' or screen_name == 'profile_security':
+                screen = screen_manager.get_screen(screen_name)
+                screen_manager.current = screen_name
+                screen.ids['profile_btn'].source = 'profile_p.png'
             elif screen_name == 'next_question':
                 screen_name = 'question'
                 try:
@@ -87,16 +89,15 @@ class DawnApp(MDApp):
                 self.on('reset')
                 # self.root.transition = SlideTransition(direction='left')
             elif screen_name == 'home':
-                # self.sizes()
                 screen_manager.current = screen_name
             else:
                 self.root.transition = NoTransition()
                 screen_manager.current = screen_name
         except:
-            screen_manager.current = 'profile'
+            pass
+            # screen_manager.current = 'profile'
 
-
-
+        self.change_navbar(screen_name)
 
     def hello(self,say_something):
         print(say_something)
@@ -181,18 +182,43 @@ class DawnApp(MDApp):
 
         self.cur_question = questions[self.cur_question_idx]
 
+    def change_navbar(self,screen_name):
+
+
+        images_ids = ['home','daily','diagnose','profile']
+        flag = False
+        for id in images_ids:
+            if id == screen_name:
+                flag = True
+                break
+
+        if not flag:
+            return
+
+
+        screen = screen_manager.get_screen(screen_name)
+        for id in images_ids:
+            screen.ids[f'{id}_btn'].source = f'{id}.png'
+
+        screen.ids[f'{screen_name}_btn'].source = f'{screen_name}_p.png'
+
 
     def build(self):
 
         # set the first question in line
         global screen_manager
+
+        self.icon = 'app_logo.png'
         self.next_question(first=True)
+        self.last_screen = 'login'
+
         screen_manager = ScreenManager()
-        screen_manager.add_widget(Builder.load_file('loading.kv'))
+        # screen_manager.add_widget(Builder.load_file('loading.kv'))
         screen_manager.add_widget(Builder.load_file('login.kv'))
+        screen_manager.add_widget(Builder.load_file('profile.kv'))
+        screen_manager.add_widget(Builder.load_file('signup.kv'))
         screen_manager.add_widget(Builder.load_file('daily.kv'))
         screen_manager.add_widget(Builder.load_file('home.kv'))
-        screen_manager.add_widget(Builder.load_file('profile.kv'))
         screen_manager.add_widget(Builder.load_file('profile_diagnoseMe.kv'))
         screen_manager.add_widget(Builder.load_file('profile_security.kv'))
         screen_manager.add_widget(Builder.load_file('diagnose.kv'))
@@ -223,7 +249,7 @@ class DawnApp(MDApp):
         Clock.schedule_once(self.login , 5)
 
     def login(self,*args):
-        screen_manager.current = "login"
+        screen_manager.current = "profile"
 
 
 if __name__ == '__main__':

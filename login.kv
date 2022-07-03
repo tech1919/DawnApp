@@ -1,7 +1,7 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Window kivy.core.window.Window
 #:import FadeTransition kivy.uix.screenmanager.FadeTransition
-
+#:include classes_test.kv
 
 
 MDScreen:
@@ -22,7 +22,7 @@ MDScreen:
             on_press: app.go_to('signup')
 
         LoginLabelCard:
-            pos_hint: {"center_x": 0.6, "center_y": 0.8}
+            pos_hint: {"center_x": 0.5, "center_y": 0.8}
             LoginHeaderLabel:
                 text: 'Login'
 
@@ -66,6 +66,11 @@ MDScreen:
                 LoginButtonLabel:
                     text: 'LOGIN'
                     bold: True
+
+        ArrowButton:
+            pos_hint: {"center_x": 0.5, "center_y": 0.22}
+            on_press: app.go_to("question")
+
 
 
 

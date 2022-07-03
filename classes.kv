@@ -10,18 +10,39 @@
     text_color: 0,0,0,0
     background_color: 0,0,0,0
 
+<ArrowButtonDown@ArrowButton>
+    Image:
+        size_hint: 0.6 , 0.6
+        source: 'down_button.png'
+
+
+<ArrowButtonRight@ArrowButton>
+    Image:
+        size_hint: 0.6 , 0.6
+        source: 'right_button.png'
+
+<ArrowButtonLeft@ArrowButton>
+    pos_hint: {"center_x": 0.15 , "center_y": 0.95}
+    Image:
+        size_hint: 0.6 , 0.6
+        source: 'left_button.png'
+
+<BackButton@ArrowButtonLeft>
+    pos_hint: {"center_x": 0.15 , "center_y": 0.95}
+    on_press: app.go_to("back")
+
+
 
 <MenuButton@ArrowButton>
     pos_hint: {"center_x": 0.87 , "center_y": 0.95}
 <MenuImage@Image>
     pos_hint: {"center_x": 0.87 , "center_y": 0.95}
+    size_hint: 0.4 , 0.4
     source: 'menu.png'
-<BackButton@ArrowButton>
-    pos_hint: {"center_x": 0.15 , "center_y": 0.95}
-    on_press: app.go_to("back")
+
 <BackImage@Image>
     pos_hint: {"center_x": 0.15 , "center_y": 0.95}
-    source: 'back_btn.png'
+    source: ''
 <SignoutButton@MenuButton>
     size_hint: None, None
     halign: "center"
@@ -58,6 +79,13 @@
 
 
 #******************** NAVBAR ***********************
+
+
+<Navbar@MDFloatLayout>
+
+
+
+
 
 <BottomNavbarCard@MDCard>
     md_bg_color: get_color_from_hex("#FFFFFF")
@@ -205,6 +233,7 @@
     pos_hint: {"center_x": 0.625 , "center_y": 0.85}
     on_press: app.go_to('profile_security')
 
+
 <CardContentBox@MDBoxLayout>
     spacing: 10
     orientation: "horizontal"
@@ -251,7 +280,7 @@
     halign: "left"
     color: 0,0.439,0.313,1
     pos_hint: {"center_x": 0.5 , "center_y": 0.2}
-    font_style: "Body1"
+    font_style: "H5"
 
 <HomeGreet@MDLabel>
     text: "Welcome Back!"

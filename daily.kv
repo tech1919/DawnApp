@@ -10,8 +10,9 @@ MDScreen:
 
         MenuButton:
         MenuImage:
-        BackButton:
-        BackImage:
+        ArrowButtonLeft:
+            on_press: app.go_to("back")
+
 
         CenterdCardForText:
             MDLabel:
@@ -31,10 +32,7 @@ MDScreen:
                             text: "Skin Moisturizing"
                         MDProgressBar:
                             value: 70
-                    ArrowButton:
-                        Image:
-                            source: 'right_button.png'
-
+                    ArrowButtonRight:
             ProgressCard:
                 CardContentBox:
                     DailyPrecent:
@@ -44,9 +42,7 @@ MDScreen:
                             text: "Body Tempreture"
                         MDProgressBar:
                             value: 21
-                    ArrowButton:
-                        Image:
-                            source: 'right_button.png'
+                    ArrowButtonRight:
 
             ProgressCard:
                 CardContentBox:
@@ -57,9 +53,7 @@ MDScreen:
                             text: "Cardiovascular Efficiency"
                         MDProgressBar:
                             value: 38
-                    ArrowButton:
-                        Image:
-                            source: 'right_button.png'
+                    ArrowButtonRight:
 
             ProgressCard:
                 CardContentBox:
@@ -70,9 +64,7 @@ MDScreen:
                             text: "Blood Pressure"
                         MDProgressBar:
                             value: 95
-                    ArrowButton:
-                        Image:
-                            source: 'right_button.png'
+                    ArrowButtonRight:
 
             ProgressCard:
                 CardContentBox:
@@ -83,9 +75,7 @@ MDScreen:
                             text: "Blood Glucose"
                         MDProgressBar:
                             value: 82
-                    ArrowButton:
-                        Image:
-                            source: 'right_button.png'
+                    ArrowButtonRight:
 
             ProgressCard:
                 CardContentBox:
@@ -96,9 +86,7 @@ MDScreen:
                             text: "Muscle Pressure"
                         MDProgressBar:
                             value: 34
-                    ArrowButton:
-                        Image:
-                            source: 'right_button.png'
+                    ArrowButtonRight:
 
             ProgressCard:
                 CardContentBox:
@@ -109,9 +97,8 @@ MDScreen:
                             text: ''
                         MDProgressBar:
                             value:
-                    ArrowButton:
-                        Image:
-                            source: 'right_button.png'
+                    ArrowButtonRight:
+
 
 
 
@@ -133,8 +120,8 @@ MDScreen:
         NavbarBox:
             MDBoxLayout:
                 orientation: "vertical"
-
                 Image:
+                    id: home_btn
                     source: 'home.png'
                 MDLabel:
                     halign: "center"
@@ -145,7 +132,8 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
-                    source: 'daily_p.png'
+                    id: daily_btn
+                    source: 'daily.png'
                 MDLabel:
                     halign: "center"
                     text: "Daily"
@@ -155,6 +143,7 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
+                    id: diagnose_btn
                     source: 'diagnose.png'
                 MDLabel:
                     halign: "center"
@@ -165,6 +154,7 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
+                    id: profile_btn
                     source: 'profile.png'
                 MDLabel:
                     halign: "center"

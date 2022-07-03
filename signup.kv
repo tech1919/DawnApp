@@ -3,112 +3,112 @@
 #:import FadeTransition kivy.uix.screenmanager.FadeTransition
 
 
-<DemoProject>:
-    Screen:
-        name: 'signup'
-        LoginLayout:
+
+MDScreen:
+    name: 'signup'
+    LoginLayout:
 
 
-            MDIconButton:
-                id: signup_btn
-                halign: "center"
-                md_bg_color: get_color_from_hex("##012241")
-                pos_hint: {"center_x": 0.5, "center_y": 0.22}
-                on_press: app.go_to('question')
+        MDIconButton:
+            id: signup_btn
+            halign: "center"
+            md_bg_color: get_color_from_hex("##012241")
+            pos_hint: {"center_x": 0.5, "center_y": 0.22}
+            on_press: app.go_to('question')
 
-            ArrowButton:
-                id: login_page
-                pos_hint: {"center_x": 0.56, "center_y": 0.02}
-                on_press: app.go_to('login')
+        ArrowButton:
+            id: login_page
+            pos_hint: {"center_x": 0.56, "center_y": 0.02}
+            on_press: app.go_to('login')
 
-            LoginLabelCard:
-                pos_hint: {"center_x": 0.6, "center_y": 0.8}
-                LoginHeaderLabel:
-                    text: 'Sign Up'
-                    bold: True
-
-
-            LoginLabelCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.65}
-                LoginGeneralLabel:
-                    text: 'Username'
-            LoginInputCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.58}
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    LoginInputField:
-                        id: username_signup
+        LoginLabelCard:
+            pos_hint: {"center_x": 0.6, "center_y": 0.8}
+            LoginHeaderLabel:
+                text: 'Sign Up'
+                bold: True
 
 
-            LoginLabelCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.52}
-                LoginGeneralLabel:
-                    text: 'Email'
-            LoginInputCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.46}
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    LoginInputField:
-                        id: email_signup
-
-
-
-            LoginLabelCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.4}
-                LoginGeneralLabel:
-                    text: 'Password'
-            LoginInputCard:
-                pos_hint: {"center_x": 0.5, "center_y": 0.34}
-                MDBoxLayout:
-                    orientation: "horizontal"
-                    LoginInputField:
-                        id: password_signup
-                        password: True
-
-
-
-
-            LoginButton:
-                pos_hint: {"center_x": 0.5, "center_y": 0.22}
-                MDBoxLayout:
-                    LoginButtonLabel:
-                        text: 'SIGN UP'
-
-
-            MDCard:
-                orientation: "vertical"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.02
-                elevation: 0
-                pos_hint: {"center_x": 0.5, "center_y": 0.15}
-                LoginFooterLabel:
-                    text: 'or'
-
-            MDCard:
+        LoginLabelCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.65}
+            LoginGeneralLabel:
+                text: 'Username'
+        LoginInputCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.58}
+            MDBoxLayout:
                 orientation: "horizontal"
-                md_bg_color: get_color_from_hex("#012241")
-                size_hint: 0.9 , 0.02
-                elevation: 0
-                pos_hint: {"center_x": 0.5, "center_y": 0.1}
-                MDFloatLayout:
-                    MDIconButton:
-                        halign: "center"
-                        icon: "facebook_logo.png"
-                        on_release: app.facebook_login()
-                        size: self.parent.size
-                        user_font_size: "5sp"
-                        pos_hint: {"center_x": 0.43, "center_y": 0.5}
-                    MDIconButton:
-                        halign: "center"
-                        icon: "google_logo.png"
-                        on_release: app.google_login()
-                        size: self.parent.size
-                        user_font_size: "5sp"
-                        pos_hint: {"center_x": 0.57, "center_y": 0.5}
+                LoginInputField:
+                    id: username_signup
+
+
+        LoginLabelCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.52}
+            LoginGeneralLabel:
+                text: 'Email'
+        LoginInputCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.46}
+            MDBoxLayout:
+                orientation: "horizontal"
+                LoginInputField:
+                    id: email_signup
 
 
 
-            LoginFooter:
-                LoginFooterLabel:
-                    text: "Already have an account? Login"
+        LoginLabelCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            LoginGeneralLabel:
+                text: 'Password'
+        LoginInputCard:
+            pos_hint: {"center_x": 0.5, "center_y": 0.34}
+            MDBoxLayout:
+                orientation: "horizontal"
+                LoginInputField:
+                    id: password_signup
+                    password: True
+
+
+
+
+        LoginButton:
+            pos_hint: {"center_x": 0.5, "center_y": 0.22}
+            MDBoxLayout:
+                LoginButtonLabel:
+                    text: 'SIGN UP'
+
+
+        MDCard:
+            orientation: "vertical"
+            md_bg_color: get_color_from_hex("#012241")
+            size_hint: 0.9 , 0.02
+            elevation: 0
+            pos_hint: {"center_x": 0.5, "center_y": 0.15}
+            LoginFooterLabel:
+                text: 'or'
+
+        MDCard:
+            orientation: "horizontal"
+            md_bg_color: get_color_from_hex("#012241")
+            size_hint: 0.9 , 0.02
+            elevation: 0
+            pos_hint: {"center_x": 0.5, "center_y": 0.1}
+            MDFloatLayout:
+                MDIconButton:
+                    halign: "center"
+                    icon: "facebook_logo.png"
+                    on_release: app.facebook_login()
+                    size: self.parent.size
+                    user_font_size: "5sp"
+                    pos_hint: {"center_x": 0.43, "center_y": 0.5}
+                MDIconButton:
+                    halign: "center"
+                    icon: "google_logo.png"
+                    on_release: app.google_login()
+                    size: self.parent.size
+                    user_font_size: "5sp"
+                    pos_hint: {"center_x": 0.57, "center_y": 0.5}
+
+
+
+        LoginFooter:
+            LoginFooterLabel:
+                text: "Already have an account? Login"
 

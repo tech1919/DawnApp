@@ -10,8 +10,8 @@ MDScreen:
 
         MenuButton:
         MenuImage:
-        BackButton:
-        BackImage:
+        ArrowButtonLeft:
+            on_press: app.go_to("back")
 
         CenterdCardForText:
             pos_hint: {"center_x": 0.5 , "center_y": 0.9}
@@ -80,9 +80,7 @@ MDScreen:
                 CardContentImage:
                     source: 'schedual.png'
                 CardContentLabel:
-                ArrowButton:
-                    Image:
-                        source: 'right_button.png'
+                ArrowButtonRight:
 
         ClosedCard:
             md_bg_color: get_color_from_hex("#007150")
@@ -91,10 +89,7 @@ MDScreen:
                 CardContentImage:
                     source: 'diagnose2_selection.png'
                 CardContentLabel:
-                ArrowButton:
-                    Image:
-                        source: 'right_button.png'
-
+                ArrowButtonRight:
 
 
 
@@ -116,8 +111,8 @@ MDScreen:
         NavbarBox:
             MDBoxLayout:
                 orientation: "vertical"
-
                 Image:
+                    id: home_btn
                     source: 'home.png'
                 MDLabel:
                     halign: "center"
@@ -128,6 +123,7 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
+                    id: daily_btn
                     source: 'daily.png'
                 MDLabel:
                     halign: "center"
@@ -138,7 +134,8 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
-                    source: 'diagnose_p.png'
+                    id: diagnose_btn
+                    source: 'diagnose.png'
                 MDLabel:
                     halign: "center"
                     text: "Diagnose"
@@ -148,11 +145,11 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
+                    id: profile_btn
                     source: 'profile.png'
                 MDLabel:
                     halign: "center"
                     text: "Profile"
                     font_style: "Caption"
                     color: get_color_from_hex("##012241")
-
 

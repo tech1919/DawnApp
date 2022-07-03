@@ -13,14 +13,8 @@ MDScreen:
             md_bg_color: get_color_from_hex("#FDFAF7")
             orientation: 'vertical'
 
-            MDFillRoundFlatButton:
-
-                size_hint: None, None
-                width: dp(70) + (self.ids.lbl_txt.texture_size[0] - self.ids.lbl_txt.texture_size[0])
-                height: dp(200)
-                md_bg_color: get_color_from_hex("#FDFAF7")
-                pos_hint: {"center_x": .13 , "center_y": 0.93}
-                on_release: app.back()
+        ArrowButtonLeft:
+            on_press: app.go_to("back")
 
 
 
@@ -63,11 +57,8 @@ MDScreen:
                         halign: "left"
                         font_style: 'Body2'
 
-                    ArrowButton:
+                    ArrowButtonRight:
                         on_press: app.go_to('question_details_datepick')
-                        Image:
-                            source: 'right_button.png'
-
 
 
             MDCard:

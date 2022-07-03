@@ -8,8 +8,8 @@ MDScreen:
 
         MenuButton:
         MenuImage:
-        BackButton:
-        BackImage:
+        ArrowButtonLeft:
+            on_press: app.go_to("back")
 
 
         CenterdCardForText:
@@ -168,7 +168,6 @@ MDScreen:
             MDLabel:
 
                 text: "Bnei Barak, haroeh 21"
-
                 color: 0,0,0,1
 
                 bold: False
@@ -182,6 +181,7 @@ MDScreen:
                 valign: "center"
                 halign: "left"
                 Image:
+                    pos_hint: {"center_y": 0.5}
                     size_hint: None , None
                     width: 15
                     height: 15
@@ -216,9 +216,9 @@ MDScreen:
         NavbarBox:
             MDBoxLayout:
                 orientation: "vertical"
-
                 Image:
-                    source: 'home_p.png'
+                    id: home_btn
+                    source: 'home.png'
                 MDLabel:
                     halign: "center"
                     text: "Home"
@@ -228,6 +228,7 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
+                    id: daily_btn
                     source: 'daily.png'
                 MDLabel:
                     halign: "center"
@@ -238,6 +239,7 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
+                    id: diagnose_btn
                     source: 'diagnose.png'
                 MDLabel:
                     halign: "center"
@@ -248,6 +250,7 @@ MDScreen:
                 orientation: "vertical"
 
                 Image:
+                    id: profile_btn
                     source: 'profile.png'
                 MDLabel:
                     halign: "center"
