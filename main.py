@@ -178,9 +178,10 @@ class DawnApp(MDApp):
         # set the first question in line
 
         self.next_question(first=True)
+        Builder.load_file('login.kv')
         Builder.load_file('daily.kv')
         Builder.load_file('home.kv')
-        Builder.load_file('login.kv')
+
         Builder.load_file('diagnose.kv')
 
         Builder.load_file('classes.kv')
@@ -195,7 +196,6 @@ class DawnApp(MDApp):
         Builder.load_file('profile_security.kv')
         Builder.load_file('profile_diagnoseMe.kv')
 
-        Builder.load_file('daily.kv')
 
 
         return DemoProject()
