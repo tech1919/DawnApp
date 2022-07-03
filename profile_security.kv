@@ -7,7 +7,7 @@
         ProfilePageLayout:
 
             MenuButton:
-                MenuImage:
+            MenuImage:
             MDFloatLayout:
                 SignoutButton:
                     SignoutLabel:
@@ -98,38 +98,27 @@
 
             #*************** Bottom navbar **************
 
-            BottomNavbarCard:
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('home')
-                        Image:
-                            source: 'home.png'
-
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('daily')
-                        Image:
-                            source: 'daily.png'
-
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('diagnose')
-                        Image:
-                            source: 'diagnose.png'
-
-
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('profile')
-                        Image:
-                            source: 'profile_p.png'
 
 
 
-
-
-
-
+            NavbarBox:
+                ButtonBox:
+                    HomeButton:
+                ButtonBox:
+                    DailyButton:
+                ButtonBox:
+                    DiagnoseButton:
+                ButtonBox:
+                    ProfileButton:
+            NavbarBox:
+                Image:
+                    source: 'home.png'
+                Image:
+                    source: 'daily.png'
+                Image:
+                    source: 'diagnose.png'
+                Image:
+                    source: 'profile_p.png'
 
 
 

@@ -7,7 +7,7 @@
         ProfilePageLayout:
 
             MenuButton:
-                MenuImage:
+            MenuImage:
             MDFloatLayout:
                 SignoutButton:
                     SignoutLabel:
@@ -53,6 +53,39 @@
                         Image:
                             source: 'down_button.png'
 
+                ScrollView:
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        halign: "center"
+
+                        size_hint_y: None
+                        size_hint_x: 1
+                        cols: 1
+                        spacing: "20dp"
+                        padding: "20dp"
+
+                        MDCard:
+                            halign: "center"
+                            pos_hint: {"center_x": 0.5}
+                            md_bg_color: get_color_from_hex("#000000")
+                            size_hint: 0.1 , 0.1
+                            elevation: 1
+                            radius: [10]
+                        MDCard:
+                            halign: "center"
+                            pos_hint: {"center_x": 0.5}
+                            md_bg_color: get_color_from_hex("#000000")
+                            size_hint: 0.1 , 0.1
+                            elevation: 1
+                            radius: [10]
+                        MDCard:
+                            halign: "center"
+                            pos_hint: {"center_x": 0.5}
+                            md_bg_color: get_color_from_hex("#000000")
+                            size_hint: 0.1 , 0.1
+                            elevation: 1
+                            radius: [10]
+
 
 
             ClosedCard:
@@ -75,31 +108,26 @@
 
             #*************** Bottom navbar **************
 
-            BottomNavbarCard:
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('home')
-                        Image:
-                            source: 'home.png'
 
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('daily')
-                        Image:
-                            source: 'daily.png'
+            NavbarBox:
+                ButtonBox:
+                    HomeButton:
+                ButtonBox:
+                    DailyButton:
+                ButtonBox:
+                    DiagnoseButton:
+                ButtonBox:
+                    ProfileButton:
+            NavbarBox:
+                Image:
+                    source: 'home.png'
+                Image:
+                    source: 'daily.png'
+                Image:
+                    source: 'diagnose.png'
+                Image:
+                    source: 'profile_p.png'
 
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('diagnose')
-                        Image:
-                            source: 'diagnose.png'
-
-
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('profile')
-                        Image:
-                            source: 'profile_p.png'
 
 
 

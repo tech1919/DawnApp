@@ -9,7 +9,7 @@
             orientation: 'vertical'
 
             MenuButton:
-                MenuImage:
+            MenuImage:
 
             CenterdCardForText:
                 MDLabel:
@@ -113,34 +113,26 @@
 
 
 
-            BottomNavbarCard:
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('home')
-                        Image:
-                            source: 'home.png'
-
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('daily')
-                        Image:
-                            source: 'daily_p.png'
-
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('diagnose')
-                        Image:
-                            source: 'diagnose.png'
 
 
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('profile')
-                        Image:
-                            source: 'profile.png'
-
-
-
+            NavbarBox:
+                ButtonBox:
+                    HomeButton:
+                ButtonBox:
+                    DailyButton:
+                ButtonBox:
+                    DiagnoseButton:
+                ButtonBox:
+                    ProfileButton:
+            NavbarBox:
+                Image:
+                    source: 'home.png'
+                Image:
+                    source: 'daily_p.png'
+                Image:
+                    source: 'diagnose.png'
+                Image:
+                    source: 'profile.png'
 
 
 

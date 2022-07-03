@@ -9,7 +9,7 @@
             md_bg_color: get_color_from_hex("#FDFAF7")
 
             MenuButton:
-                MenuImage:
+            MenuImage:
             MDFloatLayout:
                 SignoutButton:
             SignoutLabel:
@@ -105,31 +105,25 @@
 
 
 
+            NavbarBox:
+                ButtonBox:
+                    HomeButton:
+                ButtonBox:
+                    DailyButton:
+                ButtonBox:
+                    DiagnoseButton:
+                ButtonBox:
+                    ProfileButton:
+            NavbarBox:
+                Image:
+                    source: 'home.png'
+                Image:
+                    source: 'daily.png'
+                Image:
+                    source: 'diagnose_p.png'
+                Image:
+                    source: 'profile.png'
 
-            BottomNavbarCard:
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('home')
-                        Image:
-                            source: 'home.png'
 
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('daily')
-                        Image:
-                            source: 'daily.png'
-
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('diagnose')
-                        Image:
-                            source: 'diagnose_p.png'
-
-
-                BoxForButton:
-                    BottomNavbarButton:
-                        on_release: app.go_to('profile')
-                        Image:
-                            source: 'profile.png'
 
 
