@@ -7,10 +7,9 @@ MDScreen:
     ProfilePageLayout:
 
         MenuButton:
-        MenuImage:
+            MenuImage:
         MDFloatLayout:
-            SignoutButton:
-                SignoutLabel:
+            SignoutLabel:
 
         UserImage:
 
@@ -29,58 +28,36 @@ MDScreen:
 
         ClosedCard:
             pos_hint: {"center_x": 0.5, "center_y": 0.66}
+
             CardContentBox:
                 CardContentImage:
                     source: 'person_logo.png'
                 CardContentLabel:
                     text: "My Account"
-                ArrowButtonRight:
+                ArrowButton:
                     on_press: app.go_to('profile')
-
+                    ArrowRight:
 
 
         OpenCard:
+            id: diagnose_me
             md_bg_color: get_color_from_hex("#FFFFFF")
             pos_hint: {"center_x": 0.5, "center_y": 0.42}
             CardContentBox:
+                size_hint: 1 , 0.3
                 CardContentImage:
                     source: 'list_logo.png'
                 CardContentLabel:
                     text: "Diagnose Me"
-                ArrowButtonDown:
+                ArrowButton:
+                    ArrowDown:
 
-            ScrollView:
-                MDBoxLayout:
-                    orientation: "vertical"
-                    halign: "center"
 
-                    size_hint_y: None
-                    size_hint_x: 1
-                    cols: 1
-                    spacing: "20dp"
-                    padding: "20dp"
 
-                    MDCard:
-                        halign: "center"
-                        pos_hint: {"center_x": 0.5}
-                        md_bg_color: get_color_from_hex("#000000")
-                        size_hint: 0.1 , 0.1
-                        elevation: 1
-                        radius: [10]
-                    MDCard:
-                        halign: "center"
-                        pos_hint: {"center_x": 0.5}
-                        md_bg_color: get_color_from_hex("#000000")
-                        size_hint: 0.1 , 0.1
-                        elevation: 1
-                        radius: [10]
-                    MDCard:
-                        halign: "center"
-                        pos_hint: {"center_x": 0.5}
-                        md_bg_color: get_color_from_hex("#000000")
-                        size_hint: 0.1 , 0.1
-                        elevation: 1
-                        radius: [10]
+
+
+
+
 
 
 
@@ -91,8 +68,9 @@ MDScreen:
                     source: 'shield_logo.png'
                 CardContentLabel:
                     text: "Security"
-                ArrowButtonRight:
+                ArrowButton:
                     on_press: app.go_to('profile_security')
+                    ArrowRight:
 
 
 

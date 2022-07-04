@@ -9,9 +9,12 @@ MDScreen:
         md_bg_color: get_color_from_hex("#FDFAF7")
 
         MenuButton:
-        MenuImage:
-        ArrowButtonLeft:
-            on_press: app.go_to("back")
+            MenuImage:
+        ArrowButton:
+            pos_hint: {"center_x": 0.15 , "center_y": 0.95}
+            on_press: app.go_to('back')
+            ArrowButton:
+                ArrowLeft:
 
         CenterdCardForText:
             pos_hint: {"center_x": 0.5 , "center_y": 0.9}
@@ -50,19 +53,19 @@ MDScreen:
                 bold: True
 
         CenterdCardForText
-            pos_hint: {"center_x": 0.5 , "center_y": 0.64}
+            pos_hint: {"center_x": 0.5 , "center_y": 0.66}
             orientation: "vertical"
             MDLabel:
                 valign: "center"
                 text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim massa, imperdiet ut metus sit amet."
                 font_style: "Body2"
 
-        CenterdCardForText
-            size_hint: 0.9 , 1
-            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-            Image
-                pos_hint: {"center_x": 0.5 , "center_y": 0.47}
-                source: "diagnose_page.png"
+        Image
+            pos_hint: {"center_x": 0.5 , "center_y": 0.47}
+            source: "diagnose_page.png"
+
+
+
 
 
         CenterdCardForText:
@@ -79,17 +82,47 @@ MDScreen:
             CardContentBox:
                 CardContentImage:
                     source: 'schedual.png'
-                CardContentLabel:
-                ArrowButtonRight:
+                BoxLayout:
+                    orientation: "vertical"
+                    spacing: 5
+                    CardContentLabel:
+                        halign: 'left'
+                        font_style: 'Body2'
+                        text: 'Set an Appointment'
+                        color: 0,0,0,1
+
+                    CardContentLabel:
+                        halign: 'left'
+                        font_style: 'Body2'
+                        text: 'Lorem Ipsum is simply dummy'
+                        color: 0,0,0,1
+                        bold: False
+                ArrowButton:
+                    ArrowRight:
 
         ClosedCard:
             md_bg_color: get_color_from_hex("#007150")
-            pos_hint: {"center_x": 0.5 , "center_y": 0.16}
+            pos_hint: {"center_x": 0.5 , "center_y": 0.18}
             CardContentBox:
                 CardContentImage:
                     source: 'diagnose2_selection.png'
-                CardContentLabel:
-                ArrowButtonRight:
+                BoxLayout:
+                    orientation: "vertical"
+                    spacing: 5
+                    CardContentLabel:
+                        halign: 'left'
+                        font_style: 'Body2'
+                        text: 'Lorem Ipsum'
+                        color: 1,1,1,1
+
+                    CardContentLabel:
+                        halign: 'left'
+                        font_style: 'Body2'
+                        text: 'Lorem Ipsum is simply dummy'
+                        color: 1,1,1,1
+                        bold: False
+                ArrowButton:
+                    ArrowRight:
 
 
 

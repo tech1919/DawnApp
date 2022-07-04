@@ -5,8 +5,18 @@ from kivy.lang.builder import Builder
 from kivy.config import Config
 from kivy.utils import get_color_from_hex
 from kivy.clock import Clock
+from kivymd.uix.boxlayout import MDBoxLayout
+from kivy.uix.gridlayout import GridLayout
+from kivymd.uix.list import IRightBodyTouch
+from kivy.uix.scrollview import ScrollView
+from kivymd.uix.label import MDLabel
+from kivymd.uix.card import MDCard
+from kivymd.app import MDApp
+from kivymd.uix.list import MDList, TwoLineAvatarIconListItem,OneLineListItem ,TwoLineListItem,ThreeLineListItem ,OneLineAvatarIconListItem ,ThreeLineAvatarIconListItem , IconLeftWidget , IconRightWidget
+from kivy.uix.widget import Widget
 
-# Config.set('kivy','window_icon','icon.ico')
+
+
 
 class DemoProject(ScreenManager):
     pass
@@ -15,6 +25,47 @@ class DemoProject(ScreenManager):
 class DawnApp(MDApp):
     def on_enter(self, *args):
         Clock.schedule_once(self.switch_to_home, 5)
+
+    def change_ans(self , q_num):
+        cur_ans = self.answers[q_num]
+        if cur_ans == 'Yes':
+            self.answers[q_num] = 'No'
+        else:
+            self.answers[q_num] = 'Yes'
+
+
+    def create_scrollview(self):
+
+        if self.first_scroll_view:
+            self.first_scroll_view = False
+        elif self.first_scroll_view == False:
+            return
+
+        screen = screen_manager.get_screen('profile_diagnoseMe')
+        sv = ScrollView()
+        ml = MDList()
+        sv.add_widget(ml)
+
+
+        i = 0
+        for c in self.questions:
+            item = TwoLineListItem(
+                text=c,
+                secondary_text = self.answers[i],
+                font_style='Caption',
+
+
+            )
+
+
+
+            i += 1
+            ml.add_widget(item)
+
+        screen.ids['diagnose_me'].add_widget(sv)
+
+
+
 
     def go_to(self,screen_name):
         # saves the last screen before changing
@@ -62,6 +113,10 @@ class DawnApp(MDApp):
             elif screen_name == 'profile_diagnoseMe' or screen_name == 'profile_security':
                 screen = screen_manager.get_screen(screen_name)
                 screen_manager.current = screen_name
+
+                self.create_scrollview()
+
+
                 screen.ids['profile_btn'].source = 'profile_p.png'
             elif screen_name == 'next_question':
                 screen_name = 'question'
@@ -113,10 +168,11 @@ class DawnApp(MDApp):
 
         try:
             if check == 'yes':
-
+                self.answers[self.cur_question_idx] = 'Yes'
                 screen.ids[f'no_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
                 screen.ids[f'no_btn_label'].color = get_color_from_hex("#000000")
             elif check == 'no':
+                self.answers[self.cur_question_idx] = 'No'
                 screen.ids[f'yes_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
                 screen.ids[f'yes_btn_label'].color = get_color_from_hex("#000000")
             elif check == 'reset':
@@ -124,8 +180,6 @@ class DawnApp(MDApp):
                 screen.ids[f'yes_btn_label'].color = get_color_from_hex("#000000")
                 screen.ids[f'no_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
                 screen.ids[f'no_btn_label'].color = get_color_from_hex("#000000")
-
-
 
 
 
@@ -148,7 +202,8 @@ class DawnApp(MDApp):
     def profile_changes(self,type):
         print(f'{type} Changes made')
     def next_question(self,first=False):
-        questions = [
+
+        self.questions = [
             'Can you now (or could you ever) place your hand flat on the floor without bending your knees?',
             'Can you now (or could you ever) bend your thumb to touch your forearm?',
             'As a child, did you amuse your friends by contorting your body into storage shapes or could you do the splits?',
@@ -159,8 +214,8 @@ class DawnApp(MDApp):
             'Unexplained striae distensae or rubae at the back, groins, thighs, breasts and/or abdomen in adolescents, men or pre-pubertal women without a history of significant gain or loss of body fat orweight',
             'Bilateral piezogenic papules of the heel',
             'Recurrent or multiple abdominal hernia(s)',
-            'Atrophic scarring involving at least nwo sites and without the formation of truly papyraceous and/or hemosideric scars as seen in classical EDS '
-            + 'Pelvic floor, rectal, and/or uterine prolapse in children, men or nulliparous women without a history of morbid obesity or other known '
+            'Atrophic scarring involving at least nwo sites and without the formation of truly papyraceous and/or hemosideric scars as seen in classical EDS ',
+            'Pelvic floor, rectal, and/or uterine prolapse in children, men or nulliparous women without a history of morbid obesity or other known '
             + 'predisposing medical condition',
             'Dental crowding and high or narrow palate',
             'Arachnodactyly, as defined in one or more of the following:' +
@@ -172,15 +227,21 @@ class DawnApp(MDApp):
             'Chronic, widespread pain for 3 months or more',
             'Recurrent joint dislocations or frank joint instability, in the absence of trauma'
         ]
-        self.number_of_questions = len(questions)
+
+
         if first:
+            self.answers = {}
             # first question
             self.cur_question_idx = 0
+            self.number_of_questions = len(self.questions)
+            for i in range(0, self.number_of_questions):
+                self.answers[i] = 'No'
+
         else:
 
             self.cur_question_idx += 1
 
-        self.cur_question = questions[self.cur_question_idx]
+        self.cur_question = self.questions[self.cur_question_idx]
 
     def change_navbar(self,screen_name):
 
@@ -208,12 +269,12 @@ class DawnApp(MDApp):
         # set the first question in line
         global screen_manager
 
+        self.first_scroll_view = True
         self.icon = 'app_logo.png'
         self.next_question(first=True)
         self.last_screen = 'login'
 
         screen_manager = ScreenManager()
-        # screen_manager.add_widget(Builder.load_file('loading.kv'))
         screen_manager.add_widget(Builder.load_file('login.kv'))
         screen_manager.add_widget(Builder.load_file('profile.kv'))
         screen_manager.add_widget(Builder.load_file('signup.kv'))
@@ -226,19 +287,6 @@ class DawnApp(MDApp):
         screen_manager.add_widget(Builder.load_file('question_details.kv'))
         screen_manager.add_widget(Builder.load_file('question_details_datepick.kv'))
 
-        # Builder.load_file('classes.kv')
-        # Builder.load_file('loading.kv')
-        # Builder.load_file('login.kv')
-        # Builder.load_file('daily.kv')
-        # Builder.load_file('home.kv')
-        # Builder.load_file('profile.kv')
-        # Builder.load_file('profile_diagnoseMe.kv')
-        # Builder.load_file('diagnose.kv')
-        # Builder.load_file('question_details.kv')
-        # Builder.load_file('question.kv')
-        # Builder.load_file('signup.kv')
-        # Builder.load_file('question_details_datepick.kv')
-        # Builder.load_file('profile_security.kv')
 
 
 
@@ -249,7 +297,7 @@ class DawnApp(MDApp):
         Clock.schedule_once(self.login , 5)
 
     def login(self,*args):
-        screen_manager.current = "profile"
+        screen_manager.current = "diagnose"
 
 
 if __name__ == '__main__':

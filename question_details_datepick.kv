@@ -11,7 +11,10 @@ MDScreen:
             md_bg_color: get_color_from_hex("#FDFAF7")
             orientation: 'vertical'
 
-
+            ArrowButton:
+                pos_hint: {"center_x": 0.15 , "center_y": 0.95}
+                on_press: app.go_to('back')
+                ArrowLeft:
 
             QuestionNumber:
                 text: "Pick a date"
@@ -54,8 +57,9 @@ MDScreen:
                         text: '01-Jan-1980'
                         halign: "left"
                         font_style: 'Body2'
-                    ArrowButtonDown:
+                    ArrowButton:
                         on_press: app.go_to('question_details')
+                        ArrowDown:
 
             MDCard:
                 orientation: "vertical"

@@ -9,9 +9,13 @@ MDScreen:
         orientation: 'vertical'
 
         MenuButton:
-        MenuImage:
-        ArrowButtonLeft:
-            on_press: app.go_to("back")
+            MenuImage:
+        ArrowButton:
+            pos_hint: {"center_x": 0.15 , "center_y": 0.95}
+            on_press: app.go_to('back')
+            Image:
+                size_hint: 0.6 , 0.6
+                source: 'left_button.png'
 
 
         CenterdCardForText:
@@ -32,7 +36,8 @@ MDScreen:
                             text: "Skin Moisturizing"
                         MDProgressBar:
                             value: 70
-                    ArrowButtonRight:
+                    ArrowButton:
+                        ArrowRight:
             ProgressCard:
                 CardContentBox:
                     DailyPrecent:
@@ -42,7 +47,8 @@ MDScreen:
                             text: "Body Tempreture"
                         MDProgressBar:
                             value: 21
-                    ArrowButtonRight:
+                    ArrowButton:
+                        ArrowRight:
 
             ProgressCard:
                 CardContentBox:
@@ -53,7 +59,8 @@ MDScreen:
                             text: "Cardiovascular Efficiency"
                         MDProgressBar:
                             value: 38
-                    ArrowButtonRight:
+                    ArrowButton:
+                        ArrowRight:
 
             ProgressCard:
                 CardContentBox:
@@ -64,7 +71,8 @@ MDScreen:
                             text: "Blood Pressure"
                         MDProgressBar:
                             value: 95
-                    ArrowButtonRight:
+                    ArrowButton:
+                        ArrowRight:
 
             ProgressCard:
                 CardContentBox:
@@ -75,7 +83,8 @@ MDScreen:
                             text: "Blood Glucose"
                         MDProgressBar:
                             value: 82
-                    ArrowButtonRight:
+                    ArrowButton:
+                        ArrowRight:
 
             ProgressCard:
                 CardContentBox:
@@ -86,7 +95,8 @@ MDScreen:
                             text: "Muscle Pressure"
                         MDProgressBar:
                             value: 34
-                    ArrowButtonRight:
+                    ArrowButton:
+                        ArrowRight:
 
             ProgressCard:
                 CardContentBox:
@@ -97,7 +107,8 @@ MDScreen:
                             text: ''
                         MDProgressBar:
                             value:
-                    ArrowButtonRight:
+                    ArrowButton:
+                        ArrowRight:
 
 
 
