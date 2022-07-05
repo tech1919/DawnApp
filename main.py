@@ -5,6 +5,7 @@ from kivy.utils import get_color_from_hex
 from kivy.clock import Clock
 from kivy.uix.scrollview import ScrollView
 from kivymd.app import MDApp
+from kivy.core.window import Window
 from kivymd.uix.list import MDList, TwoLineAvatarIconListItem,OneLineListItem ,TwoLineListItem,ThreeLineListItem ,OneLineAvatarIconListItem ,ThreeLineAvatarIconListItem , IconLeftWidget , IconRightWidget
 import os.path
 
@@ -256,7 +257,8 @@ class DawnApp(MDApp):
             elif screen_name == 'question_details_datepick':
                 self.root.transition = NoTransition()
                 screen_manager.current = screen_name
-            elif screen_name == 'diagnose':
+            elif screen_name == 'diagnose' or screen_name == 'presplash_diagnose':
+                screen_name = 'diagnose'
                 screen = self.getScreen('presplash_diagnose')
                 screen.ids[f'{screen_name}_btn'].source = f'{screen_name}.png'
                 screen_manager.current = 'presplash_diagnose'
@@ -317,6 +319,7 @@ class DawnApp(MDApp):
         # set the first question in line
         global screen_manager
 
+        Window.clearcolor = get_color_from_hex("#F5E5D6")
         self.first_scroll_view = True
         self.icon = 'app_logo.png'
         self.first_question(first=True)
