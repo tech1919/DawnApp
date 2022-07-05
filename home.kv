@@ -10,7 +10,7 @@ MDScreen:
             MenuImage:
         ArrowButton:
             pos_hint: {"center_x": 0.15 , "center_y": 0.95}
-            on_press: app.go_to('back')
+            on_release: app.go_to('back')
             Image:
                 size_hint: 0.6 , 0.6
                 source: 'left_button.png'
@@ -28,6 +28,38 @@ MDScreen:
                 HomeNameLabel:
                     bold: True
                 HomeGreet:
+
+
+        UpTwoButtonBox:
+            HomeButtonCard:
+                padding: 15
+                MDFlatButton:
+                    halign: "center"
+
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    on_release: app.hello('Blood test function')
+            HomeButtonCard:
+                padding: 15
+                MDFlatButton:
+                    halign: "center"
+
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.4}
+                    on_release: app.hello('Ask the doctor function')
+
+        LowTwoButtonBox:
+            HomeButtonCard:
+                padding: 15
+                MDFlatButton:
+                    halign: "center"
+
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                    on_release: app.hello('Symptoms')
+            HomeButtonCard:
+                padding: 15
+                MDFlatButton:
+                    halign: "center"
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.4}
+                    on_release: app.go_to('diagnose')
 
 
 

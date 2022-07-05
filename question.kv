@@ -6,12 +6,8 @@ MDScreen:
     name: 'question'
 
     ProfilePageLayout:
-        CountImage:
-            id: count
-        QuestionImage:
-            id: question_img
-        QuestionNumber:
-            id: question_number
+
+
 
         ArrowButton:
             pos_hint: {"center_x": 0.15 , "center_y": 0.95}
@@ -20,23 +16,48 @@ MDScreen:
                 size_hint: 0.6 , 0.6
                 source: 'left_button.png'
 
+
+        #CountImage:
+        #    id: count
+
+
+
         MDBoxLayout:
-            size_hint: 0.8 , 1
-            halign: "left"
-            pos_hint: {"center_x": .5 , "center_y": 0.49}
+            pos_hint: {"center_x": 0.5 , "center_y": 0.7}
+            size_hint: 0.9 , 0.3
+            QuestionImage:
+                id: question_img
+
+        MDBoxLayout:
+
+            size_hint: 0.9 , 0.25
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            orientation: 'vertical'
+
+            MDBoxLayout:
+                MDLabel:
+                    text: "QUESTION 1 OF 9"
+                    valign: "bottom"
+                    id: question_number
+                    font_style: "Body2"
+                    color: 0,0,0,0.5
+                    bold: True
+            MDBoxLayout:
+                MDLabel:
+                    id: question_text
+                    text: app.cur_question
+                    halign: "left"
+                    pos_hint: {"center_x": .6 , "center_y": 0.41}
+                    color: 0,0.439,0.313,1
+                    bold: True
+                    font_style: 'Body1'
 
 
-            MDLabel:
-                id: question_text
-                text: app.cur_question
-                halign: "left"
-                pos_hint: {"center_x": .6 , "center_y": 0.41}
-                color: 0,0.439,0.313,1
-                bold: True
+
 
         ArrowButton:
             pos_hint: {"center_x": .5 , "center_y": 0.27}
-            on_press: app.on("yes")
+            on_release: app.on("yes")
         QuestionButton:
             id: yes_btn
             pos_hint: {"center_x": .5 , "center_y": 0.27}
@@ -46,7 +67,7 @@ MDScreen:
 
         ArrowButton:
             pos_hint: {"center_x": .5 , "center_y": 0.185}
-            on_press: app.on("no")
+            on_release: app.on("no")
         QuestionButton:
             id: no_btn
             pos_hint: {"center_x": .5 , "center_y": 0.185}
@@ -65,6 +86,7 @@ MDScreen:
             QuestionButtonLabel:
                 text: "Next"
                 color: 1,1,1,1
+
 
 
 

@@ -1,0 +1,76 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+
+
+MDScreen:
+    name:'presplash_diagnose'
+    MDFloatLayout:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#012241")
+
+
+        MDBoxLayout:
+            size_hint: 0.85 , 0.85
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            FitImage:
+                source: "presplash_diagnose.jpg"
+
+        #*************** Bottom navbar **************
+
+
+        NavbarBox:
+
+            ButtonBox:
+                HomeButton:
+            ButtonBox:
+                DailyButton:
+            ButtonBox:
+                DiagnoseButton:
+            ButtonBox:
+                ProfileButton:
+        BottomNavbarCard:
+        NavbarBox:
+            MDBoxLayout:
+                orientation: "vertical"
+                Image:
+                    id: home_btn
+                    source: 'home.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Home"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
+
+                Image:
+                    id: daily_btn
+                    source: 'daily.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Daily"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
+
+                Image:
+                    id: diagnose_btn
+                    source: 'diagnose_p.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Diagnose"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+            MDBoxLayout:
+                orientation: "vertical"
+
+                Image:
+                    id: profile_btn
+                    source: 'profile.png'
+                MDLabel:
+                    halign: "center"
+                    text: "Profile"
+                    font_style: "Caption"
+                    color: get_color_from_hex("##012241")
+
