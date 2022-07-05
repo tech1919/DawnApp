@@ -64,6 +64,20 @@ class DawnApp(MDApp):
 
         screen.ids['diagnose_me'].add_widget(sv)
 
+    def create_datepicker(self):
+        screen = screen_manager.get_screen('question_details_datepick')
+        sv = ScrollView()
+        ml = MDList()
+        sv.add_widget(ml)
+
+        for i in range(1,31):
+            item = OneLineListItem(
+                text = f'{i}',
+
+
+            )
+            ml.add_widget(item)
+
 
 
 
@@ -87,16 +101,17 @@ class DawnApp(MDApp):
 
             if screen_name == 'question':
                 if self.last_screen == 'login':
-
                     self.root.transition = SlideTransition(direction='up')
                     self.username = screen_manager.get_screen('login').ids.username_login.text
                     self.password = screen_manager.get_screen('login').ids.password_login.text
-
                 else:
                     self.root.transition = SlideTransition(direction='left')
 
                 screen_manager.current = screen_name
-            elif screen_name == 'question_details' or screen_name == 'question_details_datepick':
+            elif screen_name == 'question_details':
+                self.root.transition = NoTransition()
+                screen_manager.current = screen_name
+            elif screen_name == 'question_details_datepick':
                 self.root.transition = NoTransition()
                 screen_manager.current = screen_name
             elif screen_name == 'profile':
@@ -118,32 +133,26 @@ class DawnApp(MDApp):
 
 
                 screen.ids['profile_btn'].source = 'profile_p.png'
-            elif screen_name == 'next_question':
-                screen_name = 'question'
-                try:
-                    self.next_question()
-                except:
-                    screen_name = 'question_details'
-                    screen_manager.current = screen_name
-                    return
 
 
-                # change the text in the page
-                self.change_text(f'question_text', self.cur_question,screen_name)
-                self.change_text(f'question_number', f'QUESTION {self.cur_question_idx + 1} OF {self.number_of_questions}',screen_name)
-                try:
-                    self.change_photo(f'count',f'count_{self.cur_question_idx + 1}.png',screen_name)
-                except:
-                    self.change_photo(f'count', f'count_9.png',screen_name)
 
-                try:
-                    self.change_photo(f'question_img',f'Q{self.cur_question_idx + 1}.png',screen_name)
-                except:
-                    self.change_photo(f'question_img', f'Q1.png',screen_name)
+            elif screen_name == 'next_question' or screen_name == 'prev_question':
 
-                self.on('reset')
-                # self.root.transition = SlideTransition(direction='left')
+
+                screen_name = self.render_question(screen_name)
+
+
+
+
+
             elif screen_name == 'home':
+                screen_manager.current = screen_name
+            elif screen_name == 'login' or screen_name == 'signup':
+                screen = self.getScreen(screen_name)
+                screen.ids[f'username_{screen_name}'].text = ''
+                screen.ids[f'password_{screen_name}'].text = ''
+                if screen_name == 'signup':
+                    screen.ids[f'email_{screen_name}'].text = ''
                 screen_manager.current = screen_name
             else:
                 self.root.transition = NoTransition()
@@ -162,6 +171,8 @@ class DawnApp(MDApp):
         print("Facebook login")
     def forgot_password(self):
         print("forgot password")
+    def profile_changes(self,check):
+        print(f'{check} changes made')
     def on(self,check):
         screen_name = 'question'
         screen = screen_manager.get_screen(screen_name)
@@ -191,17 +202,58 @@ class DawnApp(MDApp):
         except:
             pass
 
+    def render_question(self,operation):
+        if self.last_screen == 'login' or self.last_screen == 'signup':
+            self.cur_question_idx = 0
 
+        screen_name = 'question'
+        if operation == 'next_question':
+            self.cur_question_idx += 1
+        elif operation == 'prev_question' and self.cur_question_idx > 0:
+            self.cur_question_idx -= 1
 
+        if self.cur_question_idx >= self.number_of_questions:
+            screen_name = 'question_details'
+            screen_manager.current = screen_name
+            return screen_name
+
+        q_num = self.cur_question_idx
+
+        self.cur_question_idx = q_num
+        self.cur_question = self.questions[q_num]
+        # change the text in the page
+        self.change_text(f'question_text', self.cur_question, screen_name)
+        self.change_text(f'question_number', f'QUESTION {self.cur_question_idx + 1} OF {self.number_of_questions}',
+                         screen_name)
+        try:
+            self.change_photo(f'count', f'count_{self.cur_question_idx + 1}.png', screen_name)
+        except:
+            self.change_photo(f'count', f'count_9.png', screen_name)
+
+        try:
+            self.change_photo(f'question_img', f'Q{self.cur_question_idx + 1}.png', screen_name)
+        except:
+            self.change_photo(f'question_img', f'Q1.png', screen_name)
+
+        self.on('reset')
+
+        return screen_name
+
+    def getScreen(self,screen_name):
+        return screen_manager.get_screen(screen_name)
     def change_text(self, id , text , screen_name):
+        # This function can change the text for a label in a given screen
         screen = screen_manager.get_screen(screen_name)
         screen.ids[id].text = text
     def change_photo(self, id , new_path , screen_name):
+        # This function can change an image that has a id
+        # in a given screen
+
         screen = screen_manager.get_screen(screen_name)
         screen.ids[id].source = new_path
-    def profile_changes(self,type):
-        print(f'{type} Changes made')
-    def next_question(self,first=False):
+
+    def first_question(self,first=False):
+        # This function sets up the questions list and the answers dictionary
 
         self.questions = [
             'Can you now (or could you ever) place your hand flat on the floor without bending your knees?',
@@ -227,8 +279,6 @@ class DawnApp(MDApp):
             'Chronic, widespread pain for 3 months or more',
             'Recurrent joint dislocations or frank joint instability, in the absence of trauma'
         ]
-
-
         if first:
             self.answers = {}
             # first question
@@ -237,14 +287,11 @@ class DawnApp(MDApp):
             for i in range(0, self.number_of_questions):
                 self.answers[i] = 'No'
 
-        else:
-
-            self.cur_question_idx += 1
-
         self.cur_question = self.questions[self.cur_question_idx]
-
     def change_navbar(self,screen_name):
-
+        # This function controls the bottom navigation bar
+        # for a given screen_name, the funtion will switch the
+        # source of the photo for the navbar to the right one for this screen
 
         images_ids = ['home','daily','diagnose','profile']
         flag = False
@@ -262,8 +309,6 @@ class DawnApp(MDApp):
             screen.ids[f'{id}_btn'].source = f'{id}.png'
 
         screen.ids[f'{screen_name}_btn'].source = f'{screen_name}_p.png'
-
-
     def build(self):
 
         # set the first question in line
@@ -271,7 +316,7 @@ class DawnApp(MDApp):
 
         self.first_scroll_view = True
         self.icon = 'app_logo.png'
-        self.next_question(first=True)
+        self.first_question(first=True)
         self.last_screen = 'login'
 
         screen_manager = ScreenManager()
@@ -292,12 +337,12 @@ class DawnApp(MDApp):
 
         return screen_manager
         # return DemoProject()
-
     def on_start(self):
-        Clock.schedule_once(self.login , 5)
-
+        # This function waits for 3 seconds in the presplash screen
+        # until switching to the login screen
+        Clock.schedule_once(self.login , 3)
     def login(self,*args):
-        screen_manager.current = "diagnose"
+        screen_manager.current = "login"
 
 
 if __name__ == '__main__':

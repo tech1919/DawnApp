@@ -15,7 +15,7 @@ MDScreen:
 
         ArrowButton:
             pos_hint: {"center_x": 0.15 , "center_y": 0.95}
-            on_press: app.go_to('back')
+            on_press: app.go_to('prev_question')
             Image:
                 size_hint: 0.6 , 0.6
                 source: 'left_button.png'
@@ -53,6 +53,7 @@ MDScreen:
             QuestionButtonLabel:
                 id: no_btn_label
                 text: "No"
+
 
         ArrowButton:
             pos_hint: {"center_x": .5 , "center_y": 0.09}
