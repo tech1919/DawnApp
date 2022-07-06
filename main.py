@@ -27,6 +27,7 @@ class DawnApp(MDApp):
     def login(self,*args):
         screen_manager.current = "login"
 #########################################################################################
+
 ################################# PROFILE PAGE ##########################################
     def profile_changes(self,check):
         print(f'{check} changes made')
