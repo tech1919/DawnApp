@@ -16,20 +16,22 @@ MDScreen:
                 on_press: app.go_to('back')
                 ArrowLeft:
 
+
             QuestionNumber:
                 text: "Pick a date"
-                pos_hint: {"center_x": .6 , "center_y": 0.67}
+                pos_hint: {"center_x": .6 , "center_y": 0.85}
+
             MDBoxLayout:
                 size_hint: 0.8 , 1
                 halign: "left"
-                pos_hint: {"center_x": .5 , "center_y": 0.73}
+                pos_hint: {"center_x": .5 , "center_y": 0.8}
 
                 MDLabel:
                     text: 'Write your details'
                     halign: "left"
-                    pos_hint: {"center_x": .6 , "center_y": 0.41}
+                    pos_hint: {"center_x": .6 , "center_y": 0.5}
                     color: 0,0.439,0.313,1
-                    font_style: "Body1"
+                    font_style: "H6"
                     bold: True
 
             MDCard:
@@ -37,7 +39,7 @@ MDScreen:
                 padding: 10
                 md_bg_color: get_color_from_hex("#FFFFFF")
                 size_hint: 0.8 , 0.13
-                pos_hint: {"center_x": 0.5, "center_y": 0.53}
+                pos_hint: {"center_x": 0.5, "center_y": 0.68}
                 elevation: 3
                 radius: [10]
 
@@ -60,6 +62,8 @@ MDScreen:
                     ArrowButton:
                         on_press: app.go_to('question_details')
                         ArrowDown:
+
+
 
             MDCard:
                 orientation: "vertical"

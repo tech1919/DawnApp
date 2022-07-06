@@ -15,24 +15,23 @@ MDScreen:
 
             ArrowButton:
                 pos_hint: {"center_x": 0.15 , "center_y": 0.95}
-                on_release: app.go_to('prev_question')
+                on_press: app.go_to('prev_question')
                 Image:
                     size_hint: 0.6 , 0.6
                     source: 'left_button.png'
 
 
-
             MDBoxLayout:
                 size_hint: 0.8 , 1
                 halign: "left"
-                pos_hint: {"center_x": .5 , "center_y": 0.73}
+                pos_hint: {"center_x": .5 , "center_y": 0.8}
 
                 MDLabel:
                     text: 'Write your details'
                     halign: "left"
-                    pos_hint: {"center_x": .6 , "center_y": 0.41}
+                    pos_hint: {"center_x": .6 , "center_y": 0.5}
                     color: 0,0.439,0.313,1
-                    font_style: "Body1"
+                    font_style: "H6"
                     bold: True
 
             MDCard:
@@ -40,7 +39,7 @@ MDScreen:
                 padding: 10
                 md_bg_color: get_color_from_hex("#FFFFFF")
                 size_hint: 0.8 , 0.13
-                pos_hint: {"center_x": 0.5, "center_y": 0.53}
+                pos_hint: {"center_x": 0.5, "center_y": 0.68}
                 elevation: 3
                 radius: [10]
 
@@ -71,7 +70,7 @@ MDScreen:
                 padding: 10
                 md_bg_color: get_color_from_hex("#FFFFFF")
                 size_hint: 0.8 , 0.1
-                pos_hint: {"center_x": 0.5, "center_y": 0.38}
+                pos_hint: {"center_x": 0.5, "center_y": 0.55}
                 elevation: 3
                 radius: [10]
                 MDLabel:
@@ -102,7 +101,7 @@ MDScreen:
                 padding: 10
                 md_bg_color: get_color_from_hex("#FFFFFF")
                 size_hint: 0.8 , 0.1
-                pos_hint: {"center_x": 0.5, "center_y": 0.25}
+                pos_hint: {"center_x": 0.5, "center_y": 0.44}
                 elevation: 3
                 radius: [10]
 

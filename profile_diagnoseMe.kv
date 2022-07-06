@@ -8,14 +8,17 @@ MDScreen:
 
         MenuButton:
             MenuImage:
+
         MDFloatLayout:
-            SignoutLabel:
+            SignoutButton:
+        SignoutLabel:
+
 
         UserImage:
 
         EditIcon:
             on_press: app.profile_changes('diagnose')
-            on_release: app.go_to('profile')
+            on_press: app.go_to('profile')
             Image:
                 source: 'plus_btn.png'
 

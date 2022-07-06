@@ -27,7 +27,7 @@
     halign: "center"
     md_bg_color: get_color_from_hex("#FDFAF7")
     pos_hint: {"center_x": .15 , "center_y": .95}
-    on_release: app.go_to('login')
+    on_press: app.go_to('login')
     font_style: 'Button'
 <SignoutLabel@Label>
     text: "sign out"
@@ -90,17 +90,17 @@
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
 
 <HomeButton@MDIconButton>
-    on_release: app.go_to('home')
+    on_press: app.go_to('home')
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
 <ProfileButton@MDIconButton>
-    on_release: app.go_to('profile')
+    on_press: app.go_to('profile')
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
 
 <DailyButton@MDIconButton>
-    on_release: app.go_to('daily')
+    on_press: app.go_to('daily')
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
 <DiagnoseButton@MDIconButton>
-    on_release: app.go_to('diagnose')
+    on_press: app.go_to('diagnose')
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
 
 

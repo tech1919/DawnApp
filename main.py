@@ -15,7 +15,7 @@ class DemoProject(ScreenManager):
 
 class DawnApp(MDApp):
 
-################################# LOGIN PAGE ############################################
+################################# LOGIN\SIGUP PAGE ######################################
     def hello(self,say_something):
         print(say_something)
     def google_login(self):
@@ -25,9 +25,15 @@ class DawnApp(MDApp):
     def forgot_password(self):
         print("forgot password")
     def login(self,*args):
-        screen_manager.current = "login"
+        screen_manager.current = "question_details_datepick"
+    def render_login_signup_page(self , screen_name):
+        screen = self.getScreen(screen_name)
+        screen.ids[f'username_{screen_name}'].text = ''
+        screen.ids[f'password_{screen_name}'].text = ''
+        if screen_name == 'signup':
+            screen.ids[f'email_{screen_name}'].text = ''
+        screen_manager.current = screen_name
 #########################################################################################
-
 ################################# PROFILE PAGE ##########################################
     def profile_changes(self,check):
         print(f'{check} changes made')
@@ -199,6 +205,14 @@ class DawnApp(MDApp):
         else:
             self.answers[q_num] = 'Yes'
 #########################################################################################
+################################# HOME PAGE #############################################
+    def render_home_page(self):
+        # change the size of the buttons
+        screen = self.getScreen('home')
+        for i in range(1, 5):
+            screen.ids[f'button_{i}'].size_hint = (1, 0.9)
+        screen_manager.current = 'home'
+#########################################################################################
 ################################# GENERAL FUNCTIONS #####################################
     def getScreen(self,screen_name):
         return screen_manager.get_screen(screen_name)
@@ -220,7 +234,7 @@ class DawnApp(MDApp):
         images_ids = ['home','daily','diagnose','profile']
         flag = False
         for id in images_ids:
-            if id == screen_name:
+            if id == screen_name or screen_name == "presplash_diagnose":
                 flag = True
                 break
 
@@ -259,9 +273,6 @@ class DawnApp(MDApp):
                 self.root.transition = NoTransition()
                 screen_manager.current = screen_name
             elif screen_name == 'diagnose' or screen_name == 'presplash_diagnose':
-                screen_name = 'diagnose'
-                screen = self.getScreen('presplash_diagnose')
-                screen.ids[f'{screen_name}_btn'].source = f'{screen_name}.png'
                 screen_manager.current = 'presplash_diagnose'
                 Clock.schedule_once(self.diagnose, 2)
             elif screen_name == 'profile':
@@ -278,10 +289,7 @@ class DawnApp(MDApp):
             elif screen_name == 'profile_diagnoseMe' or screen_name == 'profile_security':
                 screen = screen_manager.get_screen(screen_name)
                 screen_manager.current = screen_name
-
                 self.create_scrollview()
-
-
                 screen.ids['profile_btn'].source = 'profile_p.png'
             elif screen_name == 'next_question' or screen_name == 'prev_question' or screen_name == 'question':
 
@@ -296,14 +304,9 @@ class DawnApp(MDApp):
                 screen_name = self.render_question(screen_name)
                 screen_manager.current = screen_name
             elif screen_name == 'home':
-                screen_manager.current = screen_name
+                self.render_home_page()
             elif screen_name == 'login' or screen_name == 'signup':
-                screen = self.getScreen(screen_name)
-                screen.ids[f'username_{screen_name}'].text = ''
-                screen.ids[f'password_{screen_name}'].text = ''
-                if screen_name == 'signup':
-                    screen.ids[f'email_{screen_name}'].text = ''
-                screen_manager.current = screen_name
+                self.render_login_signup_page()
             else:
                 self.root.transition = NoTransition()
                 screen_manager.current = screen_name
@@ -350,7 +353,5 @@ class DawnApp(MDApp):
         # until switching to the login screen
         Clock.schedule_once(self.login , 0)
 #########################################################################################
-
-
 if __name__ == '__main__':
     DawnApp().run()

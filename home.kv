@@ -10,7 +10,7 @@ MDScreen:
             MenuImage:
         ArrowButton:
             pos_hint: {"center_x": 0.15 , "center_y": 0.95}
-            on_release: app.go_to('back')
+            on_press: app.go_to('back')
             Image:
                 size_hint: 0.6 , 0.6
                 source: 'left_button.png'
@@ -30,36 +30,48 @@ MDScreen:
                 HomeGreet:
 
 
+
         UpTwoButtonBox:
             HomeButtonCard:
                 padding: 15
-                MDFlatButton:
+                MDRaisedButton:
+                    id: button_1
+                    md_bg_color: 253/255 , 250/255 , 247/255 , 1
+                    elevation: 0
                     halign: "center"
-
                     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                    on_release: app.hello('Blood test function')
+                    on_press: app.hello('Blood test function')
+
             HomeButtonCard:
                 padding: 15
-                MDFlatButton:
+                MDRaisedButton:
+                    id: button_2
+                    md_bg_color: 253/255 , 250/255 , 247/255 , 1
+                    elevation: 0
                     halign: "center"
-
                     pos_hint: {"center_x": 0.5 , "center_y": 0.4}
-                    on_release: app.hello('Ask the doctor function')
+                    on_press: app.hello('Ask the doctor function')
 
         LowTwoButtonBox:
             HomeButtonCard:
                 padding: 15
-                MDFlatButton:
+                MDRaisedButton:
+                    id: button_3
+                    md_bg_color: 253/255 , 250/255 , 247/255 , 1
+                    elevation: 0
                     halign: "center"
-
                     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                    on_release: app.hello('Symptoms')
+                    on_press: app.hello('Symptoms')
             HomeButtonCard:
                 padding: 15
-                MDFlatButton:
+                MDRaisedButton:
+                    id: button_4
+                    md_bg_color: 253/255 , 250/255 , 247/255 , 1
+                    elevation: 0
                     halign: "center"
                     pos_hint: {"center_x": 0.5 , "center_y": 0.4}
-                    on_release: app.go_to('diagnose')
+                    on_press: app.go_to('diagnose')
+
 
 
 
@@ -154,6 +166,7 @@ MDScreen:
                     HomeButtonLabelDark:
                         pos_hint: {"center_x": 0.5 , "center_y": 0.25}
                         text: "Your diagnose"
+
 
 
 

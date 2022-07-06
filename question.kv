@@ -50,14 +50,14 @@ MDScreen:
                     pos_hint: {"center_x": .6 , "center_y": 0.41}
                     color: 0,0.439,0.313,1
                     bold: True
-                    font_style: 'Body1'
+                    font_style: 'H6'
 
 
 
 
         ArrowButton:
             pos_hint: {"center_x": .5 , "center_y": 0.27}
-            on_release: app.on("yes")
+            on_press: app.on("yes")
         QuestionButton:
             id: yes_btn
             pos_hint: {"center_x": .5 , "center_y": 0.27}
@@ -67,7 +67,7 @@ MDScreen:
 
         ArrowButton:
             pos_hint: {"center_x": .5 , "center_y": 0.185}
-            on_release: app.on("no")
+            on_press: app.on("no")
         QuestionButton:
             id: no_btn
             pos_hint: {"center_x": .5 , "center_y": 0.185}
