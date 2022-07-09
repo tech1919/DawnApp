@@ -54,14 +54,14 @@ MDScreen:
                     md_bg_color: get_color_from_hex("#F5F5F6")
                     padding: 5
                     MDLabel:
-
+                        id: date_of_birth
                         color: 0,0,0,0.4
-                        text: '01-Jan-1980'
+                        text: 'd - m - y'
                         halign: "left"
                         font_style: 'Body2'
 
                     ArrowButton:
-                        on_press: app.go_to('question_details_datepick')
+                        on_press: app.show_date_picker()
                         ArrowRight:
 
 

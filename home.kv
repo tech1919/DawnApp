@@ -15,10 +15,6 @@ MDScreen:
                 size_hint: 0.6 , 0.6
                 source: 'left_button.png'
 
-
-
-
-
         CenterdCardForText:
             MDBoxLayout:
                 size_hint: 0.4 , 1
@@ -26,12 +22,16 @@ MDScreen:
             MDBoxLayout
                 orientation: "vertical"
                 HomeNameLabel:
+                    id: hello-first_name
                     bold: True
                 HomeGreet:
 
 
 
-        UpTwoButtonBox:
+        ################# BUTTONS #################
+
+
+        LowTwoButtonBox:
             HomeButtonCard:
                 padding: 15
                 MDRaisedButton:
@@ -52,7 +52,10 @@ MDScreen:
                     pos_hint: {"center_x": 0.5 , "center_y": 0.4}
                     on_press: app.hello('Ask the doctor function')
 
-        LowTwoButtonBox:
+
+
+
+        UpTwoButtonBox:
             HomeButtonCard:
                 padding: 15
                 MDRaisedButton:
@@ -61,7 +64,7 @@ MDScreen:
                     elevation: 0
                     halign: "center"
                     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-                    on_press: app.hello('Symptoms')
+                    on_press: app.go_to('question')
             HomeButtonCard:
                 padding: 15
                 MDRaisedButton:
@@ -73,10 +76,9 @@ MDScreen:
                     on_press: app.go_to('diagnose')
 
 
+        ################# IMAGES #################
 
-
-        UpTwoButtonBox:
-
+        LowTwoButtonBox:
             HomeButtonCard:
                 FitImage:
                     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
@@ -88,11 +90,7 @@ MDScreen:
                     source: 'doctor_logo.png'
                     size_hint: 1,1
 
-
-
-        LowTwoButtonBox:
-
-
+        UpTwoButtonBox:
             HomeButtonCard:
                 FitImage:
                     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
@@ -106,63 +104,44 @@ MDScreen:
 
 
 
+        ################# LABELS #################
 
-
-
-        UpTwoButtonBox:
+        LowTwoButtonBox:
             spacing: 10
-
-
             size_hint: 0.9 , 0.3
-
             MDFloatLayout:
                 pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-
                 MDBoxLayout:
-
                     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
                     size_hint: 0.8 , 1
-
                     HomeButtonLabelDark:
                         pos_hint: {"center_x": 0.5 , "center_y": 0.3}
                         text: "Upload your blood test"
             MDFloatLayout:
-
                 pos_hint: {"center_x": 0.5 , "center_y": 0.5}
                 MDBoxLayout:
-
                     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
                     size_hint: 0.8 , 1
-
                     HomeButtonLabelLight:
                         pos_hint: {"center_x": 0.5 , "center_y": 0.25}
                         text: "Ask the doctor"
 
 
-
-
-        LowTwoButtonBox:
+        UpTwoButtonBox:
             spacing: 10
-
             MDFloatLayout:
                 pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-
                 MDBoxLayout:
-
                     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
                     size_hint: 0.8 , 1
-
                     HomeButtonLabelLight:
                         pos_hint: {"center_x": 0.5 , "center_y": 0.3}
                         text: "What are your symptoms?"
             MDFloatLayout:
-
                 pos_hint: {"center_x": 0.5 , "center_y": 0.5}
                 MDBoxLayout:
-
                     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
                     size_hint: 0.8 , 1
-
                     HomeButtonLabelDark:
                         pos_hint: {"center_x": 0.5 , "center_y": 0.25}
                         text: "Your diagnose"
@@ -173,7 +152,7 @@ MDScreen:
 
 
 
-
+        ################# MY APPOINTMENT #################
 
 
 
@@ -242,7 +221,7 @@ MDScreen:
 
 
 
-        #*************** Bottom navbar **************
+        ################# BOTTOM NAVBAR #################
 
 
         NavbarBox:

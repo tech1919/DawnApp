@@ -16,14 +16,17 @@ MDScreen:
         SignoutLabel:
 
         UserImage:
+        UserNameLabel:
+            id: first-last_name
 
         EditIcon:
             id: edit_btn
+            on_press: app.go_to('profile_diagnoseMe')
             Image:
                 source: 'edit.png'
 
 
-        UserNameLabel:
+
 
 
 
@@ -49,6 +52,7 @@ MDScreen:
                 LeftLabel:
                     text: "First Name"
                 RightLabel:
+                    id: first_name
                     text: "Dana"
 
 
@@ -57,6 +61,7 @@ MDScreen:
                 LeftLabel:
                     text: "Last Name"
                 RightLabel:
+                    id: last_name
                     text: "Cohen"
 
 
@@ -65,6 +70,7 @@ MDScreen:
                 LeftLabel:
                     text: "Date Birth"
                 RightLabel:
+                    id: date_of_birth
                     text: "01/01/1990"
 
 
@@ -73,7 +79,7 @@ MDScreen:
                 LeftLabel:
                     text: "Height"
                 RightLabel:
-                    id: height_field
+                    id: height
                     text: "168 cm"
 
             MDBoxLayout:
@@ -81,7 +87,7 @@ MDScreen:
                 LeftLabel:
                     text: "Weight"
                 RightLabel:
-                    id: weight_field
+                    id: weight
                     text: "64 kg"
 
 

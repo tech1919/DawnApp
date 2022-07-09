@@ -14,7 +14,7 @@ MDScreen:
             halign: "center"
             md_bg_color: get_color_from_hex("#012241")
             pos_hint: {"center_x": 0.5, "center_y": 0.25}
-            on_press: app.go_to('question')
+            on_press: app.go_to('home')
 
         ArrowButton:
             id: sign_up_page
@@ -66,12 +66,6 @@ MDScreen:
                 LoginButtonLabel:
                     text: 'LOGIN'
                     bold: True
-
-        ArrowButton:
-            pos_hint: {"center_x": 0.5, "center_y": 0.22}
-            on_press: app.go_to("question")
-
-
 
 
 

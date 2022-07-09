@@ -4,17 +4,28 @@ from kivy.lang.builder import Builder
 from kivy.utils import get_color_from_hex
 from kivy.clock import Clock
 from kivy.uix.scrollview import ScrollView
+from kivymd.uix.picker import MDDatePicker
 from kivymd.app import MDApp
 from kivy.core.window import Window
+
 from kivymd.uix.list import MDList, TwoLineAvatarIconListItem,OneLineListItem ,TwoLineListItem,ThreeLineListItem ,OneLineAvatarIconListItem ,ThreeLineAvatarIconListItem , IconLeftWidget , IconRightWidget
 import os.path
 
 
+
+class User:
+    def __init__(self , height , weight , dob , first , last, username , password):
+        self.height = height
+        self.weight = weight
+        self.date_of_birth = dob
+        self.first_name = first
+        self.last_name = last
+        self.username = username
+        self.password = password
+
 class DemoProject(ScreenManager):
     pass
-
 class DawnApp(MDApp):
-
 ################################# LOGIN\SIGUP PAGE ######################################
     def hello(self,say_something):
         print(say_something)
@@ -25,7 +36,7 @@ class DawnApp(MDApp):
     def forgot_password(self):
         print("forgot password")
     def login(self,*args):
-        screen_manager.current = "question_details_datepick"
+        screen_manager.current = "login"
     def render_login_signup_page(self , screen_name):
         screen = self.getScreen(screen_name)
         screen.ids[f'username_{screen_name}'].text = ''
@@ -33,6 +44,7 @@ class DawnApp(MDApp):
         if screen_name == 'signup':
             screen.ids[f'email_{screen_name}'].text = ''
         screen_manager.current = screen_name
+
 #########################################################################################
 ################################# PROFILE PAGE ##########################################
     def profile_changes(self,check):
@@ -69,6 +81,42 @@ class DawnApp(MDApp):
             ml.add_widget(item)
 
         screen.ids['diagnose_me'].add_widget(sv)
+    def render_profile_page(self):
+        screen_name = 'profile'
+        if self.last_screen == 'question_details':
+            screen = screen_manager.get_screen('question_details')
+            user.weight = screen.ids.weight_input.text
+            user.height = screen.ids.height_input.text
+
+        self.change_text('first-last_name', f'{user.first_name} {user.last_name}', screen_name)
+        self.change_text('first_name', f'{user.first_name}', screen_name)
+        self.change_text('last_name', f'{user.last_name}', screen_name)
+        self.change_text('weight', f'{user.weight} kg', screen_name)
+        self.change_text('height', f'{user.height} cm', screen_name)
+        self.change_text('date_of_birth', f'{user.date_of_birth}', screen_name)
+        screen_manager.current = screen_name
+
+
+    def on_save(self ,instance , value , date_range):
+        month_list = ['January','February','March','April','May','June','July','August','September','October','November','December']
+
+
+        screen = self.getScreen('question_details')
+        day = value.day
+        month = value.month
+        month_name = month_list[month-1]
+        year = value.year
+        dob = f'{day} - {month_name} - {year}'
+        user.date_of_birth = value
+        screen.ids['date_of_birth'].text = dob
+
+
+
+    def show_date_picker(self):
+        date_dialog = MDDatePicker()
+        date_dialog.bind(on_save = self.on_save)
+        date_dialog.open()
+
 #########################################################################################
 ################################# DIAGNOSE FUNCTIONS ####################################
     def diagnose(self ,*args):
@@ -249,9 +297,7 @@ class DawnApp(MDApp):
         screen.ids[f'{screen_name}_btn'].source = f'{screen_name}_p.png'
     def go_to(self,screen_name):
         # saves the last screen before changing
-
         self.root.transition = NoTransition()
-
         try:
             if screen_name == 'back':
                 screen_name = self.last_screen
@@ -269,6 +315,10 @@ class DawnApp(MDApp):
             if screen_name == 'question_details':
                 self.root.transition = NoTransition()
                 screen_manager.current = screen_name
+            elif screen_name == 'home':
+                screen = self.getScreen(screen_name)
+                screen.ids['hello-first_name'].text = f'Hello {user.first_name}'
+                screen_manager.current = screen_name
             elif screen_name == 'question_details_datepick':
                 self.root.transition = NoTransition()
                 screen_manager.current = screen_name
@@ -276,29 +326,25 @@ class DawnApp(MDApp):
                 screen_manager.current = 'presplash_diagnose'
                 Clock.schedule_once(self.diagnose, 2)
             elif screen_name == 'profile':
-
-                if self.last_screen == 'question_details':
-                    screen = screen_manager.get_screen('question_details')
-                    self.weight = screen.ids.weight_input.text
-                    self.height = screen.ids.height_input.text
-                    self.change_text('weight_field',f'{self.weight} kg',screen_name)
-                    self.change_text('height_field', f'{self.height} cm',screen_name)
-                    screen_manager.current = screen_name
-                else:
-                    screen_manager.current = screen_name
+                self.render_profile_page()
             elif screen_name == 'profile_diagnoseMe' or screen_name == 'profile_security':
                 screen = screen_manager.get_screen(screen_name)
                 screen_manager.current = screen_name
                 self.create_scrollview()
                 screen.ids['profile_btn'].source = 'profile_p.png'
             elif screen_name == 'next_question' or screen_name == 'prev_question' or screen_name == 'question':
-
                 if self.last_screen == 'login':
                     self.root.transition = SlideTransition(direction='up')
-                    self.username = screen_manager.get_screen('login').ids.username_login.text
-                    self.password = screen_manager.get_screen('login').ids.password_login.text
+
+                    # saves the username and password to the user class
+                    user.username = screen_manager.get_screen('login').ids.username_login.text
+                    user.password = screen_manager.get_screen('login').ids.password_login.text
+
+                elif self.last_screen == 'home':
+                    self.cur_question_idx = 0
                 else:
                     self.root.transition = SlideTransition(direction='left')
+
 
 
                 screen_name = self.render_question(screen_name)
@@ -306,7 +352,7 @@ class DawnApp(MDApp):
             elif screen_name == 'home':
                 self.render_home_page()
             elif screen_name == 'login' or screen_name == 'signup':
-                self.render_login_signup_page()
+                self.render_login_signup_page(screen_name)
             else:
                 self.root.transition = NoTransition()
                 screen_manager.current = screen_name
@@ -322,6 +368,11 @@ class DawnApp(MDApp):
 
         # set the first question in line
         global screen_manager
+        global user
+
+        user = User('-','-','-','Dana','Cohen','-','-')
+
+
 
         Window.clearcolor = get_color_from_hex("#F5E5D6")
         self.first_scroll_view = True
@@ -342,8 +393,6 @@ class DawnApp(MDApp):
         screen_manager.add_widget(Builder.load_file('question.kv'))
         screen_manager.add_widget(Builder.load_file('question_details.kv'))
         screen_manager.add_widget(Builder.load_file('question_details_datepick.kv'))
-
-
 
 
         return screen_manager
