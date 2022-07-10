@@ -54,10 +54,12 @@ MDScreen:
 
 
 
-
-        ArrowButton:
+        QuestionButton:
             pos_hint: {"center_x": .5 , "center_y": 0.27}
-            on_press: app.on("yes")
+            Button:
+                pos_hint: {"center_x": .5 , "center_y": 0.5}
+                background_color: 0,0,0,0
+                on_press: app.on("yes")
         QuestionButton:
             id: yes_btn
             pos_hint: {"center_x": .5 , "center_y": 0.27}
@@ -65,9 +67,14 @@ MDScreen:
                 id: yes_btn_label
                 text: "Yes"
 
-        ArrowButton:
+
+
+        QuestionButton:
             pos_hint: {"center_x": .5 , "center_y": 0.185}
-            on_press: app.on("no")
+            Button:
+                background_color: 0,0,0,0
+                pos_hint: {"center_x": .5 , "center_y": 0.185}
+                on_press: app.on("no")
         QuestionButton:
             id: no_btn
             pos_hint: {"center_x": .5 , "center_y": 0.185}
@@ -76,9 +83,13 @@ MDScreen:
                 text: "No"
 
 
-        ArrowButton:
+
+        QuestionButton:
             pos_hint: {"center_x": .5 , "center_y": 0.09}
-            on_press: app.go_to('next_question')
+            Button:
+                background_color: 0,0,0,0
+                pos_hint: {"center_x": .5 , "center_y": 0.09}
+                on_press: app.go_to('next_question')
         QuestionButton:
             id: next_btn
             pos_hint: {"center_x": .5 , "center_y": 0.09}
@@ -86,6 +97,7 @@ MDScreen:
             QuestionButtonLabel:
                 text: "Next"
                 color: 1,1,1,1
+
 
 
 

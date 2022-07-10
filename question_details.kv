@@ -129,13 +129,12 @@ MDScreen:
                         font_style: 'Body2'
 
 
-
-
-
-
-            ArrowButton:
+            QuestionButton:
                 pos_hint: {"center_x": .5 , "center_y": 0.09}
-                on_press: app.go_to('profile')
+                Button:
+                    background_color: 0,0,0,0
+                    pos_hint: {"center_x": .5 , "center_y": 0.09}
+                    on_press: app.go_to('profile')
             QuestionButton:
                 id: next_btn
                 pos_hint: {"center_x": .5 , "center_y": 0.09}
@@ -143,5 +142,6 @@ MDScreen:
                 QuestionButtonLabel:
                     text: "Next"
                     color: 1,1,1,1
+
 
 
