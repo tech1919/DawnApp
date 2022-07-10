@@ -29,26 +29,18 @@ MDScreen:
 
 
         ################# BUTTONS #################
-
-
         LowTwoButtonBox:
             HomeButtonCard:
-                padding: 15
-                MDRaisedButton:
-                    id: button_1
-                    md_bg_color: 253/255 , 250/255 , 247/255 , 1
-                    elevation: 0
-                    halign: "center"
-                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                padding: 20
+                Button:
+                    background_color: 0,0,0,0
                     on_press: app.hello('Blood test function')
+                    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
 
             HomeButtonCard:
-                padding: 15
-                MDRaisedButton:
-                    id: button_2
-                    md_bg_color: 253/255 , 250/255 , 247/255 , 1
-                    elevation: 0
-                    halign: "center"
+                padding: 20
+                Button:
+                    background_color: 0,0,0,0
                     pos_hint: {"center_x": 0.5 , "center_y": 0.4}
                     on_press: app.hello('Ask the doctor function')
 
@@ -57,21 +49,15 @@ MDScreen:
 
         UpTwoButtonBox:
             HomeButtonCard:
-                padding: 15
-                MDRaisedButton:
-                    id: button_3
-                    md_bg_color: 253/255 , 250/255 , 247/255 , 1
-                    elevation: 0
-                    halign: "center"
+                padding: 20
+                Button:
+                    background_color: 0,0,0,0
                     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
                     on_press: app.go_to('question')
             HomeButtonCard:
-                padding: 15
-                MDRaisedButton:
-                    id: button_4
-                    md_bg_color: 253/255 , 250/255 , 247/255 , 1
-                    elevation: 0
-                    halign: "center"
+                padding: 20
+                Button:
+                    background_color: 0,0,0,0
                     pos_hint: {"center_x": 0.5 , "center_y": 0.4}
                     on_press: app.go_to('diagnose')
 

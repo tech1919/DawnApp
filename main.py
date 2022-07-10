@@ -257,8 +257,8 @@ class DawnApp(MDApp):
     def render_home_page(self):
         # change the size of the buttons
         screen = self.getScreen('home')
-        for i in range(1, 5):
-            screen.ids[f'button_{i}'].size_hint = (1, 0.9)
+        # for i in range(1, 5):
+        #     screen.ids[f'button_{i}'].size_hint = (1, 0.9)
         screen_manager.current = 'home'
 #########################################################################################
 ################################# GENERAL FUNCTIONS #####################################
@@ -396,11 +396,14 @@ class DawnApp(MDApp):
 
 
         return screen_manager
-        # return DemoProject()
+
+
+
     def on_start(self):
         # This function waits for 3 seconds in the presplash screen
         # until switching to the login screen
-        Clock.schedule_once(self.login , 0)
+
+        Clock.schedule_once(self.login , 3)
 #########################################################################################
 if __name__ == '__main__':
     DawnApp().run()

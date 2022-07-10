@@ -9,17 +9,7 @@ MDScreen:
     LoginLayout:
 
 
-        MDFillRoundFlatButton:
-            id: login_btn
-            halign: "center"
-            md_bg_color: get_color_from_hex("#012241")
-            pos_hint: {"center_x": 0.5, "center_y": 0.25}
-            on_press: app.go_to('home')
-
-        ArrowButton:
-            id: sign_up_page
-            pos_hint: {"center_x": 0.59, "center_y": 0.02}
-            on_press: app.go_to('signup')
+        ############## LOGIN INPUTS ###############
 
         LoginLabelCard:
             pos_hint: {"center_x": 0.5, "center_y": 0.8}
@@ -60,8 +50,15 @@ MDScreen:
 
 
 
+        ############## LOGIN BUTTON #################
+
         LoginButton:
-            pos_hint: {"center_x": 0.5, "center_y": 0.22}
+            Button:
+                id: login_btn
+                background_color: 0,0,0,0
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_press: app.go_to('home')
+        LoginButton:
             MDBoxLayout:
                 LoginButtonLabel:
                     text: 'LOGIN'
@@ -69,6 +66,7 @@ MDScreen:
 
 
 
+        ############## SOCIAL LOGIN SECTION ##########
 
         MDCard:
             orientation: "vertical"
@@ -78,7 +76,6 @@ MDScreen:
             pos_hint: {"center_x": 0.5, "center_y": 0.15}
             LoginFooterLabel:
                 text: 'or'
-
 
 
         MDCard:
@@ -104,6 +101,13 @@ MDScreen:
                     pos_hint: {"center_x": 0.57, "center_y": 0.5}
 
 
+        ############## GOTO SIGNUP #################
+
+
+        ArrowButton:
+            id: sign_up_page
+            pos_hint: {"center_x": 0.59, "center_y": 0.02}
+            on_press: app.go_to('signup')
 
 
         LoginFooter:
