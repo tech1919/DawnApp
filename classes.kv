@@ -120,18 +120,23 @@
 <ButtonBox@MDFloatLayout>
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
 
-<HomeButton@MDIconButton>
-    on_press: app.go_to('home')
-    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-<ProfileButton@MDIconButton>
-    on_press: app.go_to('profile')
-    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
 
-<DailyButton@MDIconButton>
-    on_press: app.go_to('daily')
+
+<HomeButton@Button>
+    on_press: app.go_to('home')
+    background_color: 0,0,0,0
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-<DiagnoseButton@MDIconButton>
+<ProfileButton@Button>
+    on_press: app.go_to('profile')
+    background_color: 0,0,0,0
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+<DailyButton@Button>
+    on_press: app.go_to('daily')
+    background_color: 0,0,0,0
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+<DiagnoseButton@Button>
     on_press: app.go_to('diagnose')
+    background_color: 0,0,0,0
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
 
 

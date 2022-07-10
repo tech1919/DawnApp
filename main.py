@@ -22,7 +22,6 @@ class User:
         self.last_name = last
         self.username = username
         self.password = password
-
 class DemoProject(ScreenManager):
     pass
 class DawnApp(MDApp):
@@ -44,7 +43,6 @@ class DawnApp(MDApp):
         if screen_name == 'signup':
             screen.ids[f'email_{screen_name}'].text = ''
         screen_manager.current = screen_name
-
 #########################################################################################
 ################################# PROFILE PAGE ##########################################
     def profile_changes(self,check):
@@ -95,8 +93,6 @@ class DawnApp(MDApp):
         self.change_text('height', f'{user.height} cm', screen_name)
         self.change_text('date_of_birth', f'{user.date_of_birth}', screen_name)
         screen_manager.current = screen_name
-
-
     def on_save(self ,instance , value , date_range):
         month_list = ['January','February','March','April','May','June','July','August','September','October','November','December']
 
@@ -109,14 +105,10 @@ class DawnApp(MDApp):
         dob = f'{day} - {month_name} - {year}'
         user.date_of_birth = value
         screen.ids['date_of_birth'].text = dob
-
-
-
     def show_date_picker(self):
         date_dialog = MDDatePicker()
         date_dialog.bind(on_save = self.on_save)
         date_dialog.open()
-
 #########################################################################################
 ################################# DIAGNOSE FUNCTIONS ####################################
     def diagnose(self ,*args):
@@ -255,10 +247,6 @@ class DawnApp(MDApp):
 #########################################################################################
 ################################# HOME PAGE #############################################
     def render_home_page(self):
-        # change the size of the buttons
-        screen = self.getScreen('home')
-        # for i in range(1, 5):
-        #     screen.ids[f'button_{i}'].size_hint = (1, 0.9)
         screen_manager.current = 'home'
 #########################################################################################
 ################################# GENERAL FUNCTIONS #####################################
@@ -396,9 +384,6 @@ class DawnApp(MDApp):
 
 
         return screen_manager
-
-
-
     def on_start(self):
         # This function waits for 3 seconds in the presplash screen
         # until switching to the login screen
