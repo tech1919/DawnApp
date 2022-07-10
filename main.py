@@ -7,11 +7,14 @@ from kivy.uix.scrollview import ScrollView
 from kivymd.uix.picker import MDDatePicker
 from kivymd.app import MDApp
 from kivy.core.window import Window
+from datetime import date , datetime
+
 
 from kivymd.uix.list import MDList, TwoLineAvatarIconListItem,OneLineListItem ,TwoLineListItem,ThreeLineListItem ,OneLineAvatarIconListItem ,ThreeLineAvatarIconListItem , IconLeftWidget , IconRightWidget
 import os.path
 
-
+def getDay():
+    return (date.today().strftime("%A, %d %B, %Y"))
 
 class User:
     def __init__(self , height , weight , dob , first , last, username , password):
@@ -107,12 +110,14 @@ class DawnApp(MDApp):
         screen.ids['date_of_birth'].text = dob
     def show_date_picker(self):
         date_dialog = MDDatePicker()
-        date_dialog.bind(on_save = self.on_save)
+        date_dialog.bind(on_sfave = self.on_save)
         date_dialog.open()
 #########################################################################################
 ################################# DIAGNOSE FUNCTIONS ####################################
     def diagnose(self ,*args):
         self.root.transition = FadeTransition()
+        screen = self.getScreen('diagnose')
+        screen.ids['date_diagnose'].text = getDay()
         screen_manager.current = "diagnose"
         self.root.transition = NoTransition()
 #########################################################################################
@@ -288,6 +293,7 @@ class DawnApp(MDApp):
         self.root.transition = NoTransition()
         try:
             if screen_name == 'back':
+                self.root.transition = SlideTransition(direction="right")
                 screen_name = self.last_screen
         except:
             pass
@@ -327,7 +333,8 @@ class DawnApp(MDApp):
                     # saves the username and password to the user class
                     user.username = screen_manager.get_screen('login').ids.username_login.text
                     user.password = screen_manager.get_screen('login').ids.password_login.text
-
+                if self.last_screen == 'question_details' and screen_name == 'prev_question':
+                    self.root.transition = SlideTransition(direction='right')
                 elif self.last_screen == 'home':
                     self.cur_question_idx = 0
                 else:
@@ -359,8 +366,6 @@ class DawnApp(MDApp):
         global user
 
         user = User('-','-','-','Dana','Cohen','-','-')
-
-
 
         Window.clearcolor = get_color_from_hex("#F5E5D6")
         self.first_scroll_view = True
