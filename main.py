@@ -55,12 +55,23 @@ class DawnApp(MDApp):
     # It uses the self.answers dictionary and displays the questions and the answers
     # of the user in the profile_diagnoseMe page
 
+
+        screen = screen_manager.get_screen('profile_diagnoseMe')
+
+
         if self.first_scroll_view:
             self.first_scroll_view = False
         elif self.first_scroll_view == False:
+            # update answers
+            list = screen.ids['diagnose_me'].children[0].children[0].children
+            # the list of children is fliped
+            i = len(list) - 1
+            while i >= 0 :
+                list[i].secondary_text =  self.answers[len(list) - i - 1]
+                i-=1
             return
 
-        screen = screen_manager.get_screen('profile_diagnoseMe')
+
         sv = ScrollView()
         ml = MDList()
         sv.add_widget(ml)
@@ -72,15 +83,9 @@ class DawnApp(MDApp):
                 text=c,
                 secondary_text = self.answers[i],
                 font_style='Caption',
-
-
             )
-
-
-
             i += 1
             ml.add_widget(item)
-
         screen.ids['diagnose_me'].add_widget(sv)
     def render_profile_page(self):
         screen_name = 'profile'
@@ -98,8 +103,6 @@ class DawnApp(MDApp):
         screen_manager.current = screen_name
     def on_save(self ,instance , value , date_range):
         month_list = ['January','February','March','April','May','June','July','August','September','October','November','December']
-
-
         screen = self.getScreen('question_details')
         day = value.day
         month = value.month
@@ -110,8 +113,11 @@ class DawnApp(MDApp):
         screen.ids['date_of_birth'].text = dob
     def show_date_picker(self):
         date_dialog = MDDatePicker()
-        date_dialog.bind(on_sfave = self.on_save)
+        date_dialog.bind(on_save = self.on_save)
         date_dialog.open()
+    def render_profile_diagnoseMe(self):
+        screen = self.getScreen('profile_diagnoseMe')
+        print(screen.ids)
 #########################################################################################
 ################################# DIAGNOSE FUNCTIONS ####################################
     def diagnose(self ,*args):
@@ -142,7 +148,6 @@ class DawnApp(MDApp):
                 screen.ids[f'yes_btn_label'].color = get_color_from_hex("#000000")
                 screen.ids[f'no_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
                 screen.ids[f'no_btn_label'].color = get_color_from_hex("#000000")
-
 
 
             screen.ids[f'{check}_btn'].md_bg_color =  get_color_from_hex("#012241")
@@ -237,7 +242,7 @@ class DawnApp(MDApp):
             self.cur_question_idx = 0
             self.number_of_questions = len(self.questions)
             for i in range(0, self.number_of_questions):
-                self.answers[i] = 'No'
+                self.answers[i] = '-'
 
         self.cur_question = self.questions[self.cur_question_idx]
     def change_ans(self , q_num):
@@ -321,10 +326,14 @@ class DawnApp(MDApp):
                 Clock.schedule_once(self.diagnose, 2)
             elif screen_name == 'profile':
                 self.render_profile_page()
-            elif screen_name == 'profile_diagnoseMe' or screen_name == 'profile_security':
+            elif screen_name == 'profile_diagnoseMe':
                 screen = screen_manager.get_screen(screen_name)
                 screen_manager.current = screen_name
                 self.create_scrollview()
+                screen.ids['profile_btn'].source = 'profile_p.png'
+            elif screen_name == 'profile_security':
+                screen = screen_manager.get_screen(screen_name)
+                screen_manager.current = screen_name
                 screen.ids['profile_btn'].source = 'profile_p.png'
             elif screen_name == 'next_question' or screen_name == 'prev_question' or screen_name == 'question':
                 if self.last_screen == 'login':
