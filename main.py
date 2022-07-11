@@ -15,16 +15,60 @@ import os.path
 
 def getDay():
     return (date.today().strftime("%A, %d %B, %Y"))
+def TEMP_create_firstlast_name(name):
+    ls = name.split(' ')
+    for i in range(0,len(ls)):
+        ls[i] = ls[i].capitalize()
 
+    user.first_name = ls[0]
+    lastname = ''
+    for i in range(1,len(ls)):
+        lastname = lastname + ls[i]
+        if not i == len(ls):
+            lastname = lastname + ' '
+
+    user.last_name = lastname
+
+
+
+
+
+class Date:
+    def __init__(self , day = '' , month = '', year = ''):
+        self.day = day
+        self.month = month
+        self.year = year
+    def month_name(self):
+        month_list = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+                      'November', 'December']
+        return month_list[self.month - 1]
+    def dob(self):
+        try:
+            d = f'{user.date_of_birth.day} {user.date_of_birth.month_name()}, {user.date_of_birth.year}'
+        except:
+            d = '-'
+        return d
 class User:
-    def __init__(self , height , weight , dob , first , last, username , password):
+    def __init__(self , height , weight , dob , first , last, username , password , email=''):
         self.height = height
         self.weight = weight
-        self.date_of_birth = dob
+        self.date_of_birth = Date()
         self.first_name = first
         self.last_name = last
         self.username = username
         self.password = password
+        self.email = email
+    def print_user_info(self):
+        print()
+        print(f'    First name: {self.first_name}')
+        print(f'    Last name: {self.last_name}')
+        print(f'    Username: {self.username}')
+        print(f'    Email: {self.email}')
+        print(f'    Password: {self.password}')
+        print(f'    Date of birth: {self.date_of_birth.dob()}')
+        print(f'    Height: {self.height} , Weight: {self.weight}')
+        print()
+
 class DemoProject(ScreenManager):
     pass
 class DawnApp(MDApp):
@@ -39,6 +83,27 @@ class DawnApp(MDApp):
         print("forgot password")
     def login(self,*args):
         screen_manager.current = "login"
+    def details_check(self , next_screen):
+        # This function checking the details coming from the login and signup pages
+        # at the end of the check, send the app to the next_screen
+
+        screen = self.getScreen(screen_manager.current)
+        if screen_manager.current == 'login':
+            user.username = screen.ids['username_login'].text
+            user.password = screen.ids['password_login'].text
+        if screen_manager.current == 'signup':
+            user.username = screen.ids['username_signup'].text
+            user.password = screen.ids['password_signup'].text
+            user.email = screen.ids['email_signup'].text
+
+        # the next function is temporarly and need to be deleted
+        TEMP_create_firstlast_name(user.username)
+
+
+
+        user.print_user_info()
+        self.go_to(next_screen)
+        pass
     def render_login_signup_page(self , screen_name):
         screen = self.getScreen(screen_name)
         screen.ids[f'username_{screen_name}'].text = ''
@@ -46,6 +111,9 @@ class DawnApp(MDApp):
         if screen_name == 'signup':
             screen.ids[f'email_{screen_name}'].text = ''
         screen_manager.current = screen_name
+
+    def on_text_login(self):
+        pass
 #########################################################################################
 ################################# PROFILE PAGE ##########################################
     def profile_changes(self,check):
@@ -99,8 +167,10 @@ class DawnApp(MDApp):
         self.change_text('last_name', f'{user.last_name}', screen_name)
         self.change_text('weight', f'{user.weight} kg', screen_name)
         self.change_text('height', f'{user.height} cm', screen_name)
-        self.change_text('date_of_birth', f'{user.date_of_birth}', screen_name)
+        self.change_text('date_of_birth', f'{user.date_of_birth.dob()}', screen_name)
         screen_manager.current = screen_name
+
+# This 'on_save' function has no more use and need to be deleted
     def on_save(self ,instance , value , date_range):
         month_list = ['January','February','March','April','May','June','July','August','September','October','November','December']
         screen = self.getScreen('question_details')
@@ -111,13 +181,52 @@ class DawnApp(MDApp):
         dob = f'{day} - {month_name} - {year}'
         user.date_of_birth = value
         screen.ids['date_of_birth'].text = dob
+# This 'show_date_picker' function has no more use and need to be deleted
     def show_date_picker(self):
         date_dialog = MDDatePicker()
         date_dialog.bind(on_save = self.on_save)
         date_dialog.open()
-    def render_profile_diagnoseMe(self):
-        screen = self.getScreen('profile_diagnoseMe')
-        print(screen.ids)
+    def on_date_text(self, text):
+        screen = self.getScreen('question_details')
+        list = screen.ids['sign_date_of_birth'].children
+        year = list[0]
+        month = list[1]
+        day = list[2]
+
+        if len(day.text) >= 2:
+            day.text =  f'{day.text[0]}{day.text[1]}'
+            if(int(day.text) > 32):
+                day.text = f'00'
+            month.focus = True
+
+
+
+        if len(month.text) >= 2 and len(day.text) >= 2:
+            month.text = f'{month.text[0]}{month.text[1]}'
+            if(int(month.text) > 12) or int(month.text) < 1:
+                month.text = f'01'
+            year.focus = True
+
+
+
+        if len(year.text) >= 4 and len(month.text) >= 2 and len(day.text) >= 2:
+            if date.today().year < int(year.text):
+                year.text = f'{date.today().year}'
+            year.text = f'{year.text[0]}{year.text[1]}{year.text[2]}{year.text[3]}'
+            try:
+                user.date_of_birth = Date(
+                    day = int(day.text) ,
+                    month = int(month.text),
+                    year = int(year.text)
+                )
+            except:
+                pass
+
+
+
+
+
+
 #########################################################################################
 ################################# DIAGNOSE FUNCTIONS ####################################
     def diagnose(self ,*args):
@@ -338,10 +447,6 @@ class DawnApp(MDApp):
             elif screen_name == 'next_question' or screen_name == 'prev_question' or screen_name == 'question':
                 if self.last_screen == 'login':
                     self.root.transition = SlideTransition(direction='up')
-
-                    # saves the username and password to the user class
-                    user.username = screen_manager.get_screen('login').ids.username_login.text
-                    user.password = screen_manager.get_screen('login').ids.password_login.text
                 if self.last_screen == 'question_details' and screen_name == 'prev_question':
                     self.root.transition = SlideTransition(direction='right')
                 elif self.last_screen == 'home':
@@ -374,7 +479,7 @@ class DawnApp(MDApp):
         global screen_manager
         global user
 
-        user = User('-','-','-','Dana','Cohen','-','-')
+        user = User('-','-','-','-','-','-','-')
 
         Window.clearcolor = get_color_from_hex("#F5E5D6")
         self.first_scroll_view = True

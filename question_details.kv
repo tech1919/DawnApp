@@ -61,8 +61,39 @@ MDScreen:
                         font_style: 'Body2'
 
                     ArrowButton:
-                        on_press: app.show_date_picker()
+                        #on_press: app.show_date_picker()
                         ArrowRight:
+
+
+            MDCard:
+                orientation: "vertical"
+                padding: 10
+                md_bg_color: get_color_from_hex("#FFFFFF")
+                size_hint: 0.8 , 0.13
+                pos_hint: {"center_x": 0.5, "center_y": 0.8}
+                elevation: 3
+                radius: [10]
+                MDBoxLayout:
+                    id: sign_date_of_birth
+                    orientation: "horizontal"
+                    MDTextField:
+                        halign: "center"
+                        hint_text: 'day'
+                        on_text: app.on_date_text(self.text)
+                    MDTextField:
+                        halign: "center"
+                        hint_text: 'month'
+                        on_text: app.on_date_text(self.text)
+                    MDTextField:
+                        halign: "center"
+                        hint_text: 'year'
+                        on_text: app.on_date_text(self.text)
+
+
+
+
+
+
 
 
             MDCard:
