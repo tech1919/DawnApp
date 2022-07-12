@@ -76,9 +76,7 @@ class DawnApp(MDApp):
     # It uses the self.answers dictionary and displays the questions and the answers
     # of the user in the profile_diagnoseMe page
 
-
         screen = screen_manager.get_screen('profile_diagnoseMe')
-
 
         if self.first_scroll_view:
             self.first_scroll_view = False
@@ -88,7 +86,7 @@ class DawnApp(MDApp):
             # the list of children is fliped
             i = len(list) - 1
             while i >= 0 :
-                list[i].secondary_text =  user.diagnose[len(list) - i - 1][3]
+                list[i].secondary_text =  self.answers[len(list) - i - 1]
                 i-=1
             return
 
@@ -99,14 +97,20 @@ class DawnApp(MDApp):
 
 
         i = 0
-        for c in self.questions:
+        for q , a in zip(self.questions , self.answers):
+
             item = TwoLineListItem(
-                text=c,
-                secondary_text = self.answers[i],
+                text= q,
+                secondary_text = a,
                 font_style='Caption',
             )
             i += 1
             ml.add_widget(item)
+
+        user.create_diagnose(self.questions , self.answers)
+
+
+
         screen.ids['diagnose_me'].add_widget(sv)
     def render_profile_page(self):
         screen_name = 'profile'
