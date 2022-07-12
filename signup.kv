@@ -11,38 +11,50 @@ MDScreen:
 
         ############## SIGNUP INPUTS ###############
         LoginLabelCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.8}
+            pos_hint: {"center_x": 0.5, "center_y": 0.85}
             LoginHeaderLabel:
                 text: 'Sign Up'
                 bold: True
 
+
+
+
         LoginLabelCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.65}
+            pos_hint: {"center_x": 0.5, "center_y": 0.76}
             LoginGeneralLabel:
                 text: 'Username'
         LoginInputCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.58}
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
             MDBoxLayout:
                 orientation: "horizontal"
                 LoginInputField:
                     id: username_signup
+
+
+
+
+
         LoginLabelCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.52}
+            pos_hint: {"center_x": 0.5, "center_y": 0.636}
             LoginGeneralLabel:
                 text: 'Email'
         LoginInputCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.46}
+            pos_hint: {"center_x": 0.5, "center_y": 0.576}
             MDBoxLayout:
                 orientation: "horizontal"
                 LoginInputField:
                     id: email_signup
 
+
+
+
+
         LoginLabelCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            pos_hint: {"center_x": 0.5, "center_y": 0.512}
             LoginGeneralLabel:
                 text: 'Password'
         LoginInputCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.34}
+            pos_hint: {"center_x": 0.5, "center_y": 0.452}
             MDBoxLayout:
                 orientation: "horizontal"
                 LoginInputField:
@@ -93,10 +105,17 @@ MDScreen:
                     user_font_size: "5sp"
                     pos_hint: {"center_x": 0.57, "center_y": 0.5}
         ############## GOTO LOGIN ###############
-        ArrowButton:
+
+
+        MDBoxLayout:
+            size_hint:  0.7 , 0.05
             id: login_page
-            pos_hint: {"center_x": 0.59, "center_y": 0.02}
-            on_press: app.go_to('login')
+            pos_hint: {"center_x": 0.5, "center_y": 0.02}
+            Button:
+                background_color: 0,0,0,0
+                on_press: app.go_to('login')
+
+
         LoginFooter:
             LoginFooterLabel:
                 text: "Already have an account? Login"

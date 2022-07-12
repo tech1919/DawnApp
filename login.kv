@@ -7,34 +7,39 @@
 MDScreen:
     name: 'login'
     LoginLayout:
+        id: login_page
 
 
         ############## LOGIN INPUTS ###############
 
         LoginLabelCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.8}
+            pos_hint: {"center_x": 0.5, "center_y": 0.85}
             LoginHeaderLabel:
                 text: 'Login'
 
 
+
         LoginLabelCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.6 + 0.1}
+            pos_hint: {"center_x": 0.5, "center_y": 0.76}
             LoginGeneralLabel:
                 text: 'Username'
         LoginInputCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.53 + 0.1}
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
             MDBoxLayout:
                 orientation: "horizontal"
                 LoginInputField:
                     id: username_login
 
 
+
+
+
         LoginLabelCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.47 + 0.1}
+            pos_hint: {"center_x": 0.5, "center_y": 0.636}
             LoginGeneralLabel:
                 text: 'Password'
         LoginInputCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.4 + 0.1}
+            pos_hint: {"center_x": 0.5, "center_y": 0.576}
             MDBoxLayout:
                 orientation: "horizontal"
                 LoginInputField:
@@ -43,11 +48,10 @@ MDScreen:
 
 
         LoginLabelCard:
-            pos_hint: {"center_x": 0.5, "center_y": 0.33 + 0.1}
+            pos_hint: {"center_x": 0.5, "center_y": 0.512}
             LoginGeneralLabel:
                 text: 'Forgot password?'
                 halign: 'right'
-
 
 
         ############## LOGIN BUTTON #################
@@ -103,11 +107,13 @@ MDScreen:
 
         ############## GOTO SIGNUP #################
 
-
-        ArrowButton:
+        MDBoxLayout:
+            size_hint:  0.7 , 0.05
             id: sign_up_page
-            pos_hint: {"center_x": 0.59, "center_y": 0.02}
-            on_press: app.go_to('signup')
+            pos_hint: {"center_x": 0.5, "center_y": 0.02}
+            Button:
+                background_color: 0,0,0,0
+                on_press: app.go_to('signup')
 
 
         LoginFooter:

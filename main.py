@@ -5,13 +5,17 @@ from kivy.utils import get_color_from_hex
 from kivy.clock import Clock
 from kivy.uix.scrollview import ScrollView
 from kivymd.uix.picker import MDDatePicker
+from kivymd.uix.list import MDList, TwoLineAvatarIconListItem,OneLineListItem ,TwoLineListItem,ThreeLineListItem ,OneLineAvatarIconListItem ,ThreeLineAvatarIconListItem , IconLeftWidget , IconRightWidget
+
+from kivy.uix.vkeyboard import VKeyboard
+from kivy.uix.label import Label
+from kivy.uix.gridlayout import GridLayout
+
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from datetime import date , datetime
-
-
-from kivymd.uix.list import MDList, TwoLineAvatarIconListItem,OneLineListItem ,TwoLineListItem,ThreeLineListItem ,OneLineAvatarIconListItem ,ThreeLineAvatarIconListItem , IconLeftWidget , IconRightWidget
 import os.path
+
 
 def getDay():
     return (date.today().strftime("%A, %d %B, %Y"))
@@ -30,9 +34,6 @@ def TEMP_create_firstlast_name(name):
     user.last_name = lastname
 
 
-
-
-
 class Date:
     def __init__(self , day = '' , month = '', year = ''):
         self.day = day
@@ -49,6 +50,7 @@ class Date:
             d = '-'
         return d
 class User:
+
     def __init__(self , height , weight , dob , first , last, username , password , email=''):
         self.height = height
         self.weight = weight
@@ -58,6 +60,7 @@ class User:
         self.username = username
         self.password = password
         self.email = email
+
     def print_user_info(self):
         print()
         print(f'    First name: {self.first_name}')
@@ -86,7 +89,6 @@ class DawnApp(MDApp):
     def details_check(self , next_screen):
         # This function checking the details coming from the login and signup pages
         # at the end of the check, send the app to the next_screen
-
         screen = self.getScreen(screen_manager.current)
         if screen_manager.current == 'login':
             user.username = screen.ids['username_login'].text
@@ -111,7 +113,6 @@ class DawnApp(MDApp):
         if screen_name == 'signup':
             screen.ids[f'email_{screen_name}'].text = ''
         screen_manager.current = screen_name
-
     def on_text_login(self):
         pass
 #########################################################################################
@@ -169,7 +170,6 @@ class DawnApp(MDApp):
         self.change_text('height', f'{user.height} cm', screen_name)
         self.change_text('date_of_birth', f'{user.date_of_birth.dob()}', screen_name)
         screen_manager.current = screen_name
-
 # This 'on_save' function has no more use and need to be deleted
     def on_save(self ,instance , value , date_range):
         month_list = ['January','February','March','April','May','June','July','August','September','October','November','December']
@@ -193,7 +193,7 @@ class DawnApp(MDApp):
         month = list[1]
         day = list[2]
 
-        if len(day.text) >= 2:
+        if len(day.text) >= 2 and len(month.text) <= 2:
             day.text =  f'{day.text[0]}{day.text[1]}'
             if(int(day.text) > 32):
                 day.text = f'00'
@@ -221,12 +221,6 @@ class DawnApp(MDApp):
                 )
             except:
                 pass
-
-
-
-
-
-
 #########################################################################################
 ################################# DIAGNOSE FUNCTIONS ####################################
     def diagnose(self ,*args):
@@ -345,6 +339,7 @@ class DawnApp(MDApp):
             'Chronic, widespread pain for 3 months or more',
             'Recurrent joint dislocations or frank joint instability, in the absence of trauma'
         ]
+
         if first:
             self.answers = {}
             # first question
@@ -502,7 +497,11 @@ class DawnApp(MDApp):
         screen_manager.add_widget(Builder.load_file('question_details_datepick.kv'))
 
 
+
+
         return screen_manager
+
+
     def on_start(self):
         # This function waits for 3 seconds in the presplash screen
         # until switching to the login screen
