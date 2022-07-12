@@ -6,71 +6,17 @@ from kivy.clock import Clock
 from kivy.uix.scrollview import ScrollView
 from kivymd.uix.picker import MDDatePicker
 from kivymd.uix.list import MDList, TwoLineAvatarIconListItem,OneLineListItem ,TwoLineListItem,ThreeLineListItem ,OneLineAvatarIconListItem ,ThreeLineAvatarIconListItem , IconLeftWidget , IconRightWidget
-
-from kivy.uix.vkeyboard import VKeyboard
-from kivy.uix.label import Label
-from kivy.uix.gridlayout import GridLayout
-
+from user import Date , User , date_validation_1 , number_validatin
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from datetime import date , datetime
 import os.path
 
 
+
 def getDay():
     return (date.today().strftime("%A, %d %B, %Y"))
-def TEMP_create_firstlast_name(name):
-    ls = name.split(' ')
-    for i in range(0,len(ls)):
-        ls[i] = ls[i].capitalize()
 
-    user.first_name = ls[0]
-    lastname = ''
-    for i in range(1,len(ls)):
-        lastname = lastname + ls[i]
-        if not i == len(ls):
-            lastname = lastname + ' '
-
-    user.last_name = lastname
-
-
-class Date:
-    def __init__(self , day = '' , month = '', year = ''):
-        self.day = day
-        self.month = month
-        self.year = year
-    def month_name(self):
-        month_list = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
-                      'November', 'December']
-        return month_list[self.month - 1]
-    def dob(self):
-        try:
-            d = f'{user.date_of_birth.day} {user.date_of_birth.month_name()}, {user.date_of_birth.year}'
-        except:
-            d = '-'
-        return d
-class User:
-
-    def __init__(self , height , weight , dob , first , last, username , password , email=''):
-        self.height = height
-        self.weight = weight
-        self.date_of_birth = Date()
-        self.first_name = first
-        self.last_name = last
-        self.username = username
-        self.password = password
-        self.email = email
-
-    def print_user_info(self):
-        print()
-        print(f'    First name: {self.first_name}')
-        print(f'    Last name: {self.last_name}')
-        print(f'    Username: {self.username}')
-        print(f'    Email: {self.email}')
-        print(f'    Password: {self.password}')
-        print(f'    Date of birth: {self.date_of_birth.dob()}')
-        print(f'    Height: {self.height} , Weight: {self.weight}')
-        print()
 
 class DemoProject(ScreenManager):
     pass
@@ -99,7 +45,7 @@ class DawnApp(MDApp):
             user.email = screen.ids['email_signup'].text
 
         # the next function is temporarly and need to be deleted
-        TEMP_create_firstlast_name(user.username)
+        user.TEMP_create_firstlast_name(user.username)
 
 
 
@@ -136,7 +82,7 @@ class DawnApp(MDApp):
             # the list of children is fliped
             i = len(list) - 1
             while i >= 0 :
-                list[i].secondary_text =  self.answers[len(list) - i - 1]
+                list[i].secondary_text =  user.diagnose[len(list) - i - 1][3]
                 i-=1
             return
 
@@ -189,14 +135,25 @@ class DawnApp(MDApp):
     def on_date_text(self, text):
         screen = self.getScreen('question_details')
         list = screen.ids['sign_date_of_birth'].children
+
         year = list[0]
         month = list[1]
         day = list[2]
+        if not number_validatin(day.text) and not day.text == '':
+            day.text = ''
+            return
+        if not number_validatin(month.text)  and not month.text == '':
+            month.text = ''
+            return
+        if not number_validatin(year.text)  and not year.text == '':
+            year.text = ''
+            return
+
 
         if len(day.text) >= 2 and len(month.text) <= 2:
             day.text =  f'{day.text[0]}{day.text[1]}'
             if(int(day.text) > 32):
-                day.text = f'00'
+                day.text = ''
             month.focus = True
 
 
@@ -204,7 +161,9 @@ class DawnApp(MDApp):
         if len(month.text) >= 2 and len(day.text) >= 2:
             month.text = f'{month.text[0]}{month.text[1]}'
             if(int(month.text) > 12) or int(month.text) < 1:
-                month.text = f'01'
+                month.text = f''
+                return
+
             year.focus = True
 
 
@@ -212,15 +171,21 @@ class DawnApp(MDApp):
         if len(year.text) >= 4 and len(month.text) >= 2 and len(day.text) >= 2:
             if date.today().year < int(year.text):
                 year.text = f'{date.today().year}'
+
+
             year.text = f'{year.text[0]}{year.text[1]}{year.text[2]}{year.text[3]}'
-            try:
-                user.date_of_birth = Date(
-                    day = int(day.text) ,
-                    month = int(month.text),
-                    year = int(year.text)
-                )
-            except:
-                pass
+            date_string = f'{day.text}-{month.text}-{year.text}'
+            if date_validation_1(date_string):
+                try:
+                    user.date_of_birth = Date(
+                        day = int(day.text) ,
+                        month = int(month.text),
+                        year = int(year.text)
+                    )
+                except:
+                    pass
+
+
 #########################################################################################
 ################################# DIAGNOSE FUNCTIONS ####################################
     def diagnose(self ,*args):
@@ -239,10 +204,18 @@ class DawnApp(MDApp):
 
         try:
             if check == 'yes':
+                answer = 'Yes'
+                # change for the user
+                user.diagnose[self.cur_question_idx][2] = answer
+
                 self.answers[self.cur_question_idx] = 'Yes'
                 screen.ids[f'no_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
                 screen.ids[f'no_btn_label'].color = get_color_from_hex("#000000")
             elif check == 'no':
+                answer = 'No'
+                # change for the user
+                user.diagnose[self.cur_question_idx][2] = answer
+
                 self.answers[self.cur_question_idx] = 'No'
                 screen.ids[f'yes_btn'].md_bg_color =  get_color_from_hex("#FFFFFF")
                 screen.ids[f'yes_btn_label'].color = get_color_from_hex("#000000")
@@ -290,16 +263,6 @@ class DawnApp(MDApp):
         self.change_text(f'question_number', f'QUESTION {self.cur_question_idx + 1} OF {self.number_of_questions}',
                          screen_name)
 
-        # This part switch the count number at the top of the question page
-        # to activate simply uncomment this part down here and the part in the question.kv
-        # file with the id of 'count_{number}'
-
-        # try:
-        #     self.change_photo(f'count', f'count_{self.cur_question_idx + 1}.png', screen_name)
-        # except:
-        #     self.change_photo(f'count', f'count_9.png', screen_name)
-
-
         # check if there is an image for the current question
         file_exists = os.path.exists(f'Q{self.cur_question_idx + 1}.png')
         if file_exists:
@@ -308,13 +271,13 @@ class DawnApp(MDApp):
             self.change_photo(f'question_img', f'Q1.png', screen_name)
 
 
-        # reset the buttons
+        # set the button
         self.on('reset')
+        self.on(user.diagnose[self.cur_question_idx][2].lower())
 
         return screen_name
     def first_question(self,first=False):
         # This function sets up the questions list and the answers dictionary
-
         self.questions = [
             'Can you now (or could you ever) place your hand flat on the floor without bending your knees?',
             'Can you now (or could you ever) bend your thumb to touch your forearm?',
@@ -341,23 +304,16 @@ class DawnApp(MDApp):
         ]
 
         if first:
-            self.answers = {}
+            self.answers = []
             # first question
             self.cur_question_idx = 0
             self.number_of_questions = len(self.questions)
             for i in range(0, self.number_of_questions):
-                self.answers[i] = '-'
+                self.answers.append('-')
+
+        user.create_diagnose(self.questions , self.answers)
 
         self.cur_question = self.questions[self.cur_question_idx]
-    def change_ans(self , q_num):
-        #### NOT WORKING ###
-        # Function for changing the answer for a certain question from the profile page
-
-        cur_ans = self.answers[q_num]
-        if cur_ans == 'Yes':
-            self.answers[q_num] = 'No'
-        else:
-            self.answers[q_num] = 'Yes'
 #########################################################################################
 ################################# HOME PAGE #############################################
     def render_home_page(self):
@@ -403,7 +359,7 @@ class DawnApp(MDApp):
         try:
             if screen_name == 'back':
                 self.root.transition = SlideTransition(direction="right")
-                screen_name = self.last_screen
+                screen_name = 'profile'
         except:
             pass
         finally:
@@ -446,10 +402,11 @@ class DawnApp(MDApp):
                     self.root.transition = SlideTransition(direction='right')
                 elif self.last_screen == 'home':
                     self.cur_question_idx = 0
+                elif screen_name == 'prev_question' and self.cur_question_idx == 0:
+                    screen_manager.current = 'profile'
+                    return
                 else:
                     self.root.transition = SlideTransition(direction='left')
-
-
 
                 screen_name = self.render_question(screen_name)
                 screen_manager.current = screen_name
@@ -500,8 +457,6 @@ class DawnApp(MDApp):
 
 
         return screen_manager
-
-
     def on_start(self):
         # This function waits for 3 seconds in the presplash screen
         # until switching to the login screen
