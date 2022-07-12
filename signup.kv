@@ -29,6 +29,7 @@ MDScreen:
                 orientation: "horizontal"
                 LoginInputField:
                     id: username_signup
+                    on_focus: app.keypad_listener(self.parent.parent.pos_hint , self.focus)
 
 
 
@@ -44,6 +45,7 @@ MDScreen:
                 orientation: "horizontal"
                 LoginInputField:
                     id: email_signup
+                    on_focus: app.keypad_listener(self.parent.parent.pos_hint , self.focus)
 
 
 
@@ -57,8 +59,11 @@ MDScreen:
             pos_hint: {"center_x": 0.5, "center_y": 0.452}
             MDBoxLayout:
                 orientation: "horizontal"
+
                 LoginInputField:
                     id: password_signup
+                    hint_pos: {"center_x":0.5 , "center_y": 0.5}
+                    on_focus: app.keypad_listener(self.parent.parent.pos_hint , self.focus)
                     password: True
 
 

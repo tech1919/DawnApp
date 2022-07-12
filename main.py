@@ -11,12 +11,15 @@ from kivymd.app import MDApp
 from kivy.core.window import Window
 from datetime import date , datetime
 import os.path
+import time
 
-
-
+def delay(seconds):
+    start = time.time()
+    stop = time.time()
+    while stop - start < seconds:
+        stop = time.time()
 def getDay():
     return (date.today().strftime("%A, %d %B, %Y"))
-
 
 class DemoProject(ScreenManager):
     pass
@@ -32,6 +35,9 @@ class DawnApp(MDApp):
         print("forgot password")
     def login(self,*args):
         screen_manager.current = "login"
+
+
+
     def details_check(self , next_screen):
         # This function checking the details coming from the login and signup pages
         # at the end of the check, send the app to the next_screen
@@ -184,8 +190,6 @@ class DawnApp(MDApp):
                     )
                 except:
                     pass
-
-
 #########################################################################################
 ################################# DIAGNOSE FUNCTIONS ####################################
     def diagnose(self ,*args):
@@ -462,6 +466,27 @@ class DawnApp(MDApp):
         # until switching to the login screen
 
         Clock.schedule_once(self.login , 3)
+
+    def keypad_listener(self , pos_hint ,state):
+        # This Function shifts the screen to the point where the
+        # focused text field is above the middle of the screen for using the phone's keypad
+        screen_name = screen_manager.current
+        if state == True:
+            ypos = pos_hint['center_y']
+            #delay one second
+            delay(0.3)
+            # get the screen
+            self.scrollPage(ypos, screen_name)
+        else:
+            self.scrollPage(0.7, screen_name)
+    def scrollPage(self, to_h, screen_name):
+        screen = self.getScreen(screen_name)
+        cur_y = screen.children[0].pos_hint['center_y']
+        offset = 0.7 - to_h
+        screen.children[0].pos_hint = {"center_x": 0.5 , "center_y": 0.5 + offset}
+
+
+
 #########################################################################################
 if __name__ == '__main__':
     DawnApp().run()

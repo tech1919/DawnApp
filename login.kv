@@ -29,6 +29,7 @@ MDScreen:
                 orientation: "horizontal"
                 LoginInputField:
                     id: username_login
+                    on_focus: app.keypad_listener(self.parent.parent.pos_hint , self.focus)
 
 
 
@@ -45,6 +46,7 @@ MDScreen:
                 LoginInputField:
                     id: password_login
                     password: True
+                    on_focus: app.keypad_listener(self.parent.parent.pos_hint , self.focus)
 
 
         LoginLabelCard:
