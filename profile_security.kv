@@ -58,7 +58,7 @@ MDScreen:
 
         OpenCard:
             size_hint: 0.8 , 0.3
-            pos_hint: {"center_x": 0.5, "center_y": 0.56 - 0.22}
+            pos_hint: {"center_x": 0.5, "center_y": 0.34}
             CardContentBox:
                 CardContentImage:
                     source: 'shield_logo.png'
@@ -80,16 +80,19 @@ MDScreen:
                 SecurityInputField:
                     id: current_password_check
                     hint_text: 'Current password'
+                    on_focus: app.keypad_listener(self.parent.parent.pos_hint , self.focus)
 
             MDBoxLayout:
                 SecurityInputField:
                     id: new_password
                     hint_text: 'New password'
+                    on_focus: app.keypad_listener(self.parent.parent.pos_hint , self.focus)
 
             MDBoxLayout:
                 SecurityInputField:
                     id: new_password_check
                     hint_text: 'New password, again'
+                    on_focus: app.keypad_listener(self.parent.parent.pos_hint , self.focus)
 
 
 

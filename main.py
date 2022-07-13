@@ -485,7 +485,6 @@ class DawnApp(MDApp):
             self.scrollPage(0.7, screen_name)
     def scrollPage(self, to_h, screen_name):
         screen = self.getScreen(screen_name)
-        cur_y = screen.children[0].pos_hint['center_y']
         offset = 0.7 - to_h
         screen.children[0].pos_hint = {"center_x": 0.5 , "center_y": 0.5 + offset}
 
