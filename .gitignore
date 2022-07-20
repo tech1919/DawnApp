@@ -1,5 +1,4 @@
 venv/
 .buildozer/
-buildozer.spec
 bin/
 alert.py
