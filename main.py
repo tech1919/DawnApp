@@ -3,6 +3,7 @@ from kivymd.app import MDApp
 from kivy.lang.builder import Builder
 from kivy.utils import get_color_from_hex
 from kivy.clock import Clock
+
 from kivy.uix.scrollview import ScrollView
 from kivymd.uix.picker import MDDatePicker
 from kivymd.uix.list import MDList, TwoLineAvatarIconListItem,OneLineListItem ,TwoLineListItem,ThreeLineListItem ,OneLineAvatarIconListItem ,ThreeLineAvatarIconListItem , IconLeftWidget , IconRightWidget
@@ -13,16 +14,14 @@ from datetime import date , datetime
 import os.path
 import time
 
+import dawnapi
+
 def delay(seconds):
     start = time.time()
     stop = time.time()
     while stop - start < seconds:
         stop = time.time()
-def getDay():
-    return (date.today().strftime("%A, %d %B, %Y"))
 
-class DemoProject(ScreenManager):
-    pass
 class DawnApp(MDApp):
 ################################# LOGIN\SIGUP PAGE ######################################
     def hello(self,say_something):
@@ -35,9 +34,6 @@ class DawnApp(MDApp):
         print("forgot password")
     def login(self,*args):
         screen_manager.current = "login"
-
-
-
     def details_check(self , next_screen):
         # This function checking the details coming from the login and signup pages
         # at the end of the check, send the app to the next_screen
@@ -59,15 +55,16 @@ class DawnApp(MDApp):
         self.go_to(next_screen)
         pass
     def render_login_signup_page(self , screen_name):
+        self.scrollPage('base',screen_name)
         screen = self.getScreen(screen_name)
         screen.ids[f'username_{screen_name}'].text = ''
         screen.ids[f'password_{screen_name}'].text = ''
+
         if screen_name == 'signup':
             screen.ids[f'email_{screen_name}'].text = ''
         screen_manager.current = screen_name
     def on_text_login(self):
         pass
-#########################################################################################
 ################################# PROFILE PAGE ##########################################
     def profile_changes(self,check):
         print(f'{check} changes made')
@@ -194,15 +191,13 @@ class DawnApp(MDApp):
                     )
                 except:
                     pass
-#########################################################################################
 ################################# DIAGNOSE FUNCTIONS ####################################
     def diagnose(self ,*args):
         self.root.transition = FadeTransition()
         screen = self.getScreen('diagnose')
-        screen.ids['date_diagnose'].text = getDay()
+        screen.ids['date_diagnose'].text = (date.today().strftime("%A, %d %B, %Y"))
         screen_manager.current = "diagnose"
         self.root.transition = NoTransition()
-#########################################################################################
 ################################# QUESTION PAGE #########################################
     def on(self,check):
         # This function controls the buttons in the question page
@@ -322,11 +317,12 @@ class DawnApp(MDApp):
         user.create_diagnose(self.questions , self.answers)
 
         self.cur_question = self.questions[self.cur_question_idx]
-#########################################################################################
 ################################# HOME PAGE #############################################
     def render_home_page(self):
-        screen_manager.current = 'home'
-#########################################################################################
+        screen_name = 'home'
+        screen = self.getScreen(screen_name)
+        screen.ids['hello-first_name'].text = f'Hello {user.first_name}'
+        screen_manager.current = screen_name
 ################################# GENERAL FUNCTIONS #####################################
     def getScreen(self,screen_name):
         return screen_manager.get_screen(screen_name)
@@ -378,14 +374,11 @@ class DawnApp(MDApp):
         # screen = self.getScreen(screen_name)
 
         try:
-
             if screen_name == 'question_details':
                 self.root.transition = NoTransition()
                 screen_manager.current = screen_name
             elif screen_name == 'home':
-                screen = self.getScreen(screen_name)
-                screen.ids['hello-first_name'].text = f'Hello {user.first_name}'
-                screen_manager.current = screen_name
+                self.render_home_page()
             elif screen_name == 'question_details_datepick':
                 self.root.transition = NoTransition()
                 screen_manager.current = screen_name
@@ -400,6 +393,7 @@ class DawnApp(MDApp):
                 self.create_scrollview()
                 screen.ids['profile_btn'].source = 'profile_p.png'
             elif screen_name == 'profile_security':
+                self.scrollPage('base' , screen_name)
                 screen = screen_manager.get_screen(screen_name)
                 screen_manager.current = screen_name
                 screen.ids['profile_btn'].source = 'profile_p.png'
@@ -431,14 +425,12 @@ class DawnApp(MDApp):
             screen_manager.current = 'profile'
 
         self.change_navbar(screen_name)
-#########################################################################################
 ################################# BUILD FUNCTIONS #######################################
     def build(self):
 
         # set the first question in line
         global screen_manager
         global user
-
         user = User('-','-','-','-','-','-','-')
 
         Window.clearcolor = get_color_from_hex("#F5E5D6")
@@ -448,7 +440,8 @@ class DawnApp(MDApp):
         self.last_screen = 'login'
 
         screen_manager = ScreenManager()
-        screen_manager.add_widget(Builder.load_file('login.kv'))
+
+        screen_manager.add_widget(Builder.load_file('kv/login.kv'))
         screen_manager.add_widget(Builder.load_file('profile.kv'))
         screen_manager.add_widget(Builder.load_file('signup.kv'))
         screen_manager.add_widget(Builder.load_file('daily.kv'))
@@ -461,8 +454,16 @@ class DawnApp(MDApp):
         screen_manager.add_widget(Builder.load_file('question_details.kv'))
         screen_manager.add_widget(Builder.load_file('question_details_datepick.kv'))
 
+        try:
 
-
+            user_to_find = {
+                'first_name': 'Ofry',
+                'last_name': 'Makdasy',
+                'username': 'ofryma'
+            }
+            print(dawnapi.getData(query=user_to_find))
+        except:
+            pass
 
         return screen_manager
     def on_start(self):
@@ -470,7 +471,6 @@ class DawnApp(MDApp):
         # until switching to the login screen
 
         Clock.schedule_once(self.login , 3)
-
     def keypad_listener(self , pos_hint ,state):
         # This Function shifts the screen to the point where the
         # focused text field is above the middle of the screen for using the phone's keypad
@@ -482,14 +482,20 @@ class DawnApp(MDApp):
             # get the screen
             self.scrollPage(ypos, screen_name)
         else:
-            self.scrollPage(0.7, screen_name)
-    def scrollPage(self, to_h, screen_name):
+            self.scrollPage('base', screen_name)
+    def scrollPage(self, to_h, screen_name = ''):
+
+        d_h = 0.7
+
+        if screen_name == '':
+            screen_name = screen_manager.current
         screen = self.getScreen(screen_name)
-        offset = 0.7 - to_h
+        if to_h == 'base':
+            offset = 0
+        else:
+            offset = d_h - to_h
+
         screen.children[0].pos_hint = {"center_x": 0.5 , "center_y": 0.5 + offset}
-
-
-
 #########################################################################################
 if __name__ == '__main__':
     DawnApp().run()
