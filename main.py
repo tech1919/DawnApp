@@ -16,6 +16,10 @@ import time
 
 import dawnapi
 
+
+images_path = 'images/'
+kv_path = 'kv/'
+
 def delay(seconds):
     start = time.time()
     stop = time.time()
@@ -267,11 +271,11 @@ class DawnApp(MDApp):
                          screen_name)
 
         # check if there is an image for the current question
-        file_exists = os.path.exists(f'Q{self.cur_question_idx + 1}.png')
+        file_exists = os.path.exists(f'{images_path}Q{self.cur_question_idx + 1}.png')
         if file_exists:
-            self.change_photo(f'question_img', f'Q{self.cur_question_idx + 1}.png', screen_name)
+            self.change_photo(f'question_img', f'{images_path}Q{self.cur_question_idx + 1}.png', screen_name)
         else:
-            self.change_photo(f'question_img', f'Q1.png', screen_name)
+            self.change_photo(f'question_img', f'{images_path}Q1.png', screen_name)
 
 
         # set the button
@@ -354,9 +358,9 @@ class DawnApp(MDApp):
 
         screen = screen_manager.get_screen(screen_name)
         for id in images_ids:
-            screen.ids[f'{id}_btn'].source = f'{id}.png'
+            screen.ids[f'{id}_btn'].source = f'{images_path}{id}.png'
 
-        screen.ids[f'{screen_name}_btn'].source = f'{screen_name}_p.png'
+        screen.ids[f'{screen_name}_btn'].source = f'{images_path}{screen_name}_p.png'
     def go_to(self,screen_name):
         # saves the last screen before changing
         self.root.transition = NoTransition()
@@ -391,12 +395,12 @@ class DawnApp(MDApp):
                 screen = screen_manager.get_screen(screen_name)
                 screen_manager.current = screen_name
                 self.create_scrollview()
-                screen.ids['profile_btn'].source = 'profile_p.png'
+                screen.ids['profile_btn'].source = f'{images_path}profile_p.png'
             elif screen_name == 'profile_security':
                 self.scrollPage('base' , screen_name)
                 screen = screen_manager.get_screen(screen_name)
                 screen_manager.current = screen_name
-                screen.ids['profile_btn'].source = 'profile_p.png'
+                screen.ids['profile_btn'].source = f'{images_path}profile_p.png'
             elif screen_name == 'next_question' or screen_name == 'prev_question' or screen_name == 'question':
                 if self.last_screen == 'login':
                     self.root.transition = SlideTransition(direction='up')
@@ -435,7 +439,7 @@ class DawnApp(MDApp):
 
         Window.clearcolor = get_color_from_hex("#F5E5D6")
         self.first_scroll_view = True
-        self.icon = 'app_logo.png'
+        self.icon = f'{images_path}app_logo.png'
         self.first_question(first=True)
         self.last_screen = 'login'
 
