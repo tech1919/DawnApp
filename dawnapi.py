@@ -3,7 +3,8 @@ from kivy.network.urlrequest import UrlRequest
 import urllib
 
 
-endpoint = 'http://localhost:3000/'
+endpoint = 'https://dawnapi.herokuapp.com/'
+test_endpoint = 'http://localhost:3000/'
 
 def getData(query):
     '''
@@ -23,10 +24,12 @@ def getData(query):
 
 
     params = urllib.parse.urlencode(query)
-    req = UrlRequest(f'{endpoint}users?{params}')
+    # req = UrlRequest(f'{endpoint}test?{params}')
+    req = UrlRequest(f'{endpoint}test')
     req.wait()
 
     return req.result
+
 def login_check(query):
     '''
        This function will verify the login details (username and password)

@@ -442,17 +442,17 @@ class DawnApp(MDApp):
         screen_manager = ScreenManager()
 
         screen_manager.add_widget(Builder.load_file('kv/login.kv'))
-        screen_manager.add_widget(Builder.load_file('profile.kv'))
-        screen_manager.add_widget(Builder.load_file('signup.kv'))
-        screen_manager.add_widget(Builder.load_file('daily.kv'))
-        screen_manager.add_widget(Builder.load_file('home.kv'))
-        screen_manager.add_widget(Builder.load_file('profile_diagnoseMe.kv'))
-        screen_manager.add_widget(Builder.load_file('profile_security.kv'))
-        screen_manager.add_widget(Builder.load_file('diagnose.kv'))
-        screen_manager.add_widget(Builder.load_file('presplash_diagnose.kv'))
-        screen_manager.add_widget(Builder.load_file('question.kv'))
-        screen_manager.add_widget(Builder.load_file('question_details.kv'))
-        screen_manager.add_widget(Builder.load_file('question_details_datepick.kv'))
+        screen_manager.add_widget(Builder.load_file('kv/profile.kv'))
+        screen_manager.add_widget(Builder.load_file('kv/signup.kv'))
+        screen_manager.add_widget(Builder.load_file('kv/daily.kv'))
+        screen_manager.add_widget(Builder.load_file('kv/home.kv'))
+        screen_manager.add_widget(Builder.load_file('kv/profile_diagnoseMe.kv'))
+        screen_manager.add_widget(Builder.load_file('kv/profile_security.kv'))
+        screen_manager.add_widget(Builder.load_file('kv/diagnose.kv'))
+        screen_manager.add_widget(Builder.load_file('kv/presplash_diagnose.kv'))
+        screen_manager.add_widget(Builder.load_file('kv/question.kv'))
+        screen_manager.add_widget(Builder.load_file('kv/question_details.kv'))
+        screen_manager.add_widget(Builder.load_file('kv/question_details_datepick.kv'))
 
         try:
 
