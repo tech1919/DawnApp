@@ -4,7 +4,6 @@
 #:include kv/classes.kv
 
 
-
 MDScreen:
     name: 'login'
     LoginLayout:
@@ -64,7 +63,9 @@ MDScreen:
                 id: login_btn
                 background_color: 0,0,0,0
                 pos_hint: {"center_x": 0.5, "center_y": 0.5}
-                on_press: app.details_check('home')
+                on_press: app.verify()
+         #       on_press: app.details_check('home')
+
         LoginButton:
             MDBoxLayout:
                 LoginButtonLabel:
@@ -94,14 +95,14 @@ MDScreen:
             MDFloatLayout:
                 MDIconButton:
                     halign: "center"
-                    icon: "images/facebook_logo.png"
+                    icon: "assets/images/facebook_logo.png"
                     on_press: app.facebook_login()
                     size: self.parent.size
                     user_font_size: "5sp"
                     pos_hint: {"center_x": 0.43, "center_y": 0.5}
                 MDIconButton:
                     halign: "center"
-                    icon: "images/google_logo.png"
+                    icon: "assets/images/google_logo.png"
                     on_press: app.google_login()
                     size: self.parent.size
                     user_font_size: "5sp"

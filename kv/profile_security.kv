@@ -13,7 +13,7 @@ MDScreen:
             on_press: app.go_to('back')
             Image:
                 size_hint: 0.6 , 0.6
-                source: 'images/left_button.png'
+                source: 'assets/images/left_button.png'
 
 
         UserImage:
@@ -21,7 +21,7 @@ MDScreen:
             on_press: app.profile_changes('security')
             on_press: app.go_to('profile')
             Image:
-                source: 'images/plus_btn.png'
+                source: 'assets/images/plus_btn.png'
 
         UserNameLabel:
 
@@ -35,7 +35,7 @@ MDScreen:
             pos_hint: {"center_x": 0.5, "center_y": 0.66}
             CardContentBox:
                 CardContentImage:
-                    source: 'images/person_logo.png'
+                    source: 'assets/images/person_logo.png'
                 CardContentLabel:
                     text: "My Account"
                 ArrowButton:
@@ -48,7 +48,7 @@ MDScreen:
             pos_hint: {"center_x": 0.5, "center_y": 0.56}
             CardContentBox:
                 CardContentImage:
-                    source: 'images/list_logo.png'
+                    source: 'assets/images/list_logo.png'
                 CardContentLabel:
                     text: "Diagnose Me"
                 ArrowButton:
@@ -61,7 +61,7 @@ MDScreen:
             pos_hint: {"center_x": 0.5, "center_y": 0.34}
             CardContentBox:
                 CardContentImage:
-                    source: 'images/shield_logo.png'
+                    source: 'assets/images/shield_logo.png'
                 CardContentLabel:
                     text: "Security"
                 ArrowButton:
@@ -117,7 +117,7 @@ MDScreen:
                 orientation: "vertical"
                 Image:
                     id: home_btn
-                    source: 'images/home.png'
+                    source: 'assets/images/home.png'
                 MDLabel:
                     halign: "center"
                     text: "Home"
@@ -128,7 +128,7 @@ MDScreen:
 
                 Image:
                     id: daily_btn
-                    source: 'images/daily.png'
+                    source: 'assets/images/daily.png'
                 MDLabel:
                     halign: "center"
                     text: "Daily"
@@ -139,7 +139,7 @@ MDScreen:
 
                 Image:
                     id: diagnose_btn
-                    source: 'images/diagnose.png'
+                    source: 'assets/images/diagnose.png'
                 MDLabel:
                     halign: "center"
                     text: "Diagnose"
@@ -150,7 +150,7 @@ MDScreen:
 
                 Image:
                     id: profile_btn
-                    source: 'images/profile.png'
+                    source: 'assets/images/profile.png'
                 MDLabel:
                     halign: "center"
                     text: "Profile"

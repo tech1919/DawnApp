@@ -23,28 +23,18 @@ MDScreen:
             id: edit_btn
             on_press: app.go_to('profile_diagnoseMe')
             Image:
-                source: 'images/edit.png'
-
-
-
-
-
-
-
-
+                source: 'assets/images/edit.png'
 
 
         OpenCard:
             pos_hint: {"center_x": 0.5, "center_y": 0.53}
             CardContentBox:
                 CardContentImage:
-                    source: 'images/person_logo.png'
+                    source: 'assets/images/person_logo.png'
                 CardContentLabel:
                     text: "My Account"
                 ArrowButton:
                     ArrowDown:
-
-
 
 
             MDBoxLayout:
@@ -53,7 +43,7 @@ MDScreen:
                     text: "First Name"
                 RightLabel:
                     id: first_name
-                    text: "Dana"
+                    text: ""
 
 
             MDBoxLayout:
@@ -62,7 +52,7 @@ MDScreen:
                     text: "Last Name"
                 RightLabel:
                     id: last_name
-                    text: "Cohen"
+                    text: ""
 
 
             MDBoxLayout:
@@ -71,7 +61,7 @@ MDScreen:
                     text: "Date Birth"
                 RightLabel:
                     id: date_of_birth
-                    text: "01/01/1990"
+                    text: "DD/MM/YYYY"
 
 
             MDBoxLayout:
@@ -80,7 +70,7 @@ MDScreen:
                     text: "Height"
                 RightLabel:
                     id: height
-                    text: "168 cm"
+                    text: " cm"
 
             MDBoxLayout:
                 orientation: "horizontal"
@@ -88,7 +78,7 @@ MDScreen:
                     text: "Weight"
                 RightLabel:
                     id: weight
-                    text: "64 kg"
+                    text: " kg"
 
 
 
@@ -102,7 +92,7 @@ MDScreen:
             pos_hint: {"center_x": 0.5, "center_y": 0.29}
             CardContentBox:
                 CardContentImage:
-                    source: 'images/list_logo.png'
+                    source: 'assets/images/list_logo.png'
                 CardContentLabel:
                     text: "Diagnose Me"
                 ArrowButton:
@@ -113,7 +103,7 @@ MDScreen:
             pos_hint: {"center_x": 0.5, "center_y": 0.185}
             CardContentBox:
                 CardContentImage:
-                    source: 'images/shield_logo.png'
+                    source: 'assets/images/shield_logo.png'
                 CardContentLabel:
                     text: "Security"
                 ArrowButton:
@@ -144,7 +134,7 @@ MDScreen:
                 orientation: "vertical"
                 Image:
                     id: home_btn
-                    source: 'images/home.png'
+                    source: 'assets/images/home.png'
                 MDLabel:
                     halign: "center"
                     text: "Home"
@@ -155,7 +145,7 @@ MDScreen:
 
                 Image:
                     id: daily_btn
-                    source: 'images/daily.png'
+                    source: 'assets/images/daily.png'
                 MDLabel:
                     halign: "center"
                     text: "Daily"
@@ -166,7 +156,7 @@ MDScreen:
 
                 Image:
                     id: diagnose_btn
-                    source: 'images/diagnose.png'
+                    source: 'assets/images/diagnose.png'
                 MDLabel:
                     halign: "center"
                     text: "Diagnose"
@@ -177,7 +167,7 @@ MDScreen:
 
                 Image:
                     id: profile_btn
-                    source: 'images/profile.png'
+                    source: 'assets/images/profile.png'
                 MDLabel:
                     halign: "center"
                     text: "Profile"

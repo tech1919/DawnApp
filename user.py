@@ -1,4 +1,4 @@
-from datetime import date , datetime
+from datetime import date, datetime
 
 class Date:
     def __init__(self , day = '' , month = '', year = ''):
@@ -15,9 +15,8 @@ class Date:
         except:
             d = '-'
         return d
-
 class Question:
-    def __init__(self , number , question , answer):
+    def __init__(self, number, question, answer):
         self.q_number = number
         self.question = question
         self.answer = answer
@@ -26,7 +25,7 @@ class User:
     def __init__(self, height, weight, dob, first, last, username, password, email=''):
         self.height = height
         self.weight = weight
-        self.date_of_birth = Date()
+        self.date_of_birth = dob
         self.first_name = first
         self.last_name = last
         self.username = username
@@ -34,40 +33,37 @@ class User:
         self.email = email
         self.diagnose = []
 
-    def create_diagnose(self , q_arr , a_arr):
+    def create_diagnose(self, q_arr, a_arr):
         num = 1
-        for q , a in zip(q_arr , a_arr):
-            self.diagnose.append([num,q,a])
+        for q, a in zip(q_arr, a_arr):
+            self.diagnose.append([num, q, a])
             num += 1
 
-    def print_user_info(self):
-        print()
-        print(f'    First name: {self.first_name}')
-        print(f'    Last name: {self.last_name}')
-        print(f'    Username: {self.username}')
-        print(f'    Email: {self.email}')
-        print(f'    Password: {self.password}')
-        print(f'    Date of birth: {self.date_of_birth.dob()}')
-        print(f'    Height: {self.height} , Weight: {self.weight}')
-        print()
+    def user_info(self):
 
-    def TEMP_create_firstlast_name(self,name):
-        # This function is temporary and need to be deleted after aranging the user's info input method
-        ls = name.split(' ')
-        for i in range(0, len(ls)):
-            ls[i] = ls[i].capitalize()
+        # print()
+        # print(f'    First name: {self.first_name}')
+        # print(f'    Last name: {self.last_name}')
+        # print(f'    Username: {self.username}')
+        # print(f'    Email: {self.email}')
+        # print(f'    Password: {self.password}')
+        # print(f'    Date of birth: {self.date_of_birth}')
+        # print(f'    Height: {self.height} , Weight: {self.weight}')
+        # print()
 
-        self.first_name = ls[0]
-        lastname = ''
-        for i in range(1, len(ls)):
-            lastname = lastname + ls[i]
-            if not i == len(ls):
-                lastname = lastname + ' '
-
-        self.last_name = lastname
+        user_json_object = {
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'username': self.username,
+            'email': self.email,
+            'password': self.password,
+            'height': self.height,
+            'weight': self.weight
+            # 'date_of_birth': self.date_of_birth,
 
 
-
+        }
+        return user_json_object
 
 def date_validation_1(date_string):
     test_format = '04-01-1997'

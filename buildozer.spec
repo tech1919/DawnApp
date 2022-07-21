@@ -13,10 +13,10 @@ package.domain = org.test
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,images/*,kv/*
+source.include_exts = py,png,jpg,kv,atlas,assets/images/*,kv/*
 
 # (list) List of inclusions using pattern matching
-#source.include_patterns = assets/*,images/*.png
+source.include_patterns = assets/images/*
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -44,10 +44,10 @@ requirements = python3,kivy==2.1.0,kivymd==0.104.2,pillow
 # requirements.source.kivy = ../../kivy
 
 # (str) Presplash of the application
-presplash.filename = images/presplash.jpg
+presplash.filename = assets/images/presplash.jpg
 
 # (str) Icon of the application
-icon.filename = images/app_logo.png
+icon.filename = assets/images/app_logo.png
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait

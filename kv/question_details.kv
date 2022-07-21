@@ -18,7 +18,7 @@ MDScreen:
                 on_press: app.go_to('prev_question')
                 Image:
                     size_hint: 0.6 , 0.6
-                    source: 'images/left_button.png'
+                    source: 'assets/images/left_button.png'
 
 
             MDBoxLayout:
@@ -83,17 +83,23 @@ MDScreen:
                     id: sign_date_of_birth
                     orientation: "horizontal"
                     MDTextField:
+                        id: day_field
+                        input_filter: 'int'
                         halign: "center"
-                        hint_text: 'day'
-                        on_text: app.on_date_text(self.text)
+                        hint_text: 'Day'
+                        on_text: app.date_validation(self.text)
                     MDTextField:
+                        id: month_field
+                        input_filter: 'int'
                         halign: "center"
-                        hint_text: 'month'
-                        on_text: app.on_date_text(self.text)
+                        hint_text: 'Month'
+                        on_text: app.date_validation(self.text)
                     MDTextField:
+                        id: year_field
+                        input_filter: 'int'
                         halign: "center"
-                        hint_text: 'year'
-                        on_text: app.on_date_text(self.text)
+                        hint_text: 'Year'
+                        on_text: app.date_validation(self.text)
 
 
 
@@ -171,7 +177,8 @@ MDScreen:
                 Button:
                     background_color: 0,0,0,0
                     pos_hint: {"center_x": .5 , "center_y": 0.09}
-                    on_press: app.go_to('profile')
+                    on_press: app.update_patient()
+                    on_release: app.go_to('profile')
             QuestionButton:
                 id: next_btn
                 pos_hint: {"center_x": .5 , "center_y": 0.09}

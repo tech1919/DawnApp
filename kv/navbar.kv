@@ -1,65 +1,57 @@
 
-<Navbar>:
-        #*************** Bottom navbar **************
-    NavbarBox:
-        MDFloatLayout:
-            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-            HomeButton:
-        MDFloatLayout:
-            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-            DailyButton:
-        MDFloatLayout:
-            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-            DiagnoseButton:
-        MDFloatLayout:
-            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-            ProfileButton:
-    BottomNavbarCard:
-    NavbarBox:
-        MDBoxLayout:
-            orientation: "vertical"
-            Image:
-                id: home_btn
-                source: 'images/home.png'
-            MDLabel:
-                halign: "center"
-                text: "Home"
-                font_style: "Caption"
-                color: get_color_from_hex("##012241")
-        MDBoxLayout:
-            orientation: "vertical"
-
-            Image:
-                id: daily_btn
-                source: 'images/daily.png'
-            MDLabel:
-                halign: "center"
-                text: "Daily"
-                font_style: "Caption"
-                color: get_color_from_hex("##012241")
-        MDBoxLayout:
-            orientation: "vertical"
-
-            Image:
-                id: diagnose_btn
-                source: 'images/diagnose.png'
-            MDLabel:
-                halign: "center"
-                text: "Diagnose"
-                font_style: "Caption"
-                color: get_color_from_hex("##012241")
-        MDBoxLayout:
-            orientation: "vertical"
-
-            Image:
-                id: profile_btn
-                source: 'images/profile.png'
-            MDLabel:
-                halign: "center"
-                text: "Profile"
-                font_style: "Caption"
-                color: get_color_from_hex("##012241")
+            #*************** Bottom navbar **************
 
 
+            NavbarBox:
 
+                ButtonBox:
+                    HomeButton:
+                ButtonBox:
+                    DailyButton:
+                ButtonBox:
+                    DiagnoseButton:
+                ButtonBox:
+                    ProfileButton:
+            BottomNavbarCard:
+            NavbarBox:
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    Image:
+                        source: 'assets/images/home.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Home"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    Image:
+                        source: 'assets/images/daily.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Daily"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    Image:
+                        source: 'assets/images/diagnose.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Diagnose"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    Image:
+                        source: 'assets/images/profile.png'
+                    MDLabel:
+                        halign: "center"
+                        text: "Profile"
+                        font_style: "Caption"
+                        color: get_color_from_hex("##012241")
 
