@@ -22,9 +22,13 @@ from kivymd.uix.list import MDList, TwoLineListItem
 from db_connection import add_patient , verify_patient , update_patient
 from user import User
 
-path_to_images = 'assets/images/'
-path_to_kv = 'kv/'
-path_to_classes = 'libs/uix/baseclass'
+from libs.uix.kv.login import LoginScreen , LoginLayout
+from libs.uix.kv.signup import SignupScreen, SignupLayout
+from libs.uix.kv.profile import ProfileLayout , ProfileScreen
+from libs.uix.kv.home import HomeScreen , HomeLayout
+from libs.uix.kv.diagnose import DiagnoseLayout , DiagnoseScreen
+from libs.uix.kv.daily import DailyLayout , DailyScreen
+from libs.uix.components.navbar import Navbar
 
 def delay(seconds):
     start = time.time()
@@ -34,37 +38,6 @@ def delay(seconds):
 
 
 class Manager(ScreenManager):
-    pass
-
-
-
-class LoginScreen(Screen):
-    pass
-class SignupScreen(Screen):
-    pass
-class ProfileScreen(Screen):
-    pass
-class HomeScreen(Screen):
-    pass
-class DailyScreen(Screen):
-    pass
-class DiagnoseScreen(Screen):
-    pass
-
-
-class SignupLayout(MDFloatLayout):
-    pass
-class LoginLayout(MDFloatLayout):
-    pass
-class ProfileLayout(MDFloatLayout):
-    pass
-class HomeLayout(MDFloatLayout):
-    pass
-class DiagnoseLayout(MDFloatLayout):
-    pass
-class DailyLayout(MDFloatLayout):
-    pass
-class Navbar(MDFloatLayout):
     pass
 
 # class DawnApp(MDApp):
@@ -584,7 +557,6 @@ class Navbar(MDFloatLayout):
 #         screen = self.getScreen(screen_name)
 #         offset = 0.7 - to_h
 #         screen.children[0].pos_hint = {"center_x": 0.5, "center_y": 0.5 + offset}
-
 
 
 class DawnApp(MDApp):
