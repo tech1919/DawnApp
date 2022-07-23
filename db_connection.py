@@ -5,7 +5,7 @@ import urllib
 endpoint = 'https://dawnapi.herokuapp.com/'
 
 # for tests
-endpoint = 'http://localhost:3000/'
+# endpoint = 'http://localhost:3000/'
 
 def getData(query):
     '''
