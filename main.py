@@ -2,45 +2,29 @@ import os.path
 import time
 from datetime import date
 
+from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.lang.builder import Builder
-from kivy.uix.screenmanager import ScreenManager, FadeTransition, NoTransition, SlideTransition
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.screenmanager import ScreenManager, FadeTransition, NoTransition, SlideTransition, Screen
 from kivy.uix.scrollview import ScrollView
+from kivy.uix.widget import Widget
 from kivy.utils import get_color_from_hex
 from kivymd.app import MDApp
+from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.card import MDCard
+from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.list import MDList, TwoLineListItem
-from kivy.uix.popup import Popup
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.widget import Widget
 
-from db_connection import DataBase
+from db_connection import add_patient , verify_patient , update_patient
 from user import User
 
 path_to_images = 'assets/images/'
 path_to_kv = 'kv/'
 path_to_classes = 'libs/uix/baseclass'
-
-
-# class to call the popup function
-class PopupWindow(Widget):
-
-    def btn(self):
-        popFun()
-
-
-# class to build GUI for a popup window
-class P(FloatLayout):
-    pass
-
-
-# function that displays the content
-def popFun():
-    show = P()
-    window = Popup(title="Details", content=show,
-                   size_hint=(None, None), size=(300, 300))
-    window.open()
-
 
 def delay(seconds):
     start = time.time()
@@ -49,31 +33,18 @@ def delay(seconds):
         stop = time.time()
 
 
-def getDay():
-    return (date.today().strftime("%A, %d %B, %Y"))
-
-
-class DemoProject(ScreenManager):
-    pass
-
-
 class DawnApp(MDApp):
-    ################################# LOGIN\SIGUP PAGE ######################################
+################################# LOGIN\SIGUP PAGE ######################################
     def hello(self, say_something):
         print(say_something)
-
     def google_login(self):
         print("Google login")
-
     def facebook_login(self):
         print("Facebook login")
-
     def forgot_password(self):
         print("forgot password")
-
     def login(self, *args):
         screen_manager.current = "login"
-
     def render_login_signup_page(self, screen_name):
         screen = self.getScreen(screen_name)
         screen.ids[f'username_{screen_name}'].text = ''
@@ -81,15 +52,11 @@ class DawnApp(MDApp):
         if screen_name == 'signup':
             screen.ids[f'email_{screen_name}'].text = ''
         screen_manager.current = screen_name
-
     def on_text_login(self):
         pass
-
-    #########################################################################################
-    ################################# PROFILE PAGE ##########################################
+################################# PROFILE PAGE ##########################################
     def profile_changes(self, check):
         print(f'{check} changes made')
-
     def create_scrollview(self):
         # This function create a scroll view for the profile_diagnoseMe page
         # It uses the self.answers dictionary and displays the questions and the answers
@@ -126,7 +93,6 @@ class DawnApp(MDApp):
         user.create_diagnose(self.questions, self.answers)
 
         screen.ids['diagnose_me'].add_widget(sv)
-
     def render_profile_page(self):
         screen_name = 'profile'
         day = screen_manager.get_screen('question_details').ids.day_field.text
@@ -146,7 +112,6 @@ class DawnApp(MDApp):
         self.change_text('height', f'{user.height} cm', screen_name)
         self.change_text('date_of_birth', f'{user.date_of_birth}', screen_name)
         screen_manager.current = screen_name
-
     def date_validation(self, text):
 
         day = screen_manager.get_screen('question_details').ids.day_field.text
@@ -162,18 +127,14 @@ class DawnApp(MDApp):
         if not year == "":
             if date.today().year < int(year):
                 screen_manager.get_screen('question_details').ids.year_field.text = ""
-
-    #########################################################################################
-    ################################# DIAGNOSE FUNCTIONS ####################################
+################################# DIAGNOSE FUNCTIONS ####################################
     def diagnose(self, *args):
         self.root.transition = FadeTransition()
         screen = self.getScreen('diagnose')
-        screen.ids['date_diagnose'].text = getDay()
+        screen.ids['date_diagnose'].text = (date.today().strftime("%A, %d %B, %Y"))
         screen_manager.current = "diagnose"
         self.root.transition = NoTransition()
-
-    #########################################################################################
-    ################################# QUESTION PAGE #########################################
+################################# QUESTION PAGE #########################################
     def on(self, check):
         # This function controls the buttons in the question page
         screen_name = 'question'
@@ -203,7 +164,6 @@ class DawnApp(MDApp):
             screen.ids[f'{check}_btn_label'].color = get_color_from_hex("#FFFFFF")
         except:
             pass
-
     def render_question(self, operation):
         # if the app go to a question page from a login or signup page
         # the question current number need to reset for starting over
@@ -218,6 +178,7 @@ class DawnApp(MDApp):
 
         elif operation == 'prev_question' and self.cur_question_idx > 0:
             self.cur_question_idx -= 1
+
 
         # if the user finished all of the questions
         if self.cur_question_idx >= self.number_of_questions:
@@ -245,7 +206,6 @@ class DawnApp(MDApp):
         self.on(user.diagnose[self.cur_question_idx][2].lower())
 
         return screen_name
-
     def first_question(self, first=False):
         # This function sets up the questions list and the answers dictionary
         self.questions = [
@@ -284,29 +244,22 @@ class DawnApp(MDApp):
         user.create_diagnose(self.questions, self.answers)
 
         self.cur_question = self.questions[self.cur_question_idx]
-
-    #########################################################################################
-    ################################# HOME PAGE #############################################
+################################# HOME PAGE #############################################
     def render_home_page(self):
         screen_manager.current = 'home'
-
-    #########################################################################################
-    ################################# GENERAL FUNCTIONS #####################################
+################################# GENERAL FUNCTIONS #####################################
     def getScreen(self, screen_name):
         return screen_manager.get_screen(screen_name)
-
     def change_text(self, id, text, screen_name):
         # This function can change the text for a label in a given screen
         screen = screen_manager.get_screen(screen_name)
         screen.ids[id].text = text
-
     def change_photo(self, id, new_path, screen_name):
         # This function can change an image that has a id
         # in a given screen
 
         screen = screen_manager.get_screen(screen_name)
         screen.ids[id].source = new_path
-
     def change_navbar(self, screen_name):
         # This function controls the bottom navigation bar
         # for a given screen_name, the funtion will switch the
@@ -327,7 +280,6 @@ class DawnApp(MDApp):
             screen.ids[f'{id}_btn'].source = f'{path_to_images}{id}.png'
 
         screen.ids[f'{screen_name}_btn'].source = f'{path_to_images}{screen_name}_p.png'
-
     def go_to(self, screen_name):
         # saves the last screen before changing
         self.root.transition = NoTransition()
@@ -403,15 +355,22 @@ class DawnApp(MDApp):
             screen_manager.current = 'profile'
 
         self.change_navbar(screen_name)
+################################# DATABASE FUNCTIONS ####################################
 
     # function verifies if user exist and assigning data from db to user
     # if not exist pops up a message
     def verify(self):
         user.username = screen_manager.get_screen('login').ids.username_login.text
         user.password = screen_manager.get_screen('login').ids.password_login.text
-        record = DataBase().patient_db().find_one({"Username": user.username, "Password": user.password})
+        # record = DataBase().patient_db().find_one({"Username": user.username, "Password": user.password})
+        record = verify_patient({
+            'username': user.username,
+            'password': user.password
+        })
+
+
         if record:
-            keys = ['First name', 'Email', 'Height', 'Weight', 'Date of birth', 'Questions']
+            keys = ['first_name', 'email', 'height', 'weight', 'date_of_birth', 'questions']
 
             # pulling user information from db
             user_value = [record.get(value) for value in keys]
@@ -433,64 +392,65 @@ class DawnApp(MDApp):
                     else:
                         pass
 
-            # if the user didn't yet enter a valid date of birth leave the field empty
-            if dob_field == "":
-                user.date_of_birth = ""
-            # else the date of birth is a string DD/MM/YYYY and will be pulled from db to fields
-            else:
-                dob = dob_field.split("/")
-                dob_day = dob[0]
-                dob_month = dob[1]
-                dob_year = dob[2]
+            try:
+                # if the user didn't yet enter a valid date of birth leave the field empty
+                if dob_field == "":
+                    user.date_of_birth = ""
+                # else the date of birth is a string DD/MM/YYYY and will be pulled from db to fields
+                else:
+                    dob = dob_field.split("/")
+                    dob_day = dob[0]
+                    dob_month = dob[1]
+                    dob_year = dob[2]
 
-                # inserting the values of Date of birth from db to details screen
-                screen_manager.get_screen('question_details').ids.day_field.text = dob_day
-                screen_manager.get_screen('question_details').ids.month_field.text = dob_month
-                screen_manager.get_screen('question_details').ids.year_field.text = dob_year
+                    # inserting the values of Date of birth from db to details screen
+                    screen_manager.get_screen('question_details').ids.day_field.text = dob_day
+                    screen_manager.get_screen('question_details').ids.month_field.text = dob_month
+                    screen_manager.get_screen('question_details').ids.year_field.text = dob_year
+            except:
+                pass
 
-            # inserting the values of height and weight from db to details screen
-            screen_manager.get_screen('question_details').ids.height_input.text = height_text_field
-            screen_manager.get_screen('question_details').ids.weight_input.text = weight_text_field
+            try:
+                # inserting the values of height and weight from db to details screen
+                screen_manager.get_screen('question_details').ids.height_input.text = height_text_field
+                screen_manager.get_screen('question_details').ids.weight_input.text = weight_text_field
+            except:
+                pass
+            finally:
+                # assigning the values for the user pulled previously from db
+                user.weight = weight_text_field
+                user.height = height_text_field
 
-            # assigning the values for the user pulled previously from db
-            user.weight = weight_text_field
-            user.height = height_text_field
+
             # username equals firstname till a field update. once fixed remove comment from next line
             user.first_name = user.username
             # user.first_name = first_name_field
             user.email = email_field
             user.date_of_birth = dob_field
 
-            # user.print_user_info()
             DawnApp.go_to(self, 'home')
-
         else:
-            popFun()
-            """
-            root = Tk()
-            root.wm_title("DAWN")
-            frm = ttk.Frame(root, padding=100)
-            frm.grid()
-            ttk.Label(frm, text="Please insert correct details").grid(column=0, row=0)
-            ttk.Button(frm, text="Exit", command=root.destroy).grid(column=1, row=0)
-            root.mainloop()
+            # root = Tk()
+            # root.wm_title("DAWN")
+            # frm = ttk.Frame(root, padding=100)
+            # frm.grid()
+            # ttk.Label(frm, text="Please insert correct details").grid(column=0, row=0)
+            # ttk.Button(frm, text="Exit", command=root.destroy).grid(column=1, row=0)
+            # root.mainloop()
             DawnApp.go_to(self, 'login')
-            """
-
     # sign up a user to db
     def sign_up(self):
         user.username = screen_manager.get_screen('signup').ids.username_signup.text
         user.password = screen_manager.get_screen('signup').ids.password_signup.text
-        data = DataBase()
-        data.add_patient('', user.email, user.username, user.password, '', '', '', '')
+        user.email = screen_manager.get_screen('signup').ids.email_signup.text
+        # data = DataBase()
+        add_patient(sign_user=user)
         DawnApp.go_to(self, 'login')
-
     def question(self):
         i = 0
         for q in self.questions:
             print(self.answers[i], f'number: {i + 1}')
             i += 1
-
     # updates the details from the diagnostic question and the parameters of height and weight
     # the function is called after pressing the "next" button on question details screen
     def update_patient(self):
@@ -512,9 +472,8 @@ class DawnApp(MDApp):
         # date
         # updates the DB: finds according username and set the values for
         # height,weight,date of birth, diagnose and questions
-        DataBase().patient_db().update_one({'Username': user.username}, {
-            "$set": {'Height': user.height, 'Weight': user.weight, "Date of birth": user.date_of_birth,
-                     "Diagnose": diagnose, 'Questions': output}})
+        update_patient({'username': user.username}, {'height': user.height, 'weight': user.weight, "date_of_birth": user.date_of_birth,
+                     "diagnose": diagnose, 'questions': output})
 
     # checks if diagnose fits the criteria
     # first critera at least 2/5, second critera 5/12, third critera 1/3
@@ -522,7 +481,6 @@ class DawnApp(MDApp):
         list_for_diagnostic = [x[2] for x in user.diagnose]
         diagnose = ""
         first_counter = 0
-
         for criteria_one in range(5):
             if list_for_diagnostic[criteria_one] == 'Yes':
                 first_counter += 1
@@ -540,9 +498,7 @@ class DawnApp(MDApp):
                     diagnose = "ADS"
 
         return diagnose
-
-    #########################################################################################
-    ################################# BUILD FUNCTIONS #######################################
+################################# BUILD FUNCTIONS #######################################
     def build(self):
 
         # set the first question in line
@@ -572,13 +528,11 @@ class DawnApp(MDApp):
         screen_manager.add_widget(Builder.load_file(path_to_kv + 'question_details_datepick.kv'))
 
         return screen_manager
-
     def on_start(self):
         # This function waits for 3 seconds in the presplash screen
         # until switching to the login screen
 
         Clock.schedule_once(self.login, 3)
-
     def keypad_listener(self, pos_hint, state):
         # This Function shifts the screen to the point where the
         # focused text field is above the middle of the screen for using the phone's keypad
@@ -591,13 +545,10 @@ class DawnApp(MDApp):
             self.scrollPage(ypos, screen_name)
         else:
             self.scrollPage(0.7, screen_name)
-
     def scrollPage(self, to_h, screen_name):
         screen = self.getScreen(screen_name)
         offset = 0.7 - to_h
         screen.children[0].pos_hint = {"center_x": 0.5, "center_y": 0.5 + offset}
 
-
-#########################################################################################
 if __name__ == '__main__':
     DawnApp().run()
