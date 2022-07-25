@@ -562,6 +562,11 @@ class Manager(ScreenManager):
 class DawnApp(MDApp):
 
     def go_to(self, screen_name):
+        """
+            This function is switching between screens
+            some screen require extra care with animations
+            transitions or timing
+        """
         self.root.transition = NoTransition()
         self.root.current = screen_name
 

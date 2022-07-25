@@ -2,6 +2,7 @@
 
 <NavbarButton@MDIconButton>
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    user_font_size: '10dp'
 
 
 <NavbarLabel@Label>
@@ -11,37 +12,43 @@
     size: '20dp' , '30dp'
     color: get_color_from_hex("##012241")
 
-<HomeButton@BoxLayout>
+
+
+<HomeButton>
     orientation: "vertical"
     NavbarButton:
-        id: home_btn
         icon: 'assets/images/home.png'
         on_press:
-            app.change_navbar('home')
-
+            root.change_navbar('home')
     NavbarLabel:
         text: "Home"
 
-<DailyButton@BoxLayout>
+<DailyButton>
     orientation: "vertical"
     NavbarButton:
         icon: 'assets/images/daily.png'
-        on_press: app.change_navbar('daily')
+        on_press:
+            root.change_navbar('daily')
     NavbarLabel:
         text: "Daily"
-<DiagnoseButton@BoxLayout>
+
+<DiagnoseButton>
+
     orientation: "vertical"
     NavbarButton:
         icon: 'assets/images/diagnose.png'
-        on_press: app.change_navbar('diagnose')
+        on_press:
+            root.change_navbar('diagnose')
     NavbarLabel:
         text: "Diagnose"
 
-<ProfileButton@BoxLayout>
+<ProfileButton>
+
     orientation: "vertical"
     NavbarButton:
         icon: 'assets/images/profile.png'
-        on_press: app.change_navbar('profile')
+        on_press:
+            root.change_navbar('profile')
     NavbarLabel:
         text: "Profile"
 
@@ -56,13 +63,13 @@
     BoxLayout:
         size_hint: 1 , 0.2
         HomeButton:
-
+            id :home_btn
         DailyButton:
-
+            id: daily_btn
         DiagnoseButton:
-
+            id: diagnose_btn
         ProfileButton:
-
+            id: profile_btn
 
 
 
