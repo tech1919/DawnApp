@@ -29,6 +29,7 @@ from libs.uix.kv.home import HomeScreen , HomeLayout
 from libs.uix.kv.diagnose import DiagnoseLayout , DiagnoseScreen
 from libs.uix.kv.daily import DailyLayout , DailyScreen
 from libs.uix.components.navbar import Navbar
+from libs.uix.components.topbar import Topbar
 
 def delay(seconds):
     start = time.time()
@@ -560,6 +561,10 @@ class Manager(ScreenManager):
 
 
 class DawnApp(MDApp):
+    def build(self):
+        images_source = 'assets/images/'
+        self.icon = images_source + 'app_logo.png'
+        self.last_screen = 'profile'
 
     def go_to(self, screen_name):
         """
@@ -567,11 +572,13 @@ class DawnApp(MDApp):
             some screen require extra care with animations
             transitions or timing
         """
+        print(f'Current Screen: {screen_name}')
         self.root.transition = NoTransition()
         self.root.current = screen_name
 
     def change_navbar(self,screen):
         print(screen)
+        self.last_screen = self.root.current
         self.go_to(screen)
 
 
