@@ -19,7 +19,9 @@
     NavbarButton:
         icon: 'assets/images/home.png'
         on_press:
+
             root.change_navbar('home')
+            app.go_to('home')
     NavbarLabel:
         text: "Home"
 
@@ -29,6 +31,7 @@
         icon: 'assets/images/daily.png'
         on_press:
             root.change_navbar('daily')
+            app.go_to('daily')
     NavbarLabel:
         text: "Daily"
 
@@ -39,6 +42,7 @@
         icon: 'assets/images/diagnose.png'
         on_press:
             root.change_navbar('diagnose')
+            app.go_to('diagnose')
     NavbarLabel:
         text: "Diagnose"
 
@@ -49,6 +53,7 @@
         icon: 'assets/images/profile.png'
         on_press:
             root.change_navbar('profile')
+            app.go_to('profile')
 
     NavbarLabel:
         text: "Profile"

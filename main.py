@@ -37,7 +37,6 @@ def delay(seconds):
     while stop - start < seconds:
         stop = time.time()
 
-
 class Manager(ScreenManager):
     pass
 
@@ -572,6 +571,8 @@ class DawnApp(MDApp):
             some screen require extra care with animations
             transitions or timing
         """
+        if self.root.current == screen_name:
+            return
         print(f'Current Screen: {screen_name}')
         self.root.transition = NoTransition()
         self.root.current = screen_name
@@ -579,7 +580,6 @@ class DawnApp(MDApp):
     def change_navbar(self,screen):
         print(screen)
         self.last_screen = self.root.current
-        self.go_to(screen)
 
 
 

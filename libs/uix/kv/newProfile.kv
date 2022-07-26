@@ -1,15 +1,315 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 
-<UserImage@Image>
+<UserImageCircle>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.83}
+    md_bg_color: 0,0,0,0.4
+    size_hint: None , None
+    size: "70dp" , "70dp"
+    radius: [100]
+    elevation: 0
 
+
+
+
+<UserNameLabel>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.75}
+    color: get_color_from_hex("#006F4F")
+    bold: True
+    font_size: '20dp'
+
+<DiagnoseMe_CLOSED>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+    size_hint: 0.9 , None
+    size: '100dp' ,'40dp'
+    MDCard:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#FFFFFF")
+        radius: [10]
+        elevation: 0
+        BoxLayout:
+            spacing: 10
+            orientation: 'horizontal'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            size_hint: 0.95 , 0.3
+            Image:
+                size_hint: 0.1 , 1
+                source: 'assets/images/list_logo.png'
+            MDLabel:
+                size_hint: 0.7 , 1
+                text: "Diagnose Me"
+                bold: True
+                font_size: '15dp'
+                color: get_color_from_hex("#000000")
+                halign: "left"
+            MDIconButton:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                icon: 'chevron-right'
+
+
+<MyAccountField_CLOSED>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+    size_hint: 0.9 , None
+    size: '100dp' ,'40dp'
+    MDCard:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#FFFFFF")
+        radius: [10]
+        elevation: 0
+        BoxLayout:
+            spacing: 10
+            orientation: 'horizontal'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            size_hint: 0.95 , 0.3
+            Image:
+                size_hint: 0.1 , 1
+                source: 'assets/images/person_logo.png'
+            MDLabel:
+                size_hint: 0.7 , 1
+                text: "My Account"
+                bold: True
+                font_size: '15dp'
+                color: get_color_from_hex("#000000")
+                halign: "left"
+            MDIconButton:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                icon: 'chevron-right'
+
+
+
+<SecurityField_CLOSED>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+    size_hint: 0.9 , None
+    size: '100dp' ,'40dp'
+    MDCard:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#FFFFFF")
+        radius: [10]
+        elevation: 0
+        BoxLayout:
+            spacing: 10
+            orientation: 'horizontal'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            size_hint: 0.95 , 0.3
+            Image:
+                size_hint: 0.1 , 1
+                source: 'assets/images/shield_logo.png'
+            MDLabel:
+                size_hint: 0.7 , 1
+                text: "Security"
+                bold: True
+                font_size: '15dp'
+                color: get_color_from_hex("#000000")
+                halign: "left"
+            MDIconButton:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                icon: 'chevron-right'
+
+<SecurityField_OPEN>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+    size_hint: 0.9 , 0.6
+    MDCard:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#FFFFFF")
+        radius: [10]
+        elevation: 1
+        spacing: 10
+        BoxLayout:
+            spacing: 10
+            orientation: 'horizontal'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            size_hint: 0.95 , 0.3
+            Image:
+                size_hint: 0.1 , 1
+                source: 'assets/images/shield_logo.png'
+            MDLabel:
+                size_hint: 0.7 , 1
+                text: "Security"
+                bold: True
+                font_size: '15dp'
+                color: get_color_from_hex("#000000")
+                halign: "left"
+            MDIconButton:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                icon: 'chevron-down'
+        BoxLayout:
+            padding: 7
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            orientation: 'vertical'
+            MDTextField:
+                halign: "center"
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                foreground_color: 0,0,0,1
+                font_size: '13dp'
+                hint_text: 'Current password'
+                password: True
+            MDTextField:
+                halign: "center"
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                foreground_color: 0,0,0,1
+                font_size: '13dp'
+                hint_text: 'New password'
+                password: True
+            MDTextField:
+                halign: "center"
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                foreground_color: 0,0,0,1
+                font_size: '13dp'
+                hint_text: 'New password, again'
+                password: True
+
+<DiagnoseMe_OPEN>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+    size_hint: 0.9 , 0.3
+    MDCard:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#FFFFFF")
+        radius: [10]
+        elevation: 0
+        BoxLayout:
+            spacing: 10
+            orientation: 'horizontal'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            size_hint: 0.95 , 0.3
+            Image:
+                size_hint: 0.1 , 1
+                source: 'assets/images/list_logo.png'
+            MDLabel:
+                size_hint: 0.7 , 1
+                text: "Diagnose Me"
+                bold: True
+                font_size: '15dp'
+                color: get_color_from_hex("#000000")
+                halign: "left"
+            MDIconButton:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                icon: 'chevron-down'
+        BoxLayout:
+            
+
+
+<MyAccountField_OPEN>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+    size_hint: 0.9 , 0.3
+    MDCard:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#FFFFFF")
+        radius: [10]
+        elevation: 1
+        BoxLayout:
+            spacing: 10
+            orientation: 'horizontal'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            size_hint: 0.95 , 0.3
+            Image:
+                size_hint: 0.1 , 1
+                source: 'assets/images/person_logo.png'
+            MDLabel:
+                size_hint: 0.7 , 1
+                text: "My Account"
+                bold: True
+                font_size: '15dp'
+                color: get_color_from_hex("#000000")
+                halign: "left"
+            MDIconButton:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                icon: 'chevron-down'
+        BoxLayout:
+            padding: 7
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            orientation: 'vertical'
+            BoxLayout:
+                MDLabel:
+                    text: "First Name"
+                    bold: True
+                MDLabel:
+                    halign: "right"
+                    color: 0,0,0,0.5
+                    id: first_name
+                    text: "user"
+            BoxLayout:
+                MDLabel:
+                    text: "Last Name"
+                    bold: True
+                MDLabel:
+                    halign: "right"
+                    color: 0,0,0,0.5
+                    id: last_name
+                    text: "name"
+            BoxLayout:
+                MDLabel:
+                    text: "Date Birth"
+                    bold: True
+                MDLabel:
+                    halign: "right"
+                    color: 0,0,0,0.5
+                    id: date_of_birth
+                    text: "DD/MM/YYYY"
+            BoxLayout:
+                MDLabel:
+                    text: "Height"
+                    bold: True
+                MDLabel:
+                    halign: "right"
+                    color: 0,0,0,0.5
+                    id: heigh
+                    text: ""
+
+            BoxLayout:
+                MDLabel:
+                    text: "Width"
+                    bold: True
+                MDLabel:
+                    halign: "right"
+                    color: 0,0,0,0.5
+                    id: date_of_birth
+                    text: ""
+
+
+
+<MainProfileBoxLayout1@BoxLayout>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.47}
+    size_hint: 1 , 0.5
+    padding: 10
+    spacing: 7
+    orientation: "vertical"
+
+
+    MyAccountField_OPEN:
+    DiagnoseMe_CLOSED:
+    SecurityField_CLOSED:
+
+
+<MainProfileBoxLayout2@BoxLayout>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.47}
+    size_hint: 1 , 0.5
+    padding: 10
+    spacing: 7
+    orientation: "vertical"
+
+
+    MyAccountField_CLOSED:
+    DiagnoseMe_OPEN:
+    SecurityField_CLOSED:
+
+
+<MainProfileBoxLayout3@BoxLayout>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.47}
+    size_hint: 1 , 0.5
+    padding: 10
+    spacing: 7
+    orientation: "vertical"
+
+
+    MyAccountField_CLOSED:
+    DiagnoseMe_CLOSED:
+    SecurityField_OPEN:
 
 
 <ProfileLayout>:
-    BackButton:
+    SignoutButton:
     MenuButton:
 
+    MainProfileBoxLayout2:
 
 
 
-
-    Navbar:

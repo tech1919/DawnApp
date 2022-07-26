@@ -1,13 +1,15 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.scrollview import ScrollView
-from kivy.utils import get_color_from_hex
 from kivymd.uix.card import MDCard
 from kivymd.uix.floatlayout import MDFloatLayout
-from kivymd.uix.list import MDList
+
+
+from libs.uix.components.navbar import Navbar
 
 
 class DailyScreen(Screen):
+
 
     def on_enter(self, *args):
         layout = DailyLayout()
@@ -15,7 +17,18 @@ class DailyScreen(Screen):
 
         list_layout = ListLayout()
         layout.add_widget(list_layout)
+        navbar = Navbar()
 
+        navbar_buttons = navbar.children[0].children
+
+        profile_button = navbar_buttons[0]
+        diagnose_button = navbar_buttons[1]
+        daily_button = navbar_buttons[2]
+        home_button = navbar_buttons[3]
+
+        daily_button.change_navbar('daily')
+
+        layout.add_widget(navbar)
         disc_list = [
             "Skin Moisturizing",
             "Body Tempreture",
@@ -52,19 +65,11 @@ class DailyScreen(Screen):
 
             list_layout.add_widget(card)
 
-
-
-
-
 class DailyLayout(MDFloatLayout):
     pass
 
-
-
 class ProgressCard(MDCard):
     pass
-
-
 
 class ListLayout(BoxLayout):
     pass
