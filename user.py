@@ -34,7 +34,7 @@ class User:
         self.password = password
         self.email = email
         self.answers = []
-        self.diagnose = []
+        self.diagnose = ''
 
     def create_diagnose(self, q_arr, a_arr):
         num = 1
@@ -84,7 +84,7 @@ class User:
         self.weight = record['weight']
         self.date_of_birth = record['date_of_birth']
         self.questions = record['questions']
-        self.diagnose = record['diagnose']
+        # self.diagnose = record['diagnose']
 
 
 

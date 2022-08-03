@@ -68,12 +68,16 @@
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
     size_hint: None , None
     size: '120dp' , '120dp'
+    text: "Ask the doctor"
+    color: get_color_from_hex('#FFFFFF')
     md_bg_color: 0,0,0,0
     radius: [10]
     elevation: 0
     FitImage:
         source: 'assets/images/doctor_logo.png'
         size_hint: 1 , 1
+
+
 
 <BigButtonBox>
     pos_hint: {"center_x": 0.5 , "center_y": 0.55}
@@ -87,6 +91,96 @@
         orientation: "vertical"
         DiagnoseHomeButton:
         AskDoctorHomeButton:
+
+<LabelsForButton@BoxLayout>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    size_hint: 0.9 , 0.4
+#    size: '0dp' , '250dp'
+    BoxLayout:
+        padding:10
+        spacing: 30
+        orientation: "vertical"
+
+#        SimptomsHomeButton:
+
+
+        MDLabel:
+            halign: 'center'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+            size_hint: None , 0.5
+            size: '100dp' , '30dp'
+            font_size: '12dp'
+            text: "What are your symptoms?"
+            bold: True
+            color: get_color_from_hex('#FFFFFF')
+
+#        BloodTestHomeButton:
+
+        MDLabel:
+            halign: 'center'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+            size_hint: None , 0.5
+            size: '100dp' , '30dp'
+            font_size: '12dp'
+            text: "Upload your blood test"
+            bold: True
+            color: get_color_from_hex('#000000')
+
+    BoxLayout:
+
+        orientation: "vertical"
+#        DiagnoseHomeButton:
+        MDLabel:
+            halign: 'center'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+            size_hint: None , 0.5
+            size: '100dp' , '30dp'
+            font_size: '12dp'
+            text: "Your diagnose"
+            bold: True
+            color: get_color_from_hex('#000000')
+#        AskDoctorHomeButton:
+        MDLabel:
+            halign: 'center'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+            size_hint: None , 0.5
+            size: '100dp' , '30dp'
+            font_size: '12dp'
+            text: "Ask the doctor"
+            bold: True
+            color: get_color_from_hex('#FFFFFF')
+
+<ButtonsBoxBackground@BoxLayout>
+    spacing: 12
+    padding: 10
+    pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+    size_hint: 0.9 , 0.4
+#    size: '0dp' , '250dp'
+    BoxLayout:
+        spacing: 12
+        padding: 10
+        orientation: "vertical"
+        Button:
+            background_color: 0,0,0,0
+#            SimptomsHomeButton
+            on_press: app.go_to('question')
+        Button:
+            background_color: 0,0,0,0
+#            BloodTestHomeButton
+
+    BoxLayout:
+        spacing: 12
+        padding: 10
+        orientation: "vertical"
+        Button:
+            background_color: 0,0,0,0
+#            DiagnoseHomeButton
+            on_press: app.go_to('diagnose')
+        Button:
+            background_color: 0,0,0,0
+#            AskDoctorHomeButton
+
+
 
 
 <MyAppointment>
@@ -145,4 +239,8 @@
 <HomeLayout>:
     MenuButton:
     BackButton:
+
+    BigButtonBox:
+    ButtonsBoxBackground
+    LabelsForButton:
     MyAppointment:

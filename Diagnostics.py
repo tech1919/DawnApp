@@ -1,6 +1,32 @@
+from kivy.app import App
 
+
+def diagnose_ads(answers_list):
+    pass
+    # user = App.get_running_app().user
+    # list_for_diagnostic = [x[2] for x in user.diagnose]
+    # diagnose = ""
+    # first_counter = 0
+    # for criteria_one in range(5):
+    #     if list_for_diagnostic[criteria_one] == 'Yes':
+    #         first_counter += 1
+    # if first_counter >= 2:
+    #     second_counter = 0
+    #     for criteria_two in range(5, 17):
+    #         if list_for_diagnostic[criteria_two] == 'Yes':
+    #             second_counter += 1
+    #     if second_counter >= 5:
+    #         third_counter = 0
+    #         for criteria_three in range(17, 20):
+    #             if list_for_diagnostic[criteria_three] == 'Yes':
+    #                 third_counter += 1
+    #         if third_counter >= 1:
+    #             diagnose = "ADS"
+    #
+    # return diagnose
 
 class Question_sets():
+
     def ads(self):
         questions = [
                     'Can you now (or could you ever) place your hand flat on the floor without bending your knees?',

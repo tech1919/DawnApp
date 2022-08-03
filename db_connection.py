@@ -55,7 +55,7 @@ def update_patient(query,update_fields):
 
     query = {**query, **update_fields}
     query['questions'] = ','.join(query['questions'])
-    query['diagnose'] = ','.join(query['diagnose'])
+    # query['diagnose'] = ','.join(query['diagnose'])
     params = urllib.parse.urlencode(query)
     req = UrlRequest(f'{endpoint}updateuser?{params}')
     req.wait()

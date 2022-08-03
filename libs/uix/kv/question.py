@@ -7,11 +7,14 @@ from kivy.utils import get_color_from_hex
 from kivymd.uix.card import MDCard
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.label import MDLabel
+from Diagnostics import diagnose_ads
+from db_connection import update_patient
 
 
 class QuestionScreen(Screen):
     def on_enter(self, *args):
         self.check_user_answers()
+        self.clean_layout()
 
         layout = QuestionLayout()
         self.add_widget(layout)
@@ -39,7 +42,9 @@ class QuestionScreen(Screen):
         question_label = layout.children[1]
         question_label.get_next_question('back')
 
-
+    def clean_layout(self):
+        if len(self.children) > 0:
+            self.remove_widget(self.children[0])
 
 class QuestionLayout(MDFloatLayout):
     pass
@@ -202,6 +207,7 @@ class QNumber(MDLabel):
 class QuestionLabel(MDLabel):
     def get_next_question(self, current_question_index = ''):
         question_set = App.get_running_app().questions
+        user = App.get_running_app().user
 
 
         try:
@@ -218,6 +224,14 @@ class QuestionLabel(MDLabel):
         finally:
             if current_question_index == len(question_set):
                 App.get_running_app().go_to('profile')
+
+                # use the answer to diagnose
+                user.diagnose = diagnose_ads(user.answers)
+                update_patient({'username':user.username},{'height': user.height,
+                                                           'weight': user.weight,
+                                                           "date_of_birth": user.date_of_birth,
+                                                           "diagnose": user.diagnose,
+                                                           'questions': user.answers})
                 self.current_question_index = 0
                 return
             current_question = question_set[current_question_index]

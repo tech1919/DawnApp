@@ -111,7 +111,7 @@ class LoginScreen(Screen):
             user.email = email_field
             user.date_of_birth = dob_field
 
-            App.get_running_app().go_to('question')
+            App.get_running_app().go_to('home')
 
 
         else:
@@ -129,7 +129,6 @@ class LoginScreen(Screen):
         if len(self.children) > 0:
             self.remove_widget(self.children[0])
 
-
 class LoginLayout(MDFloatLayout):
     pass
 
@@ -138,7 +137,6 @@ class LoginSocial(MDFloatLayout):
 
 class LoginButton(MDCard):
     pass
-
 
 class BottomLineButton(Button):
     pass
