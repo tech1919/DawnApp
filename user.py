@@ -20,9 +20,11 @@ class Question:
         self.q_number = number
         self.question = question
         self.answer = answer
+
+
 class User:
 
-    def __init__(self, height, weight, dob, first, last, username, password, email=''):
+    def __init__(self, height='', weight='', dob='', first='', last='', username='', password='', email=''):
         self.height = height
         self.weight = weight
         self.date_of_birth = dob
@@ -39,17 +41,17 @@ class User:
             self.diagnose.append([num, q, a])
             num += 1
 
-    def user_info(self):
+    def user_info(self , get_object=False):
 
-        # print()
-        # print(f'    First name: {self.first_name}')
-        # print(f'    Last name: {self.last_name}')
-        # print(f'    Username: {self.username}')
-        # print(f'    Email: {self.email}')
-        # print(f'    Password: {self.password}')
-        # print(f'    Date of birth: {self.date_of_birth}')
-        # print(f'    Height: {self.height} , Weight: {self.weight}')
-        # print()
+        print()
+        print(f'    First name: {self.first_name}')
+        print(f'    Last name: {self.last_name}')
+        print(f'    Username: {self.username}')
+        print(f'    Email: {self.email}')
+        print(f'    Password: {self.password}')
+        print(f'    Date of birth: {self.date_of_birth}')
+        print(f'    Height: {self.height} , Weight: {self.weight}')
+        print()
 
         user_json_object = {
             'first_name': self.first_name,
@@ -63,7 +65,9 @@ class User:
 
 
         }
-        return user_json_object
+
+        if get_object:
+            return user_json_object
 
 def date_validation_1(date_string):
     test_format = '04-01-1997'

@@ -2,7 +2,7 @@
 
 
 
-<LoginInputWidget@MDCard>:
+<LoginInputWidget@MDCard>
     orientation: "vertical"
     md_bg_color: get_color_from_hex("#FFFFFF")
     size_hint: 0.9 , None
@@ -12,6 +12,21 @@
     radius: [20]
     MDBoxLayout:
         MDTextField:
+            pos_hint: {"center_x": 0.55, "center_y": 0.47}
+            halign: "center"
+            foreground_color: 0,0,0,1
+
+<PasswordInputWidget@MDCard>
+    orientation: "vertical"
+    md_bg_color: get_color_from_hex("#FFFFFF")
+    size_hint: 0.9 , None
+    size: "100dp" , "40dp"
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    elevation: 3
+    radius: [20]
+    MDBoxLayout:
+        MDTextField:
+            password: True
             pos_hint: {"center_x": 0.55, "center_y": 0.47}
             halign: "center"
             foreground_color: 0,0,0,1
@@ -37,7 +52,9 @@
         id: login_btn
         background_color: 0,0,0,0
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        on_press: root.verify()
+        on_press:
+            app.go_to('home')
+
 <SignupButton>:
     pos_hint: {"center_x": 0.5 , "center_y": 0.3}
     size_hint: 0.9 , None
@@ -64,22 +81,27 @@
             id: login_btn
             background_color: 0,0,0,0
             pos_hint: {"center_x": 0.5, "center_y": 0.5}
-            on_press: root.signup()
+            on_press:
+                app.go_to('login')
+                app.signup()
 
-<LoginTopLabel@Label>:
+
+<LoginTopLabel@MDLabel>:
     font_size: '35dp'
-    halign: "center"
-    pos_hint: {"center_x": 0.2 , "center_y": 0.85}
-    size_hint: 0.9 , None
+    halign: "left"
+    pos_hint: {"center_x": 0.5 , "center_y": 0.85}
+    size_hint: 0.85 , None
     size: '100dp' , '100dp'
     bold: True
     color: get_color_from_hex("#FFBA99")
-    size_hint: 1 , 0.2
 
-<LoginLabel@Label>:
-    halign: "center"
+
+<LoginLabel@MDLabel>:
+    halign: "left"
+    color: get_color_from_hex("#FFFFFF")
     font_size: '14dp'
-    pos_hint: {"center_x": 0.2 , "center_y": .5}
+    size_hint: 0.85 , 0.05
+    pos_hint: {"center_x": 0.5 , "center_y": .5}
 
 <SocialButton@MDIconButton>
     size_hint: None , None
@@ -99,17 +121,22 @@
         halign: "center"
         font_size: '12dp'
         pos_hint: {"center_x": .5 , "center_y": .7}
-    BoxLayout:
-        size_hint: None , None
+    MDFloatLayout:
+        size_hint: 1 , 0.3
         spacing: 10
-        size: 1 , 0.1
         pos_hint: {"center_x": .5 , "center_y": .1}
         halign: "center"
         orientation: 'horizontal'
+#        Button:
+#            pos_hint: {"center_x": .4 , "center_y": .5}
+#        Button:
+#            pos_hint: {"center_x": .6 , "center_y": .5}
         SocialButton:
+            pos_hint: {"center_x": .4 , "center_y": .5}
             icon: "assets/images/facebook_logo.png"
             on_press: print('facebook login')
         SocialButton:
+            pos_hint: {"center_x": .6 , "center_y": .5}
             icon: "assets/images/google_logo.png"
             on_press: print('google login')
 
@@ -124,9 +151,9 @@
 
 <BottomLineButton>
     pos_hint: {"center_x": .5 , "center_y": .05}
-    Button:
-        background_color: 0,0,0,0
-        on_press: app.go_to('signup')
+    background_color: 0,0,0,0
+    size_hint: 0.8 , None
+    size: '0dp','30dp'
 
 
 
@@ -147,23 +174,24 @@
 
         LoginLabel:
             text: 'Username'
-
         LoginInputWidget:
+
         LoginLabel:
             text: 'Password'
+        PasswordInputWidget:
 
-        LoginInputWidget:
         LoginLabel:
             text: 'Forgot password?'
-            pos_hint: {"center_x": 0.8 , "center_y": .5}
+            halign: 'right'
+            pos_hint: {"center_x": 0.5 , "center_y": .5}
 
 
     LoginButton:
     LoginSocial:
 
     BottomLineButton:
-        Label:
-            text: "Don't have an account? Sign Up"
+        text: "Don't have an account? Sign Up"
+        on_press: app.go_to('signup')
 
 
 
@@ -183,14 +211,14 @@
         LoginInputWidget:
         LoginLabel:
             text: 'Password'
-        LoginInputWidget:
+        PasswordInputWidget:
 
     SignupButton:
     LoginSocial:
 
     BottomLineButton:
-        Label:
-            text: "Already have an account? Login"
+        text: "Already have an account? Login"
+        on_press: app.go_to('login')
 
 
 

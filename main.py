@@ -6,6 +6,7 @@ from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.lang.builder import Builder
+from kivy.properties import ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
@@ -564,6 +565,7 @@ class DawnApp(MDApp):
         images_source = 'assets/images/'
         self.icon = images_source + 'app_logo.png'
         self.last_screen = 'profile'
+        self.user = (User())
 
     def go_to(self, screen_name):
         """
