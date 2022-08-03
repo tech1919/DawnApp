@@ -1,3 +1,4 @@
+from kaki.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import Screen
@@ -16,6 +17,8 @@ class HomeScreen(Screen):
         layout = HomeLayout()
         self.add_widget(layout)
 
+        # get the user from the app
+        user = App.get_running_app().user
 
         # Navbar
         navbar = Navbar()
@@ -33,9 +36,9 @@ class HomeScreen(Screen):
         image_circle = top_box.children[1]
         images_path = 'assets/images/'
         image_circle.add_widget(UserImage(source=f'{images_path}user.png'))
-        user_first_name = 'Dana'
+        # user_first_name = 'Dana'
         _ , name_label = top_box.children[0].children
-        name_label.text = f'Hello {user_first_name}'
+        name_label.text = f'Hello {user.first_name}'
         layout.add_widget(top_box)
 
         # big buttons box

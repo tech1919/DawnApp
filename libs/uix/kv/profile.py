@@ -1,3 +1,4 @@
+from kaki.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
 from kivy.uix.label import Label
@@ -17,6 +18,10 @@ class ProfileScreen(Screen):
         layout = ProfileLayout()
         self.add_widget(layout)
 
+
+        # get the user from the app
+        user = App.get_running_app().user
+
         # change the navbar
         navbar = Navbar()
         navbar_buttons = navbar.children[0].children
@@ -33,13 +38,35 @@ class ProfileScreen(Screen):
         user_circle.add_widget(UserImage(source= f'{images_path}user.png'))
         layout.add_widget(user_circle)
 
-        username = 'username'
-        layout.add_widget(UserNameLabel(text=username))
+        name = f'{user.first_name} {user.last_name}'
+        layout.add_widget(UserNameLabel(text=name))
+
+
+        my_account_area = layout.children[3].children[2]
+        self.update_user_fields(my_account_area,user)
+
+
+
 
 
     def clean_layout(self):
         if len(self.children) > 0:
             self.remove_widget(self.children[0])
+
+    def update_user_fields(self,my_account_area,user):
+        """
+            This function updates the fields in the profile page
+            at the My Account area
+        """
+        key_order = ['weight' ,'height' , 'date_of_birth' , 'last_name' , 'first_name' ]
+        title = ['Weight' , 'Height' , 'Date Birth' , 'Last Name', 'First Name']
+        user_info = user.user_info(get_object=True)
+        box_area_of_fields = my_account_area.children[0].children[0]
+        for i in range(len(key_order)):
+            box_area_of_fields.children[i].children[0].text = user_info[f'{key_order[i]}']
+
+
+
 
 class ProfileLayout(MDFloatLayout):
     pass

@@ -29,8 +29,10 @@ from libs.uix.kv.profile import ProfileLayout , ProfileScreen
 from libs.uix.kv.home import HomeScreen , HomeLayout
 from libs.uix.kv.diagnose import DiagnoseLayout , DiagnoseScreen
 from libs.uix.kv.daily import DailyLayout , DailyScreen
+from libs.uix.kv.question import QuestionScreen , QuestionLayout
 from libs.uix.components.navbar import Navbar
 from libs.uix.components.topbar import Topbar
+
 
 def delay(seconds):
     start = time.time()

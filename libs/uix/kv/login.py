@@ -19,10 +19,13 @@ class LoginScreen(Screen):
         login_button = self.children[0].children[2].children[0]
         login_button.bind(on_press = self.verify)
 
+    def clear_login_screen(self):
+        input_box = self.children[0].children[3]
+        password_input = input_box.children[1].children[0].children[0]
+        username_input = input_box.children[3].children[0].children[0]
 
-
-
-
+        password_input.text = ''
+        username_input.text = ''
 
     def verify(self, *args):
 
@@ -31,11 +34,11 @@ class LoginScreen(Screen):
 
         # get input box
         input_box = self.children[0].children[3]
-        self.password_input = input_box.children[1].children[0].children[0]
-        self.username_input = input_box.children[3].children[0].children[0]
+        password_input = input_box.children[1].children[0].children[0]
+        username_input = input_box.children[3].children[0].children[0]
 
-        user.password = self.password_input.text
-        user.username = self.username_input.text
+        user.password = password_input.text
+        user.username = username_input.text
 
         # printing user information
         user.user_info()
@@ -47,17 +50,18 @@ class LoginScreen(Screen):
 
         # print(record)
 
-        if record:
-            keys = ['first_name', 'email', 'height', 'weight', 'date_of_birth', 'questions']
 
+        if record:
+
+            user.update_local_by(record)
             # pulling user information from db
-            user_value = [record.get(value) for value in keys]
-            first_name_field = user_value[0]
-            email_field = user_value[1]
-            height_text_field = user_value[2]
-            weight_text_field = user_value[3]
-            dob_field = user_value[4]
-            q = user_value[5]
+            # user_value = [record.get(value) for value in keys]
+            first_name_field = user.first_name
+            email_field = user.email
+            height_text_field = user.height
+            weight_text_field = user.weight
+            dob_field = user.date_of_birth
+            q = user.questions
 
             # if q:
             #     for answer in q:
@@ -118,6 +122,7 @@ class LoginScreen(Screen):
             # ttk.Label(frm, text="Please insert correct details").grid(column=0, row=0)
             # ttk.Button(frm, text="Exit", command=root.destroy).grid(column=1, row=0)
             # root.mainloop()
+            self.clear_login_screen()
             App.get_running_app().go_to('login')
 
     def clean_layout(self):

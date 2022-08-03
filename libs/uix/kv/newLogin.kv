@@ -32,58 +32,53 @@
             foreground_color: 0,0,0,1
 
 <LoginButton>:
-    padding: 10
+
     pos_hint: {"center_x": 0.5 , "center_y": 0.3}
-    orientation: "vertical"
+    orientation: "horizontal"
     md_bg_color: get_color_from_hex("#FFBA99")
     size_hint: 0.9 , 0.08
     elevation: 3
     radius: [20]
     size_hint: 0.9 , None
     size: "100dp" , "40dp"
-    Label:
+    Button:
         text: 'LOGIN'
+        font_size: '18dp'
         bold: True
         halign: "center"
         valign: "center"
-        pos_hint: {'center_x': .5 , "center_y": .5}
-        font_size: '18dp'
-    Button:
-        id: login_btn
+        color: get_color_from_hex('#FFFFFF')
         background_color: 0,0,0,0
+        size_hint: 1.1 , None
+        size: '0dp' , '50dp'
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        on_press:
-            app.go_to('home')
+
+
 
 <SignupButton>:
     pos_hint: {"center_x": 0.5 , "center_y": 0.3}
     size_hint: 0.9 , None
     size: "100dp" , "100dp"
-    MDCard:
-        padding: 10
-        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-        orientation: "vertical"
-        size_hint: 1 , 0.3
-        md_bg_color: get_color_from_hex("#FFBA99")
-        size_hint: 0.9 , 0.08
-        elevation: 3
-        radius: [20]
-        size_hint: 0.9 , None
-        size: "100dp" , "40dp"
-        Label:
-            text: 'SIGN UP'
-            bold: True
-            halign: "center"
-            valign: "center"
-            pos_hint: {'center_x': .5 , "center_y": .5}
-            font_size: '18dp'
-        Button:
-            id: login_btn
-            background_color: 0,0,0,0
-            pos_hint: {"center_x": 0.5, "center_y": 0.5}
-            on_press:
-                app.go_to('login')
-                app.signup()
+#        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    orientation: "horizontal"
+    size_hint: 1 , 0.3
+    md_bg_color: get_color_from_hex("#FFBA99")
+    size_hint: 0.9 , 0.08
+    elevation: 3
+    radius: [20]
+    size_hint: 0.9 , None
+    size: "100dp" , "40dp"
+
+    Button:
+        text: 'SIGN UP'
+        font_size: '18dp'
+        bold: True
+        halign: "center"
+        valign: "center"
+        background_color: 0,0,0,0
+        size_hint: 1.1 , None
+        size: '0dp' , '60dp'
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
 
 <LoginTopLabel@MDLabel>:

@@ -43,15 +43,15 @@ class User:
 
     def user_info(self , get_object=False):
 
-        print()
-        print(f'    First name: {self.first_name}')
-        print(f'    Last name: {self.last_name}')
-        print(f'    Username: {self.username}')
-        print(f'    Email: {self.email}')
-        print(f'    Password: {self.password}')
-        print(f'    Date of birth: {self.date_of_birth}')
-        print(f'    Height: {self.height} , Weight: {self.weight}')
-        print()
+        # print()
+        # print(f'    First name: {self.first_name}')
+        # print(f'    Last name: {self.last_name}')
+        # print(f'    Username: {self.username}')
+        # print(f'    Email: {self.email}')
+        # print(f'    Password: {self.password}')
+        # print(f'    Date of birth: {self.date_of_birth}')
+        # print(f'    Height: {self.height} , Weight: {self.weight}')
+        # print()
 
         user_json_object = {
             'first_name': self.first_name,
@@ -60,14 +60,35 @@ class User:
             'email': self.email,
             'password': self.password,
             'height': self.height,
-            'weight': self.weight
-            # 'date_of_birth': self.date_of_birth,
+            'weight': self.weight,
+            'date_of_birth': self.date_of_birth
 
 
         }
 
         if get_object:
             return user_json_object
+
+
+    def update_local_by(self,record):
+        keys = ['_id', 'first_name', 'email', 'height', 'weight', 'username', 'date_of_birth', 'questions', 'password',
+                'last_name', 'diagnose', '__v', ]
+        # self.username
+        # self.password
+
+        self.email = record['email']
+        self.first_name = record['first_name']
+        self.last_name = record['last_name']
+        self.height = record['height']
+        self.weight = record['weight']
+        self.date_of_birth = record['date_of_birth']
+        self.questions = record['questions']
+        self.diagnose = record['diagnose']
+
+
+
+
+
 
 def date_validation_1(date_string):
     test_format = '04-01-1997'

@@ -11,15 +11,21 @@
 #:include libs/uix/kv/newDaily.kv
 #:include libs/uix/kv/newDiagnose.kv
 #:include libs/uix/kv/newProfile.kv
+#:include libs/uix/kv/newQuestion.kv
 
 
 Manager:
+    QuestionScreen:
     LoginScreen:
+    ProfileScreen:
+
+
     SignupScreen:
     HomeScreen:
     DiagnoseScreen:
     DailyScreen:
-    ProfileScreen:
+
+
 
 <LoginScreen>:
     name: 'login'
@@ -41,4 +47,7 @@ Manager:
 
 <DiagnoseScreen>:
     name: 'diagnose'
+
+<QuestionScreen>:
+    name: 'question'
 

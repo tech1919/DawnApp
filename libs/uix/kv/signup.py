@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
+from kivymd.uix.card import MDCard
 from kivymd.uix.floatlayout import MDFloatLayout
 
 from db_connection import add_patient
@@ -55,6 +56,5 @@ class SignupLayout(MDFloatLayout):
     pass
 
 
-class SignupButton(BoxLayout):
-    def signup(self):
-        print('signup')
+class SignupButton(MDCard):
+    pass
