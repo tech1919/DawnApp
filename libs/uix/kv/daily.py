@@ -12,6 +12,7 @@ class DailyScreen(Screen):
 
 
     def on_enter(self, *args):
+        self.clean_layout()
         layout = DailyLayout()
         self.add_widget(layout)
 
@@ -64,6 +65,10 @@ class DailyScreen(Screen):
 
 
             list_layout.add_widget(card)
+
+    def clean_layout(self):
+        if len(self.children) > 0:
+            self.remove_widget(self.children[0])
 
 class DailyLayout(MDFloatLayout):
     pass

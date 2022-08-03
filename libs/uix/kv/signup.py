@@ -3,6 +3,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivymd.uix.floatlayout import MDFloatLayout
 
+from db_connection import add_patient
+
 
 class SignupScreen(Screen):
     def on_enter(self, *args):
@@ -18,8 +20,10 @@ class SignupScreen(Screen):
         singup_button.bind(on_press = self.signup)
 
 
-
-
+    def sign_up(self):
+        """
+            sign up user to data base
+        """
 
 
     def signup(self , *args):
@@ -35,6 +39,9 @@ class SignupScreen(Screen):
         user.password = self.password_input.text
         user.email = self.email_input.text
         user.username = self.username_input.text
+
+        add_patient(sign_user=user)
+        App.get_running_app().go_to('login')
 
         # printing the user information
         # user.user_info()

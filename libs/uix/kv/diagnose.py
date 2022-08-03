@@ -10,6 +10,7 @@ from datetime import date
 class DiagnoseScreen(Screen):
 
     def on_enter(self, *args):
+        self.clean_layout()
         layout = DiagnoseLayout()
         self.add_widget(layout)
         navbar = Navbar()
@@ -30,6 +31,9 @@ class DiagnoseScreen(Screen):
         date_pos.text = date_format
         layout.add_widget(date_label)
 
+    def clean_layout(self):
+        if len(self.children) > 0:
+            self.remove_widget(self.children[0])
 
 class DiagnoseLayout(MDFloatLayout):
     pass

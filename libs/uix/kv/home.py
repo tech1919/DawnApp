@@ -12,6 +12,7 @@ from libs.uix.components.navbar import Navbar
 class HomeScreen(Screen):
 
     def on_enter(self, *args):
+        self.clean_layout()
         layout = HomeLayout()
         self.add_widget(layout)
 
@@ -42,7 +43,9 @@ class HomeScreen(Screen):
 
         layout.add_widget(big_buttons_box)
 
-
+    def clean_layout(self):
+        if len(self.children) > 0:
+            self.remove_widget(self.children[0])
 class HomeLayout(MDFloatLayout):
     pass
 

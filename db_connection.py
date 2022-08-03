@@ -5,7 +5,7 @@ import urllib
 endpoint = 'https://dawnapi.herokuapp.com/'
 
 # for tests
-endpoint = 'http://localhost:3000/'
+# endpoint = 'http://localhost:3000/'
 
 def getData(query):
     '''
@@ -30,7 +30,7 @@ def getData(query):
     return req.result
 
 def add_patient(sign_user):
-    query = sign_user.user_info()
+    query = sign_user.user_info(get_object=True)
     params = urllib.parse.urlencode(query)
     req = UrlRequest(f'{endpoint}signuser?{params}')
     req.wait()

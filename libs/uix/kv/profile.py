@@ -13,6 +13,7 @@ from libs.uix.components.navbar import Navbar
 class ProfileScreen(Screen):
 
     def on_enter(self, *args):
+        self.clean_layout()
         layout = ProfileLayout()
         self.add_widget(layout)
 
@@ -34,6 +35,11 @@ class ProfileScreen(Screen):
 
         username = 'username'
         layout.add_widget(UserNameLabel(text=username))
+
+
+    def clean_layout(self):
+        if len(self.children) > 0:
+            self.remove_widget(self.children[0])
 
 class ProfileLayout(MDFloatLayout):
     pass
