@@ -67,10 +67,37 @@
         NextButton:
 
 
+<QImage>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.7}
+    size_hint: 0.9 , None
+    size: '0dp' , '200dp'
+
+
+<QNumber>
+    text: 'Question 1 of 20'
+    halign: "left"
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    size_hint: 0.9 , None
+    font_size: '13dp'
+
+<QuestionLabel>
+    color: 0,0,0,1
+    halign: "left"
+    pos_hint: {"center_x": 0.5 , "center_y": 0.38}
+    size_hint: 0.9 , None
+    font_size: '16dp'
 
 
 <QuestionLayout>
+    orientation: "vertical"
     BackButton:
+
+    QImage:
+        source: 'assets/images/Q1.png'
+
+    QNumber:
+    QuestionLabel:
+
 
     Buttons:
 

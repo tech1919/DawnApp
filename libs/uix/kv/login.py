@@ -111,7 +111,7 @@ class LoginScreen(Screen):
             user.email = email_field
             user.date_of_birth = dob_field
 
-            App.get_running_app().go_to('home')
+            App.get_running_app().go_to('question')
 
 
         else:

@@ -1,18 +1,45 @@
+from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
+from kivy.uix.image import Image
 from kivy.uix.screenmanager import Screen
 from kivy.utils import get_color_from_hex
 from kivymd.uix.card import MDCard
 from kivymd.uix.floatlayout import MDFloatLayout
+from kivymd.uix.label import MDLabel
 
 
 class QuestionScreen(Screen):
     def on_enter(self, *args):
+        self.check_user_answers()
+
         layout = QuestionLayout()
         self.add_widget(layout)
 
-    def back_question(self):
-        print('back question')
+        buttons_box = layout.children[0]
+        question_label = layout.children[1]
+        question_number = layout.children[2]
+        question_image = layout.children[3]
+        back_question_button = layout.children[4]
+        back_question_button.bind(on_press=self.back_question)
+        question_label.get_next_question()
+
+    def check_user_answers(self):
+        # set the answers field of the user
+        user = App.get_running_app().user
+        questions = App.get_running_app().questions
+
+        if len(user.answers) == 0:
+            for _ in questions:
+                user.answers.append('')
+
+
+    def back_question(self , *args):
+        layout = self.children[0]
+        question_label = layout.children[1]
+        question_label.get_next_question('back')
+
+
 
 class QuestionLayout(MDFloatLayout):
     pass
@@ -150,4 +177,58 @@ class NextButton(Button):
 
             no_button.turn_button()
 
-        print(answer)
+
+        layout = buttons_box.parent
+        question_label = layout.children[1]
+        question_image = layout.children[3]
+        back_question_button = layout.children[4]
+
+        # do something with the answer
+        # this answer is for question index:
+        question_index = question_label.current_question_index - 1
+        user = App.get_running_app().user
+        user.answers[question_index] = answer
+
+
+        # set the next question
+        question_label.get_next_question()
+
+class QImage(Image):
+    pass
+
+class QNumber(MDLabel):
+    pass
+
+class QuestionLabel(MDLabel):
+    def get_next_question(self, current_question_index = ''):
+        question_set = App.get_running_app().questions
+
+
+        try:
+            if current_question_index == 'back':
+                current_question_index = self.current_question_index - 2
+                if current_question_index == -1:
+                    App.get_running_app().go_to('home')
+                    self.current_question_index = 0
+                    return
+            if current_question_index == '':
+                current_question_index = self.current_question_index
+        except:
+            current_question_index = 0
+        finally:
+            if current_question_index == len(question_set):
+                App.get_running_app().go_to('profile')
+                self.current_question_index = 0
+                return
+            current_question = question_set[current_question_index]
+            self.text = current_question
+
+
+            # change the number of question on screen
+            layout = self.parent
+            question_number = layout.children[2]
+            question_number.text = f'Question {current_question_index + 1} of {len(question_set)}'
+
+            # set the index for the next question
+            self.current_question_index = current_question_index + 1
+

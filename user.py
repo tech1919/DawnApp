@@ -33,6 +33,7 @@ class User:
         self.username = username
         self.password = password
         self.email = email
+        self.answers = []
         self.diagnose = []
 
     def create_diagnose(self, q_arr, a_arr):
