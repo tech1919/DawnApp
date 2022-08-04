@@ -1,0 +1,20 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+<BackButton@MDIconButton>
+    pos_hint: {"center_x": .15 , "center_y": .92}
+    icon: 'chevron-left'
+
+<MenuButton@MDIconButton>
+    pos_hint: {"center_x": .86 , "center_y": .92}
+    icon: 'menu'
+
+<SignoutButton@Button>
+    pos_hint: {"center_x": .15 , "center_y": .92}
+    text: 'sign out'
+    size_hint: None , None
+    size: '65dp' , '30dp'
+    background_color: 0,0,0,0
+    color: 0,0,0,1
+    bold: True
+    on_press:
+        app.go_to('login')

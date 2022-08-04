@@ -1,0 +1,246 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+
+<TopBox>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.83}
+    orientation: "horizontal"
+    size_hint: 0.8 , None
+    size: '100dp' , '100dp'
+    spacing: 17
+    MDCard:
+        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+        md_bg_color: 0,0,0,0.1
+        radius: [100]
+        size_hint: None , None
+        size: "60dp" , "60dp"
+        elevation: 0
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 15
+        MDLabel:
+            text: 'Hello username'
+            color: get_color_from_hex("#006F4F")
+            font_size: '23dp'
+            bold: True
+            halign: 'left'
+        MDLabel:
+            text: 'Welcome Back!'
+            color: get_color_from_hex("#006F4F")
+            font_size: '18dp'
+            bold: False
+            halign: 'left'
+
+
+<SimptomsHomeButton@MDCard>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    size_hint: None , None
+    size: '120dp' , '120dp'
+    md_bg_color: 0,0,0,0
+    radius: [10]
+    elevation: 0
+    FitImage:
+        source: 'assets/images/symptoms_logo.png'
+        size_hint: 1 , 1
+
+<DiagnoseHomeButton@MDCard>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    size_hint: None , None
+    size: '120dp' , '120dp'
+    md_bg_color: 0,0,0,0
+    radius: [10]
+    elevation: 0
+    FitImage:
+        source: 'assets/images/diagnose_logo.png'
+        size_hint: 1 , 1
+
+<BloodTestHomeButton@MDCard>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    size_hint: None , None
+    size: '120dp' , '120dp'
+    md_bg_color: 0,0,0,0
+    radius: [10]
+    elevation: 0
+    FitImage:
+        source: 'assets/images/blood_test_logo.png'
+        size_hint: 1 , 1
+
+<AskDoctorHomeButton@MDCard>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    size_hint: None , None
+    size: '120dp' , '120dp'
+    text: "Ask the doctor"
+    color: get_color_from_hex('#FFFFFF')
+    md_bg_color: 0,0,0,0
+    radius: [10]
+    elevation: 0
+    FitImage:
+        source: 'assets/images/doctor_logo.png'
+        size_hint: 1 , 1
+
+
+
+<BigButtonBox>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+    size_hint: 0.9 , 0.4
+#    size: '0dp' , '250dp'
+    BoxLayout:
+        orientation: "vertical"
+        SimptomsHomeButton:
+        BloodTestHomeButton:
+    BoxLayout:
+        orientation: "vertical"
+        DiagnoseHomeButton:
+        AskDoctorHomeButton:
+
+<LabelsForButton@BoxLayout>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    size_hint: 0.9 , 0.4
+#    size: '0dp' , '250dp'
+    BoxLayout:
+        padding:10
+        spacing: 30
+        orientation: "vertical"
+
+#        SimptomsHomeButton:
+
+
+        MDLabel:
+            halign: 'center'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+            size_hint: None , 0.5
+            size: '100dp' , '30dp'
+            font_size: '12dp'
+            text: "What are your symptoms?"
+            bold: True
+            color: get_color_from_hex('#FFFFFF')
+
+#        BloodTestHomeButton:
+
+        MDLabel:
+            halign: 'center'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+            size_hint: None , 0.5
+            size: '100dp' , '30dp'
+            font_size: '12dp'
+            text: "Upload your blood test"
+            bold: True
+            color: get_color_from_hex('#000000')
+
+    BoxLayout:
+
+        orientation: "vertical"
+#        DiagnoseHomeButton:
+        MDLabel:
+            halign: 'center'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+            size_hint: None , 0.5
+            size: '100dp' , '30dp'
+            font_size: '12dp'
+            text: "Your diagnose"
+            bold: True
+            color: get_color_from_hex('#000000')
+#        AskDoctorHomeButton:
+        MDLabel:
+            halign: 'center'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+            size_hint: None , 0.5
+            size: '100dp' , '30dp'
+            font_size: '12dp'
+            text: "Ask the doctor"
+            bold: True
+            color: get_color_from_hex('#FFFFFF')
+
+<ButtonsBoxBackground@BoxLayout>
+    spacing: 12
+    padding: 10
+    pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+    size_hint: 0.9 , 0.4
+#    size: '0dp' , '250dp'
+    BoxLayout:
+        spacing: 12
+        padding: 10
+        orientation: "vertical"
+        Button:
+            background_color: 0,0,0,0
+#            SimptomsHomeButton
+            on_press: app.go_to('question')
+        Button:
+            background_color: 0,0,0,0
+#            BloodTestHomeButton
+
+    BoxLayout:
+        spacing: 12
+        padding: 10
+        orientation: "vertical"
+        Button:
+            background_color: 0,0,0,0
+#            DiagnoseHomeButton
+            on_press: app.go_to('diagnose')
+        Button:
+            background_color: 0,0,0,0
+#            AskDoctorHomeButton
+
+
+
+
+<MyAppointment>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.25}
+    size_hint: 0.9 , 0.2
+    orientation: "vertical"
+
+    MDLabel:
+        text: 'My Appointment'
+        size_hint: 1 , 0.2
+        halign: 'left'
+        color: get_color_from_hex("#006F4F")
+        font_size: '18dp'
+        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    MDCard:
+        radius: [10]
+        elevation: 0
+        md_bg_color: get_color_from_hex('#FFFFFF')
+        orientation: "vertical"
+        MDLabel:
+            text: 'Dr. Natali Tompson'
+            bold: True
+            font_size: '12dp'
+            halign: 'left'
+        MDLabel:
+            text: 'Crdiolog'
+            font_size: '12dp'
+            halign: 'left'
+        MDLabel:
+            text: "Bnei Barak, haroeh 21"
+            font_size: '12dp'
+            halign: 'left'
+        MDCard:
+            orientation: "horizontal"
+            spacing: 7
+            radius: [5]
+            elevation: 0
+            size_hint: 0.95 , 1
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            md_bg_color: get_color_from_hex("#012241")
+            Image:
+                size_hint: 0.1 , 1
+                source: 'assets/images/clock_btn.png'
+            MDLabel:
+                text: 'Friday, April 25, 8:00a.m-10:00p.m'
+                color: get_color_from_hex("#FFFFFF")
+                font_size: '12dp'
+                bold: True
+
+
+
+
+
+
+
+<HomeLayout>:
+    MenuButton:
+    BackButton:
+
+    BigButtonBox:
+    ButtonsBoxBackground
+    LabelsForButton:
+    MyAppointment:

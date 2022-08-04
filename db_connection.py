@@ -30,7 +30,7 @@ def getData(query):
     return req.result
 
 def add_patient(sign_user):
-    query = sign_user.user_info()
+    query = sign_user.user_info(get_object=True)
     params = urllib.parse.urlencode(query)
     req = UrlRequest(f'{endpoint}signuser?{params}')
     req.wait()
@@ -55,7 +55,7 @@ def update_patient(query,update_fields):
 
     query = {**query, **update_fields}
     query['questions'] = ','.join(query['questions'])
-    query['diagnose'] = ','.join(query['diagnose'])
+    # query['diagnose'] = ','.join(query['diagnose'])
     params = urllib.parse.urlencode(query)
     req = UrlRequest(f'{endpoint}updateuser?{params}')
     req.wait()

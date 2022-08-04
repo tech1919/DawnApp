@@ -1,0 +1,219 @@
+
+
+
+
+<LoginInputWidget@MDCard>
+    orientation: "vertical"
+    md_bg_color: get_color_from_hex("#FFFFFF")
+    size_hint: 0.9 , None
+    size: "100dp" , "40dp"
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    elevation: 3
+    radius: [20]
+    MDBoxLayout:
+        MDTextField:
+            pos_hint: {"center_x": 0.55, "center_y": 0.47}
+            halign: "center"
+            foreground_color: 0,0,0,1
+
+<PasswordInputWidget@MDCard>
+    orientation: "vertical"
+    md_bg_color: get_color_from_hex("#FFFFFF")
+    size_hint: 0.9 , None
+    size: "100dp" , "40dp"
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    elevation: 3
+    radius: [20]
+    MDBoxLayout:
+        MDTextField:
+            password: True
+            pos_hint: {"center_x": 0.55, "center_y": 0.47}
+            halign: "center"
+            foreground_color: 0,0,0,1
+
+<LoginButton>:
+
+    pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+    orientation: "horizontal"
+    md_bg_color: get_color_from_hex("#FFBA99")
+    size_hint: 0.9 , 0.08
+    elevation: 3
+    radius: [20]
+    size_hint: 0.9 , None
+    size: "100dp" , "40dp"
+    Button:
+        text: 'LOGIN'
+        font_size: '18dp'
+        bold: True
+        halign: "center"
+        valign: "center"
+        color: get_color_from_hex('#FFFFFF')
+        background_color: 0,0,0,0
+        size_hint: 1.1 , None
+        size: '0dp' , '50dp'
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+
+
+<SignupButton>:
+    pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+    size_hint: 0.9 , None
+    size: "100dp" , "100dp"
+#        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    orientation: "horizontal"
+    size_hint: 1 , 0.3
+    md_bg_color: get_color_from_hex("#FFBA99")
+    size_hint: 0.9 , 0.08
+    elevation: 3
+    radius: [20]
+    size_hint: 0.9 , None
+    size: "100dp" , "40dp"
+
+    Button:
+        text: 'SIGN UP'
+        font_size: '18dp'
+        bold: True
+        halign: "center"
+        valign: "center"
+        background_color: 0,0,0,0
+        size_hint: 1.1 , None
+        size: '0dp' , '60dp'
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+
+<LoginTopLabel@MDLabel>:
+    font_size: '35dp'
+    halign: "left"
+    pos_hint: {"center_x": 0.5 , "center_y": 0.85}
+    size_hint: 0.85 , None
+    size: '100dp' , '100dp'
+    bold: True
+    color: get_color_from_hex("#FFBA99")
+
+
+<LoginLabel@MDLabel>:
+    halign: "left"
+    color: get_color_from_hex("#FFFFFF")
+    font_size: '14dp'
+    size_hint: 0.85 , 0.05
+    pos_hint: {"center_x": 0.5 , "center_y": .5}
+
+<SocialButton@MDIconButton>
+    size_hint: None , None
+    size: '40dp' , '40dp'
+    pos_hint: {"center_x": 0.5 , "center_y": .5}
+    user_font_size: '10dp'
+
+
+<LoginSocial>:
+    pos_hint: {"center_x": .5 , "center_y": .2}
+    orientation: 'vertical'
+    halign: "center"
+    size_hint: 1 , 0.15
+    size: '1dp' , '200dp'
+    Label:
+        text: "or"
+        halign: "center"
+        font_size: '12dp'
+        pos_hint: {"center_x": .5 , "center_y": .7}
+    MDFloatLayout:
+        size_hint: 1 , 0.3
+        spacing: 10
+        pos_hint: {"center_x": .5 , "center_y": .1}
+        halign: "center"
+        orientation: 'horizontal'
+#        Button:
+#            pos_hint: {"center_x": .4 , "center_y": .5}
+#        Button:
+#            pos_hint: {"center_x": .6 , "center_y": .5}
+        SocialButton:
+            pos_hint: {"center_x": .4 , "center_y": .5}
+            icon: "assets/images/facebook_logo.png"
+            on_press: print('facebook login')
+        SocialButton:
+            pos_hint: {"center_x": .6 , "center_y": .5}
+            icon: "assets/images/google_logo.png"
+            on_press: print('google login')
+
+
+
+<InputBox@BoxLayout>
+    orientation: "vertical"
+    size_hint: 1 , 0.3
+    pos_hint: {"center_x": 0.5 , "center_y": 0.6}
+
+
+
+<BottomLineButton>
+    pos_hint: {"center_x": .5 , "center_y": .05}
+    background_color: 0,0,0,0
+    size_hint: 0.8 , None
+    size: '0dp','30dp'
+
+
+
+
+
+
+
+
+<LoginLayout>:
+    spacing: 15
+    md_bg_color: get_color_from_hex("#012241")
+    orientation: 'vertical'
+    LoginTopLabel:
+        text: 'Login'
+
+    InputBox:
+
+
+        LoginLabel:
+            text: 'Username'
+        LoginInputWidget:
+
+        LoginLabel:
+            text: 'Password'
+        PasswordInputWidget:
+
+        LoginLabel:
+            text: 'Forgot password?'
+            halign: 'right'
+            pos_hint: {"center_x": 0.5 , "center_y": .5}
+
+
+    LoginButton:
+    LoginSocial:
+
+    BottomLineButton:
+        text: "Don't have an account? Sign Up"
+        on_press: app.go_to('signup')
+
+
+
+
+<SignupLayout>:
+    md_bg_color: get_color_from_hex("#012241")
+    orientation: 'vertical'
+    LoginTopLabel:
+        text: 'Sign Up'
+
+    InputBox:
+        LoginLabel:
+            text: 'Username'
+        LoginInputWidget:
+        LoginLabel:
+            text: 'Email'
+        LoginInputWidget:
+        LoginLabel:
+            text: 'Password'
+        PasswordInputWidget:
+
+    SignupButton:
+    LoginSocial:
+
+    BottomLineButton:
+        text: "Already have an account? Login"
+        on_press: app.go_to('login')
+
+
+

@@ -2,3 +2,4 @@ venv/
 .buildozer/
 bin/
 alert.py
+kivy_icons.py

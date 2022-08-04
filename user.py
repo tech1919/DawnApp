@@ -20,9 +20,11 @@ class Question:
         self.q_number = number
         self.question = question
         self.answer = answer
+
+
 class User:
 
-    def __init__(self, height, weight, dob, first, last, username, password, email=''):
+    def __init__(self, height='', weight='', dob='', first='', last='', username='', password='', email=''):
         self.height = height
         self.weight = weight
         self.date_of_birth = dob
@@ -31,7 +33,8 @@ class User:
         self.username = username
         self.password = password
         self.email = email
-        self.diagnose = []
+        self.answers = []
+        self.diagnose = ''
 
     def create_diagnose(self, q_arr, a_arr):
         num = 1
@@ -39,7 +42,7 @@ class User:
             self.diagnose.append([num, q, a])
             num += 1
 
-    def user_info(self):
+    def user_info(self , get_object=False):
 
         # print()
         # print(f'    First name: {self.first_name}')
@@ -58,12 +61,35 @@ class User:
             'email': self.email,
             'password': self.password,
             'height': self.height,
-            'weight': self.weight
-            # 'date_of_birth': self.date_of_birth,
+            'weight': self.weight,
+            'date_of_birth': self.date_of_birth
 
 
         }
-        return user_json_object
+
+        if get_object:
+            return user_json_object
+
+
+    def update_local_by(self,record):
+        keys = ['_id', 'first_name', 'email', 'height', 'weight', 'username', 'date_of_birth', 'questions', 'password',
+                'last_name', 'diagnose', '__v', ]
+        # self.username
+        # self.password
+
+        self.email = record['email']
+        self.first_name = record['first_name']
+        self.last_name = record['last_name']
+        self.height = record['height']
+        self.weight = record['weight']
+        self.date_of_birth = record['date_of_birth']
+        self.questions = record['questions']
+        # self.diagnose = record['diagnose']
+
+
+
+
+
 
 def date_validation_1(date_string):
     test_format = '04-01-1997'

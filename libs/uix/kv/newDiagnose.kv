@@ -1,0 +1,163 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+
+<DateLabel>
+    orientation: "vertical"
+
+    pos_hint: {"center_x": 0.3 , "center_y": 0.83}
+    size_hint: None , None
+    size: '150dp' , '50dp'
+
+    MDLabel:
+        halign: "left"
+        text: "Today"
+        color: 0,0,0,0.6
+        font_size: '13dp'
+    MDLabel:
+        halign: "left"
+        color: get_color_from_hex("#000000")
+        font_size: '13dp'
+
+
+<Test1@BoxLayout>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+    size_hint: 1 , None
+    size: '100dp' ,'40dp'
+    MDCard:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#FFBA99")
+        radius: [10]
+        elevation: 0
+        BoxLayout:
+            spacing: 8
+            padding: 5
+            orientation: 'horizontal'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            size_hint: 1 , 0.3
+            Image:
+                size_hint: 0.1 , 1
+                source: 'assets/images/schedual.png'
+            BoxLayout:
+                size_hint: 1 , 0.9
+                orientation: "vertical"
+                MDLabel:
+                    size_hint: 0.7 , 1
+                    text: "Set an Appointment"
+                    bold: True
+                    font_size: '12dp'
+                    color: get_color_from_hex("#000000")
+                    halign: "left"
+                MDLabel:
+                    size_hint: 0.7 , 1
+                    text: "Lorem ipsum dolor"
+                    bold: False
+                    font_size: '12dp'
+                    color: get_color_from_hex("#000000")
+                    halign: "left"
+
+            MDIconButton:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                icon: 'chevron-right'
+
+<Test2@BoxLayout>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+    size_hint: 1 , None
+    size: '100dp' ,'40dp'
+    MDCard:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#007150")
+        radius: [10]
+        elevation: 0
+        BoxLayout:
+            spacing: 8
+            padding: 5
+            orientation: 'horizontal'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            size_hint: 1 , 0.3
+            Image:
+                size_hint: 0.1 , 1
+                source: 'assets/images/diagnose2_selection.png'
+            BoxLayout:
+                size_hint: 1 , 0.9
+                orientation: "vertical"
+                MDLabel:
+                    size_hint: 0.7 , 1
+                    text: "Lorem Ipsum"
+                    bold: True
+                    font_size: '12dp'
+                    color: get_color_from_hex("#FFFFFF")
+                    halign: "left"
+                MDLabel:
+                    size_hint: 0.7 , 1
+                    text: "Lorem ipsum dolor"
+                    bold: False
+                    font_size: '12dp'
+                    color: get_color_from_hex("#FFFFFF")
+                    halign: "left"
+
+            MDIconButton:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                icon: 'chevron-right'
+
+
+
+<Adenomyosis>
+    spacing: 10
+    orientation: "vertical"
+    size_hint: 0.9 , 0.65
+    pos_hint: {"center_x": 0.5 , "center_y": 0.47}
+#    Button:
+    MDLabel:
+        halign: 'left'
+        text: "My Diagnosis"
+        color: get_color_from_hex("#006F4F")
+        font_size: '25dp'
+        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    MDLabel:
+        halign: 'left'
+        text: "Adenomyosis"
+        color: get_color_from_hex("#006F4F")
+        font_size: '15dp'
+        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+    MDLabel:
+        halign: 'left'
+        font_size: '15dp'
+        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+        text: 'diagnose details'
+        bold: True
+    MDLabel:
+        halign: 'left'
+        font_size: '15dp'
+        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim massa, imperdiet ut metus sit amet."
+
+
+    MDCard:
+        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+        size_hint: 1 , None
+        size: '100dp' , '90dp'
+        elevation: 1
+        radius: [10]
+        md_bg_color: 0,0,0,0
+        FitImage:
+            source: 'assets/images/diagnose_page.png'
+    MDLabel:
+        halign: 'left'
+        font_size: '15dp'
+        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+        text: 'Recommended tests'
+        bold: True
+
+    Test1:
+    Test2:
+
+
+
+<DiagnoseLayout>:
+    BackButton:
+    MenuButton:
+
+    Adenomyosis:
+
+
+

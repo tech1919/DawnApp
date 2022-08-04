@@ -1,0 +1,53 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+
+#COMPONENTS
+#:include libs/uix/components/navbar.kv
+#:include libs/uix/components/topbar.kv
+
+#PAGES
+#:include libs/uix/kv/newLogin.kv
+#:include libs/uix/kv/newHome.kv
+#:include libs/uix/kv/newDaily.kv
+#:include libs/uix/kv/newDiagnose.kv
+#:include libs/uix/kv/newProfile.kv
+#:include libs/uix/kv/newQuestion.kv
+
+
+Manager:
+    LoginScreen:
+    HomeScreen:
+
+    QuestionScreen:
+    ProfileScreen:
+    SignupScreen:
+
+    DiagnoseScreen:
+    DailyScreen:
+
+
+
+<LoginScreen>:
+    name: 'login'
+
+<SignupScreen>:
+    name: 'signup'
+
+
+<ProfileScreen>:
+    name: 'profile'
+
+
+<HomeScreen>:
+    name: 'home'
+
+
+<DailyScreen>:
+    name: 'daily'
+
+<DiagnoseScreen>:
+    name: 'diagnose'
+
+<QuestionScreen>:
+    name: 'question'
+
