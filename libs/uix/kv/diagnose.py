@@ -2,7 +2,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.screenmanager import Screen
 from kivymd.uix.floatlayout import MDFloatLayout
-
+from kivy.app import App
 from libs.uix.components.navbar import Navbar
 
 from datetime import date

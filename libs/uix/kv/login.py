@@ -3,21 +3,26 @@ from kivy.uix.button import Button
 from kivy.uix.screenmanager import Screen
 from kivymd.uix.card import MDCard
 from kivymd.uix.floatlayout import MDFloatLayout
+from kivymd.uix.screen import MDScreen
 
 from db_connection import verify_patient
 
 
-class LoginScreen(Screen):
+class LoginScreen(MDScreen):
     def on_enter(self, *args):
-        self.clean_layout()
-        layout = LoginLayout()
-        self.add_widget(layout)
+        pass
+        # self.clean_layout()
+        # layout = LoginLayout()
+        # self.add_widget(layout)
+        # print(layout)
 
-        # get buttons
-        bottom_line_button = self.children[0].children[0]
-        login_social_area = self.children[0].children[1]
-        login_button = self.children[0].children[2].children[0]
-        login_button.bind(on_press = self.verify)
+
+
+
+
+        # login_button = self.children[0].children[2].children[0]
+        # print('check')
+        # login_button.bind(on_press = self.verify)
 
     def clear_login_screen(self):
         input_box = self.children[0].children[3]

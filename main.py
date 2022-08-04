@@ -1,6 +1,7 @@
 
 import time
 
+from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, FadeTransition, NoTransition, SlideTransition, Screen
 from kivymd.app import MDApp
 from user import User
@@ -38,9 +39,8 @@ class DawnApp(MDApp):
         self.questions = question_sets.ads()
 
 
-
         sm = Manager()
-        sm.add_widget(LoginScreen(name='login'))
+        sm.add_widget(Builder.load_file('libs/uix/kv/newLogin.kv'))
         sm.add_widget(HomeScreen(name='home'))
         sm.add_widget(QuestionScreen(name='question'))
         sm.add_widget(ProfileScreen(name='profile'))
@@ -49,6 +49,7 @@ class DawnApp(MDApp):
         sm.add_widget(DailyScreen(name='daily'))
 
         return sm
+
 
 
 

@@ -1,5 +1,4 @@
-
-
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 
 
 <LoginInputWidget@MDCard>
@@ -31,7 +30,7 @@
             halign: "center"
             foreground_color: 0,0,0,1
 
-<LoginButton>:
+<LoginButton>
 
     pos_hint: {"center_x": 0.5 , "center_y": 0.3}
     orientation: "horizontal"
@@ -215,5 +214,9 @@
         text: "Already have an account? Login"
         on_press: app.go_to('login')
 
+<LoginScreen>
+    name: 'login'
+    LoginLayout:
 
 
+LoginScreen:

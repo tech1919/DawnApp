@@ -3,3 +3,4 @@ venv/
 bin/
 alert.py
 kivy_icons.py
+logcat.txt

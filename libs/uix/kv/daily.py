@@ -3,7 +3,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.scrollview import ScrollView
 from kivymd.uix.card import MDCard
 from kivymd.uix.floatlayout import MDFloatLayout
-
+from kivy.app import App
 
 from libs.uix.components.navbar import Navbar
 
