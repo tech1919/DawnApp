@@ -72,8 +72,8 @@ class User:
 
 
     def update_local_by(self,record):
-        keys = ['_id', 'first_name', 'email', 'height', 'weight', 'username', 'date_of_birth', 'questions', 'password',
-                'last_name', 'diagnose', '__v', ]
+        # keys = ['_id', 'first_name', 'email', 'height', 'weight', 'username', 'date_of_birth', 'questions','answers', 'password',
+        #         'last_name', 'diagnose', '__v', ]
         # self.username
         # self.password
 
@@ -82,8 +82,12 @@ class User:
         self.last_name = record['last_name']
         self.height = record['height']
         self.weight = record['weight']
-        self.date_of_birth = record['date_of_birth']
+        try:
+            self.date_of_birth = record['date_of_birth']
+        except:
+            pass
         self.questions = record['questions']
+        self.answers = record['answers']
         # self.diagnose = record['diagnose']
 
 

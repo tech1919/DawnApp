@@ -39,7 +39,6 @@ class ProfileScreen(Screen):
 
         self.switch_main_profile_fields(2)
 
-
     def switch_main_profile_fields(self , switch_to , *args):
         switch_to -= 1
         main1 = MainProfileBoxLayout1()

@@ -231,7 +231,7 @@ class QuestionLabel(MDLabel):
                                                            'weight': user.weight,
                                                            "date_of_birth": user.date_of_birth,
                                                            "diagnose": user.diagnose,
-                                                           'questions': user.answers})
+                                                           'answers': user.answers})
                 self.current_question_index = 0
                 return
             current_question = question_set[current_question_index]

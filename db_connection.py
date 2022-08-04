@@ -5,7 +5,7 @@ import urllib
 endpoint = 'https://dawnapi.herokuapp.com/'
 
 # for tests
-endpoint = 'http://localhost:3000/'
+# endpoint = 'http://localhost:3000/'
 
 def getData(query):
     '''
@@ -54,7 +54,7 @@ def verify_patient(query):
 def update_patient(query,update_fields):
 
     query = {**query, **update_fields}
-    query['questions'] = ','.join(query['questions'])
+    query['answers'] = ','.join(query['answers'])
     # query['diagnose'] = ','.join(query['diagnose'])
     params = urllib.parse.urlencode(query)
     req = UrlRequest(f'{endpoint}updateuser?{params}')
