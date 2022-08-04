@@ -39,14 +39,18 @@ class DawnApp(MDApp):
         self.questions = question_sets.ads()
 
 
+        kv_file_path = 'libs/uix/kv'
         sm = Manager()
-        sm.add_widget(Builder.load_file('libs/uix/kv/newLogin.kv'))
-        sm.add_widget(HomeScreen(name='home'))
-        sm.add_widget(QuestionScreen(name='question'))
-        sm.add_widget(ProfileScreen(name='profile'))
-        sm.add_widget(SignupScreen(name='signup'))
-        sm.add_widget(DiagnoseScreen(name='diagnose'))
-        sm.add_widget(DailyScreen(name='daily'))
+        sm.add_widget(Builder.load_file(kv_file_path + '/newLogin.kv'))
+        sm.add_widget(Builder.load_file(kv_file_path + '/newSignup.kv'))
+
+        sm.add_widget(Builder.load_file(kv_file_path + '/newHome.kv'))
+        sm.add_widget(Builder.load_file(kv_file_path + '/newProfile.kv'))
+        sm.add_widget(Builder.load_file(kv_file_path + '/newDiagnose.kv'))
+        sm.add_widget(Builder.load_file(kv_file_path + '/newDaily.kv'))
+
+        sm.add_widget(Builder.load_file(kv_file_path + '/newQuestion.kv'))
+
 
         return sm
 

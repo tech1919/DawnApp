@@ -1,0 +1,37 @@
+
+
+
+
+#gets all the defenitions for the classes from thr newLogin.kv file
+
+
+<SignupLayout>:
+    md_bg_color: get_color_from_hex("#012241")
+    orientation: 'vertical'
+    LoginTopLabel:
+        text: 'Sign Up'
+
+    InputBox:
+        LoginLabel:
+            text: 'Username'
+        LoginInputWidget:
+        LoginLabel:
+            text: 'Email'
+        LoginInputWidget:
+        LoginLabel:
+            text: 'Password'
+        PasswordInputWidget:
+
+    SignupButton:
+    LoginSocial:
+
+    BottomLineButton:
+        text: "Already have an account? Login"
+        on_press: app.go_to('login')
+
+
+<SignupScreen>
+    name: 'signup'
+    SignupLayout:
+
+SignupScreen:

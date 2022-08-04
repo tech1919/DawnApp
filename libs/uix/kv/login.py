@@ -12,17 +12,9 @@ class LoginScreen(MDScreen):
     def on_enter(self, *args):
         pass
         # self.clean_layout()
-        # layout = LoginLayout()
-        # self.add_widget(layout)
-        # print(layout)
 
-
-
-
-
-        # login_button = self.children[0].children[2].children[0]
-        # print('check')
-        # login_button.bind(on_press = self.verify)
+        login_button = self.children[0].children[2].children[0]
+        login_button.bind(on_press = self.verify)
 
     def clear_login_screen(self):
         input_box = self.children[0].children[3]

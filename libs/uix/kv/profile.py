@@ -16,10 +16,11 @@ from libs.uix.components.navbar import Navbar
 class ProfileScreen(Screen):
 
     def on_enter(self, *args):
-        self.clean_layout()
-        layout = ProfileLayout()
-        self.add_widget(layout)
+        # self.clean_layout()
+        # layout = ProfileLayout()
+        # self.add_widget(layout)
 
+        layout = self.children[0]
 
         # get the user from the app
         user = App.get_running_app().user
