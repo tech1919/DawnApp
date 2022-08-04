@@ -34,11 +34,21 @@ class DawnApp(MDApp):
         self.icon = images_source + 'app_logo.png'
         self.last_screen = 'profile'
         self.user = (User())
-
-
-
         question_sets = Question_sets()
         self.questions = question_sets.ads()
+
+
+
+        sm = Manager()
+        sm.add_widget(LoginScreen(name='login'))
+        sm.add_widget(HomeScreen(name='home'))
+        sm.add_widget(QuestionScreen(name='question'))
+        sm.add_widget(ProfileScreen(name='profile'))
+        sm.add_widget(SignupScreen(name='signup'))
+        sm.add_widget(DiagnoseScreen(name='diagnose'))
+        sm.add_widget(DailyScreen(name='daily'))
+
+        return sm
 
 
 
