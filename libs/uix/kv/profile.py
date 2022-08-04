@@ -23,49 +23,91 @@ class ProfileScreen(Screen):
         user = App.get_running_app().user
 
         # change the navbar
-        navbar = Navbar()
+        navbar = layout.children[1]
         navbar_buttons = navbar.children[0].children
         profile_button = navbar_buttons[0]
-        diagnose_button = navbar_buttons[1]
-        daily_button = navbar_buttons[2]
-        home_button = navbar_buttons[3]
         profile_button.change_navbar('profile')
-        layout.add_widget(navbar)
+
 
         # add user image
-        user_circle = UserImageCircle()
-        images_path = 'assets/images/'
-        user_circle.add_widget(UserImage(source= f'{images_path}user.png'))
-        layout.add_widget(user_circle)
+        layout.ids['user_image_pos'].add_widget(UserImage(source='assets/images/user.png'))
 
-        name = f'{user.first_name} {user.last_name}'
-        layout.add_widget(UserNameLabel(text=name))
+        # add user name label
+        layout.ids['user_name_label'].text = f'{user.first_name} {user.last_name}'
 
-
-        my_account_area = layout.children[3].children[2]
-        self.update_user_fields(my_account_area,user)
+        self.switch_main_profile_fields(1)
 
 
+    def switch_main_profile_fields(self , switch_to , *args):
+        switch_to -= 1
+        main1 = MainProfileBoxLayout1()
+        main2 = MainProfileBoxLayout2()
+        main3 = MainProfileBoxLayout3()
+        option = [main1 , main2 , main3]
 
 
+        layout = self.children[0]
+        # this widget is located always first
+        old_main = layout.children[0]
+        layout.remove_widget(old_main)
+        new_main = option[switch_to]
+        layout.add_widget(new_main)
+
+
+        if switch_to == 0:
+            # button1 = self.get_mdicon_button(new_main.children[2].children[0].children[1])
+            button2 = self.get_mdicon_button(new_main.children[1].children[0].children[0])
+            button2.bind(on_press=lambda a: self.switch_main_profile_fields(2))
+            button3 = self.get_mdicon_button(new_main.children[0].children[0].children[0])
+            button3.bind(on_press=lambda a: self.switch_main_profile_fields(3))
+
+            # if area one is open
+            self.update_user_fields(new_main.children[-1])
+
+        elif switch_to == 1:
+            button1 = self.get_mdicon_button(new_main.children[2].children[0].children[0])
+            button1.bind(on_press=lambda a: self.switch_main_profile_fields(1))
+            # button2 = self.get_mdicon_button(new_main.children[1].children[0].children[0])
+            button3 = self.get_mdicon_button(new_main.children[0].children[0].children[0])
+            button3.bind(on_press=lambda a: self.switch_main_profile_fields(3))
+
+        elif switch_to == 2:
+            button1 = self.get_mdicon_button(new_main.children[2].children[0].children[0])
+            button1.bind(on_press=lambda a: self.switch_main_profile_fields(1))
+            button2 = self.get_mdicon_button(new_main.children[1].children[0].children[0])
+            button2.bind(on_press=lambda a: self.switch_main_profile_fields(2))
+            # button3 = self.get_mdicon_button(new_main.children[0].children[0].children[0])
+
+    def get_mdicon_button(self , area):
+        check = '_ButtonBehavior__state_event'
+
+        list = area.children
+        for item in list:
+            keys = dir(item)
+            if keys[0] == check:
+                return item
+
+        return False
 
     def clean_layout(self):
         if len(self.children) > 0:
             self.remove_widget(self.children[0])
 
-    def update_user_fields(self,my_account_area,user):
+    def update_user_fields(self,my_account_area):
         """
             This function updates the fields in the profile page
             at the My Account area
+
+            the my_account_area is the MyAccountField_OPEN widget
         """
+
+        user = App.get_running_app().user
         key_order = ['weight' ,'height' , 'date_of_birth' , 'last_name' , 'first_name' ]
         title = ['Weight' , 'Height' , 'Date Birth' , 'Last Name', 'First Name']
         user_info = user.user_info(get_object=True)
         box_area_of_fields = my_account_area.children[0].children[0]
         for i in range(len(key_order)):
             box_area_of_fields.children[i].children[0].text = user_info[f'{key_order[i]}']
-
-
 
 
 class ProfileLayout(MDFloatLayout):
@@ -96,4 +138,13 @@ class DiagnoseMe_OPEN(BoxLayout):
     pass
 
 class MyAccountField_CLOSED(BoxLayout):
+    pass
+
+class MainProfileBoxLayout1(BoxLayout):
+    pass
+
+class MainProfileBoxLayout2(BoxLayout):
+    pass
+
+class MainProfileBoxLayout3(BoxLayout):
     pass

@@ -18,7 +18,7 @@ class HomeScreen(Screen):
         self.add_widget(layout)
 
         # get the user from the app
-        # user = App.get_running_app().user
+        user = App.get_running_app().user
 
         # Navbar
         navbar = Navbar()
@@ -38,13 +38,10 @@ class HomeScreen(Screen):
         image_circle.add_widget(UserImage(source=f'{images_path}user.png'))
 
         _ , name_label = top_box.children[0].children
-        # name_label.text = f'Hello {user.first_name}'
+        name_label.text = f'Hello {user.first_name}'
         layout.add_widget(top_box)
 
-        # big buttons box
-        # big_buttons_box = BigButtonBox()
-        #
-        # layout.add_widget(big_buttons_box)
+
 
     def clean_layout(self):
         if len(self.children) > 0:

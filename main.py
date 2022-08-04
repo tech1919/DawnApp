@@ -1,26 +1,8 @@
-import os.path
+
 import time
-from datetime import date
 
-from kivy.app import App
-from kivy.clock import Clock
-from kivy.core.window import Window
-from kivy.lang.builder import Builder
-from kivy.properties import ObjectProperty
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import Button
-from kivy.uix.label import Label
 from kivy.uix.screenmanager import ScreenManager, FadeTransition, NoTransition, SlideTransition, Screen
-from kivy.uix.scrollview import ScrollView
-from kivy.uix.widget import Widget
-from kivy.utils import get_color_from_hex
 from kivymd.app import MDApp
-from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.card import MDCard
-from kivymd.uix.floatlayout import MDFloatLayout
-from kivymd.uix.list import MDList, TwoLineListItem
-
-from db_connection import add_patient , verify_patient , update_patient
 from user import User
 from Diagnostics import Question_sets
 
@@ -562,7 +544,7 @@ class DawnApp(MDApp):
         """
         if self.root.current == screen_name:
             return
-        print(f'Current Screen: {screen_name}')
+        # print(f'Current Screen: {screen_name}')
         self.root.transition = NoTransition()
         self.root.current = screen_name
 
