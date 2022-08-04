@@ -3,9 +3,11 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
 from kivy.uix.label import Label
 from kivy.uix.screenmanager import Screen
+from kivy.uix.scrollview import ScrollView
 from kivy.uix.widget import Widget
 from kivymd.uix.card import MDCard
 from kivymd.uix.floatlayout import MDFloatLayout
+from kivymd.uix.list import MDList, OneLineListItem, TwoLineListItem
 from kivymd.utils.fitimage import FitImage
 
 from libs.uix.components.navbar import Navbar
@@ -35,7 +37,7 @@ class ProfileScreen(Screen):
         # add user name label
         layout.ids['user_name_label'].text = f'{user.first_name} {user.last_name}'
 
-        self.switch_main_profile_fields(1)
+        self.switch_main_profile_fields(2)
 
 
     def switch_main_profile_fields(self , switch_to , *args):
@@ -62,7 +64,7 @@ class ProfileScreen(Screen):
             button3.bind(on_press=lambda a: self.switch_main_profile_fields(3))
 
             # if area one is open
-            self.update_user_fields(new_main.children[-1])
+            self.update_user_fields(new_main.children[2])
 
         elif switch_to == 1:
             button1 = self.get_mdicon_button(new_main.children[2].children[0].children[0])
@@ -70,6 +72,9 @@ class ProfileScreen(Screen):
             # button2 = self.get_mdicon_button(new_main.children[1].children[0].children[0])
             button3 = self.get_mdicon_button(new_main.children[0].children[0].children[0])
             button3.bind(on_press=lambda a: self.switch_main_profile_fields(3))
+
+            # create the scrollview in area two
+            self.create_sv_diagnose(new_main.children[1])
 
         elif switch_to == 2:
             button1 = self.get_mdicon_button(new_main.children[2].children[0].children[0])
@@ -108,6 +113,24 @@ class ProfileScreen(Screen):
         box_area_of_fields = my_account_area.children[0].children[0]
         for i in range(len(key_order)):
             box_area_of_fields.children[i].children[0].text = user_info[f'{key_order[i]}']
+
+    def create_sv_diagnose(self,diagnose_me_area):
+        user = App.get_running_app().user
+        questions = App.get_running_app().questions
+
+        sv_box = diagnose_me_area.children[0].children[0]
+        sv = ScrollView()
+        ml = MDList()
+        sv.add_widget(ml)
+        for q , a in zip(questions , user.answers):
+            ml.add_widget(
+                TwoLineListItem(
+                    text=q,
+                    secondary_text= a
+                )
+            )
+
+        sv_box.add_widget(sv)
 
 
 class ProfileLayout(MDFloatLayout):
