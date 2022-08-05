@@ -16,14 +16,11 @@ from libs.uix.components.navbar import Navbar
 class ProfileScreen(Screen):
 
     def on_enter(self, *args):
-        # self.clean_layout()
-        # layout = ProfileLayout()
-        # self.add_widget(layout)
-
-        layout = self.children[0]
 
         # get the user from the app
         user = App.get_running_app().user
+
+        layout = self.children[0]
 
         # change the navbar
         navbar = layout.children[1]
@@ -31,14 +28,15 @@ class ProfileScreen(Screen):
         profile_button = navbar_buttons[0]
         profile_button.change_navbar('profile')
 
-
         # add user image
-        layout.ids['user_image_pos'].add_widget(UserImage(source='assets/images/user.png'))
+        user_image = layout.ids['user_image']
+        user_image.source = 'assets/images' + '/user.png'
 
         # add user name label
         layout.ids['user_name_label'].text = f'{user.first_name} {user.last_name}'
 
-        self.switch_main_profile_fields(2)
+        # using thread
+        self.switch_main_profile_fields(1)
 
     def switch_main_profile_fields(self , switch_to , *args):
         switch_to -= 1

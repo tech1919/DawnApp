@@ -10,7 +10,6 @@
 
 
 
-
 <UserNameLabel>
     pos_hint: {"center_x": 0.5 , "center_y": 0.75}
     color: get_color_from_hex("#006F4F")
@@ -307,7 +306,8 @@
 
 
     UserImageCircle:
-        id: user_image_pos
+        UserImage:
+            id: user_image
     UserNameLabel:
         id: user_name_label
     SignoutButton:

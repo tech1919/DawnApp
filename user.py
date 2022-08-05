@@ -36,6 +36,8 @@ class User:
         self.answers = []
         self.diagnose = ''
 
+
+
     def create_diagnose(self, q_arr, a_arr):
         num = 1
         for q, a in zip(q_arr, a_arr):

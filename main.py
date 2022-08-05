@@ -39,6 +39,7 @@ class DawnApp(MDApp):
         self.questions = question_sets.ads()
 
 
+
         kv_file_path = 'libs/uix/kv'
         sm = Manager()
         sm.add_widget(Builder.load_file(kv_file_path + '/newLogin.kv'))
@@ -65,6 +66,13 @@ class DawnApp(MDApp):
         """
         if self.root.current == screen_name:
             return
+
+        if screen_name == 'back':
+            screen_name = self.last_screen
+
+        # save the last screen
+        self.last_screen = self.root.current
+
         # print(f'Current Screen: {screen_name}')
         self.root.transition = NoTransition()
         self.root.current = screen_name

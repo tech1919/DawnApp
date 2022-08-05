@@ -1,20 +1,28 @@
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.screenmanager import Screen
+from kivy.utils import get_color_from_hex
 from kivymd.uix.card import MDCard
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.screen import MDScreen
 
+from dawn_animations import scroll_up_animation
 from db_connection import verify_patient
+
+
+
 
 
 class LoginScreen(MDScreen):
     def on_enter(self, *args):
-        pass
+        self.pos = [0.5 , 0.5]
         # self.clean_layout()
+        layout = self.children[0]
+
 
         login_button = self.children[0].children[2].children[0]
-        login_button.bind(on_press = self.verify)
+        login_button.bind(on_press = lambda *_: self.scroll_layout(0.6))
+
 
     def clear_login_screen(self):
         input_box = self.children[0].children[3]
@@ -38,7 +46,7 @@ class LoginScreen(MDScreen):
         user.username = username_input.text
 
         # printing user information
-        user.user_info()
+        # user.user_info()
 
         record = verify_patient({
             'username': user.username,
@@ -126,6 +134,14 @@ class LoginScreen(MDScreen):
         if len(self.children) > 0:
             self.remove_widget(self.children[0])
 
+    def scroll_layout(self , destination, *args):
+        if self.pos == [0.5 , 0.5]:
+            scroll_up_animation(self, destination)
+            self.pos = [0.5 , 0.8]
+        else:
+            scroll_up_animation(self,0.5)
+            self.pos = [0.5, 0.5]
+    
 class LoginLayout(MDFloatLayout):
     pass
 
@@ -134,6 +150,7 @@ class LoginSocial(MDFloatLayout):
 
 class LoginButton(MDCard):
     pass
+
 
 class BottomLineButton(Button):
     pass
