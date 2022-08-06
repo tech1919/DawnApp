@@ -141,6 +141,7 @@
                 font_size: '13dp'
                 hint_text: 'Current password'
                 password: True
+                on_focus: self.parent.parent.parent.parent.parent.parent.scroll_layout(0.2)
             MDTextField:
                 halign: "center"
                 pos_hint: {"center_x": 0.5 , "center_y": 0.5}
@@ -148,6 +149,7 @@
                 font_size: '13dp'
                 hint_text: 'New password'
                 password: True
+                on_focus: self.parent.parent.parent.parent.parent.parent.scroll_layout(0.2)
             MDTextField:
                 halign: "center"
                 pos_hint: {"center_x": 0.5 , "center_y": 0.5}
@@ -155,6 +157,7 @@
                 font_size: '13dp'
                 hint_text: 'New password, again'
                 password: True
+                on_focus: self.parent.parent.parent.parent.parent.parent.scroll_layout(0.2)
 
 <DiagnoseMe_OPEN>
     pos_hint: {"center_x": 0.5 , "center_y": 0.55}
@@ -301,6 +304,7 @@
 
 
 <ProfileLayout>:
+    pos_hint: {"center_x": 0.5 , "center_y": 0.5}
 
 
 

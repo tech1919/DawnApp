@@ -10,6 +10,7 @@ from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.list import MDList, OneLineListItem, TwoLineListItem
 from kivymd.utils.fitimage import FitImage
 
+from dawn_animations import scroll_up_animation
 from libs.uix.components.navbar import Navbar
 
 
@@ -19,6 +20,10 @@ class ProfileScreen(Screen):
 
         # get the user from the app
         user = App.get_running_app().user
+
+        # for scroll method
+        self.pos = [0.5, 0.5]
+
 
         layout = self.children[0]
 
@@ -91,6 +96,15 @@ class ProfileScreen(Screen):
                 return item
 
         return False
+
+    def scroll_layout(self , destination, *args):
+
+        if self.pos == [0.5 , 0.5]:
+            scroll_up_animation(self, destination)
+            self.pos = [0.5 , 0.8]
+        else:
+            scroll_up_animation(self,0.5)
+            self.pos = [0.5, 0.5]
 
     def clean_layout(self):
         if len(self.children) > 0:

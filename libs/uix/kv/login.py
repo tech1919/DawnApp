@@ -21,7 +21,7 @@ class LoginScreen(MDScreen):
 
 
         login_button = self.children[0].children[2].children[0]
-        login_button.bind(on_press = lambda *_: self.scroll_layout(0.6))
+        login_button.bind(on_press = self.verify)
 
 
     def clear_login_screen(self):
@@ -135,6 +135,7 @@ class LoginScreen(MDScreen):
             self.remove_widget(self.children[0])
 
     def scroll_layout(self , destination, *args):
+
         if self.pos == [0.5 , 0.5]:
             scroll_up_animation(self, destination)
             self.pos = [0.5 , 0.8]
@@ -150,7 +151,6 @@ class LoginSocial(MDFloatLayout):
 
 class LoginButton(MDCard):
     pass
-
 
 class BottomLineButton(Button):
     pass

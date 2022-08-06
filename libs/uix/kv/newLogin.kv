@@ -16,6 +16,7 @@
             pos_hint: {"center_x": 0.55, "center_y": 0.47}
             halign: "center"
             foreground_color: 0,0,0,1
+            on_focus: self.parent.parent.parent.parent.parent.scroll_layout(self.pos_hint)
 
 <PasswordInputWidget@MDCard>
     orientation: "vertical"
@@ -31,6 +32,7 @@
             pos_hint: {"center_x": 0.55, "center_y": 0.47}
             halign: "center"
             foreground_color: 0,0,0,1
+            on_focus: self.parent.parent.parent.parent.parent.scroll_layout(self.pos_hint)
 
 <LoginButton>
 
@@ -168,7 +170,6 @@
         LoginLabel:
             text: 'Username'
         LoginInputWidget:
-
         LoginLabel:
             text: 'Password'
         PasswordInputWidget:

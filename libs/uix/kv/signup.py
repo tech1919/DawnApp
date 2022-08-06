@@ -4,6 +4,7 @@ from kivy.uix.screenmanager import Screen
 from kivymd.uix.card import MDCard
 from kivymd.uix.floatlayout import MDFloatLayout
 
+from dawn_animations import scroll_up_animation
 from db_connection import add_patient
 
 
@@ -13,23 +14,20 @@ class SignupScreen(Screen):
         layout = SignupLayout()
         self.add_widget(layout)
 
+        # layout position for scroll funtion
+        self.pos = [0.5, 0.5]
+
 
         # get buttons
-        bottom_line_button = self.children[0].children[0]
-        login_social_area = self.children[0].children[1]
         singup_button = self.children[0].children[2].children[0]
         singup_button.bind(on_press = self.signup)
-
-
-    def sign_up(self):
-        """
-            sign up user to data base
-        """
 
 
     def signup(self , *args):
         # get the user from the app
         user = App.get_running_app().user
+
+
 
         # get input box
         input_box = self.children[0].children[3]
@@ -51,6 +49,14 @@ class SignupScreen(Screen):
     def clean_layout(self):
         if len(self.children) > 0:
             self.remove_widget(self.children[0])
+
+    def scroll_layout(self , destination, *args):
+        if self.pos == [0.5 , 0.5]:
+            scroll_up_animation(self, destination)
+            self.pos = [0.5 , 0.7]
+        else:
+            scroll_up_animation(self,0.5)
+            self.pos = [0.5, 0.5]
 
 class SignupLayout(MDFloatLayout):
     pass
