@@ -31,8 +31,10 @@ class Manager(ScreenManager):
 
 class DawnApp(MDApp):
     def build(self):
-        images_source = 'assets/images/'
-        self.icon = images_source + 'app_logo.png'
+        self.images_source = 'assets/images/'
+        self.kv_file_source = 'libs/uix/kv/'
+
+        self.icon = self.images_source + 'app_logo.png'
         self.last_screen = 'profile'
         self.user = (User())
         question_sets = Question_sets()
@@ -40,17 +42,17 @@ class DawnApp(MDApp):
 
 
 
-        kv_file_path = 'libs/uix/kv'
+
         sm = Manager()
-        sm.add_widget(Builder.load_file(kv_file_path + '/newLogin.kv'))
-        sm.add_widget(Builder.load_file(kv_file_path + '/newSignup.kv'))
+        sm.add_widget(Builder.load_file(self.kv_file_source + 'newLogin.kv'))
+        sm.add_widget(Builder.load_file(self.kv_file_source + 'newSignup.kv'))
 
-        sm.add_widget(Builder.load_file(kv_file_path + '/newHome.kv'))
-        sm.add_widget(Builder.load_file(kv_file_path + '/newProfile.kv'))
-        sm.add_widget(Builder.load_file(kv_file_path + '/newDiagnose.kv'))
-        sm.add_widget(Builder.load_file(kv_file_path + '/newDaily.kv'))
+        sm.add_widget(Builder.load_file(self.kv_file_source + 'newHome.kv'))
+        sm.add_widget(Builder.load_file(self.kv_file_source + 'newProfile.kv'))
+        sm.add_widget(Builder.load_file(self.kv_file_source + 'newDiagnose.kv'))
+        sm.add_widget(Builder.load_file(self.kv_file_source + 'newDaily.kv'))
 
-        sm.add_widget(Builder.load_file(kv_file_path + '/newQuestion.kv'))
+        sm.add_widget(Builder.load_file(self.kv_file_source + 'newQuestion.kv'))
 
 
         return sm

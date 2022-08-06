@@ -35,8 +35,11 @@
             pos_hint: {"center_x": 0.5 , "center_y": 0.5}
             size_hint: 1 , 0.3
             Image:
-                size_hint: 0.1 , 1
                 source: 'assets/images/schedual.png'
+                size_hint: None , None
+                allow_stretch: True
+                height: '30dp'
+                width: '30dp'
             BoxLayout:
                 size_hint: 1 , 0.9
                 orientation: "vertical"
@@ -75,8 +78,11 @@
             pos_hint: {"center_x": 0.5 , "center_y": 0.5}
             size_hint: 1 , 0.3
             Image:
-                size_hint: 0.1 , 1
                 source: 'assets/images/diagnose2_selection.png'
+                size_hint: None , None
+                allow_stretch: True
+                height: '30dp'
+                width: '30dp'
             BoxLayout:
                 size_hint: 1 , 0.9
                 orientation: "vertical"
@@ -136,11 +142,14 @@
         pos_hint: {"center_x": 0.5 , "center_y": 0.5}
         size_hint: 1 , None
         size: '100dp' , '90dp'
-        elevation: 1
+        elevation: 0
         radius: [10]
         md_bg_color: 0,0,0,0
-        FitImage:
+        Image:
             source: 'assets/images/diagnose_page.png'
+            allow_stretch: True
+            height: '90dp'
+            width: 1
     MDLabel:
         halign: 'left'
         font_size: '15dp'
@@ -157,7 +166,11 @@
     BackButton:
     MenuButton:
 
+    DateLabel:
+
     Adenomyosis:
+
+    Navbar:
 
 
 

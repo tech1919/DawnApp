@@ -13,43 +13,27 @@ from libs.uix.components.navbar import Navbar
 class HomeScreen(Screen):
 
     def on_enter(self, *args):
-        self.clean_layout()
-        layout = HomeLayout()
-        self.add_widget(layout)
+
+        layout = self.children[0]
+
 
         # get the user from the app
         user = App.get_running_app().user
 
-        # Navbar
-        navbar = Navbar()
-        navbar_buttons = navbar.children[0].children
-        profile_button = navbar_buttons[0]
-        diagnose_button = navbar_buttons[1]
-        daily_button = navbar_buttons[2]
-        home_button = navbar_buttons[3]
-        home_button.change_navbar('home')
-        layout.add_widget(navbar)
+        navbar , my_appointment , _ , _ , _ ,top_box , _ , _ = layout.children
 
+        # update navbar
+        profile_button , diagnose_button , daily_button , home_button = navbar.children[0].children
+        home_button.change_navbar('home')
 
         # user image and user name
-        top_box = TopBox()
-        image_circle = top_box.children[1]
-        images_path = 'assets/images/'
-        image_circle.add_widget(UserImage(source=f'{images_path}user.png'))
+        user_image = top_box.children[1].children[0]
+        user_name = top_box.children[0].children[1]
+        # later need to be change the source of the image to the get from the user information
+        user_image.source = App.get_running_app().images_source + 'user.png'
+        user_name.text = f'Hello {user.first_name}'
 
-        _ , name_label = top_box.children[0].children
-        name_label.text = f'Hello {user.first_name}'
-        layout.add_widget(top_box)
-
-
-
-    def clean_layout(self):
-        if len(self.children) > 0:
-            self.remove_widget(self.children[0])
 class HomeLayout(MDFloatLayout):
-    pass
-
-class UserImage(FitImage):
     pass
 
 class TopBox(MDBoxLayout):
@@ -59,4 +43,7 @@ class BigButtonBox(BoxLayout):
     pass
 
 class MyAppointment(BoxLayout):
+    pass
+
+class HomeUserImage(FitImage):
     pass

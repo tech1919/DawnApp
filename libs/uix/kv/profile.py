@@ -35,7 +35,7 @@ class ProfileScreen(Screen):
 
         # add user image
         user_image = layout.ids['user_image']
-        user_image.source = 'assets/images' + '/user.png'
+        user_image.source = App.get_running_app().images_source + '/user.png'
 
         # add user name label
         layout.ids['user_name_label'].text = f'{user.first_name} {user.last_name}'

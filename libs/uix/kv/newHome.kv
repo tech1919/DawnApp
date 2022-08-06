@@ -14,11 +14,13 @@
         size_hint: None , None
         size: "60dp" , "60dp"
         elevation: 0
+        HomeUserImage:
+
     BoxLayout:
         orientation: 'vertical'
         padding: 15
         MDLabel:
-            text: 'Hello username'
+            text: 'Hello'
             color: get_color_from_hex("#006F4F")
             font_size: '23dp'
             bold: True
@@ -29,6 +31,13 @@
             font_size: '18dp'
             bold: False
             halign: 'left'
+
+<HomeUserImage>
+    source: 'assets/images/user.png'
+    size_hint: None , None
+    allow_stretch: True
+    height: '60dp'
+    width: '60dp'
 
 
 <SimptomsHomeButton@MDCard>
@@ -240,10 +249,14 @@
     MenuButton:
     BackButton:
 
+    TopBox:
+
     BigButtonBox:
     ButtonsBoxBackground
     LabelsForButton:
     MyAppointment:
+
+    Navbar:
 
 
 <HomeScreen>
