@@ -14,18 +14,13 @@ from db_connection import update_patient
 class QuestionScreen(Screen):
     def on_enter(self, *args):
         self.check_user_answers()
-        self.clean_layout()
+        layout = self.children[0]
 
-        layout = QuestionLayout()
-        self.add_widget(layout)
-
-        buttons_box = layout.children[0]
-        question_label = layout.children[1]
-        question_number = layout.children[2]
-        question_image = layout.children[3]
-        back_question_button = layout.children[4]
+        buttons_box , question_label , question_number , question_image , back_question_button = layout.children
         back_question_button.bind(on_press=self.back_question)
         question_label.get_next_question()
+
+
 
     def check_user_answers(self):
         # set the answers field of the user
@@ -36,15 +31,10 @@ class QuestionScreen(Screen):
             for _ in questions:
                 user.answers.append('')
 
-
     def back_question(self , *args):
         layout = self.children[0]
         question_label = layout.children[1]
         question_label.get_next_question('back')
-
-    def clean_layout(self):
-        if len(self.children) > 0:
-            self.remove_widget(self.children[0])
 
 class QuestionLayout(MDFloatLayout):
     pass
@@ -213,7 +203,7 @@ class QuestionLabel(MDLabel):
         try:
             if current_question_index == 'back':
                 current_question_index = self.current_question_index - 2
-                if current_question_index == -1:
+                if current_question_index <= -1:
                     App.get_running_app().go_to('home')
                     self.current_question_index = 0
                     return

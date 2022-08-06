@@ -1,7 +1,11 @@
 
 import time
 
+
 from kivy.lang import Builder
+from kivy.loader import Loader
+from kivy.uix.image import Image
+
 from kivy.uix.screenmanager import ScreenManager, FadeTransition, NoTransition, SlideTransition, Screen
 from kivymd.app import MDApp
 from user import User
@@ -16,6 +20,8 @@ from libs.uix.kv.daily import DailyLayout , DailyScreen
 from libs.uix.kv.question import QuestionScreen , QuestionLayout
 from libs.uix.components.navbar import Navbar
 from libs.uix.components.topbar import Topbar
+
+
 
 
 def delay(seconds):
@@ -33,6 +39,8 @@ class DawnApp(MDApp):
     def build(self):
         self.images_source = 'assets/images/'
         self.kv_file_source = 'libs/uix/kv/'
+
+
 
         self.icon = self.images_source + 'app_logo.png'
         self.last_screen = 'profile'

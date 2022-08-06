@@ -8,19 +8,20 @@ from kivymd.uix.screen import MDScreen
 
 from dawn_animations import scroll_up_animation
 from db_connection import verify_patient
-
-
-
+from libs.uix.components.loader import DawnLoader
 
 
 class LoginScreen(MDScreen):
     def on_enter(self, *args):
         self.pos = [0.5 , 0.5]
-        # self.clean_layout()
+
         layout = self.children[0]
 
+        # check loader
+        # loader = DawnLoader()
+        # layout.add_widget(loader)
 
-        login_button = self.children[0].children[2].children[0]
+        login_button = layout.children[2].children[0]
         login_button.bind(on_press = self.verify)
 
 
@@ -34,6 +35,7 @@ class LoginScreen(MDScreen):
 
     def verify(self, *args):
 
+
         # get the user from the app
         user = App.get_running_app().user
 
@@ -41,6 +43,10 @@ class LoginScreen(MDScreen):
         input_box = self.children[0].children[3]
         password_input = input_box.children[1].children[0].children[0]
         username_input = input_box.children[3].children[0].children[0]
+
+        loader = DawnLoader()
+        self.children[0].add_widget(loader)
+
 
         user.password = password_input.text
         user.username = username_input.text
@@ -68,47 +74,8 @@ class LoginScreen(MDScreen):
             dob_field = user.date_of_birth
             q = user.questions
 
-            # if q:
-            #     for answer in q:
-            #         if answer == 'No':
-            #             DawnApp.on(self, 'no')
-            #             DawnApp.render_question(self, 'next_question')
-            #         if answer == 'Yes':
-            #             DawnApp.on(self, 'yes')
-            #             DawnApp.render_question(self, 'next_question')
-            #         else:
-            #             pass
-
-            # try:
-            #     # if the user didn't yet enter a valid date of birth leave the field empty
-            #     if dob_field == "":
-            #         user.date_of_birth = ""
-            #     # else the date of birth is a string DD/MM/YYYY and will be pulled from db to fields
-            #     else:
-            #         dob = dob_field.split("/")
-            #         dob_day = dob[0]
-            #         dob_month = dob[1]
-            #         dob_year = dob[2]
-            #
-            #         # inserting the values of Date of birth from db to details screen
-            #         screen_manager.get_screen('question_details').ids.day_field.text = dob_day
-            #         screen_manager.get_screen('question_details').ids.month_field.text = dob_month
-            #         screen_manager.get_screen('question_details').ids.year_field.text = dob_year
-            # except:
-            #     pass
-
-            try:
-                pass
-                # # inserting the values of height and weight from db to details screen
-                # screen_manager.get_screen('question_details').ids.height_input.text = height_text_field
-                # screen_manager.get_screen('question_details').ids.weight_input.text = weight_text_field
-            except:
-                pass
-            finally:
-                # assigning the values for the user pulled previously from db
-                user.weight = weight_text_field
-                user.height = height_text_field
-
+            user.weight = weight_text_field
+            user.height = height_text_field
 
             # username equals firstname till a field update. once fixed remove comment from next line
             user.first_name = user.username
@@ -116,6 +83,7 @@ class LoginScreen(MDScreen):
             user.email = email_field
             user.date_of_birth = dob_field
 
+            self.children[0].remove_widget(loader)
             App.get_running_app().go_to('home')
 
 
@@ -127,6 +95,8 @@ class LoginScreen(MDScreen):
             # ttk.Label(frm, text="Please insert correct details").grid(column=0, row=0)
             # ttk.Button(frm, text="Exit", command=root.destroy).grid(column=1, row=0)
             # root.mainloop()
+
+            self.children[0].remove_widget(loader)
             self.clear_login_screen()
             App.get_running_app().go_to('login')
 

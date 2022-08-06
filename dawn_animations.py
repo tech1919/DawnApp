@@ -37,10 +37,10 @@ def scroll_up_animation(screen, destination=0.5 , *args):
         return
     if destination == 0.5:
         desired_pos = 0.5
-        print(f'scroll down screen {screen.name} to {desired_pos}')
+        # print(f'scroll down screen {screen.name} to {desired_pos}')
     else:
         desired_pos = 0.6
-        print(f'scroll up screen {screen.name} to {desired_pos}')
+        # print(f'scroll up screen {screen.name} to {desired_pos}')
 
 
     offset = desired_pos - destination

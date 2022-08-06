@@ -56,7 +56,8 @@
 
 <Buttons@BoxLayout>
     orientation: "vertical"
-    spacing: 10
+    spacing: 15
+    padding: 15
     QButton:
         md_bg_color: get_color_from_hex("#FFFFFF")
         YesButton:
@@ -71,6 +72,7 @@
     pos_hint: {"center_x": 0.5 , "center_y": 0.7}
     size_hint: 0.9 , None
     size: '0dp' , '200dp'
+    allow_stretch: True
 
 
 <QNumber>
@@ -78,14 +80,14 @@
     halign: "left"
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
     size_hint: 0.9 , None
-    font_size: '13dp'
+    font_size: '15dp'
 
 <QuestionLabel>
     color: 0,0,0,1
     halign: "left"
     pos_hint: {"center_x": 0.5 , "center_y": 0.38}
     size_hint: 0.9 , None
-    font_size: '16dp'
+    font_size: '17dp'
 
 
 <QuestionLayout>
@@ -94,10 +96,8 @@
 
     QImage:
         source: 'assets/images/Q1.png'
-
     QNumber:
     QuestionLabel:
-
 
     Buttons:
 
