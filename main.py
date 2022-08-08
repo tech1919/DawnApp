@@ -1,7 +1,3 @@
-
-import time
-
-
 from kivy.lang import Builder
 from kivy.loader import Loader
 from kivy.uix.image import Image
@@ -22,18 +18,8 @@ from libs.uix.components.navbar import Navbar
 from libs.uix.components.topbar import Topbar
 
 
-
-
-def delay(seconds):
-    start = time.time()
-    stop = time.time()
-    while stop - start < seconds:
-        stop = time.time()
-
 class Manager(ScreenManager):
     pass
-
-
 
 class DawnApp(MDApp):
     def build(self):
@@ -90,7 +76,6 @@ class DawnApp(MDApp):
     def change_navbar(self,screen):
         print(screen)
         self.last_screen = self.root.current
-
 
 
 if __name__ == '__main__':

@@ -1,29 +1,46 @@
 from kivy.app import App
 
 
-def diagnose_ads(answers_list):
-    pass
-    # user = App.get_running_app().user
-    # list_for_diagnostic = [x[2] for x in user.diagnose]
-    # diagnose = ""
-    # first_counter = 0
-    # for criteria_one in range(5):
-    #     if list_for_diagnostic[criteria_one] == 'Yes':
-    #         first_counter += 1
-    # if first_counter >= 2:
-    #     second_counter = 0
-    #     for criteria_two in range(5, 17):
-    #         if list_for_diagnostic[criteria_two] == 'Yes':
-    #             second_counter += 1
-    #     if second_counter >= 5:
-    #         third_counter = 0
-    #         for criteria_three in range(17, 20):
-    #             if list_for_diagnostic[criteria_three] == 'Yes':
-    #                 third_counter += 1
-    #         if third_counter >= 1:
-    #             diagnose = "ADS"
-    #
-    # return diagnose
+def diagnose_ads(answers_list = []):
+
+    """
+        diagnoses for ads algorithm:
+        1. check if there is 2 "Yes" answers at the 5 first answers
+        2. check for 5 "Yes" answers at the next 12 questions (6-17)
+        3. check for one more "Yes" answer at the last 3 questions (18-20)
+        4. if all the the list of answers follows all the criterias above, the user is diagnosed with ads
+    """
+
+    if len(answers_list) < 20:
+        try:
+            user = App.get_running_app().user
+            list_for_diagnostic = user.answers
+        except:
+            print('can able to diagnose, not enough answers')
+            return ''
+    else:
+        list_for_diagnostic = answers_list
+
+    diagnose = ""
+    first_counter = 0
+    for criteria_one in range(5):
+        if list_for_diagnostic[criteria_one] == 'Yes':
+            first_counter += 1
+    if first_counter >= 2:
+        second_counter = 0
+        for criteria_two in range(5, 17):
+            if list_for_diagnostic[criteria_two] == 'Yes':
+                second_counter += 1
+        if second_counter >= 5:
+            third_counter = 0
+            for criteria_three in range(17, 20):
+                if list_for_diagnostic[criteria_three] == 'Yes':
+                    third_counter += 1
+            if third_counter >= 1:
+                diagnose = "ADS"
+
+
+    return diagnose
 
 class Question_sets():
 

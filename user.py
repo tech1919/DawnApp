@@ -94,9 +94,6 @@ class User:
 
 
 
-
-
-
 def date_validation_1(date_string):
     test_format = '04-01-1997'
     # initializing format
