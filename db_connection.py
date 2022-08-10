@@ -53,7 +53,10 @@ def verify_patient(query):
 
 def update_patient(query,update_fields):
 
+
+
     query = {**query, **update_fields}
+
     query['answers'] = ','.join(query['answers'])
     # query['diagnose'] = ','.join(query['diagnose'])
     params = urllib.parse.urlencode(query)

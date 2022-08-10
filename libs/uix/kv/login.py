@@ -67,21 +67,6 @@ class LoginScreen(MDScreen):
             user.update_local_by(record)
             # pulling user information from db
             # user_value = [record.get(value) for value in keys]
-            first_name_field = user.first_name
-            email_field = user.email
-            height_text_field = user.height
-            weight_text_field = user.weight
-            dob_field = user.date_of_birth
-            q = user.questions
-
-            user.weight = weight_text_field
-            user.height = height_text_field
-
-            # username equals firstname till a field update. once fixed remove comment from next line
-            user.first_name = user.username
-            # user.first_name = first_name_field
-            user.email = email_field
-            user.date_of_birth = dob_field
 
             self.children[0].remove_widget(loader)
             App.get_running_app().go_to('home')

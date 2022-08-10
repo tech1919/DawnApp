@@ -14,6 +14,11 @@
     height: '100dp'
     width: '100dp'
 
+<EditProfileButton@MDIconButton>
+    icon: "assets/images/edit.png"
+    user_font_size: '7sp'
+    on_press: self.parent.parent.parent.edit_profile()
+
 <UserNameLabel>
     pos_hint: {"center_x": 0.5 , "center_y": 0.75}
     color: get_color_from_hex("#006F4F")
@@ -205,7 +210,91 @@
                 pos_hint: {"center_x": 0.5 , "center_y": 0.5}
                 icon: 'chevron-down'
         BoxLayout:
-            
+
+<EditTextField@MDTextField>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.3}
+    halign: "right"
+    font_size: '12dp'
+
+<MyAccountField_EDIT_OPEN>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.55}
+    size_hint: 0.9 , 0.3
+    MDCard:
+        orientation: "vertical"
+        md_bg_color: get_color_from_hex("#FFFFFF")
+        radius: [10]
+        elevation: 1
+        BoxLayout:
+            spacing: 10
+            orientation: 'horizontal'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            size_hint: 0.95 , 0.3
+            Image:
+                source: 'assets/images/person_logo.png'
+                size_hint: None , None
+                allow_stretch: True
+                height: '30dp'
+                width: '30dp'
+            MDLabel:
+                size_hint: 0.7 , 1
+                text: "My Account"
+                bold: True
+                font_size: '15dp'
+                color: get_color_from_hex("#000000")
+                halign: "left"
+            MDIconButton:
+                pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+                icon: 'chevron-down'
+        BoxLayout:
+            padding: 7
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            orientation: 'vertical'
+            BoxLayout:
+                MDLabel:
+                    text: "First Name"
+                    bold: True
+                EditTextField:
+                    hint_text: 'first name'
+
+            BoxLayout:
+                MDLabel:
+                    text: "Last Name"
+                    bold: True
+                EditTextField:
+                    hint_text: 'last name'
+            BoxLayout:
+                MDLabel:
+                    text: "Date Birth"
+                    bold: True
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    padding: 5
+                    spacing: 10
+                    EditTextField:
+                        hint_text: 'day'
+                    MDLabel:
+                        text: '/'
+                    EditTextField:
+                        hint_text: 'month'
+                    MDLabel:
+                        text: '/'
+                    EditTextField:
+                        hint_text: 'year'
+
+            BoxLayout:
+                MDLabel:
+                    text: "Height"
+                    bold: True
+                EditTextField:
+                    hint_text: 'height'
+
+            BoxLayout:
+                MDLabel:
+                    text: "Weight"
+                    bold: True
+                EditTextField:
+                    hint_text: 'weight'
 
 
 <MyAccountField_OPEN>
@@ -324,6 +413,18 @@
     DiagnoseMe_CLOSED:
     SecurityField_OPEN:
 
+<MainProfileBoxLayout4>
+    pos_hint: {"center_x": 0.5 , "center_y": 0.47}
+    size_hint: 1 , 0.5
+    padding: 10
+    spacing: 7
+    orientation: "vertical"
+
+
+    MyAccountField_EDIT_OPEN:
+    DiagnoseMe_CLOSED:
+    SecurityField_CLOSED:
+
 
 <ProfileLayout>:
     pos_hint: {"center_x": 0.5 , "center_y": 0.5}
@@ -334,6 +435,8 @@
     UserImageCircle:
         UserImage:
             id: user_image
+        EditProfileButton:
+
     UserNameLabel:
         id: user_name_label
     SignoutButton:

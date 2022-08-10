@@ -64,7 +64,9 @@ class User:
             'password': self.password,
             'height': self.height,
             'weight': self.weight,
-            'date_of_birth': self.date_of_birth
+            'date_of_birth': self.date_of_birth,
+            'answers': self.answers,
+            'diagnose': self.diagnose
 
 
         }
@@ -90,7 +92,7 @@ class User:
             pass
         self.questions = record['questions']
         self.answers = record['answers']
-        # self.diagnose = record['diagnose']
+        self.diagnose = record['diagnose']
 
 
 

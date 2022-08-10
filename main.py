@@ -77,6 +77,5 @@ class DawnApp(MDApp):
         print(screen)
         self.last_screen = self.root.current
 
-
 if __name__ == '__main__':
     DawnApp().run()

@@ -11,6 +11,7 @@ from kivymd.uix.list import MDList, OneLineListItem, TwoLineListItem
 from kivymd.utils.fitimage import FitImage
 
 from dawn_animations import scroll_up_animation
+from db_connection import update_patient
 from libs.uix.components.navbar import Navbar
 
 
@@ -48,7 +49,8 @@ class ProfileScreen(Screen):
         main1 = MainProfileBoxLayout1()
         main2 = MainProfileBoxLayout2()
         main3 = MainProfileBoxLayout3()
-        option = [main1 , main2 , main3]
+        main4 = MainProfileBoxLayout4()
+        option = [main1 , main2 , main3 , main4]
 
 
         layout = self.children[0]
@@ -85,6 +87,12 @@ class ProfileScreen(Screen):
             button2 = self.get_mdicon_button(new_main.children[1].children[0].children[0])
             button2.bind(on_press=lambda a: self.switch_main_profile_fields(2))
             # button3 = self.get_mdicon_button(new_main.children[0].children[0].children[0])
+        elif switch_to == 3:
+            # button1 = self.get_mdicon_button(new_main.children[2].children[0].children[1])
+            button2 = self.get_mdicon_button(new_main.children[1].children[0].children[0])
+            button2.bind(on_press=lambda a: self.switch_main_profile_fields(2))
+            button3 = self.get_mdicon_button(new_main.children[0].children[0].children[0])
+            button3.bind(on_press=lambda a: self.switch_main_profile_fields(3))
 
     def get_mdicon_button(self , area):
         check = '_ButtonBehavior__state_event'
@@ -145,6 +153,38 @@ class ProfileScreen(Screen):
         sv_box.add_widget(sv)
 
 
+    def edit_profile(self):
+        layout = self.children[0]
+
+
+        edit_button = layout.children[-1].children[0]
+        if edit_button.icon == App.get_running_app().images_source + 'edit.png':
+            # change the button's image to plus sign
+            edit_button.icon =  App.get_running_app().images_source + 'plus_btn.png'
+
+            # use a function built to switch correctly
+            # the main open field at the profile screen
+            # field 4 is correlate with MainProfileBoxLayout4 class
+            self.switch_main_profile_fields(4)
+
+
+        else:
+            # change back the icon from plus to the edit icon
+            edit_button.icon = App.get_running_app().images_source + 'edit.png'
+
+            main_field = layout.children[0]
+            main_field.get_update_info()
+
+            # update the user at the data base
+            user = App.get_running_app().user
+            query = {'username' : user.username}
+            update_fields = user.user_info(get_object=True)
+            update_patient(query ,update_fields)
+
+            # switch back to main field 1
+            self.switch_main_profile_fields(1)
+
+
 class ProfileLayout(MDFloatLayout):
     pass
 
@@ -172,6 +212,9 @@ class DiagnoseMe_CLOSED(BoxLayout):
 class DiagnoseMe_OPEN(BoxLayout):
     pass
 
+class MyAccountField_EDIT_OPEN(BoxLayout):
+    pass
+
 class MyAccountField_CLOSED(BoxLayout):
     pass
 
@@ -183,3 +226,29 @@ class MainProfileBoxLayout2(BoxLayout):
 
 class MainProfileBoxLayout3(BoxLayout):
     pass
+
+class MainProfileBoxLayout4(BoxLayout):
+    def get_update_info(self):
+        edit_field = self.children[2].children[0].children[0]
+        weight , height , date_of_birth , last_name , first_name = edit_field.children
+        weight = self.get_text(weight)
+        height = self.get_text(height)
+        date_of_birth = self.get_text(date_of_birth , date=True)
+        last_name = self.get_text(last_name).capitalize()
+        first_name = self.get_text(first_name).capitalize()
+
+        user = App.get_running_app().user
+        user.first_name = first_name
+        user.last_name = last_name
+        user.weight = weight
+        user.height = height
+        user.date_of_birth = date_of_birth
+
+    def get_text(self , field , date = False):
+        if date:
+            year,_,month,_,day = field.children[0].children
+            date_of_birth = f'{day.text}/{month.text}/{year.text}'
+            return date_of_birth
+        else:
+            return field.children[0].text
+
