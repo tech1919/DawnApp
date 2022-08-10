@@ -4,8 +4,8 @@
 <DateLabel>
     orientation: "vertical"
 
-    pos_hint: {"center_x": 0.3 , "center_y": 0.83}
-    size_hint: None , None
+    pos_hint: {"center_x": 0.5 , "center_y": 0.83}
+    size_hint: 0.9 , None
     size: '150dp' , '50dp'
 
     MDLabel:
@@ -17,6 +17,7 @@
         halign: "left"
         color: get_color_from_hex("#000000")
         font_size: '13dp'
+        size_hint: 1 , 1
 
 
 <Test1@BoxLayout>
@@ -108,34 +109,36 @@
 
 
 <Adenomyosis>
-    spacing: 10
+    spacing: 20
     orientation: "vertical"
     size_hint: 0.9 , 0.65
     pos_hint: {"center_x": 0.5 , "center_y": 0.47}
-#    Button:
-    MDLabel:
-        halign: 'left'
-        text: "My Diagnosis"
-        color: get_color_from_hex("#006F4F")
-        font_size: '25dp'
-        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-    MDLabel:
-        halign: 'left'
-        text: "Adenomyosis"
-        color: get_color_from_hex("#006F4F")
-        font_size: '15dp'
-        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-    MDLabel:
-        halign: 'left'
-        font_size: '15dp'
-        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-        text: 'diagnose details'
-        bold: True
-    MDLabel:
-        halign: 'left'
-        font_size: '15dp'
-        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim massa, imperdiet ut metus sit amet."
+    BoxLayout:
+        orientation: "vertical"
+
+        MDLabel:
+            halign: 'left'
+            text: "My Diagnosis"
+            color: get_color_from_hex("#006F4F")
+            font_size: '25dp'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+        MDLabel:
+            halign: 'left'
+            text: "Adenomyosis"
+            color: get_color_from_hex("#006F4F")
+            font_size: '15dp'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+        MDLabel:
+            halign: 'left'
+            font_size: '15dp'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            text: 'diagnose details'
+            bold: True
+        MDLabel:
+            halign: 'left'
+            font_size: '12dp'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec enim massa, imperdiet ut metus sit amet."
 
 
     MDCard:
@@ -150,15 +153,18 @@
             allow_stretch: True
             height: '90dp'
             width: 1
-    MDLabel:
-        halign: 'left'
-        font_size: '15dp'
-        pos_hint: {"center_x": 0.5 , "center_y": 0.5}
-        text: 'Recommended tests'
-        bold: True
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 10
+        MDLabel:
+            halign: 'left'
+            font_size: '15dp'
+            pos_hint: {"center_x": 0.5 , "center_y": 0.5}
+            text: 'Recommended tests'
+            bold: True
 
-    Test1:
-    Test2:
+        Test1:
+        Test2:
 
 
 

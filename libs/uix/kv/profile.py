@@ -41,7 +41,7 @@ class ProfileScreen(Screen):
         # add user name label
         layout.ids['user_name_label'].text = f'{user.first_name} {user.last_name}'
 
-        # using thread
+        # switch to thread
         self.switch_main_profile_fields(1)
 
     def switch_main_profile_fields(self , switch_to , *args):
@@ -108,9 +108,11 @@ class ProfileScreen(Screen):
     def scroll_layout(self , destination, *args):
 
         if self.pos == [0.5 , 0.5]:
+            print("scroll up")
             scroll_up_animation(self, destination)
             self.pos = [0.5 , 0.8]
         else:
+            print("scroll down")
             scroll_up_animation(self,0.5)
             self.pos = [0.5, 0.5]
 
@@ -183,7 +185,6 @@ class ProfileScreen(Screen):
 
             # switch back to main field 1
             self.switch_main_profile_fields(1)
-
 
 class ProfileLayout(MDFloatLayout):
     pass

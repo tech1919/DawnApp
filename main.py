@@ -1,6 +1,12 @@
+from kaki.app import App
+
 from kivy.lang import Builder
 from kivy.loader import Loader
 from kivy.uix.image import Image
+from kivy.utils import platform
+from kivy.config import Config
+from kivy.core.window import Window
+
 
 from kivy.uix.screenmanager import ScreenManager, FadeTransition, NoTransition, SlideTransition, Screen
 from kivymd.app import MDApp
@@ -21,11 +27,15 @@ from libs.uix.components.topbar import Topbar
 class Manager(ScreenManager):
     pass
 
-class DawnApp(MDApp):
+class DawnApp(App , MDApp):
     def build(self):
+
+        if platform == 'win':
+            Window.size = (360, 650)
+
+
         self.images_source = 'assets/images/'
         self.kv_file_source = 'libs/uix/kv/'
-
 
 
         self.icon = self.images_source + 'app_logo.png'

@@ -2,21 +2,20 @@
 
 <UserImageCircle>
     pos_hint: {"center_x": 0.5 , "center_y": 0.83}
-    md_bg_color: 0,0,0,0.05
     size_hint: None , None
-#    size: "70dp" , "70dp"
+    size: "70dp" , "70dp"
     radius: [100]
     elevation: 0
 
 <UserImage>
     size_hint: None , None
     allow_stretch: True
-    height: '100dp'
-    width: '100dp'
+    height: '75dp'
+    width: '75dp'
 
 <EditProfileButton@MDIconButton>
     icon: "assets/images/edit.png"
-    user_font_size: '7sp'
+    user_font_size: '3sp'
     on_press: self.parent.parent.parent.edit_profile()
 
 <UserNameLabel>
@@ -216,6 +215,7 @@
     halign: "right"
     font_size: '12dp'
 
+
 <MyAccountField_EDIT_OPEN>
     pos_hint: {"center_x": 0.5 , "center_y": 0.55}
     size_hint: 0.9 , 0.3
@@ -255,6 +255,7 @@
                     bold: True
                 EditTextField:
                     hint_text: 'first name'
+                    on_focus: self.parent.parent.parent.parent.parent.parent.parent.scroll_layout(0.4)
 
             BoxLayout:
                 MDLabel:
@@ -262,6 +263,7 @@
                     bold: True
                 EditTextField:
                     hint_text: 'last name'
+                    on_focus: self.parent.parent.parent.parent.parent.parent.parent.scroll_layout(0.35)
             BoxLayout:
                 MDLabel:
                     text: "Date Birth"
@@ -273,13 +275,16 @@
                     spacing: 10
                     EditTextField:
                         hint_text: 'day'
+                        on_focus: self.parent.parent.parent.parent.parent.parent.parent.parent.scroll_layout(0.32)
                     MDLabel:
                         text: '/'
                     EditTextField:
+                        on_focus: self.parent.parent.parent.parent.parent.parent.parent.parent.scroll_layout(0.32)
                         hint_text: 'month'
                     MDLabel:
                         text: '/'
                     EditTextField:
+                        on_focus: self.parent.parent.parent.parent.parent.parent.parent.parent.scroll_layout(0.32)
                         hint_text: 'year'
 
             BoxLayout:
@@ -288,6 +293,7 @@
                     bold: True
                 EditTextField:
                     hint_text: 'height'
+                    on_focus: self.parent.parent.parent.parent.parent.parent.parent.scroll_layout(0.25)
 
             BoxLayout:
                 MDLabel:
@@ -295,6 +301,7 @@
                     bold: True
                 EditTextField:
                     hint_text: 'weight'
+                    on_focus: self.parent.parent.parent.parent.parent.parent.parent.scroll_layout(0.22)
 
 
 <MyAccountField_OPEN>
