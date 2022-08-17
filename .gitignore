@@ -4,3 +4,6 @@ bin/
 alert.py
 kivy_icons.py
 logcat.txt
+linear_regression_ml.py
+ads_data.csv
+ads_diagnose.joblib

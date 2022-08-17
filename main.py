@@ -1,4 +1,3 @@
-from kaki.app import App
 
 from kivy.lang import Builder
 from kivy.loader import Loader
@@ -27,7 +26,7 @@ from libs.uix.components.topbar import Topbar
 class Manager(ScreenManager):
     pass
 
-class DawnApp(App , MDApp):
+class DawnApp(MDApp):
     def build(self):
 
         if platform == 'win':

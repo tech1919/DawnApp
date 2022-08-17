@@ -4,8 +4,9 @@ import urllib
 
 endpoint = 'https://dawnapi.herokuapp.com/'
 
-# for tests
-endpoint = 'http://localhost:3000/'
+
+# local endpoint for testing connection to mongodb server
+# endpoint = 'http://localhost:3000/'
 
 def getData(query):
     '''

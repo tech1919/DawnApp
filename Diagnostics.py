@@ -1,6 +1,19 @@
 from kivy.app import App
 
+def check_answer_list(answer_list):
+    new_list = []
+    if answer_list[0] == 0 or answer_list[0] == 1 or answer_list[0] == -1:
+        # need to correct the list
+        for i in range(len(answer_list)):
 
+            if answer_list[i] == 1:
+                new_list.append('Yes')
+            elif answer_list[i] == 0 :
+                 new_list.append('No')
+            elif answer_list[i] == -1:
+                new_list.append('')
+
+    return new_list
 def diagnose_ads(answers_list = []):
 
     """
@@ -11,6 +24,7 @@ def diagnose_ads(answers_list = []):
         4. if all the the list of answers follows all the criterias above, the user is diagnosed with ads
     """
 
+    answers_list = check_answer_list(answers_list)
     if len(answers_list) < 20:
         try:
             user = App.get_running_app().user
@@ -21,7 +35,7 @@ def diagnose_ads(answers_list = []):
     else:
         list_for_diagnostic = answers_list
 
-    diagnose = ""
+    diagnose = "None"
     first_counter = 0
     for criteria_one in range(5):
         if list_for_diagnostic[criteria_one] == 'Yes':
