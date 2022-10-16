@@ -10,30 +10,40 @@ This API is deployed on Heroku.
 
 Deploy Steps:
 
-1.
-2.
-3.
-4.
+Step | Description
+------|------------
+1 | python requirements installation 
+2 | creating a project using the api folder in this repo
+3 | creating a mongoDB of users
+4 | configuring the API and deploying on Heroku
+
 
 #Routes
 
-/signuser :
+`/signuser` :
 expecting a user dictionary with the fields:
-* first_name
-* last_name
-* username
-* email
-* password
-* height
-* weight
+
+
+```javascript
+{
+  "first_name" : "string",
+  "last_name" : "string",
+  "username" : "string",
+  "kids" : 
+  "email" : "string",
+  "password" : "string",
+  "height" : number,
+  "weight" : number,
+}
+```
 
 This route add new user to the DB
 
-/verifyuser: 
+`/verifyuser`: 
 This route checking if a user is in the DB. If it
 does, the response will be the data of the user. If the 
 user is not in the database, the response will be False.
 
-/updateuser: 
+`/updateuser`: 
 This route check is the username is in the DB, then update
 his record with the fields given in the body of the request.

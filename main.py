@@ -29,7 +29,8 @@ class Manager(ScreenManager):
 class DawnApp(MDApp):
     def build(self):
 
-        if platform == 'win':
+        if 'win' in platform.lower():
+            print(platform)
             Window.size = (360, 650)
 
 
