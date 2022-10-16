@@ -15,13 +15,18 @@ class LoginScreen(MDScreen):
     def on_enter(self, *args):
         self.pos = [0.5 , 0.5]
 
-        layout = self.children[0]
+        layout = self.ids["layout"]
+
 
         # check loader
         # loader = DawnLoader()
         # layout.add_widget(loader)
 
         login_button = layout.children[2].children[0]
+
+        btn1 = login_button
+        btn2 = layout.ids.login_button
+
         login_button.bind(on_press = self.verify)
 
 

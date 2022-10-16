@@ -14,14 +14,6 @@
 Kivy==2.1.0
 kivymd==0.104.2
 
-
-
-<br>
-<br>
-
-
-
-<br>
 <br>
 
 
@@ -43,6 +35,8 @@ Currently, using version
 
 The app is a kivy based phone app using for managing medical data for a user. This use an external API
 deployed on Heroku for user DB management.
+
+
 
 ## Pages
 
@@ -75,6 +69,7 @@ orientation | `portrait`
 fullscreen | `0`
 android.presplash_color | `#F5E5D6`
 android.permissions | `INTERNET`
+android.ndk | `25b` (if there is more up to date version use the new one)
 
 
 
@@ -97,11 +92,11 @@ https://drive.google.com/drive/folders/1d3okj9NsNIvjIbgfsEx_4dbfGFmINySW?usp=sha
 
 ## Troubleshooting
 
-### buildozer.spec file is not in the repo?
+* ### buildozer.spec file is not in the repo?
 create a new buildozer.spec file by using the `buildozer init` command in the Ubuntu console at the diractory. after 
 creating the file, open it and change the special setting according to the **buildozer.spec file special settings** section in this README.
 
-### buildozer is not running - missing NDK file
+* ### buildozer is not running - missing NDK file
 
 To build the app using buildozer, you need to have the latest version of the SDK and NDK folders and locate them in the buildozer folder of the Linux subsystem:
 
@@ -111,7 +106,16 @@ On the first run, an automatic installation should happen, but sometimes it fail
 
 https://developer.android.com/ndk/downloads
 
-And the latest version suitable for the operating system must be downloaded.
+and the latest version suitable for the operating system must be downloaded.
+
+* ### buildozer is not running - a folder cannot be accessed
+On the first run, buildozer getting stuck several times with an error saying it was unable to access a certain folder.
+This is because the folder in the particular location that buildozer is trying to access is given a **different name** for some reason.
+
+This is a bug in the buildozer package and the way to fix this error is by going to the folder that buildozer is trying to access and change its name to the name written in the error.
+Now the command `buildozer -v android debug` can be run again. **On the first run, expect this error to occur about 10 times for different folders. For each folder, the treatment is the same**.
+
+
 
 <br>
 
