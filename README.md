@@ -69,6 +69,28 @@ Build step | Description
 
 [comment]: <> (this section need to be defined )
 
+##Current APK
+
+https://drive.google.com/drive/folders/1d3okj9NsNIvjIbgfsEx_4dbfGFmINySW?usp=sharing
 
 ## Troubleshooting
 
+
+<br>
+
+<div align = center>
+
+
+<br>
+<br>
+
+This app build by Tech-19 2022
+<br>
+<br>
+
+
+
+
+</div>
+
+<br>
