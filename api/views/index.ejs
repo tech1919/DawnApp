@@ -1,0 +1,40 @@
+<%- include("header") -%>
+
+
+
+      <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Height</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Username</th>
+        <th scope="col">Password</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%if(Docs.length > 0){%>
+        <% Docs.forEach(function(doc){%>
+          <tr>
+            <td scope="row"><%= doc.first_name %></td>
+            <td><%= doc.last_name %></td>
+            <td><%= doc.month %> <%= doc.height %></td>
+            <td><%= doc.weight %></td>
+            <td><%= doc.username %></td>
+            <td><%= doc.password %></td>
+            <td><%= doc.email %></td>
+            <td>
+          </tr>
+        <%})%>
+
+      <%}%>
+
+
+      </tbody>
+  </table>
+
+
+
+<%- include("footer") -%>

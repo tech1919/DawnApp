@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Open Sans';
+}
+
+i {
+  color: white;
+}
+
+h2 {
+  line-height: 1.5;
+  font-size: 2.5rem;
+  font-family: 'Open Sans';
+}
+
+#cardtitle {
+  color: #c0392b;
+}
+
+.px-wide {
+  width: 1000px;
+  margin: auto;
+}
+
+.hide {
+  display: none;
+}
+
+.carousel .item {
+  padding: 7% 14%;
+}
+
+.day {
+  text-align: center;
+}
+
+#testimonials {
+  text-align: center;
+  display: inline-block;
+  margin: auto;
+}
+
+.cardName {
+  color: white;
+}
+
+.Open {
+  color: white;
+  font-size: 2.5rem;
+}
+
+hr {
+  display: block;
+  width: 50%;
+  margin: 0 auto auto auto;
+}
+
+h3 {
+  size: 1.5rem;
+  color: white;
+  font-weight: bold;
+}
+
+h5, p, h4 {
+  text-align: center;
+}
+
+dl {
+  text-align: center;
+}
+
+.navbar {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.navbar-brand {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.select {
+  color: black;
+}
+
+.card1 {
+  background-color: black;
+}
+
+#pricing {
+  /* padding: 100px; */
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 7px 0 7px 0;
+}
+
+#stages {
+  margin-bottom: 3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+#footer {
+  padding: 7% 15%;
+  text-align: center;
+}
+
+.dropdown {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+small {
+  font-size: 1rem;
+}
+
+.navbar-dark {
+  background-color: white;
+  display: inline-inline-block;
+}
+
+#custom-cards {
+  margin: 7px 7px 7px 7px;
+}
+
+.btn-primary {
+  background-color: white;
+  border-color: white;
+}
+
+#testimonials {
+  text-align: center;
+}
+
+#footer {
+  padding: 7% 15%;
+  text-align: center;
+  background-color: black;
+  font-style: italic;
+  color: white;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.top {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.middle {
+  margin-bottom: -1px;
+  border-radius: 0;
+}
+
+.bottom {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.context-dark, .bg-gray-dark, .bg-primary {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+  color: #ffffff;
+}
+
+.nav-list li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.nav-list li a:hover:before {
+  margin-left: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+#drop {
+  color: black;
+}
+
+#card {
+  background-color: black;
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Open Sans';
+}
+
+a:hover {
+  color: red;
+  text-decoration: none;
+}
+
+.card {
+  background-color: black;
+}
+
+.social-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 23px;
+  font: 900 13px/1 "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.social-container .col {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-list li a:before {
+  content: "\f14f";
+  font: 400 21px/1 "Material Design Icons";
+  color: #4d6de6;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-left: -28px;
+  margin-right: 7px;
+  opacity: 0;
+  visibility: hidden;
+  transition: .22s ease;
+}
+
+.b-example-divider {
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #fff;
+  border-radius: .75rem;
+}
+
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon-link>.bi {
+  margin-top: .125rem;
+  margin-left: .125rem;
+  transition: transform .25s ease-in-out;
+  fill: currentColor;
+}
+
+.icon-link:hover>.bi {
+  transform: translate(.25rem);
+}
+
+.icon-square {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  border-radius: .75rem;
+}
+
+.float {
+  float: left;
+  font-weight: bold;
+  width: 25rem;
+  height: 25rem;
+  padding: 10px;
+}
+
+.img-responsive {
+  border-radius: 100px;
+}
+
+.rounded-4 {
+  border-radius: .5rem;
+}
+
+.rounded-5 {
+  border-radius: 1rem;
+}
+
+.text-shadow-1 {
+  text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25);
+}
+
+.text-shadow-2 {
+  text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25);
+}
+
+.text-shadow-3 {
+  text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25);
+}
+
+.card-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.stage-day {
+  visibility: visible;
+  margin: 7px;
+}
+
+.sunday, .monday, .tuesday, .wednesday, .thursday, .friday {
+  visibility: visible;
+  background: transparent;
+}
+
+.row {
+  padding-left: 100px;
+  text-align: center;
+
+}
+
+#card-title {
+  font-weight: bold;
+}
+
+.card {
+  color: black;
+  margin-bottom: 30px;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+  background-clip: border-box;
+  border: 0 solid transparent;
+  border-radius: 0;
+}
+
+.card .card-subtitle {
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: #8898aa;
+}
+
+.table-product.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f3f8fa !important
+}
+
+.table-product td {
+  border-top: 0px solid #dee2e6 !important;
+  color: #728299 !important;
+}
+
+.rank-form {
+  height: 4rem;
+  padding: 15px;
+  text-align: center;
+  align-items: center;
+}
+
+.rank {
+  background: transparent;
+  border: 0;
+  color: black;
+  width: 30px;
+  height: 30px;
+}
+
+
+#row1 {
+z-index: 1;
+}
+
+#rank1 {
+  position: absolute;
+  margin-left: 400px;
+  margin-bottom: 0;
+  padding: 15px;
+  height: 4rem;
+  float: left;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+}
+.Ran{
+  color: black;
+}
+.light {
+  color: #F0A500;
+}

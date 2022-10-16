@@ -92,7 +92,11 @@ class User:
             pass
         self.questions = record['questions']
         self.answers = record['answers']
-        self.diagnose = record['diagnose']
+        try:
+            self.diagnose = record['diagnose']
+        except:
+            self.diagnose = ''
+
 
 
 
