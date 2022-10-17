@@ -115,6 +115,8 @@ This is because the folder in the particular location that buildozer is trying t
 This is a bug in the buildozer package and the way to fix this error is by going to the folder that buildozer is trying to access and change its name to the name written in the error.
 Now the command `buildozer -v android debug` can be run again. **On the first run, expect this error to occur about 10 times for different folders. For each folder, the treatment is the same**.
 
+## GitHub Actions
+###Buildozer automation
 
 
 <br>

@@ -60,3 +60,5 @@ The request needs to contain an object with this structure:
 This route check is the username is in the DB, then update
 his record with the fields given in the body of the request.
 The request body needs to contain an object with the fields you want to update:
+
+
